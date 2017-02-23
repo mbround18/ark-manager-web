@@ -1,0 +1,6 @@
+.bundle
+public/components/*
+log/*
+!log/.git-keep
+tmp/*
+!tmp/.git-keep
