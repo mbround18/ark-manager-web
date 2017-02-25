@@ -1,49 +1,75 @@
-!!! 5
-%html
+!!!
+%html{:dir => "ltr", :lang => "en-us"}
   %head
-    %link{rel: 'stylesheet', href: '/components/uikit/dist/css/uikit.min.css'}
-    %link{rel: 'stylesheet', href: '/components/sweetalert2/dist/sweetalert2.min.css'}
-    %script{src: '/components/jquery/dist/jquery.min.js'}
-    %script{src: '/components/uikit/dist/js/uikit.min.js'}
-    %script{src: '/components/sweetalert2/dist/sweetalert2.min.js'}
-  %body 
-    /%button.uk-button.uk-button-default.uk-button-large Get Chat
-    /%button.uk-button.uk-button-primary.uk-button-large List Players
-    %button.uk-button.uk-button-danger.uk-button-large{onclick: 'run_reboot_and_update();'} Update/Restart
-:javascript
-  function run_reboot_and_update() {
-    swal({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this! And if there are people on the server it WILL kick them off!!!!",
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, Reboot/Update it!',
-      cancelButtonText: 'No, cancel!',
-      confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
-      buttonsStyling: false
-    }).then(function () {
-      $.ajax({
-          url:'/api/run-command',
-          type:'post',
-          dataType: 'json',
-          data: {"cmd": "run_upgrades_and_reboot"},
-          success:function(){
-              swal('', 'Instruction Sent! Server Should be Restarted/Updated shortly', 'success');
-          },
-          error:function(jqxhr){
-              swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
-          }
-      });
-    }, function (dismiss) {
-      if (dismiss === 'cancel') {
-        swal(
-          'Cancelled',
-          'A wise decision young padawan :)',
-          'error'
-        )
-      }
-    });
-  }
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %title Frontpage layout example - UIkit documentation
+    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/css/uikit.min.css", :rel => "stylesheet"}/
+    %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.css', :rel => "stylesheet"}/
+    %script{:crossorigin => "anonymous", :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/js/uikit.min.js"}
+    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js"}
+    %script{src: 'javascript/index.js'}
+  %body
+    .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
+      %h1.uk-heading-divider{:style => "padding-top: 1em;"} Ark Server Manager
+      .uk-grid{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
+        %div{:class => "uk-width-1-3@m"}
+          .uk-card.uk-card-default.uk-card-body.uk-text-center
+            %h3 Server Actions
+            %hr/
+            %div{"uk-button-group" => ""}
+              %button.uk-button.uk-button-primary.uk-button-large{:style => "width: 95%;"} Start
+            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
+              %button.uk-button.uk-button-danger.uk-button-large{:style => "width: 95%;"} Stop
+            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
+              %button.uk-button.uk-button-secondary.uk-button-large{onclick: 'run_reboot_and_update();', style: 'width: 95%;', :title => "This will backup, update server, update mods, then restart. With Safe Update and Restart checked this will take 30 minutes", "uk-button" => "", "uk-tooltip" => ""} Update/Restart
+            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
+              %label Safe Update and Restart:
+              %input.uk-checkbox{:checked => "checked", :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart"}/
+        %div{:class => "uk-width-expand@m"}
+          .uk-card.uk-card-default.uk-card-body.uk-text-left
+            .uk-panel
+              %h4.uk-align-left Server Chat
+              .uk-align-right
+                %label Auto Scroll:
+                %input.uk-checkbox{:checked => "checked", :name => "AutoScrollServerChat", :type => "checkbox", :value => ""}/
+              %br/
+            #ServerChat.uk-panel.uk-panel-scrollable.uk-height-medium
+              %table.uk-table
+                %thead
+                  %tr
+                    %th.uk-table-small
+                    %th.uk-table-expand
+                %tbody
+                  %tr
+                    %td User 1
+                    %td Table Data
+                  %tr
+                    %td User 2
+                    %td Table Data
+                  %tr
+                    %td User 3
+                    %td Table Data
+                  %tr
+                    %td User 4
+                    %td Table Data
+                  %tr
+                    %td User 5
+                    %td Table Data
+                  %tr
+                    %td User 6
+                    %td Table Data
+                  %tr
+                    %td User 7
+                    %td Table Data
+            .uk-panel{:style => "padding-top: 1em;"}
+              %form.uk-form-horizontal{"accept-charset" => "utf-8", :action => "layouts_frontpage_submit", :method => "post"}
+                %input.uk-input{:class => "uk-width-3-4@m", :name => "", :placeholder => "", :type => "text", :value => ""}/
+                %button.uk-button.uk-button-secondary{:class => "uk-width-auto@m", :title => "Send a message to server", "uk-tooltip" => ""} Send
+      .uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
+        %div{:class => "uk-width-auto@m"}
+          .uk-card.uk-card-default.uk-card-body Expand
+  / https://jsfiddle.net/b0h2ykud/
+  %footer
