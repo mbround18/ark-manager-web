@@ -68,7 +68,7 @@ class ArkManagerScheduler
     status_array.concat(update_info_array)
     status_array.each do |element|
       arr = element.split(':')
-      hash[arr[0].strip.downcase.tr(' ', '_').to_sym]=arr[1].strip
+      hash[arr[0].strip.downcase.tr(' ', '_').to_sym]=arr[1].strip.downcase
     end
 
     hash

@@ -8,6 +8,51 @@ window.setInterval(function() {
     }
 }, 3000);
 
+window.setInterval(function() {
+    clearAndSetServerStatus()
+}, 10000);
+
+function clearAndSetServerStatus(){
+    var serverStatusJSON;
+    $.getJSON( "/api/status", function( data ) {
+        $('.server-status-info').empty();
+        if(data.hasOwnProperty('server_running')){
+            data['server_running'].match(/on/i) ?
+                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :
+                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Running!');
+        } else {
+            attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown running state!');
+        }
+        if(data.hasOwnProperty('server_listening')){
+            data['server_listening'].match(/on/i) ?
+                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Listening!') :
+                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Listening!');
+        } else {
+            attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');
+        }
+        if(data.hasOwnProperty('server_online')){
+            data['server_online'].match(/on/i) ?
+                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!') :
+                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
+        } else {
+            attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
+        }
+    });
+}
+
+function attachAlertToServerStatus(ukAlertType, AlertText) {
+    $( ".server-status-info" ).append(
+        "<div class='uk-alert " + ukAlertType + "'><p>" + AlertText + "</p></div>"
+    );
+    // var statusAlert = document.createElement('div');
+    // var statusAlertP = document.createElement("p");
+    // var statusAlertText = document.createTextNode(AlertText);
+    // statusAlert.setAttribute("class", "uk-alert " + ukAlertType);
+    // statusAlert.appendChild(statusAlertText);
+    // // statusAlertP.appendChild(statusAlertText);
+    // $('.server-status-info').appendChild(statusAlert);
+}
+
 function run_reboot_and_update() {
     swal({
         title: 'Are you sure?',
@@ -22,10 +67,11 @@ function run_reboot_and_update() {
         cancelButtonClass: 'btn btn-danger',
         buttonsStyling: true
     }).then(function () {
+        var dataForRunCMD;
         if ( $('input[name="RunUpdateAndRebootSafely"]').is(':checked') ) {
-            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": true};
+            dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": true};
         } else {
-            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": false};
+            dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": false};
         }
         $.ajax({
             url:'/api/run-command',

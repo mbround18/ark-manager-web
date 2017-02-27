@@ -17,8 +17,7 @@
       .uk-grid{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
         %div{:class => "uk-width-1-3@m"}
           .uk-card.uk-card-default.uk-card-body.uk-text-center
-            %h3 Server Actions
-            %hr/
+            %h3.uk-heading-divider Server Actions
             %div{"uk-button-group" => ""}
               %button.uk-button.uk-button-primary.uk-button-large{:style => "width: 95%;"} Start
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
@@ -28,6 +27,13 @@
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
               %label Safe Update and Restart:
               %input.uk-checkbox{:checked => "checked", :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart"}/
+        %div{:class => "uk-width-1-3@m"}
+          .uk-card.uk-card-default.uk-card-body.uk-text-center
+            %h3.uk-heading-divider Server Status
+            %div.server-status-info
+              .uk-alert.uk-alert-warning
+                %p The Status for your server will be loaded shortly.
+      .uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
         %div{:class => "uk-width-expand@m"}
           .uk-card.uk-card-default.uk-card-body.uk-text-left
             .uk-panel
@@ -68,7 +74,6 @@
               %form.uk-form-horizontal{"accept-charset" => "utf-8", :action => "layouts_frontpage_submit", :method => "post"}
                 %input.uk-input{:class => "uk-width-3-4@m", :name => "", :placeholder => "", :type => "text", :value => ""}/
                 %button.uk-button.uk-button-secondary{:class => "uk-width-auto@m", :title => "Send a message to server", "uk-tooltip" => ""} Send
-      .uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
         %div{:class => "uk-width-auto@m"}
           .uk-card.uk-card-default.uk-card-body Expand
   / https://jsfiddle.net/b0h2ykud/

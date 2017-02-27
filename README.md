@@ -57,7 +57,7 @@ bundle exec rake install_server_tools
 # Install Ark Server
 bundle exec rake install_ark_server
 ```
-## Installation:
+## Running the interface:
 Running the interface:
 ```bash
 cd  ~/ArkManagerWeb
@@ -69,6 +69,8 @@ If you wish to change this edit the unicorn.rb file and change the listening fie
 It is recommended to set this up behind a `nginx` reverse proxy as well as enabling `ufw` to block
 access to port 8080. That will prevent unwanted insecure access to the web interface. The next
 suggestion would be to set up an htpasswd file with users or a seperate authentication system.
+
+Another recommendation would be to set up supervisord to run the software for you so it will start on boot.
 
 ### Example Nginx Configuration
 nginx.conf file, It is recommended to install `letsencrypt`/`cerbot` and generate a ssl for your site.
