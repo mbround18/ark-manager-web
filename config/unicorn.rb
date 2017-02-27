@@ -6,4 +6,4 @@ stdout_path APP_PATH + "/log/unicorn.stderr.log"
 
 pid APP_PATH + "/tmp/unicorn.pid"
 
-listen "127.0.0.1:8080"
+listen '127.0.0.1:8080'

@@ -37,6 +37,8 @@ task :install_ark_server do
     raise 'arkmanager is currently not in your path!!!! please run "bundle exec rake install_server_tools"'
   end
 
+  puts
+
   File.open("#{WORKING_DIR}/config/mod_list.json", 'w') do |file|
     file.write "{\n}"
   end
