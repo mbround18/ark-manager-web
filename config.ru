@@ -3,6 +3,7 @@ require 'securerandom'
 require 'dalli'
 require 'rack/session/dalli'
 require 'rufus-scheduler'
+require 'oj'
 require_relative 'ark_manager_web'
 require_relative 'ark_manager_api'
 require_relative 'ark_manager_schedules'
@@ -16,6 +17,16 @@ raise 'I was unable to find memcached!!! please have your system administrator i
 $scheduler = Rufus::Scheduler.new
 $dalli_cache = Dalli::Client.new('localhost:11211', { :namespace => 'arkmanager_web', :compress => true }) unless defined?($dalli_cache)
 $dalli_cache.flush_all
+
+if File.exists?("#{WORKING_DIR}/config/schedules.json")
+  Oj.load_file("#{WORKING_DIR}/config/schedules.json", Hash.new).each_pair do |key, value|
+    $dalli_cache.set(key, value)
+  end
+else
+  $dalli_cache.set('mod_update_check_schedule', true)
+  $dalli_cache.set('server_update_check_schedule', true)
+  File.write("#{WORKING_DIR}/config/schedules.json", "{\n\t\"mod_update_check_schedule\": true,\n\t\"server_update_check_schedule\": true\n}")
+end
 
 use Rack::Session::Dalli, cache: Dalli::Client.new
 use Rack::Session::Pool, :expire_after => 2592000

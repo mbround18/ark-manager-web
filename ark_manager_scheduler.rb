@@ -74,10 +74,6 @@ class ArkManagerScheduler
     hash
   end
 
-  def get_existing_mods
-
-  end
-
 end
 
 

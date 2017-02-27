@@ -9,8 +9,42 @@ window.setInterval(function() {
 }, 3000);
 
 window.setInterval(function() {
-    clearAndSetServerStatus()
-}, 10000);
+    clearAndSetServerStatus();
+    setSchedulesStateFronCheckboxes()
+}, 5000);
+
+$(document).ready(getInitialSchedulesCheckboxes());
+$(document).ready(clearAndSetServerStatus());
+
+function getInitialSchedulesCheckboxes() {
+    $.getJSON( "/api/schedule/states", function( data ) {
+        if (data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) {
+           $("#modUpdateCheckSchedule").prop("checked", data['mod_update_check_schedule']);
+        }
+        if (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked')) {
+            $("#serverUpdateCheckSchedule").prop("checked", data['server_update_check_schedule']);
+        }
+    })
+}
+
+function setSchedulesStateFronCheckboxes() {
+    $.getJSON( "/api/schedule/states", function( data ) {
+        if ((data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) || (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked'))) {
+
+            $.ajax({
+                type: "POST",
+                url: "/api/schedule/states",
+                dataType: 'json',
+                data: {"mod_update_check_schedule": $('#modUpdateCheckSchedule').is(':checked'), "server_update_check_schedule" : $('#serverUpdateCheckSchedule').is(':checked')},
+                success: function () {
+                    getInitialSchedulesCheckboxes();
+                }
+            });
+
+            // $.post( "/api/schedule/states", { mod_update_check_schedule: $('#modUpdateCheckSchedule').is(':checked'), server_update_check_schedule: $('#serverUpdateCheckSchedule').is(':checked') } );
+        }
+    })
+}
 
 function clearAndSetServerStatus(){
     var serverStatusJSON;

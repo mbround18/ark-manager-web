@@ -27,40 +27,44 @@ $scheduler.every '1h', first_at: Time.now + 10 do
 end
 
 $scheduler.every '15m', first_at: Time.now + 15 do
-  puts 'Running Mod Check Job'
-  ark_mod_list = Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
-  mods_that_need_updates = []
-  ark_mod_list.each_pair do |mod_id, last_updated|
-    puts "Checking mod: #{mod_id}"
-    latest_updates_list = `#{CURL_EXEC} https://steamcommunity.com/sharedfiles/filedetails/changelog/#{mod_id} | #{EGREP_EXEC} "Update:"`
-    latest_updates_list.gsub!('</div>', '')
-    latest_updates_list.gsub!( /\t/, '')
-    latest_updates_list.gsub!('Update: ','')
-    latest_updates_list.gsub!(/\r/ ,'')
-    latest_update =  Base64.encode64(latest_updates_list.split("\n").first).gsub!(/\n/, '')
-    if last_updated != latest_update
-      puts "Mod version mismatch!!: #{last_updated} != #{latest_update}"
-      mods_that_need_updates << {mod_id: mod_id, latest_update: latest_update}
-      ark_mod_list[mod_id] =latest_update
-    else
-      puts "The following mod has passed the update check: #{mod_id}"
-    end
+  if $dalli_cache.get('mod_update_check_schedule')
+    puts 'Running Mod Check Job'
+    ark_mod_list = Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
+    mods_that_need_updates = []
+    ark_mod_list.each_pair do |mod_id, last_updated|
+      puts "Checking mod: #{mod_id}"
+      latest_updates_list = `#{CURL_EXEC} https://steamcommunity.com/sharedfiles/filedetails/changelog/#{mod_id} | #{EGREP_EXEC} "Update:"`
+      latest_updates_list.gsub!('</div>', '')
+      latest_updates_list.gsub!( /\t/, '')
+      latest_updates_list.gsub!('Update: ','')
+      latest_updates_list.gsub!(/\r/ ,'')
+      latest_update =  Base64.encode64(latest_updates_list.split("\n").first).gsub!(/\n/, '')
+      if last_updated != latest_update
+        puts "Mod version mismatch!!: #{last_updated} != #{latest_update}"
+        mods_that_need_updates << {mod_id: mod_id, latest_update: latest_update}
+        ark_mod_list[mod_id] =latest_update
+      else
+        puts "The following mod has passed the update check: #{mod_id}"
+      end
 
-  end if ark_mod_list.size != 0
+    end if ark_mod_list.size != 0
 
-  if mods_that_need_updates.count > 0
-    puts 'Running Safe Update/Reboot'
-    File.open("#{WORKING_DIR}/config/mod_list.json", 'w') do |f|
-      f.write(ark_mod_list.to_json)
+    if mods_that_need_updates.count > 0
+      puts 'Running Safe Update/Reboot'
+      File.open("#{WORKING_DIR}/config/mod_list.json", 'w') do |f|
+        f.write(ark_mod_list.to_json)
+      end
+      ArkManagerScheduler.new('main').run_ark_manager_updates
     end
-    ArkManagerScheduler.new('main').run_ark_manager_updates
   end
 end
 
 $scheduler.every '15m' do
-  status_info = ArkManagerScheduler.new('main').get_ark_manager_status
-  if status_info[:server_build_id] != status_info[:available_version]
-    ArkManagerScheduler.new('main').run_ark_manager_updates
+  if $dalli_cache.get('server_update_check_schedule')
+    status_info = ArkManagerScheduler.new('main').get_ark_manager_status
+    if status_info[:server_build_id] != status_info[:available_version]
+      ArkManagerScheduler.new('main').run_ark_manager_updates
+    end
   end
 end
 

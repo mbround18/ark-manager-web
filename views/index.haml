@@ -27,6 +27,12 @@
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
               %label Safe Update and Restart:
               %input.uk-checkbox{:checked => "checked", :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart"}/
+            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
+              %label Run Mod Check Schedule?
+              %input#modUpdateCheckSchedule.uk-checkbox{:name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for mod updates and will update the server accordingly', "uk-tooltip" => ""}/
+            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
+              %label Run Server Version Check?
+              %input#serverUpdateCheckSchedule.uk-checkbox{:name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for any ark updates and will update the server accordingly', "uk-tooltip" => ""}/
         %div{:class => "uk-width-1-3@m"}
           .uk-card.uk-card-default.uk-card-body.uk-text-center
             %h3.uk-heading-divider Server Status

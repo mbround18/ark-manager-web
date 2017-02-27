@@ -1,9 +1,9 @@
-APP_PATH = "#{Dir.home}/ArkManagerWeb"
-working_directory APP_PATH
+WORKING_DIR = File.dirname(File.expand_path('..', __FILE__))
+working_directory WORKING_DIR
 
-stderr_path APP_PATH + "/log/unicorn.stderr.log"
-stdout_path APP_PATH + "/log/unicorn.stderr.log"
+stderr_path WORKING_DIR + "/log/unicorn.stderr.log"
+stdout_path WORKING_DIR + "/log/unicorn.stderr.log"
 
-pid APP_PATH + "/tmp/unicorn.pid"
+pid WORKING_DIR + "/tmp/unicorn.pid"
 
 listen '127.0.0.1:8080'

@@ -41,8 +41,45 @@ class ArkManagerAPI < Grape::API
     ArkManagerScheduler.new.get_ark_manager_status
   end
 
-  get '*' do
-    halt 401, "Unauthorized/Incorrect URL.\nThis Service belongs to only authorized personel of Round 18 Gaming"
+  get 'schedule/states' do
+    {
+        mod_update_check_schedule: $dalli_cache.get('mod_update_check_schedule'),
+        server_update_check_schedule: $dalli_cache.get('server_update_check_schedule')
+    }
+  end
+
+  post 'schedule/states' do
+    hash_param = params.to_hash
+    puts hash_param
+    mod_check = hash_param['mod_update_check_schedule']
+    server_check = hash_param['server_update_check_schedule']
+    unless mod_check.is_a?(Boolean)
+      if mod_check == 'true'
+        mod_check = true
+      elsif mod_check == 'false'
+        mod_check = false
+      else
+        puts 'A'
+        error!('401 Unauthorized A', 401)
+      end
+    end
+
+    unless server_check.is_a?(Boolean)
+      if server_check == 'true'
+        server_check = true
+      elsif server_check == 'false'
+        server_check = false
+      else
+        puts 'B'
+        error!('401 Unauthorized', 401)
+      end
+    end
+
+    $dalli_cache.set('mod_update_check_schedule', mod_check)
+    $dalli_cache.set('server_update_check_schedule', server_check)
+    File.write("#{WORKING_DIR}/config/schedules.json", "{\n\t\"mod_update_check_schedule\": #{mod_check},\n\t\"server_update_check_schedule\": #{server_check}\n}")
+    'success'
+
   end
 
 end

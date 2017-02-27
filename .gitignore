@@ -7,3 +7,4 @@ tmp/*
 .idea/
 *.log
 /config/mod_list*
+/config/schedules*
