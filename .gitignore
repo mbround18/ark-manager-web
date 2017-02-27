@@ -6,3 +6,4 @@ tmp/*
 !tmp/.git-keep
 .idea/
 *.log
+/config/mod_list*

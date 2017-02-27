@@ -1,6 +1,5 @@
 require 'grape'
 require_relative 'ark_manager_scheduler'
-
 class ArkManagerAPI < Grape::API
   version 'v1', using: :header, vendor: 'round18gaming'
   format :json
@@ -13,9 +12,8 @@ class ArkManagerAPI < Grape::API
   post 'run-command' do
     if params.has_key? :cmd
       case
-        when params.cmd == 'run_ark_manager_updates'
-          params.has_key? :safely_update_ark
-          ArkManagerScheduler.new('main').run_ark_manager_updates(params[:safely_update_ark])
+        when params.cmd == 'run_upgrades_and_reboot'
+          ArkManagerScheduler.new('main').run_ark_manager_updates(params[:run_reboot_and_update_safely])
         # when params.cmd == ''
         # when params.cmd == ''
         # when params.cmd == ''

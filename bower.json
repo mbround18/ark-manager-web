@@ -19,8 +19,5 @@
     "uikit": ">=3",
     "jquery": "^3.1.1",
     "sweetalert2": "^6.4.2"
-  },
-  "resolutions": {
-    "uikit": ">=3"
   }
 }

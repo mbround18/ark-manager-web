@@ -23,9 +23,9 @@ function run_reboot_and_update() {
         buttonsStyling: true
     }).then(function () {
         if ( $('input[name="RunUpdateAndRebootSafely"]').is(':checked') ) {
-            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": "true"};
+            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": true};
         } else {
-            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": "false"};
+            var dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": false};
         }
         $.ajax({
             url:'/api/run-command',
