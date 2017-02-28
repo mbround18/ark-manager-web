@@ -14,6 +14,10 @@ class ArkManagerAPI < Grape::API
       case
         when params.cmd == 'run_upgrades_and_reboot'
           ArkManagerScheduler.new('main').run_ark_manager_updates(params[:run_reboot_and_update_safely])
+        when params.cmd == 'start_server'
+          ArkManagerScheduler.new('main').run_ark_manager_start_server
+        when params.cmd == 'start_server'
+          ArkManagerScheduler.new('main').run_ark_manager_stop_server
         # when params.cmd == ''
         # when params.cmd == ''
         # when params.cmd == ''
@@ -21,20 +25,10 @@ class ArkManagerAPI < Grape::API
         else
           error!('401 Unauthorized', 401)
       end
-
-
-
-      `arkmanager update --update-mods`
       'success'
     else
       error!('401 Unauthorized', 401)
     end
-  end
-
-  get :players do
-    {
-        player_count: `arkmanager status | grep "Active Players"`.tr('Active Players: ', '').strip
-    }
   end
 
   get :status do

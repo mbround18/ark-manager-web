@@ -28,6 +28,9 @@ else
   File.write("#{WORKING_DIR}/config/schedules.json", "{\n\t\"mod_update_check_schedule\": true,\n\t\"server_update_check_schedule\": true\n}")
 end
 
+unless File.exist?("#{WORKING_DIR}/config/mod_list.json")
+  File.write("#{WORKING_DIR}/config/mod_list.json", "{\n}")
+end
 use Rack::Session::Dalli, cache: Dalli::Client.new
 use Rack::Session::Pool, :expire_after => 2592000
 use Rack::Protection::RemoteToken

@@ -1,17 +1,17 @@
 /**
  * Created by mbruno on 2/23/17.
  */
-window.setInterval(function() {
-    if ( $('input[name="AutoScrollServerChat"]').is(':checked') ) {
-        var elem = document.getElementById('ServerChat');
-        elem.scrollTop = elem.scrollHeight;
-    }
-}, 3000);
+// window.setInterval(function() {
+//     if ( $('input[name="AutoScrollServerChat"]').is(':checked') ) {
+//         var elem = document.getElementById('ServerChat');
+//         elem.scrollTop = elem.scrollHeight;
+//     }
+// }, 3000);
 
 window.setInterval(function() {
     clearAndSetServerStatus();
     setSchedulesStateFronCheckboxes()
-}, 5000);
+}, 10000);
 
 $(document).ready(getInitialSchedulesCheckboxes());
 $(document).ready(clearAndSetServerStatus());
@@ -51,21 +51,21 @@ function clearAndSetServerStatus(){
     $.getJSON( "/api/status", function( data ) {
         $('.server-status-info').empty();
         if(data.hasOwnProperty('server_running')){
-            data['server_running'].match(/on/i) ?
+            data['server_running'].match(/yes/i) ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :
                 attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Running!');
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown running state!');
         }
         if(data.hasOwnProperty('server_listening')){
-            data['server_listening'].match(/on/i) ?
+            data['server_listening'].match(/yes/i) ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Listening!') :
                 attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Listening!');
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');
         }
         if(data.hasOwnProperty('server_online')){
-            data['server_online'].match(/on/i) ?
+            data['server_online'].match(/yes/i) ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!') :
                 attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
         } else {
@@ -78,13 +78,6 @@ function attachAlertToServerStatus(ukAlertType, AlertText) {
     $( ".server-status-info" ).append(
         "<div class='uk-alert " + ukAlertType + "'><p>" + AlertText + "</p></div>"
     );
-    // var statusAlert = document.createElement('div');
-    // var statusAlertP = document.createElement("p");
-    // var statusAlertText = document.createTextNode(AlertText);
-    // statusAlert.setAttribute("class", "uk-alert " + ukAlertType);
-    // statusAlert.appendChild(statusAlertText);
-    // // statusAlertP.appendChild(statusAlertText);
-    // $('.server-status-info').appendChild(statusAlert);
 }
 
 function run_reboot_and_update() {

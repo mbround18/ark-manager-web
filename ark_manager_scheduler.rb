@@ -32,6 +32,18 @@ class ArkManagerScheduler
     end
   end
 
+  def run_ark_manager_start_server(delay='3s', log_stdout='/dev/null', log_stderr='/dev/null')
+    $scheduler.in delay do
+      run_system_command(@instance, 'start', log_stdout, log_stderr)
+    end
+  end
+
+  def run_ark_manager_stop_server(delay='3s', log_stdout='/dev/null', log_stderr='/dev/null')
+    $scheduler.in delay do
+      run_system_command(@instance, 'start', log_stdout, log_stderr)
+    end
+  end
+
   def is_an_update_running?
     begin
       Process.getpgid( $dalli_cache.get('arkmanager_updates_running') )
@@ -42,6 +54,12 @@ class ArkManagerScheduler
   end
 
   def run_ark_manager_updates(run_safely=true, log_stdout="#{WORKING_DIR}/log/ark_update.log.out", log_stderr="#{WORKING_DIR}/log/ark_update.log.err")
+    if run_safely == 'true'
+      run_safely = true
+    elsif run_safely == 'false'
+      run_safely = false
+    end
+
     unless is_an_update_running?
       if run_safely
         run_ark_manager_broadcast('3s',  'Server is updating/restarting in 30 minutes...',  log_stdout, log_stderr)
