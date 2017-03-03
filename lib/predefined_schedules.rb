@@ -1,16 +1,5 @@
-require 'oj'
-require 'json'
-require 'dalli'
-require 'base64'
-require_relative 'ark_manager_scheduler'
-WORKING_DIR = File.dirname(__FILE__) unless defined?(WORKING_DIR)
-USER_HOME   = Dir.home unless defined?(USER_HOME)
-CURL_EXEC   = find_executable 'curl'
-EGREP_EXEC   = find_executable 'egrep'
-ARK_MANAGER_CLI = find_executable('arkmanager', "#{USER_HOME}/bin") unless defined?(ARK_MANAGER_CLI)
-
-$scheduler = Rufus::Scheduler.new unless defined?($scheduler)
-$dalli_cache = Dalli::Client.new('localhost:11211', { :namespace => 'arkmanager_web', :compress => true }) unless defined?($dalli_cache)
+require_relative '../config/environment'
+require_relative '../api/scheduler_controller'
 
 $scheduler.every '1h', first_at: Time.now + 10 do
   config_mod_list = Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
@@ -33,7 +22,7 @@ $scheduler.every '15m', first_at: Time.now + 15 do
     mods_that_need_updates = []
     ark_mod_list.each_pair do |mod_id, last_updated|
       puts "Checking mod: #{mod_id}"
-      latest_updates_list = `#{CURL_EXEC} https://steamcommunity.com/sharedfiles/filedetails/changelog/#{mod_id} | #{EGREP_EXEC} "Update:"`
+      latest_updates_list = `#{CURL_EXEC} --silent https://steamcommunity.com/sharedfiles/filedetails/changelog/#{mod_id} | #{EGREP_EXEC} "Update:"`
       latest_updates_list.gsub!('</div>', '')
       latest_updates_list.gsub!( /\t/, '')
       latest_updates_list.gsub!('Update: ','')
@@ -54,16 +43,16 @@ $scheduler.every '15m', first_at: Time.now + 15 do
       File.open("#{WORKING_DIR}/config/mod_list.json", 'w') do |f|
         f.write(ark_mod_list.to_json)
       end
-      ArkManagerScheduler.new('main').run_ark_manager_updates
+      SchedulerController.new('main').run_ark_manager_updates
     end
   end
 end
 
 $scheduler.every '15m' do
   if $dalli_cache.get('server_update_check_schedule')
-    status_info = ArkManagerScheduler.new('main').get_ark_manager_status
+    status_info = SchedulerController.new('main').get_ark_manager_status
     if status_info[:server_build_id] != status_info[:available_version]
-      ArkManagerScheduler.new('main').run_ark_manager_updates
+      SchedulerController.new('main').run_ark_manager_updates
     end
   end
 end

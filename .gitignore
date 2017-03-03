@@ -1,10 +1,12 @@
 .bundle/
-public/components/*
+.idea/
+bin/
+public/components/
 log/*
 !log/.git-keep
 tmp/*
 !tmp/.git-keep
-.idea/
 *.log
 /config/mod_list*
 /config/schedules*
+/config/env_config*

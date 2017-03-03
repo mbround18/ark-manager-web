@@ -1,6 +1,6 @@
 require 'grape'
-require_relative 'ark_manager_scheduler'
-class ArkManagerAPI < Grape::API
+require_relative 'scheduler_controller'
+class ApiApp < Grape::API
   version 'v1', using: :header, vendor: 'round18gaming'
   format :json
   prefix :api
@@ -13,11 +13,11 @@ class ArkManagerAPI < Grape::API
     if params.has_key? :cmd
       case
         when params.cmd == 'run_upgrades_and_reboot'
-          ArkManagerScheduler.new('main').run_ark_manager_updates(params[:run_reboot_and_update_safely])
+          SchedulerController.new('main').run_ark_manager_updates(params[:run_reboot_and_update_safely])
         when params.cmd == 'start_server'
-          ArkManagerScheduler.new('main').run_ark_manager_start_server
+          SchedulerController.new('main').run_ark_manager_start_server
         when params.cmd == 'start_server'
-          ArkManagerScheduler.new('main').run_ark_manager_stop_server
+          SchedulerController.new('main').run_ark_manager_stop_server
         # when params.cmd == ''
         # when params.cmd == ''
         # when params.cmd == ''
@@ -32,7 +32,7 @@ class ArkManagerAPI < Grape::API
   end
 
   get :status do
-    ArkManagerScheduler.new.get_ark_manager_status
+    SchedulerController.new.get_ark_manager_status
   end
 
   get 'schedule/states' do
@@ -44,7 +44,6 @@ class ArkManagerAPI < Grape::API
 
   post 'schedule/states' do
     hash_param = params.to_hash
-    puts hash_param
     mod_check = hash_param['mod_update_check_schedule']
     server_check = hash_param['server_update_check_schedule']
     unless mod_check.is_a?(Boolean)
@@ -53,7 +52,6 @@ class ArkManagerAPI < Grape::API
       elsif mod_check == 'false'
         mod_check = false
       else
-        puts 'A'
         error!('401 Unauthorized A', 401)
       end
     end
@@ -64,7 +62,6 @@ class ArkManagerAPI < Grape::API
       elsif server_check == 'false'
         server_check = false
       else
-        puts 'B'
         error!('401 Unauthorized', 401)
       end
     end

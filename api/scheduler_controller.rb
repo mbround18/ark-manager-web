@@ -1,12 +1,5 @@
-require 'mkmf'
-require 'dalli'
-require 'rufus-scheduler'
-WORKING_DIR = File.dirname(__FILE__) unless defined?(WORKING_DIR)
-USER_HOME   = Dir.home unless defined?(USER_HOME)
-ARK_MANAGER_CLI = find_executable('arkmanager', "#{USER_HOME}/bin") unless defined?(ARK_MANAGER_CLI)
-$scheduler = Rufus::Scheduler.new unless defined?($scheduler)
-$dalli_cache = Dalli::Client.new('localhost:11211', { :namespace => 'arkmanager_web', :compress => true }) unless defined?($dalli_cache)
-class ArkManagerScheduler
+require_relative '../config/environment'
+class SchedulerController
   def initialize(instance='main')
     @instance = instance
   end
@@ -19,7 +12,8 @@ class ArkManagerScheduler
 
   def run_ark_manager_broadcast(delay='1s', message='boop', log_stdout='/dev/null', log_stderr='/dev/null')
     $scheduler.in delay do
-      run_system_command(@instance,"broadcast #{message}", log_stdout, log_stderr)
+      puts "Broadcasting -- \"#{message}\""
+      run_system_command(@instance,"broadcast \"#{message}\"", log_stdout, log_stderr)
     end
   end
 
@@ -63,8 +57,8 @@ class ArkManagerScheduler
     unless is_an_update_running?
       if run_safely
         run_ark_manager_broadcast('3s',  'Server is updating/restarting in 30 minutes...',  log_stdout, log_stderr)
-        run_ark_manager_broadcast('10m', 'Server is updating/restarting in 20 minutes...',  log_stdout, log_stderr)
-        run_ark_manager_broadcast('20m', 'Server is updating/restarting in 10 minutes...',  log_stdout, log_stderr)
+        run_ark_manager_broadcast('10m', 'Server is updating/restarting in 20 minutes..',  log_stdout, log_stderr)
+        run_ark_manager_broadcast('20m', 'Server is updating/restarting in 10 minutes.',  log_stdout, log_stderr)
         run_ark_manager_broadcast('25m', 'Server is updating/restarting in 5 minutes!',     log_stdout, log_stderr)
         run_ark_manager_broadcast('26m', 'Server is updating/restarting in 4 minutes!!',    log_stdout, log_stderr)
         run_ark_manager_broadcast('27m', 'Server is updating/restarting in 3 minutes!!!',   log_stdout, log_stderr)
@@ -93,6 +87,3 @@ class ArkManagerScheduler
   end
 
 end
-
-
-

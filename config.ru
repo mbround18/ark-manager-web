@@ -4,42 +4,30 @@ require 'dalli'
 require 'rack/session/dalli'
 require 'rufus-scheduler'
 require 'oj'
-require_relative 'ark_manager_web'
-require_relative 'ark_manager_api'
-require_relative 'ark_manager_schedules'
-WORKING_DIR = File.dirname(__FILE__) unless defined?(WORKING_DIR)
-USER_HOME   = Dir.home unless defined?(USER_HOME)
-arkmanager_cli_check = find_executable('arkmanager', "#{USER_HOME}/bin")
-ARK_MANAGER_CLI = arkmanager_cli_check unless defined?(ARK_MANAGER_CLI)
-raise 'I was unable to find arkmanager in your path!! please run "bundle exec rake install_server_tools"' unless arkmanager_cli_check
-raise 'I was unable to find memcached!!! please have your system administrator install memcached' unless find_executable('memcached')
 
-$scheduler = Rufus::Scheduler.new
-$dalli_cache = Dalli::Client.new('localhost:11211', { :namespace => 'arkmanager_web', :compress => true }) unless defined?($dalli_cache)
-$dalli_cache.flush_all
+# Load ENV configuration
+require_relative 'config/environment'
 
-if File.exists?("#{WORKING_DIR}/config/schedules.json")
-  Oj.load_file("#{WORKING_DIR}/config/schedules.json", Hash.new).each_pair do |key, value|
-    $dalli_cache.set(key, value)
-  end
-else
-  $dalli_cache.set('mod_update_check_schedule', true)
-  $dalli_cache.set('server_update_check_schedule', true)
-  File.write("#{WORKING_DIR}/config/schedules.json", "{\n\t\"mod_update_check_schedule\": true,\n\t\"server_update_check_schedule\": true\n}")
-end
+# Load predefined schedules
+require_relative 'lib/predefined_schedules'
 
-unless File.exist?("#{WORKING_DIR}/config/mod_list.json")
-  File.write("#{WORKING_DIR}/config/mod_list.json", "{\n}")
-end
-use Rack::Session::Dalli, cache: Dalli::Client.new
-use Rack::Session::Pool, :expire_after => 2592000
+# Load web interfaces
+require_relative 'api/api_app'
+require_relative 'web/web_app'
+
+use Rack::Session::Dalli,  cache: Dalli::Client.new
+use Rack::Session::Pool,   expire_after: 2592000
+use Rack::Session::Cookie, key: "#{DOMAIN_NAME}.session",
+                           domain: DOMAIN_NAME,
+                           path: '/',
+                           expire_after: 2592000,
+                           secret: SecureRandom.hex(64)
+
+use Rack::Protection
 use Rack::Protection::RemoteToken
 use Rack::Protection::SessionHijacking
-use Rack::Session::Cookie, :key => 'rack.session',
-                           :domain => 'ark.r18g.us',
-                           :path => '/',
-                           :expire_after => 2592000,
-                           :secret => SecureRandom.hex(64)
 
-
-run Rack::Cascade.new [ArkManagerAPI, ArkManagerWeb]
+run Rack::Cascade.new [
+                          ApiApp,
+                          WebApp
+                      ]

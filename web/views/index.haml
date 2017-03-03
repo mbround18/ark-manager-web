@@ -5,18 +5,22 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %title Frontpage layout example - UIkit documentation
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/css/uikit.min.css", :rel => "stylesheet"}/
+    %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/css/uikit.min.css', :rel => "stylesheet"}/
     %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.css', :rel => "stylesheet"}/
-    %script{:crossorigin => "anonymous", :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
-    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/js/uikit.min.js"}
-    %script{:src => "https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js"}
+    %script{:crossorigin => 'anonymous', :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
+    %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/js/uikit.min.js'}
+    %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js'}
     %script{src: 'javascript/index.js'}
   %body
     .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
       %h1.uk-heading-divider{:style => "padding-top: 1em;"} Ark Server Manager
-      .uk-grid{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
+      .uk-grid{"uk-grid" => "", "uk-grid-margin" => ""}
         %div{:class => "uk-width-1-3@m"}
-          .uk-card.uk-card-default.uk-card-body.uk-text-center
+          .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
+            %h3.uk-heading-divider Server Information
+            %div#serverInformation
+        %div{:class => "uk-width-1-3@m"}
+          .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
             %h3.uk-heading-divider Server Actions
             %div{"uk-button-group" => ""}
               %button.uk-button.uk-button-primary.uk-button-large{:style => "width: 95%;"} Start
@@ -34,13 +38,13 @@
               %label Run Server Version Check?
               %input#serverUpdateCheckSchedule.uk-checkbox{:name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for any ark updates and will update the server accordingly', "uk-tooltip" => ""}/
         %div{:class => "uk-width-1-3@m"}
-          .uk-card.uk-card-default.uk-card-body.uk-text-center
+          .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
             %h3.uk-heading-divider Server Status
             %div.server-status-info
               .uk-alert.uk-alert-warning
                 %p The Status for your server will be loaded shortly.
         %div{:class => 'uk-width-1-3@m'}
-          .uk-card.uk-card-default.uk-card-body.uk-text-center
+          .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
             %h3.uk-heading-divider Mod List
             %div.server-mod-list
               .uk-alert.uk-alert-warning
