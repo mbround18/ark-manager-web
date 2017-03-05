@@ -12,35 +12,37 @@ class SchedulerController
 
   def run_ark_manager_broadcast(delay='1s', message='boop', log_stdout='/dev/null', log_stderr='/dev/null')
     $scheduler.in delay do
-      puts "Broadcasting -- \"#{message}\""
+      $logger.info("Broadcasting -- \"#{message}\"")
       run_system_command(@instance,"broadcast \"#{message}\"", log_stdout, log_stderr)
     end
   end
 
-  def run_ark_manager_update(delay='3s', update_mods=true, log_stdout='/dev/null', log_stderr='/dev/null')
-    update_cmd = 'update'
-    update_cmd + ' --update-mods' if update_mods
+  def run_ark_manager_update(delay='3s', log_stdout='/dev/null', log_stderr='/dev/null')
+    $logger.warn("Reboot has been scheduled to be triggered in: #{delay}")
     $scheduler.in delay do
-      pid = run_system_command(@instance, "#{update_cmd}", log_stdout, log_stderr)
-      $dalli_cache.set('arkmanager_updates_running', pid)
+      $logger.warn("Running reboot which was scheduled for: #{Time.now.utc.strftime('%m%d%Y%H%M%S')}")
+      pid = run_system_command(@instance, 'update --update-mods', log_stdout, log_stderr)
+      $dalli_cache.set('arkmanager_updates_running_pid', pid)
     end
   end
 
   def run_ark_manager_start_server(delay='3s', log_stdout='/dev/null', log_stderr='/dev/null')
     $scheduler.in delay do
+      $logger.warn("The server has been started at: #{Time.now.utc.strftime('%m%d%Y%H%M%S')}")
       run_system_command(@instance, 'start', log_stdout, log_stderr)
     end
   end
 
   def run_ark_manager_stop_server(delay='3s', log_stdout='/dev/null', log_stderr='/dev/null')
     $scheduler.in delay do
-      run_system_command(@instance, 'start', log_stdout, log_stderr)
+      $logger.warn("The server has been stopped at: #{Time.now.utc.strftime('%m%d%Y%H%M%S')}")
+      run_system_command(@instance, 'stop', log_stdout, log_stderr)
     end
   end
 
   def is_an_update_running?
     begin
-      Process.getpgid( $dalli_cache.get('arkmanager_updates_running') )
+      Process.getpgid( $dalli_cache.get('arkmanager_updates_running_pid') )
       true
     rescue
       false
@@ -48,11 +50,8 @@ class SchedulerController
   end
 
   def run_ark_manager_updates(run_safely=true, log_stdout="#{WORKING_DIR}/log/ark_update.log.out", log_stderr="#{WORKING_DIR}/log/ark_update.log.err")
-    if run_safely == 'true'
-      run_safely = true
-    elsif run_safely == 'false'
-      run_safely = false
-    end
+
+    run_safely = (run_safely.to_s == 'true')
 
     unless is_an_update_running?
       if run_safely
@@ -64,9 +63,9 @@ class SchedulerController
         run_ark_manager_broadcast('27m', 'Server is updating/restarting in 3 minutes!!!',   log_stdout, log_stderr)
         run_ark_manager_broadcast('28m', 'Server is updating/restarting in 2 minutes!!!!',  log_stdout, log_stderr)
         run_ark_manager_broadcast('29m', 'Server is updating/restarting in 1 minutes!!!!!', log_stdout, log_stderr)
-        run_ark_manager_update('30m', true,  log_stdout, log_stderr)
+        run_ark_manager_update('30m',  log_stdout, log_stderr)
       else
-        run_ark_manager_update('3s', true,  log_stdout, log_stderr)
+        run_ark_manager_update('3s',  log_stdout, log_stderr)
       end
     end
 
@@ -84,6 +83,10 @@ class SchedulerController
     end
 
     hash
+  end
+
+  def get_mod_status
+    Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
   end
 
 end

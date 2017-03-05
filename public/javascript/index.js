@@ -9,15 +9,29 @@
 // }, 3000);
 
 window.setInterval(function() {
+    buildAndAttachModList();
+}, 100000);
+
+window.setInterval(function() {
     clearAndSetServerStatus();
-    setSchedulesStateFronCheckboxes()
+    setSchedulesStateFromCheckboxes()
 }, 10000);
 
-$(document).ready(getInitialSchedulesCheckboxes());
-$(document).ready(clearAndSetServerStatus());
+window.onload = function() {
+    getInitialSchedulesCheckboxes();
+    clearAndSetServerStatus();
+    buildAndAttachModList();
+};
+
+// $(document).ready(getInitialSchedulesCheckboxes());
+// $(document).ready(clearAndSetServerStatus());
+// $(document).ready(buildAndAttachModList());
 
 function getInitialSchedulesCheckboxes() {
     $.getJSON( "/api/schedule/states", function( data ) {
+        if (data['run_automatic_start'] != $('#automaticStartServer').is(':checked')) {
+            $("#automaticStartServer").prop("checked", data['run_automatic_start']);
+        }
         if (data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) {
            $("#modUpdateCheckSchedule").prop("checked", data['mod_update_check_schedule']);
         }
@@ -27,15 +41,14 @@ function getInitialSchedulesCheckboxes() {
     })
 }
 
-function setSchedulesStateFronCheckboxes() {
+function setSchedulesStateFromCheckboxes() {
     $.getJSON( "/api/schedule/states", function( data ) {
-        if ((data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) || (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked'))) {
-
+        if ((data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) || (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked')) || (data['run_automatic_start'] != $('#automaticStartServer').is(':checked'))) {
             $.ajax({
                 type: "POST",
                 url: "/api/schedule/states",
                 dataType: 'json',
-                data: {"mod_update_check_schedule": $('#modUpdateCheckSchedule').is(':checked'), "server_update_check_schedule" : $('#serverUpdateCheckSchedule').is(':checked')},
+                data: { "run_automatic_start" :$('#automaticStartServer').is(':checked'), "mod_update_check_schedule": $('#modUpdateCheckSchedule').is(':checked'), "server_update_check_schedule" : $('#serverUpdateCheckSchedule').is(':checked')},
                 success: function () {
                     getInitialSchedulesCheckboxes();
                 }
@@ -65,9 +78,15 @@ function clearAndSetServerStatus(){
             attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');
         }
         if(data.hasOwnProperty('server_online')){
-            data['server_online'].match(/yes/i) ?
-                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!') :
-                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
+            if(data['server_online'].match(/yes/i)){
+                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!')
+            } else {
+                if (data.hasOwnProperty('server_running').match(/yes/i)) {
+                    attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...')
+                } else {
+                    attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
+                }
+            }
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
         }
@@ -80,7 +99,21 @@ function attachAlertToServerStatus(ukAlertType, AlertText) {
     );
 }
 
-function run_reboot_and_update() {
+function buildAndAttachModList() {
+    // $('.server-mod-list').empty();
+
+    $('.server-mod-list').empty().append(
+        '<table id="serverModList" class="uk-table uk-table-striped uk-width-auto"><thead><tr><th class="uk-width-auto">Mod ID</th><th class="uk-width-auto">Mod Version</th><th class="uk-width-auto">Last Updated</th></tr></thead><tbody></tbody></table>'
+    );
+
+    $.getJSON( "/api/mods/status", function( data ) {
+        $.each(data, function (mod_id, mod_info) {
+            $('#serverModList').find("tbody").append("<tr><td><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td>" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
+        });
+    })
+}
+
+function run_reboot_and_update(data) {
     swal({
         title: 'Are you sure?',
         text: "You won't be able to revert this! And if there are people on the server it WILL kick them off!!!!",
@@ -94,19 +127,14 @@ function run_reboot_and_update() {
         cancelButtonClass: 'btn btn-danger',
         buttonsStyling: true
     }).then(function () {
-        var dataForRunCMD;
-        if ( $('input[name="RunUpdateAndRebootSafely"]').is(':checked') ) {
-            dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": true};
-        } else {
-            dataForRunCMD = {"cmd": "run_upgrades_and_reboot", "run_reboot_and_update_safely": false};
-        }
+        var dataForRunCMD = {"cmd": $(data).data('cmd'), "run_reboot_and_update_safely":  $('#runUpdateAndRebootSafely').is(':checked')};
         $.ajax({
             url:'/api/run-command',
             type:'post',
             dataType: 'json',
             data: dataForRunCMD,
-            success:function(){
-                swal('', 'Instruction Sent! Server Should be Restarted/Updated shortly', 'success');
+            success:function(jqxhr){
+                swal('', jqxhr, 'success');
             },
             error:function(jqxhr){
                 swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
@@ -119,6 +147,22 @@ function run_reboot_and_update() {
                 'A wise decision young padawan :)',
                 'error'
             )
+        }
+    });
+}
+
+
+function run_command(data) {
+    $.ajax({
+        url:'/api/run-command',
+        type:'post',
+        dataType: 'json',
+        data: {"cmd": $(data).data('cmd')},
+        success:function(jqxhr){
+            swal('', jqxhr, 'success');
+        },
+        error:function(jqxhr){
+            swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
         }
     });
 }
