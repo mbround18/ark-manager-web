@@ -4,7 +4,7 @@ if [ -d "/home/steam" ]; then
         if [ ! -f  "/home/steam" ]; then
             touch /home/steam/.bashrc
         fi
-        chown -R steam:steam /home/ark
-        su - steam -c "cd /opt/arkmanagerweb; bundle install"
+        chown -R steam:steam /home/steam
+        su - steam -c "cd /opt/ark-manager-web; bundle install --binstubs"
    fi
 fi

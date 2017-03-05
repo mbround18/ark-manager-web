@@ -3,9 +3,4 @@ working_directory WORKING_DIR
 
 worker_processes 1
 
-stderr_path WORKING_DIR + '/log/unicorn.stderr.log'
-stdout_path WORKING_DIR + '/log/unicorn.stderr.log'
-
-pid WORKING_DIR + '/tmp/unicorn.pid'
-
-listen "0.0.0.0:#{ENV.fetch('PORT', '8080')}"
+listen "#{ENV.fetch('LISTENING_IP', '0.0.0.0')}:#{ENV.fetch('PORT', '8080')}"
