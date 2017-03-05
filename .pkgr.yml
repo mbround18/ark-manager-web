@@ -20,4 +20,3 @@ dependencies:
   - libgdbm-dev
 services:
   - memcached
-after_install: "./config/setup_user.sh"
