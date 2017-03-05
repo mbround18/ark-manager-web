@@ -4,7 +4,6 @@ require 'mkmf'
 require 'dalli'
 require 'logger'
 require 'base64'
-require 'socket'
 require 'rufus-scheduler'
 
 WORKING_DIR       = File.dirname(File.expand_path('..', __FILE__)) unless defined?(WORKING_DIR)
@@ -13,7 +12,7 @@ CURL_EXEC         = find_executable 'curl'
 USER_HOME         = Dir.home unless defined?(USER_HOME)
 RACK_ENV          = ENV.fetch('RACK_ENV', 'development')
 ARK_MANAGER_CLI   = find_executable('arkmanager', "#{USER_HOME}/bin") unless defined?(ARK_MANAGER_CLI)
-SERVER_IP_ADDRESS = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
+SERVER_IP_ADDRESS = ENV.fetch('LISTENING_IP', '0.0.0.0')
 
 if File.exists?("#{WORKING_DIR}/config/env_config.json")
   Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new).each_pair { |key,value|  ENV[key] = value  }
