@@ -1,1 +1,1 @@
-interface: bundle exec unicorn -c ./config/unicorn.rb -D
+interface: bundle exec unicorn -c ./config/unicorn.rb -p $PORT -D

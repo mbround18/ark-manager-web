@@ -8,6 +8,7 @@ dependencies:
   - git
   - build-essential
   - autoconf
+  - lib32gcc1
   - bison
   - libssl-dev
   - libyaml-dev
