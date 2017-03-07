@@ -1,4 +1,4 @@
-# ark_manager_web
+# ark-manager-web
 
 [![Analytics](https://ga-beacon.appspot.com/UA-87116567-1/ark-manager-web)](https://github.com/igrigorik/ga-beacon)
 
