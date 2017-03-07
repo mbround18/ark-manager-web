@@ -90,6 +90,11 @@ function clearAndSetServerStatus(){
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
         }
+
+        if(data.hasOwnProperty('active_players')){
+            $( "#active-players-number" ).text( data['active_players'] );
+        }
+
     });
 }
 
@@ -111,6 +116,43 @@ function buildAndAttachModList() {
             $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
         });
     })
+}
+
+function buildAndAttachModList() {
+    // $('.server-mod-list').empty();
+
+    $('.server-mod-list').empty().append(
+        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
+    );
+
+    $.getJSON( "/api/mods/status", function( data ) {
+        $.each(data, function (mod_id, mod_info) {
+            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
+        });
+    });
+
+    var rows = $('#serverModList').find('tbody  tr').get();
+
+    rows.sort(function(a, b) {
+
+        var A = $(a).children('td').eq(0).text().toUpperCase();
+        var B = $(b).children('td').eq(0).text().toUpperCase();
+
+        if(A < B) {
+            return -1;
+        }
+
+        if(A > B) {
+            return 1;
+        }
+
+        return 0;
+
+    });
+
+    $.each(rows, function(index, row) {
+        $('#serverModList').children('tbody').append(row);
+    });
 }
 
 function run_reboot_and_update(data) {
@@ -153,16 +195,38 @@ function run_reboot_and_update(data) {
 
 
 function run_command(data) {
-    $.ajax({
-        url:'/api/run-command',
-        type:'post',
-        dataType: 'json',
-        data: {"cmd": $(data).data('cmd')},
-        success:function(jqxhr){
-            swal('', jqxhr, 'success');
-        },
-        error:function(jqxhr){
-            swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
+    swal({
+        title: 'Are you sure?',
+        text: "Are you absolutely sure you would like to perform this action?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!',
+        cancelButtonText: 'No!',
+        confirmButtonClass: 'btn btn-success',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: true
+    }).then(function () {
+        $.ajax({
+            url:'/api/run-command',
+            type:'post',
+            dataType: 'json',
+            data: {"cmd": $(data).data('cmd')},
+            success:function(jqxhr){
+                swal('', jqxhr, 'success');
+            },
+            error:function(jqxhr){
+                swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
+            }
+        });
+    }, function (dismiss) {
+        if (dismiss === 'cancel') {
+            swal(
+                'Cancelled',
+                'A wise decision young padawan :)',
+                'error'
+            )
         }
     });
 }

@@ -10,6 +10,7 @@
     %script{:crossorigin => 'anonymous', :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
     %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/js/uikit.min.js'}
     %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js'}
+    %script{src: 'https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js'}
     %script{src: 'javascript/index.js'}
   %body
     .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
@@ -48,12 +49,30 @@
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
               %label{class: 'uk-width-expanded'} Run Server Version Check?
               %input#serverUpdateCheckSchedule.uk-checkbox{class: 'uk-width-1-4', :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for any ark updates and will update the server accordingly', "uk-tooltip" => ""}/
-        %div{:class => 'uk-width-1-2'}
-          .uk-card.uk-card-default.uk-height-large.uk-card-body.uk-text-center
+        %div{:class => 'uk-width-1-2@m'}
+          .uk-card.uk-card-default.uk-height-large.uk-card-body.uk-text-center{style: 'height: 40em;'}
             %h3.uk-heading-divider Mod List
             %div.server-mod-list.uk-text-center.uk-overflow-auto
               .uk-alert.uk-alert-warning
                 %p Please wait we are reading your mod list. It will be available shortly
+        -#%div{:class => 'uk-width-1-2'}
+        -#  .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-auto{style: 'height: 40em;'}
+        -#    %h3.uk-heading-divider Player Info
+        -#    %div.server-player-info.uk-grid-collapse.uk-text-center{:class => "uk-child-width-expand@s", "uk-grid" => ""}
+        -#      %div
+        -#        %label Active Players:
+        -#        %p#active-players-number 0
+        -#      %div
+        -#      %div.uk-width-1-1
+        -#        %table.uk-table
+        -#          %thead
+        -#            %tr
+        -#              %th.uk-table-auto User Name
+        -#              %th.uk-table-expand Steam ID
+        -#          %tbody
+        -#            %tr.uk-text-center
+        -#        %div#player-list-alert.uk-alert.uk-alert-warning
+        -#          %p Please wait while we load the list, please note if there are no players this alert will persist.
       -#.uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
       -#  %div{:class => "uk-width-expand@m"}
       -#    .uk-card.uk-card-default.uk-card-body.uk-text-left

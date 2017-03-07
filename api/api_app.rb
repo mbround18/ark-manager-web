@@ -74,4 +74,8 @@ class ApiApp < Grape::API
     'success'
   end
 
+  get 'players/list' do
+
+  end
+
 end
