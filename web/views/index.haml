@@ -4,30 +4,32 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    %title Frontpage layout example - UIkit documentation
+    %title Ark Server Manager
     %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.16/css/uikit.min.css', :rel => "stylesheet"}/
     %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.css', :rel => "stylesheet"}/
     %script{:crossorigin => 'anonymous', :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
     %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.12/js/uikit.min.js'}
     %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js'}
+    %script{src: 'https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js'}
     %script{src: 'javascript/index.js'}
   %body
     .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
       %h1.uk-heading-divider{:style => "padding-top: 1em;"} Ark Server Manager
-      .uk-grid{"uk-grid" => "", "uk-grid-margin" => ""}
+      .uk-grid.uk-grid-small{"uk-grid" => "", "uk-grid-margin" => ""}
         %div{:class => "uk-width-1-3@m"}
           .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
             %h3.uk-heading-divider Server Actions
-            %div{"uk-button-group" => ""}
-              %button.uk-button.uk-button-primary.uk-button-large{:style => "width: 95%;", 'data-cmd': 'start_server', onclick:'run_command(this);'} Start
-            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
-              %button.uk-button.uk-button-danger.uk-button-large{:style => "width: 95%;", 'data-cmd': 'stop_server', onclick:'run_command(this);'} Stop
-            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
-              %button.uk-button.uk-button-secondary.uk-button-large{'data-cmd': 'run_reboot_and_update', onclick: 'run_reboot_and_update(this);', style: 'width: 95%;', :title => "This will backup, update server, update mods, then restart. With Safe Update and Restart checked this will take 30 minutes", "uk-button" => "", "uk-tooltip" => ""} Update/Restart
-            %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
-              %p.uk-text-small.uk-text-left.uk-text-warning Uncheck below to trigger an immediate reboot/update.
-              %label Safe Update and Restart:
-              %input#runUpdateAndRebootSafely.uk-checkbox{:checked => "checked", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart"}/
+            %div{class: 'uk-flex uk-flex-column'}
+              %div
+                %button.uk-button.uk-button-primary.uk-button-large{:style => "width: 95%;", 'data-cmd': 'start_server', onclick:'run_command(this);'} Start
+              %div{:style => "padding-top: 1em;"}
+                %button.uk-button.uk-button-danger.uk-button-large{:style => "width: 95%;", 'data-cmd': 'stop_server', onclick:'run_command(this);'} Stop
+              %div{:style => "padding-top: 1em;"}
+                %button.uk-button.uk-button-secondary.uk-button-large{'data-cmd': 'run_reboot_and_update', onclick: 'run_reboot_and_update(this);', style: 'width: 95%;', :title => "This will backup, update server, update mods, then restart. With Safe Update and Restart checked this will take 30 minutes", "uk-button" => "", "uk-tooltip" => ""} Update/Restart
+              %div{:style => "padding-top: 1em;"}
+                %p.uk-text-small.uk-text-left.uk-text-warning Uncheck below to trigger an immediate reboot/update.
+                %label Safe Update and Restart:
+                %input#runUpdateAndRebootSafely.uk-checkbox{:checked => "checked", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart"}/
         %div{:class => "uk-width-1-3@m"}
           .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
             %h3.uk-heading-divider Server Status
@@ -47,12 +49,30 @@
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
               %label{class: 'uk-width-expanded'} Run Server Version Check?
               %input#serverUpdateCheckSchedule.uk-checkbox{class: 'uk-width-1-4', :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for any ark updates and will update the server accordingly', "uk-tooltip" => ""}/
-        %div{:class => 'uk-width-auto'}
-          .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large
+        %div{:class => 'uk-width-1-2@m'}
+          .uk-card.uk-card-default.uk-height-large.uk-card-body.uk-text-center{style: 'height: 40em;'}
             %h3.uk-heading-divider Mod List
-            %div.server-mod-list
+            %div.server-mod-list.uk-text-center.uk-overflow-auto
               .uk-alert.uk-alert-warning
                 %p Please wait we are reading your mod list. It will be available shortly
+        -#%div{:class => 'uk-width-1-2'}
+        -#  .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-auto{style: 'height: 40em;'}
+        -#    %h3.uk-heading-divider Player Info
+        -#    %div.server-player-info.uk-grid-collapse.uk-text-center{:class => "uk-child-width-expand@s", "uk-grid" => ""}
+        -#      %div
+        -#        %label Active Players:
+        -#        %p#active-players-number 0
+        -#      %div
+        -#      %div.uk-width-1-1
+        -#        %table.uk-table
+        -#          %thead
+        -#            %tr
+        -#              %th.uk-table-auto User Name
+        -#              %th.uk-table-expand Steam ID
+        -#          %tbody
+        -#            %tr.uk-text-center
+        -#        %div#player-list-alert.uk-alert.uk-alert-warning
+        -#          %p Please wait while we load the list, please note if there are no players this alert will persist.
       -#.uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
       -#  %div{:class => "uk-width-expand@m"}
       -#    .uk-card.uk-card-default.uk-card-body.uk-text-left

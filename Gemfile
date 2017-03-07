@@ -13,6 +13,7 @@ gem 'rufus-scheduler'
 gem 'dalli'
 gem 'rake'
 gem 'oj'
+gem 'trollop'
 
 group :development do
   gem 'pkgr'

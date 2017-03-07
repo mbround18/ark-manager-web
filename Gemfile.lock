@@ -105,6 +105,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.6)
     tool (0.2.3)
+    trollop (2.1.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unicorn (5.2.0)
@@ -129,10 +130,11 @@ DEPENDENCIES
   rake
   rufus-scheduler
   sinatra
+  trollop
   unicorn
 
 RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.14.5
+   1.14.6

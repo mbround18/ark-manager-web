@@ -89,4 +89,12 @@ class SchedulerController
     Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
   end
 
+  # def get_player_list(instance=@instance)
+  #   final_hash = {}
+  #   list_array = [`#{ARK_MANAGER_CLI} useconfig #{instance} rconcmd listplayers | sed '2d; $d; s/^ *//'`.split("\n")].flatten
+  #   list_array.each do |player|
+  #
+  #   end
+  # end
+
 end
