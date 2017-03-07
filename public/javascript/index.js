@@ -14,7 +14,7 @@ window.setInterval(function() {
 
 window.setInterval(function() {
     clearAndSetServerStatus();
-    setSchedulesStateFromCheckboxes()
+    setSchedulesStateFromCheckboxes();
 }, 10000);
 
 window.onload = function() {
@@ -103,12 +103,12 @@ function buildAndAttachModList() {
     // $('.server-mod-list').empty();
 
     $('.server-mod-list').empty().append(
-        '<table id="serverModList" class="uk-table uk-table-striped uk-width-auto"><thead><tr><th class="uk-width-auto">Mod ID</th><th class="uk-width-auto">Mod Version</th><th class="uk-width-auto">Last Updated</th></tr></thead><tbody></tbody></table>'
+        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
     );
 
     $.getJSON( "/api/mods/status", function( data ) {
         $.each(data, function (mod_id, mod_info) {
-            $('#serverModList').find("tbody").append("<tr><td><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td>" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
+            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
         });
     })
 }

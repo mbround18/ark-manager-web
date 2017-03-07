@@ -1,1 +1,1 @@
-interface: bundle exec unicorn -c ./config/unicorn.rb -o $LISTENING_IP -p $LISTENING_PORT
+interface: bundle exec unicorn -c ./config/unicorn.rb --env production -D

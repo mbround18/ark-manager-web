@@ -20,4 +20,3 @@ dependencies:
   - libgdbm-dev
 services:
   - memcached
-after_install: "config/post-install.sh"
