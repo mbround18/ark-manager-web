@@ -1,4 +1,6 @@
-# ark_manager_web
+# ark-manager-web
+
+[![Analytics](https://ga-beacon.appspot.com/UA-87116567-1/ark-manager-web)](https://github.com/igrigorik/ga-beacon)
 
 ## Disclaimer
 
@@ -17,11 +19,9 @@ More operating systems can be supported in the future by popular demand.
  On a fresh ubuntu 16.04 server run the following commands:
  ```bash
 wget -qO - https://deb.packager.io/key | sudo apt-key add -
-echo "deb https://deb.packager.io/gh/mbround18/ark_manager_web xenial master" | sudo tee /etc/apt/sources.list.d/ark_manager_web.list
+echo "deb https://deb.packager.io/gh/mbround18/ark-manager-web xenial master" | sudo tee /etc/apt/sources.list.d/ark-manager-web.list
 sudo apt-get update
 sudo apt-get install ark-manager-web
-sudo ark-manager-web run bundle exec rake install:server_tools
-sudo ark-manager-web run bundle exec rake install:ark_server
 ```
 
 Temporarily `ark-manager-web scale` command is not working so please run the following to get the interface
