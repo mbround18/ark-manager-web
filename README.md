@@ -1,5 +1,7 @@
 # ark_manager_web
 
+[![Analytics](https://ga-beacon.appspot.com/UA-87116567-1/ark-manager-web)](https://github.com/igrigorik/ga-beacon)
+
 ## Disclaimer
 
 This software is provided to you without any authentication or access based security
