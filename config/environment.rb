@@ -18,6 +18,8 @@ if File.exists?("#{WORKING_DIR}/config/env_config.json")
   Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new).each_pair { |key,value|  ENV[key] = value  }
 end
 
+ENV["TZ"] = ENV.fetch("TZ", "Etc/UTC")
+
 DOMAIN_NAME = ENV.fetch('DOMAIN_NAME', 'localhost')
 
 raise 'I was unable to find arkmanager in your path!! please run "bundle exec rake install_server_tools"' unless ARK_MANAGER_CLI
