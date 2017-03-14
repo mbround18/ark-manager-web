@@ -14,6 +14,7 @@ gem 'dalli'
 gem 'rake'
 gem 'oj'
 gem 'trollop'
+gem 'tzinfo-data'
 
 group :development do
   gem 'pkgr'
