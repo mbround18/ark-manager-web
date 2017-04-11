@@ -34,8 +34,19 @@ else
   $logger.level = Logger::DEBUG
 end
 
+# this is default ones
+memcache_port = '11211'
+memcache_address = 'localhost'
+
+if File.exists?("#{WORKING_DIR}/config/env_config.json")
+  hash = Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new)
+  memcache_port = hash['port'] || memcache_port
+  memcache_address = hash['address'] || memcache_address
+end
+
+
 $scheduler = Rufus::Scheduler.new unless defined?($scheduler)
-$dalli_cache = Dalli::Client.new('localhost:11211', { namespace: 'boop_on_your_nose', compress: true }) unless defined?($dalli_cache)
+$dalli_cache = Dalli::Client.new(memcache_address << ':' << memcache_port, { namespace: 'boop_on_your_nose', compress: true }) unless defined?($dalli_cache)
 $dalli_cache.flush_all
 
 
