@@ -22,7 +22,7 @@ ENV["TZ"] = ENV.fetch("TZ", "Etc/UTC")
 
 DOMAIN_NAME = ENV.fetch('DOMAIN_NAME', 'localhost')
 
-raise 'I was unable to find arkmanager in your path!! please run "bundle exec rake install_server_tools"' unless ARK_MANAGER_CLI
+raise 'I was unable to find arkmanager in your path!! please run "bundle exec rake install:server_tools"' unless ARK_MANAGER_CLI
 raise 'I was unable to find memcached!!! please have your system administrator install memcached' unless find_executable('memcached')
 
 $logger = Logger.new(STDOUT)
