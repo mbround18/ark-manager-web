@@ -12,10 +12,14 @@ CURL_EXEC         = find_executable 'curl'
 USER_HOME         = Dir.home unless defined?(USER_HOME)
 RACK_ENV          = ENV.fetch('RACK_ENV', 'development')
 ARK_MANAGER_CLI   = find_executable('arkmanager', "#{USER_HOME}/bin") unless defined?(ARK_MANAGER_CLI)
-SERVER_IP_ADDRESS = ENV.fetch('LISTENING_IP', '0.0.0.0')
 
+memcache_port = '11211'
+memcache_address = 'localhost'
 if File.exists?("#{WORKING_DIR}/config/env_config.json")
-  Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new).each_pair { |key,value|  ENV[key] = value  }
+  hash = Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new)
+  hash.each_pair { |key,value|  ENV[key] = value  }
+  memcache_port = hash['port'] || memcache_port
+  memcache_address = hash['address'] || memcache_address
 end
 
 ENV["TZ"] = ENV.fetch("TZ", "Etc/UTC")
@@ -33,17 +37,6 @@ if RACK_ENV == 'production'
 else
   $logger.level = Logger::DEBUG
 end
-
-# this is default ones
-memcache_port = '11211'
-memcache_address = 'localhost'
-
-if File.exists?("#{WORKING_DIR}/config/env_config.json")
-  hash = Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new)
-  memcache_port = hash['port'] || memcache_port
-  memcache_address = hash['address'] || memcache_address
-end
-
 
 $scheduler = Rufus::Scheduler.new unless defined?($scheduler)
 $dalli_cache = Dalli::Client.new(memcache_address << ':' << memcache_port, { namespace: 'boop_on_your_nose', compress: true }) unless defined?($dalli_cache)
