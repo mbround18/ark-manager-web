@@ -98,7 +98,28 @@ cd  ~/ark_manager_web
 bundle exec unicorn -c ./config/unicorn.rb -D
 ```
 This will allow the interface to be visible from `127.0.0.1:8080` of the machine its set up on.
-If you wish to change this edit the `/path/to/ark_manager_web/config/unicorn.rb` file and change the listening field.
+
+If you wish to change this edit the `/path/to/ark_manager_web/config/env_config.json` file.
+The only following allowed options are available:
+
+| option  | description |
+|---------|-------------|
+| port    | which port to bind    |
+| address | which address to bind |
+| memcache_port | same for memcache |
+| memcache_addrss | same for memcache |
+| arkamanger_path | /some/path/to/bin/where/arkmanager/is |
+
+```json
+{
+  "port": "8888",
+  "address": "127.0.0.1",
+  "memcache_port": "11212",
+  "memcache_address": "192.168.1.5",  // pretend you have local network in cloud :)
+  "arkmanager_path": "/usr/local/bin"
+}
+```
+
 ## Recommendations
 It is recommended to set this up behind a `nginx` reverse proxy as well as enabling `ufw` to block
 access to port 8080. That will prevent unwanted insecure access to the web interface. The next
