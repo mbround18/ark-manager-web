@@ -40,7 +40,7 @@ else
 end
 
 $scheduler = Rufus::Scheduler.new unless defined?($scheduler)
-$dalli_cache = Dalli::Client.new(memcache_address << ':' << memcache_port, { namespace: 'boop_on_your_nose', compress: true }) unless defined?($dalli_cache)
+$dalli_cache = Dalli::Client.new(format('%s:%s', memcache_address, memcache_port), { namespace: 'boop_on_your_nose', compress: true }) unless defined?($dalli_cache)
 $dalli_cache.flush_all
 
 
