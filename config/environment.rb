@@ -6,6 +6,7 @@ require 'logger'
 require 'base64'
 require 'rufus-scheduler'
 require 'net/http'
+require_relative '../lib/error'
 
 WORKING_DIR = File.dirname(File.expand_path('..', __FILE__)) unless defined?(WORKING_DIR)
 EGREP_EXEC = find_executable 'egrep'
@@ -31,13 +32,15 @@ DOMAIN_NAME = ENV.fetch('DOMAIN_NAME', 'localhost')
 ARK_INSTANCE_NAME = ENV.fetch('ARK_INSTANCE_NAME', 'main')
 INSTANCE_FILE_PATH = format('%s/.config/arkmanager/instances/%s.cfg', USER_HOME, ARK_INSTANCE_NAME)
 
+raise ArkManagerWeb::Errors::InstanceCfgNotFound, "No instance cfg file was found at #{INSTANCE_FILE_PATH}" unless File.exist?(INSTANCE_FILE_PATH)
+
 if File.exist?(env_config_path)
 	ark_srv_root_str = File.readlines(INSTANCE_FILE_PATH).find { |line| line =~ /arkserverroot/im }
 	ARK_SERVER_ROOT = ark_srv_root_str.split('#').first.strip.gsub!('"', '').gsub!('arkserverroot=', '')
 end
 
-raise 'I was unable to find arkmanager in your path!! please run "bundle exec rake install:server_tools"' unless ARK_MANAGER_CLI
-raise 'I was unable to find memcached!!! please have your system administrator install memcached' unless find_executable('memcached')
+raise ArkManagerWeb::Errors::ArkManagerExeNotFound, 'I was unable to find arkmanager in your path!! please run: bundle exec rake install:server_tools' unless ARK_MANAGER_CLI
+
 
 $logger = Logger.new(STDOUT)
 $logger.datetime_format = '%Y-%m-%d %H:%M:%S'

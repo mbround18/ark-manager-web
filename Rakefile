@@ -1,6 +1,7 @@
 require 'highline/import'
 require 'rake'
 require 'mkmf'
+require_relative 'lib/error'
 
 puts '============== Executable Loads =============='
 WORKING_DIR = File.dirname(__FILE__) unless defined?(WORKING_DIR)
@@ -30,35 +31,33 @@ namespace :install do
 			end
 			puts 'Arkmanager was successfully added to your path' if find_executable('arkmanager', "#{USER_HOME}/bin")
 		end
-		raise 'arkmanager was not successfully added to your path' unless find_executable('arkmanager', "#{USER_HOME}/bin")
+		raise ArkManagerWeb::Errors::ArkManagerExeNotFound, 'arkmanager was not successfully added to your path' unless find_executable('arkmanager', "#{USER_HOME}/bin")
 	end
 
 	desc 'Install Ark Server with Server Tools'
 	task :ark_server do
 		cli = HighLine.new
 		env_config_path = "#{WORKING_DIR}/config/env_config.json"
-		unless File.exist?(env_config_path)
-			cli.say('A config was not found!! please run: bundle exec rake configure')
-			exit!
-		end
+
+		raise ArkManagerWeb::Errors::ConfigNotFound, 'A config was not found!! please run: bundle exec rake configure' unless File.exist?(env_config_path)
+
 
 		file = File.read(env_config_path)
 		config = JSON.parse!(file, symbolize_names: true)
+		instance_name = config.fetch(:ARK_INSTANCE_NAME, nil)
 		cli.say('The config file did not contain the key ARK_INSTANCE_NAME!! please run after install: bundle exec rake configure') unless config.has_key?(:ARK_INSTANCE_NAME)
-		instance_name = config.fetch(:ARK_INSTANCE_NAME, cli.ask("What is the name of the Ark instance config you will be using?  "))
+		instance_name = cli.ask('What is the name of the Ark instance config you will be using?  ') if instance_name.nil?
 
 		if find_executable('arkmanager', "#{USER_HOME}/bin")
 			puts 'Ignore the errors the program will fix them!!'
-			system(ARK_MANAGER_CLI, "install @#{instance_name}", out: $stdout, err: :out)
+			system("#{ARK_MANAGER_CLI} install @#{instance_name}", out: $stdout, err: :out)
 		else
-			raise 'arkmanager is currently not in your path!!!! please run "bundle exec rake install_server_tools"'
+			raise ArkManagerWeb::Errors::ArkManagerExeNotFound, 'arkmanager is currently not in your path!!!! please run "bundle exec rake install_server_tools"'
 		end
 
 		puts
 
-		File.open("#{WORKING_DIR}/config/mod_list.json", 'w') do |file|
-			file.write "{\n}"
-		end
+		File.open("#{WORKING_DIR}/config/mod_list.json", 'w') { |file| file.write "{\n}" }
 
 	end
 end
