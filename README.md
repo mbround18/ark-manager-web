@@ -108,19 +108,18 @@ The only following allowed options are available:
 
 | option  | description |
 |---------|-------------|
-| port    | which port to bind    |
-| address | which address to bind |
-| memcache_port | same for memcache |
-| memcache_addrss | same for memcache |
-| arkamanger_path | /some/path/to/bin/where/arkmanager/is |
+| ARKMANAGER_PATH | /some/path/to/bin/where/arkmanager/is |
+| ARK_INSTANCE_NAME | This is the name of the instance you will use. Default: main |
+| MEMCACHE_ADDRESS | same for memcache |
+| MEMCACHE_PORT | same for memcache |
+
 
 ```json
 {
-  "port": "8888",
-  "address": "127.0.0.1",
-  "memcache_port": "11211",
-  "memcache_address": "127.0.0.1",
-  "arkmanager_path": "/usr/local/bin"
+  "ARK_INSTANCE_NAME": "main",
+  "ARKMANAGER_PATH": "/usr/local/bin",
+  "MEMCACHE_ADDRESS": "127.0.0.1",
+  "MEMCACHE_PORT": "11211"
 }
 ```
 
