@@ -8,6 +8,10 @@
 //     }
 // }, 3000);
 
+// var automatic_server_start = $('#automaticStartServer');
+// var mod_update_check_schedule = $('#modUpdateCheckSchedule');
+// var server_update_check_schedule = $('#serverUpdateCheckSchedule');
+
 window.setInterval(function() {
     buildAndAttachModList();
 }, 100000);
@@ -28,33 +32,39 @@ window.onload = function() {
 // $(document).ready(buildAndAttachModList());
 
 function getInitialSchedulesCheckboxes() {
+    var automatic_server_start = $('#automaticStartServer');
+    var mod_update_check_schedule = $('#modUpdateCheckSchedule');
+    var server_update_check_schedule = $('#serverUpdateCheckSchedule');
     $.getJSON( "/api/schedule/states", function( data ) {
-        if (data['run_automatic_start'] != $('#automaticStartServer').is(':checked')) {
-            $("#automaticStartServer").prop("checked", data['run_automatic_start']);
+        if (data['run_automatic_start'] !== automatic_server_start.is(':checked')) {
+            automatic_server_start.prop("checked", data['run_automatic_start']);
         }
-        if (data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) {
-           $("#modUpdateCheckSchedule").prop("checked", data['mod_update_check_schedule']);
+        if (data['mod_update_check_schedule'] !== mod_update_check_schedule.is(':checked')) {
+            mod_update_check_schedule.prop("checked", data['mod_update_check_schedule']);
         }
-        if (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked')) {
-            $("#serverUpdateCheckSchedule").prop("checked", data['server_update_check_schedule']);
+        if (data['server_update_check_schedule'] !== server_update_check_schedule.is(':checked')) {
+            server_update_check_schedule.prop("checked", data['server_update_check_schedule']);
         }
     })
 }
 
 function setSchedulesStateFromCheckboxes() {
+    var automatic_server_start = $('#automaticStartServer');
+    var mod_update_check_schedule = $('#modUpdateCheckSchedule');
+    var server_update_check_schedule = $('#serverUpdateCheckSchedule');
     $.getJSON( "/api/schedule/states", function( data ) {
-        if ((data['mod_update_check_schedule'] != $('#modUpdateCheckSchedule').is(':checked')) || (data['server_update_check_schedule'] != $('#serverUpdateCheckSchedule').is(':checked')) || (data['run_automatic_start'] != $('#automaticStartServer').is(':checked'))) {
+        if ((data['mod_update_check_schedule'] !== mod_update_check_schedule.is(':checked')) || (data['server_update_check_schedule'] !== server_update_check_schedule.is(':checked')) || (data['run_automatic_start'] !== automatic_server_start.is(':checked'))) {
             $.ajax({
                 type: "POST",
                 url: "/api/schedule/states",
                 dataType: 'json',
-                data: { "run_automatic_start" :$('#automaticStartServer').is(':checked'), "mod_update_check_schedule": $('#modUpdateCheckSchedule').is(':checked'), "server_update_check_schedule" : $('#serverUpdateCheckSchedule').is(':checked')},
+                data: { "run_automatic_start": automatic_server_start.is(':checked'), "mod_update_check_schedule": mod_update_check_schedule.is(':checked'), "server_update_check_schedule" : server_update_check_schedule.is(':checked')},
                 success: function () {
                     getInitialSchedulesCheckboxes();
                 }
             });
 
-            // $.post( "/api/schedule/states", { mod_update_check_schedule: $('#modUpdateCheckSchedule').is(':checked'), server_update_check_schedule: $('#serverUpdateCheckSchedule').is(':checked') } );
+            // $.post( "/api/schedule/states", { mod_update_check_schedule: mod_update_check_schedule.is(':checked'), server_update_check_schedule: server_update_check_schedule.is(':checked') } );
         }
     })
 }
@@ -62,7 +72,7 @@ function setSchedulesStateFromCheckboxes() {
 function clearAndSetServerStatus(){
     var serverStatusJSON;
     $.getJSON( "/api/status", function( data ) {
-        $('.server-status-info').empty();
+        $(".server-status-info").empty();
         if(data.hasOwnProperty('server_running')){
             data['server_running'].match(/yes/i) ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :

@@ -1,11 +1,11 @@
 require_relative '../config/environment'
 class SchedulerController
-  def initialize(instance='main')
+  def initialize(instance=ARK_INSTANCE_NAME)
     @instance = instance
   end
 
   def run_system_command(instance, command, std_out, std_err, detach_from_process=true)
-    pid = spawn("#{ARK_MANAGER_CLI} useconfig #{instance} #{command}", out: std_out, err: std_err)
+    pid = spawn("#{ARK_MANAGER_CLI} #{command} @#{instance}", out: std_out, err: std_err)
     Process.detach(pid) if detach_from_process
     pid
   end
