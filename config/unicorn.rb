@@ -1,5 +1,4 @@
-require 'oj'
-
+require 'json'
 WORKING_DIR = File.dirname(File.expand_path('..', __FILE__))
 working_directory WORKING_DIR
 
@@ -13,10 +12,14 @@ worker_processes 1
 port = '8080'
 address = '0.0.0.0'
 
-if File.exists?("#{WORKING_DIR}/config/env_config.json")
-  hash = Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new)
-  port = hash['port'] || port
-  address = hash['address'] || address
+env_config_path = "#{WORKING_DIR}/config/env_config.json"
+
+if File.exist?(env_config_path)
+	file = File.read(env_config_path)
+	hash = JSON.parse!(file, symbolize_names: true)
+  # hash = Oj.load_file("#{WORKING_DIR}/config/env_config.json", Hash.new)
+  port = hash[:port] || port
+  address = hash[:address] || address
 end
 
-listen address << ':' << port
+listen format('%s:%s', address, port)
