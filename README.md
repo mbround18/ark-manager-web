@@ -1,7 +1,5 @@
 # ark-manager-web
 
-[![Analytics](https://ga-beacon.appspot.com/UA-87116567-1/ark-manager-web)](https://github.com/igrigorik/ga-beacon)
-
 ## Disclaimer
 
 This software is provided to you without any authentication or access based security
@@ -9,40 +7,37 @@ it is up to you the user to install or develop your own security methods and bes
 
 There may be future effort for security on this code base but only if its in popular demand.
 
+##### Packaged Installer Has been deprecated! please use self installation
+
 ## Supported Distributions
 More operating systems can be supported in the future by popular demand.
 
- 1. Ubuntu 16.04
+ 1. Ubuntu 16.04  
  
  
-## Packaged Installer
- On a fresh ubuntu 16.04 server run the following commands:
- ```bash
-wget -qO - https://deb.packager.io/key | sudo apt-key add -
-echo "deb https://deb.packager.io/gh/mbround18/ark-manager-web xenial master" | sudo tee /etc/apt/sources.list.d/ark-manager-web.list
-sudo apt-get update
-sudo apt-get install ark-manager-web
-```
+## Currently Unsupported:
+ 1. Multiple Instances
+ 2. Mod Installation, Reinstallation, and Removal
+ 3. Configuring game ini files
 
-Temporarily `ark-manager-web scale` command is not working so please run the following to get the interface
-to run.
-```bash
-ark-manager-web run interface
-```
+## Mod installation, reinstallation, removeal
+If you wish to add a mod to your server please add it to the instance config in /home/steam/.config/arkmanager/instances/INSTANCENAME.cfg
+On the line designated for ark mods following the format provided. Then follow what up by running the command: `arkmanager installmod MODID @INSTANCENAME`
 
-After running those commands you will have a web interface available on port `8080` however it is available to the world and you should 
-scroll down till you see Recommendations for some ideas on how to secure this software.
+The web interface has the ability to keep mods uptodate but unfortunately does not quite have the ability to install, reinstall, or remove mods just yet.
 
 ## Self Installation:
 This is an installation guide for an ubuntu based host and support for more OSes will 
 be tested in the future.
+
 ### Required Software
 The packages below must be installed with a sudo user:
 ```bash
-# Required
+# Required for repo
 memcached
-curl
 git
+# Required for rbenv and rbenv-build
+curl
 build-essential
 autoconf 
 bison 
@@ -55,6 +50,12 @@ libncurses5-dev
 libffi-dev 
 libgdbm3 
 libgdbm-dev
+# Requirements for ark-server-tools
+perl-modules
+lsof
+libc6-i386
+lib32gcc1
+bzip2
 
 ```
 The things below must be installed under a user account to prevent security
@@ -79,11 +80,14 @@ rbenv shell 2.3.1 # Change the version number here if you are not using the reco
 gem install bundle
 
 # Finally lets clone the repo
-git clone $URL_HERE ~/ark_manager_web
+git clone https://github.com/mbround18/ark-manager-web.git ~/ark_manager_web
 
 # Setting up the repo
 cd ~/ark_manager_web
-bundle install --binstubs
+bundle --binstubs
+
+# Set up the configuration
+bundle exec rake configure
 
 # Get Ark Manager
 bundle exec rake install:server_tools
@@ -104,33 +108,39 @@ The only following allowed options are available:
 
 | option  | description |
 |---------|-------------|
-| port    | which port to bind    |
-| address | which address to bind |
-| memcache_port | same for memcache |
-| memcache_addrss | same for memcache |
-| arkamanger_path | /some/path/to/bin/where/arkmanager/is |
+| ARKMANAGER_PATH | /some/path/to/bin/where/arkmanager/is |
+| ARK_INSTANCE_NAME | This is the name of the instance you will use. Default: main |
+| MEMCACHE_ADDRESS | same for memcache |
+| MEMCACHE_PORT | same for memcache |
+
 
 ```json
 {
-  "port": "8888",
-  "address": "127.0.0.1",
-  "memcache_port": "11212",
-  "memcache_address": "192.168.1.5",  // pretend you have local network in cloud :)
-  "arkmanager_path": "/usr/local/bin"
+  "ARK_INSTANCE_NAME": "main",
+  "ARKMANAGER_PATH": "/usr/local/bin",
+  "MEMCACHE_ADDRESS": "127.0.0.1",
+  "MEMCACHE_PORT": "11211"
 }
 ```
 
 ## Recommendations
 It is recommended to set this up behind a `nginx` reverse proxy as well as enabling `ufw` to block
 access to port 8080. That will prevent unwanted insecure access to the web interface. The next
-suggestion would be to set up an htpasswd file with users or a seperate authentication system.
+suggestion would be to set up an htpasswd file with users or a separate authentication system.
 
 Another recommendation would be to set up supervisord to run the software for you so it will start on boot.
+
+If you do choose to use `ufw` to secure port `8080` please also allow access for the following:
+```bash
+ufw allow 27016
+ufw allow 7778
+ufw allow 32330/tcp
+```
 
 ### Example Nginx Configuration
 nginx.conf file, It is recommended to install `letsencrypt`/`cerbot` and generate a ssl for your site.
 ```
-worker_processes  1;
+worker_processes  4;
 
 error_log  logs/error.log;
 
