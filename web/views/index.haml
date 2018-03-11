@@ -5,11 +5,11 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     %title Ark Server Manager
-    %link{:crossorigin => "anonymous", :href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/css/uikit.min.css", :integrity => "sha256-9SPML5I/DutYKXUCVaAeyDq4xfVZ+HZ08DXguV00hiw=", :rel => "stylesheet"}
+    %link{:crossorigin => "anonymous", :href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/css/uikit.min.css", :integrity => "sha256-VyWNo3nreq7kl76bp/ETa0Tbq3FVqCd6wCMF49aGP4c=", :rel => "stylesheet"}
     %link{:href => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.css', :rel => "stylesheet"}
-    %script{:crossorigin => 'anonymous', :integrity => "sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=", :src => "https://code.jquery.com/jquery-3.1.1.min.js"}
-    %script{:crossorigin => "anonymous", :integrity => "sha256-XNlhd8OvFFRX2BeMnfMUELHHkeIKVNqKklNvJHNRUeE=", :src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit.min.js"}
-    %script{:crossorigin => "anonymous", :integrity => "sha256-jitDKwm3if+ITSbEaMGrUPmh8s9V46VaPZNt+ULksYI=", :src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"}
+    %script{crossorigin: 'anonymous', integrity: "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", src: "https://code.jquery.com/jquery-3.3.1.min.js"}
+    %script{crossorigin: 'anonymous', integrity: "sha256-wpeKFfumxNfqAlC4/AkTbuhMaUp72QxUIjEkyFpH1Jc=", src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit.min.js"}
+    %script{crossorigin: 'anonymous', integrity: "sha256-ygOvSgNXVQ3nXNfd5lsn+a6k4THX1tW24aOwm6qMCxI=", src: "https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.40/js/uikit-icons.min.js"}
     %script{:src => 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.4.2/sweetalert2.min.js'}
     %script{src: 'https://cdnjs.cloudflare.com/ajax/libs/sortable/0.8.0/js/sortable.min.js'}
     %script{src: 'javascript/index.js'}
@@ -50,70 +50,10 @@
             %div{:style => "padding-top: 1em;", "uk-button-group" => ""}
               %label{class: 'uk-width-expanded'} Run Server Version Check?
               %input#serverUpdateCheckSchedule.uk-checkbox{class: 'uk-width-1-4', :name => "RunUpdateAndRebootSafely", :style => "padding-right: 3em", :type => "checkbox", :value => "Safe Update and Restart", title: 'When this is enabled it runs a schedule to check for any ark updates and will update the server accordingly', "uk-tooltip" => ""}/
-        %div{:class => 'uk-width-1-2@m'}
+        %div{:class => 'uk-width-2-3@m'}
           .uk-card.uk-card-default.uk-height-large.uk-card-body.uk-text-center{style: 'height: 40em;'}
             %h3.uk-heading-divider Mod List
             %div.server-mod-list.uk-text-center.uk-overflow-auto
               .uk-alert.uk-alert-warning
                 %p Please wait we are reading your mod list. It will be available shortly
-        -#%div{:class => 'uk-width-1-2'}
-        -#  .uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-auto{style: 'height: 40em;'}
-        -#    %h3.uk-heading-divider Player Info
-        -#    %div.server-player-info.uk-grid-collapse.uk-text-center{:class => "uk-child-width-expand@s", "uk-grid" => ""}
-        -#      %div
-        -#        %label Active Players:
-        -#        %p#active-players-number 0
-        -#      %div
-        -#      %div.uk-width-1-1
-        -#        %table.uk-table
-        -#          %thead
-        -#            %tr
-        -#              %th.uk-table-auto User Name
-        -#              %th.uk-table-expand Steam ID
-        -#          %tbody
-        -#            %tr.uk-text-center
-        -#        %div#player-list-alert.uk-alert.uk-alert-warning
-        -#          %p Please wait while we load the list, please note if there are no players this alert will persist.
-      -#.uk-grid.uk-text-center{"uk-grid" => "", "uk-grid-margin" => "", "uk-sortable" => ""}
-      -#  %div{:class => "uk-width-expand@m"}
-      -#    .uk-card.uk-card-default.uk-card-body.uk-text-left
-      -#      .uk-panel
-      -#        %h4.uk-align-left Server Chat
-      -#        .uk-align-right
-      -#          %label Auto Scroll:
-      -#          %input.uk-checkbox{:checked => "checked", :name => "AutoScrollServerChat", :type => "checkbox", :value => ""}/
-      -#        %br/
-      -#      #ServerChat.uk-panel.uk-panel-scrollable.uk-height-medium
-      -#        %table.uk-table
-      -#          %thead
-      -#            %tr
-      -#              %th.uk-table-small
-      -#              %th.uk-table-expand
-      -#          %tbody
-      -#            %tr
-      -#              %td User 1
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 2
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 3
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 4
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 5
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 6
-      -#              %td Table Data
-      -#            %tr
-      -#              %td User 7
-      -#              %td Table Data
-      -#      .uk-panel{:style => "padding-top: 1em;"}
-      -#        %form.uk-form-horizontal{"accept-charset" => "utf-8", :action => "layouts_frontpage_submit", :method => "post"}
-      -#          %input.uk-input{:class => "uk-width-3-4@m", :name => "", :placeholder => "", :type => "text", :value => ""}/
-      -#          %button.uk-button.uk-button-secondary{:class => "uk-width-auto@m", :title => "Send a message to server", "uk-tooltip" => ""} Send
-  / https://jsfiddle.net/b0h2ykud/
   %footer
