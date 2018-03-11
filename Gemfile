@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 
 # gem "rails"
-ruby '2.3.1'
+ruby '2.3.6'
 
 gem 'sinatra'
 gem 'unicorn'
@@ -16,3 +16,4 @@ gem 'oj'
 gem 'trollop'
 gem 'tzinfo-data'
 gem 'highline'
+gem 'oga'

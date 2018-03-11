@@ -7,7 +7,15 @@ it is up to you the user to install or develop your own security methods and bes
 
 There may be future effort for security on this code base but only if its in popular demand.
 
-##### Packaged Installer Has been deprecated! please use self installation
+##### Migrating from version 1.x.x to 2.x.x
+
+If you happen to be migrating from 1.x.x to 2.x.x you will need to perform the following:
+
+1) Install Ruby version 2.3.6, `rbenv install 2.3.6`
+2) Install bundler for new version, `gem install bundler`
+3) Run `bundle install --binstubs`
+4) Remove your current mod list file located in /project-dir/config/  labeled mod_list.json
+5) Relaunch the web interface and let it run the updates for your mods to generate the new mod_list format. (This will take 30ish minutes)
 
 ## Supported Distributions
 More operating systems can be supported in the future by popular demand.
@@ -73,8 +81,8 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 # Install Ruby
 cd ~
-rbenv install 2.3.1 # Recommended Version as this is the version the source is based on 
-rbenv shell 2.3.1 # Change the version number here if you are not using the recommended version
+rbenv install 2.3.6 # Recommended Version as this is the version the source is based on 
+rbenv shell 2.3.6 # Change the version number here if you are not using the recommended version
 
 # Now we install bundle for ruby
 gem install bundle

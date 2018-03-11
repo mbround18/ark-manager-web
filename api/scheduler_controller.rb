@@ -2,6 +2,8 @@ require_relative '../config/environment'
 class SchedulerController
   def initialize(instance=ARK_INSTANCE_NAME)
     @instance = instance
+
+    @running_updates = File.exist?(File.join(TMP_DIR, 'running_updates.lock'))
   end
 
   def run_system_command(instance, command, std_out, std_err, detach_from_process=true)
@@ -41,19 +43,17 @@ class SchedulerController
   end
 
   def is_an_update_running?
-    begin
-      Process.getpgid( $dalli_cache.get('arkmanager_updates_running_pid') )
-      true
-    rescue
-      false
-    end
+    File.exist?(ARK_UPDATING_LOCK_PATH)
+  end
+
+  def create_update_running_lock!
+    File.write(ARK_UPDATING_LOCK_PATH, '')
   end
 
   def run_ark_manager_updates(run_safely=true, log_stdout="#{WORKING_DIR}/log/ark_update.log.out", log_stderr="#{WORKING_DIR}/log/ark_update.log.err")
-
     run_safely = (run_safely.to_s == 'true')
-
     unless is_an_update_running?
+      create_update_running_lock!
       if run_safely
         run_ark_manager_broadcast('3s',  'Server is updating/restarting in 30 minutes...',  log_stdout, log_stderr)
         run_ark_manager_broadcast('10m', 'Server is updating/restarting in 20 minutes..',  log_stdout, log_stderr)
@@ -67,8 +67,8 @@ class SchedulerController
       else
         run_ark_manager_update('3s',  log_stdout, log_stderr)
       end
+      $scheduler.in('30m') { File.delete(ARK_UPDATING_LOCK_PATH) }
     end
-
   end
 
   def get_ark_manager_status(instance=@instance)
@@ -86,7 +86,8 @@ class SchedulerController
   end
 
   def get_mod_status
-    Oj.load_file("#{WORKING_DIR}/config/mod_list.json", Hash.new)
+    file = File.read("#{WORKING_DIR}/config/mod_list.json")
+    JSON.parse!(file, symbolize_names: true)
   end
 
   # def get_player_list(instance=@instance)
