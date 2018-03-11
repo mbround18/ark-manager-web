@@ -91,7 +91,8 @@ function clearAndSetServerStatus(){
             if(data['server_online'].match(/yes/i)){
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!')
             } else {
-                if (data.hasOwnProperty('server_running').match(/yes/i)) {
+                // console.log(data['server_running']);
+                if (data.hasOwnProperty('server_running')) {
                     attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...')
                 } else {
                     attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
@@ -132,12 +133,12 @@ function buildAndAttachModList() {
     // $('.server-mod-list').empty();
 
     $('.server-mod-list').empty().append(
-        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
+        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left uk-visible@m">Mod Name</th><th class="uk-text-left uk-visible@m">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
     );
 
     $.getJSON( "/api/mods/status", function( data ) {
-        $.each(data, function (mod_id, mod_info) {
-            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
+        $.each(data, function (dat, mod_info) {
+            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_info['id'] + "'>" + mod_info['id'] + "</td><td class='uk-visible@m'>" + mod_info['name'] + "</td><td class='uk-visible@m'>" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
         });
     });
 
