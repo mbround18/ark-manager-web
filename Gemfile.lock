@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (5.1.4)
+    activesupport (5.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -20,9 +20,9 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     equalizer (0.0.11)
-    et-orbi (1.0.8)
+    et-orbi (1.0.9)
       tzinfo
-    grape (1.0.1)
+    grape (1.0.2)
       activesupport
       builder
       mustermann-grape (~> 1.0.0)
@@ -33,22 +33,22 @@ GEM
       temple (>= 0.8.0)
       tilt
     highline (1.7.10)
-    i18n (0.9.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    kgio (2.11.1)
-    minitest (5.11.1)
-    mustermann (1.0.1)
+    kgio (2.11.2)
+    minitest (5.11.3)
+    mustermann (1.0.2)
     mustermann-grape (1.0.0)
       mustermann (~> 1.0.0)
     oga (2.14)
       ast
       ruby-ll (~> 2.1)
-    oj (3.3.10)
-    rack (2.0.3)
+    oj (3.5.0)
+    rack (2.0.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
-    rack-protection (2.0.0)
+    rack-protection (2.0.1)
       rack
     raindrops (0.19.0)
     rake (12.3.0)
@@ -57,18 +57,18 @@ GEM
       ast
     rufus-scheduler (3.4.2)
       et-orbi (~> 1.0)
-    sinatra (2.0.0)
+    sinatra (2.0.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.0)
+      rack-protection (= 2.0.1)
       tilt (~> 2.0)
     temple (0.8.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
     trollop (2.1.2)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2017.3)
+    tzinfo-data (1.2018.3)
       tzinfo (>= 1.0.0)
     unicorn (5.4.0)
       kgio (~> 2.6)
@@ -92,7 +92,7 @@ DEPENDENCIES
   rack
   rake
   rufus-scheduler
-  sinatra
+  sinatra (>= 2.0.1)
   trollop
   tzinfo-data
   unicorn
