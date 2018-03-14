@@ -1,41 +1,27 @@
 /**
  * Created by mbruno on 2/23/17.
  */
-// window.setInterval(function() {
-//     if ( $('input[name="AutoScrollServerChat"]').is(':checked') ) {
-//         var elem = document.getElementById('ServerChat');
-//         elem.scrollTop = elem.scrollHeight;
-//     }
-// }, 3000);
 
-// var automatic_server_start = $('#automaticStartServer');
-// var mod_update_check_schedule = $('#modUpdateCheckSchedule');
-// var server_update_check_schedule = $('#serverUpdateCheckSchedule');
-
-window.setInterval(function() {
+window.setInterval(function () {
     buildAndAttachModList();
 }, 100000);
 
-window.setInterval(function() {
+window.setInterval(function () {
     clearAndSetServerStatus();
     setSchedulesStateFromCheckboxes();
 }, 10000);
 
-window.onload = function() {
+window.onload = function () {
     getInitialSchedulesCheckboxes();
     clearAndSetServerStatus();
     buildAndAttachModList();
 };
 
-// $(document).ready(getInitialSchedulesCheckboxes());
-// $(document).ready(clearAndSetServerStatus());
-// $(document).ready(buildAndAttachModList());
-
 function getInitialSchedulesCheckboxes() {
     var automatic_server_start = $('#automaticStartServer');
     var mod_update_check_schedule = $('#modUpdateCheckSchedule');
     var server_update_check_schedule = $('#serverUpdateCheckSchedule');
-    $.getJSON( "/api/schedule/states", function( data ) {
+    $.getJSON("/api/schedule/states", function (data) {
         if (data['run_automatic_start'] !== automatic_server_start.is(':checked')) {
             automatic_server_start.prop("checked", data['run_automatic_start']);
         }
@@ -52,13 +38,17 @@ function setSchedulesStateFromCheckboxes() {
     var automatic_server_start = $('#automaticStartServer');
     var mod_update_check_schedule = $('#modUpdateCheckSchedule');
     var server_update_check_schedule = $('#serverUpdateCheckSchedule');
-    $.getJSON( "/api/schedule/states", function( data ) {
+    $.getJSON("/api/schedule/states", function (data) {
         if ((data['mod_update_check_schedule'] !== mod_update_check_schedule.is(':checked')) || (data['server_update_check_schedule'] !== server_update_check_schedule.is(':checked')) || (data['run_automatic_start'] !== automatic_server_start.is(':checked'))) {
             $.ajax({
                 type: "POST",
                 url: "/api/schedule/states",
                 dataType: 'json',
-                data: { "run_automatic_start": automatic_server_start.is(':checked'), "mod_update_check_schedule": mod_update_check_schedule.is(':checked'), "server_update_check_schedule" : server_update_check_schedule.is(':checked')},
+                data: {
+                    "run_automatic_start": automatic_server_start.is(':checked'),
+                    "mod_update_check_schedule": mod_update_check_schedule.is(':checked'),
+                    "server_update_check_schedule": server_update_check_schedule.is(':checked')
+                },
                 success: function () {
                     getInitialSchedulesCheckboxes();
                 }
@@ -69,48 +59,48 @@ function setSchedulesStateFromCheckboxes() {
     })
 }
 
-function clearAndSetServerStatus(){
-    var serverStatusJSON;
-    $.getJSON( "/api/status", function( data ) {
+function clearAndSetServerStatus() {
+    // var serverStatusJSON;
+    $.getJSON("/api/status", function (data) {
+        // console.log(data['running']);
         $(".server-status-info").empty();
-        if(data.hasOwnProperty('server_running')){
-            data['server_running'].match(/yes/i) ?
+        if (data.hasOwnProperty('running')) {
+            data['running'] ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :
                 attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Running!');
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown running state!');
         }
-        if(data.hasOwnProperty('server_listening')){
-            data['server_listening'].match(/yes/i) ?
+        if (data.hasOwnProperty('listening')) {
+            data['listening'] ?
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Listening!') :
                 attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Listening!');
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');
         }
-        if(data.hasOwnProperty('server_online')){
-            if(data['server_online'].match(/yes/i)){
+        if (data.hasOwnProperty('online')) {
+            if (data['online']) {
                 attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!')
             } else {
+                // attachAlertToServerStatus('uk-alert-warning', "Your Server is currently not online! If you've just clicked start it can take up to 10 min to update.");
                 // console.log(data['server_running']);
-                if (data.hasOwnProperty('server_running')) {
-                    attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...')
-                } else {
-                    attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Online!');
-                }
+                data['running'] ?
+                    attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...') :
+                    attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
             }
         } else {
             attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
         }
 
-        if(data.hasOwnProperty('active_players')){
-            $( "#active-players-number" ).text( data['active_players'] );
+        if (data.hasOwnProperty('active_players')) {
+            $("#active-players-number").text(data['active_players']);
         }
 
     });
 }
 
 function attachAlertToServerStatus(ukAlertType, AlertText) {
-    $( ".server-status-info" ).append(
+    $(".server-status-info").append(
         "<div class='uk-alert " + ukAlertType + "'><p>" + AlertText + "</p></div>"
     );
 }
@@ -122,7 +112,7 @@ function buildAndAttachModList() {
         '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
     );
 
-    $.getJSON( "/api/mods/status", function( data ) {
+    $.getJSON("/api/mods/status", function (data) {
         $.each(data, function (mod_id, mod_info) {
             $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
         });
@@ -136,24 +126,28 @@ function buildAndAttachModList() {
         '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left uk-visible@m">Mod Name</th><th class="uk-text-left uk-visible@m">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
     );
 
-    $.getJSON( "/api/mods/status", function( data ) {
+    $.getJSON("/api/mods/status", function (data) {
         $.each(data, function (dat, mod_info) {
+            if (mod_info['version'] === 'TW9kIE5vdCBUcmFja2VkIFlldA==') {
+                mod_info['version'] = 'Not Yet Tracked!'
+            }
+            mod_info['version'] = truncate_string(mod_info['version'], 10, '');
             $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_info['id'] + "'>" + mod_info['id'] + "</td><td class='uk-visible@m'>" + mod_info['name'] + "</td><td class='uk-visible@m'>" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
         });
     });
 
     var rows = $('#serverModList').find('tbody  tr').get();
 
-    rows.sort(function(a, b) {
+    rows.sort(function (a, b) {
 
         var A = $(a).children('td').eq(0).text().toUpperCase();
         var B = $(b).children('td').eq(0).text().toUpperCase();
 
-        if(A < B) {
+        if (A < B) {
             return -1;
         }
 
-        if(A > B) {
+        if (A > B) {
             return 1;
         }
 
@@ -161,7 +155,7 @@ function buildAndAttachModList() {
 
     });
 
-    $.each(rows, function(index, row) {
+    $.each(rows, function (index, row) {
         $('#serverModList').children('tbody').append(row);
     });
 }
@@ -180,16 +174,19 @@ function run_reboot_and_update(data) {
         cancelButtonClass: 'btn btn-danger',
         buttonsStyling: true
     }).then(function () {
-        var dataForRunCMD = {"cmd": $(data).data('cmd'), "run_reboot_and_update_safely":  $('#runUpdateAndRebootSafely').is(':checked')};
+        var dataForRunCMD = {
+            "cmd": $(data).data('cmd'),
+            "run_reboot_and_update_safely": $('#runUpdateAndRebootSafely').is(':checked')
+        };
         $.ajax({
-            url:'/api/run-command',
-            type:'post',
+            url: '/api/run-command',
+            type: 'post',
             dataType: 'json',
             data: dataForRunCMD,
-            success:function(jqxhr){
+            success: function (jqxhr) {
                 swal('', jqxhr, 'success');
             },
-            error:function(jqxhr){
+            error: function (jqxhr) {
                 swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
             }
         });
@@ -220,14 +217,14 @@ function run_command(data) {
         buttonsStyling: true
     }).then(function () {
         $.ajax({
-            url:'/api/run-command',
-            type:'post',
+            url: '/api/run-command',
+            type: 'post',
             dataType: 'json',
             data: {"cmd": $(data).data('cmd')},
-            success:function(jqxhr){
+            success: function (jqxhr) {
                 swal('', jqxhr, 'success');
             },
-            error:function(jqxhr){
+            error: function (jqxhr) {
                 swal('Uhh Ohh!', 'Your instruction was not sent!\n' + jqxhr.responseText, 'error');
             }
         });
@@ -241,3 +238,18 @@ function run_command(data) {
         }
     });
 }
+
+
+function truncate_string(str, length, ending) {
+    if (length == null) {
+        length = 100;
+    }
+    if (ending == null) {
+        ending = '...';
+    }
+    if (str.length > length) {
+        return str.substring(0, length - ending.length) + ending;
+    } else {
+        return str;
+    }
+};

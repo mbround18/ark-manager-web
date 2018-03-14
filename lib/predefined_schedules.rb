@@ -1,7 +1,9 @@
 require 'oga'
 require 'open-uri'
+require 'arkrb/server/mod'
 require_relative '../config/environment'
 require_relative '../api/scheduler_controller'
+
 
 $scheduler.every '1h', first_at: Time.now + 15 do
   config_mod_list = SchedulerController.new.get_mod_status
@@ -12,11 +14,10 @@ $scheduler.every '1h', first_at: Time.now + 15 do
   fs_mod_list.each do |mod_id|
     # config_mod_list.find {|mod| mod[:id] == mod_id}
     if config_mod_list.find {|mod| mod[:id] == mod_id}.nil?
-      document = Oga.parse_html(open('https://steamcommunity.com/sharedfiles/filedetails/changelog/731604991'))
-      name = document.at_css('div[class="workshopItemTitle"]').text
+      mod_info = Arkrb::Mod.new(mod_id)
       modified_config_mod_list << {
           id: mod_id,
-          name: name,
+          name: mod_info.name,
           version: Base64.encode64('Mod Not Tracked Yet').gsub!(/\n/, ''),
           last_updated: Time.now.utc.strftime('%m%d%Y%H%M%S')
       }
@@ -33,14 +34,13 @@ $scheduler.every '15m', first_at: Time.now + 15 do
     ark_mod_list.each do |mod|
       last_updated = mod.fetch(:version)
       $logger.info("Checking mod: #{mod[:id]}")
-      document = Oga.parse_html(open('https://steamcommunity.com/sharedfiles/filedetails/changelog/731604991'))
-      name = document.at_css('div[class="workshopItemTitle"]').text
-      version = document.at_css('div[class~="workshopAnnouncement"]:nth-child(3) > div[class="headline"]').text.strip
-      latest_update = Base64.encode64(version).strip
+      mod_info = Arkrb::Mod.new(mod[:id])
+
+      latest_update = Base64.encode64(mod_info.version_tag).strip
       if last_updated != latest_update
         $logger.warn("Mod version mismatch!!: #{last_updated} != #{latest_update}")
         mods_that_need_updates << {mod_id: mod[:id], latest_update: latest_update}
-        mod[:name] = name
+        mod[:name] = mod_info.name
         mod[:version] = latest_update
         mod[:last_updated] = Time.now.utc.strftime('%m-%d-%Y %H:%M:%S')
       else
@@ -60,19 +60,15 @@ end
 
 $scheduler.every '15m' do
   if $dalli_cache.get('server_update_check_schedule')
-    status_info = SchedulerController.new.get_ark_manager_status
-    if status_info[:server_build_id] != status_info[:available_version]
-      SchedulerController.new.run_ark_manager_updates
-    end
+    ark_server = SchedulerController.new
+    ark_server.run_ark_manager_updates if ark_server.ark_server.update_available?[:update_available]
   end
 end
 
 
 $scheduler.every '15m', first_at: Time.now + 5 do
   if $dalli_cache.get('run_automatic_start')
-    status_info = SchedulerController.new.get_ark_manager_status
-    if status_info.fetch(:server_running, 'no') == 'no'
-      SchedulerController.new.run_ark_manager_start_server
-    end
+    ark_server = SchedulerController.new.ark_server
+    ark_server.start! unless ark_server.status!.fetch(:running, false)
   end
 end

@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '2.3.6'
 
 gem 'sinatra', '>= 2.0.1'
+gem 'arkrb', '~> 0.6.0'
 gem 'unicorn'
 gem 'grape'
 gem 'rack'

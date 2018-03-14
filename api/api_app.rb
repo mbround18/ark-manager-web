@@ -39,10 +39,6 @@ class ApiApp < Grape::API
           else
             'The server has been stopped! The web page may take a few minutes before that status is updated.'
           end
-        # when params[:cmd] == ''
-        # when params[:cmd] == ''
-        # when params[:cmd] == ''
-        # when params[:cmd] == ''
         else
           error!('401 Unauthorized', 401)
       end
