@@ -116,8 +116,9 @@ class SchedulerController
 
   def install_mod(id)
     mod_list.add_mod(id)
-    ark_server.enable_mod(id)
     ark_server.install_mod(id)
+    ark_server.enable_mod(id)
+    mod_list.save_file
     $dalli_cache.set('reboot_required', true)
     true
   rescue => e

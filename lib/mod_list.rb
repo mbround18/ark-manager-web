@@ -17,8 +17,9 @@ class ModList
   end
 
   def add_mod(mod_id)
-    mod_info = mod_model(mod_id)
-    mod_info.version_tag = Base64.encode64('Mod Not Tracked Yet').gsub!(/\n/, '')
+    mod_info = mod_model(mod_id).to_h
+    # mod_info[:version_tag] = Base64.encode64('Mod Not Tracked Yet').gsub!(/\n/, '')
+    mod_info[:last_updated] = Time.now.utc.strftime('%m-%d-%Y %H:%M:%S')
     @mods << mod_info
     refresh
   end
