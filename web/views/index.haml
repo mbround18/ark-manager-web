@@ -18,10 +18,13 @@
     .uk-container.uk-container-center.uk-margin-top.uk-margin-large-bottom
       %h1.uk-heading-divider{:style => "padding-top: 1em;"} Ark Server Manager
       .uk-grid.uk-grid-small{"uk-grid" => "", "uk-grid-margin" => ""}
-        = haml :server_actions
+        -#= haml :server_actions
+        = File.read(File.join('public', 'html', 'server_actions.html'))
         = File.read(File.join('public', 'html', 'server_status.html'))
         -#= haml :server_status
-        = haml :server_schedules
+        -#= haml :server_schedules
+        = File.read(File.join('public', 'html', 'schedule_states.html'))
+        = File.read(File.join('public', 'html', 'player_list.html'))
         = File.read(File.join('public', 'html', 'mod_list.html'))
         -#= haml :mod_list
   %footer

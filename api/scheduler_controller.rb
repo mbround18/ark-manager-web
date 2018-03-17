@@ -70,7 +70,9 @@ class SchedulerController
           ark_server.broadcast('Server is updating/restarting in 30 minutes...')
         rescue Arkrb::Error::ServerOffline
           File.delete(ARK_UPDATING_LOCK_PATH)
-          $logger.error('The server appears to be offline! Running updates outside of scheduler')
+          $logger.warn('The server appears to be offline! Running updates outside of scheduler')
+          $dalli_cache.set('reboot_required', false)
+          ark_server.stop!
           return ark_server.update!(true)
         end
         run_ark_manager_broadcast('3s', 'Server is updating/restarting in 30 minutes...')
@@ -82,13 +84,18 @@ class SchedulerController
         run_ark_manager_broadcast('28m', 'Server is updating/restarting in 2 minutes!!!!')
         run_ark_manager_broadcast('29m', 'Server is updating/restarting in 1 minutes!!!!!')
         run_ark_manager_update('30m')
+        $scheduler.in('30m') {
+          File.delete(ARK_UPDATING_LOCK_PATH)
+          $dalli_cache.set('reboot_required', false)
+        }
       else
-        run_ark_manager_update('3s')
+        $scheduler.in('3s') {
+          $dalli_cache.set('reboot_required', false)
+          ark_server.stop! rescue Arkrb::Error::ServerAlreadyStopped
+          ark_server.update!(true)
+          File.delete(ARK_UPDATING_LOCK_PATH)
+        }
       end
-      $scheduler.in('30m') {
-        File.delete(ARK_UPDATING_LOCK_PATH)
-        $dalli_cache.set('reboot_required', false)
-      }
     end
   end
 
@@ -101,7 +108,7 @@ class SchedulerController
   end
 
   def get_mod_status
-    mod_list.mod_list
+    mod_list.mods
     # ModList.new.load_file
     # file = File.read("#{WORKING_DIR}/config/mod_list.json")
     # JSON.parse!(file, symbolize_names: true)
@@ -111,6 +118,7 @@ class SchedulerController
     mod_list.add_mod(id)
     ark_server.enable_mod(id)
     ark_server.install_mod(id)
+    $dalli_cache.set('reboot_required', true)
     true
   rescue => e
     e
