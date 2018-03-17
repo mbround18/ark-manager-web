@@ -2,10 +2,13 @@
 
 ## Disclaimer
 
-This software is provided to you without any authentication or access based security
+1) This project is designed for single instances in mind. If you are looking for a multi-instance/clustered ark server experience 
+with a managed interface the new project called ark-overseer is under development.
+
+2) This software is provided to you without any authentication or access based security
 it is up to you the user to install or develop your own security methods and best practices.
 
-There may be future effort for security on this code base but only if its in popular demand.
+3) There may be future effort for security on this code base but only if its in popular demand.
 
 ##### Migrating from version 1.x.x to 2.x.x
 

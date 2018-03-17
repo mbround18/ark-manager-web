@@ -1,0 +1,23 @@
+<div class="uk-width-1-3@m">
+    <div class="uk-card uk-card-default uk-card-body uk-text-center uk-height-large" ng-controller="serverActions">
+        <h3 class="uk-heading-divider">Server Actions </h3>
+        <div class="uk-flex uk-flex-column ">
+            <button class="uk-button uk-button-large uk-button-primary" ng-click="startServer()">Start</button>
+            <button class="uk-button uk-button-large uk-button-danger uk-margin-small-top" ng-click="stopServer()">
+                Stop
+            </button>
+            <button class="uk-button uk-button-large uk-button-secondary uk-margin-small-top"
+                    style="background-color: gray" ng-click="restartServer()">Restart
+            </button>
+            <button class="uk-button uk-button-large uk-button-secondary uk-margin-small-top"
+                    ng-click="upgradeServer()">Upgrade
+            </button>
+            <hr>
+            <div class="uk-align-right">
+                <label for="runUpdateAndRebootSafely">Safe Update and Restart:</label>
+                <input type="checkbox" name="safely" ng-model="safely" id="runUpdateAndRebootSafely" class="uk-checkbox" ng-checked="{{ safely }}">
+            </div>
+
+        </div>
+    </div>
+</div>

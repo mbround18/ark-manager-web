@@ -1,0 +1,65 @@
+<!--%div{:class => "uk-width-1-3@m"}-->
+<!--.uk-card.uk-card-default.uk-card-body.uk-text-center.uk-height-large-->
+<!--%h3.uk-heading-divider Server Status-->
+<!--%div.server-status-info-->
+<!--.uk-alert.uk-alert-warning-->
+<!--%p The Status for your server will be loaded shortly.-->
+
+<div class="uk-width-1-3@m" ng-controller="serverStatus">
+    <div class="uk-card uk-card-default uk-card-body uk-text-center uk-height-large">
+        <h3 class="uk-heading-divider">Server Status</h3>
+        <div id="server_running">
+            <div ng-if="status_info.running" class="uk-alert uk-alert-success">
+                Your Server is currently: Running!
+            </div>
+
+            <div ng-if="!status_info.running" class="uk-alert uk-alert-warning">
+                Your Server is currently: Not Running!
+            </div>
+        </div>
+        <div id="server_listening">
+            <div ng-if="status_info.listening" class="uk-alert uk-alert-success">
+                Your Server is currently: Listening!
+            </div>
+
+            <div ng-if="!status_info.listening" class="uk-alert uk-alert-warning">
+                Your Server is currently: Not Listening!
+            </div>
+        </div>
+        <div id="server_online">
+            <div ng-if="status_info.online" class="uk-alert uk-alert-success">
+                Your Server is currently: Online!
+            </div>
+            <div ng-if="status_info.running && !status_info.online" class="uk-alert uk-alert-warning">
+                Your Server is currently in a boot process! Please Wait... (This can take up to 10 min.)
+            </div>
+            <div ng-if="!status_info.running" class="uk-alert uk-alert-danger">
+                The server is completely offline maybe try clicking start?
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--data['running'] ?-->
+<!--attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :-->
+<!--attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Running!');-->
+<!--} else {-->
+<!--attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown running state!');-->
+<!--}-->
+<!--if (data.hasOwnProperty('listening')) {-->
+<!--data['listening'] ?-->
+<!--attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Listening!') :-->
+<!--attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Listening!');-->
+<!--} else {-->
+<!--attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');-->
+<!--}-->
+<!--if (data.hasOwnProperty('online')) {-->
+<!--if (data['online']) {-->
+<!--attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!')-->
+<!--} else {-->
+<!--// attachAlertToServerStatus('uk-alert-warning', "Your Server is currently not online! If you've just clicked start it can take up to 10 min to update.");-->
+<!--// console.log(data['server_running']);-->
+<!--data['running'] ?-->
+<!--attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...') :-->
+<!--attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');-->
