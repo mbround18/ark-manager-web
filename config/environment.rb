@@ -69,10 +69,16 @@ if File.exist?(scheduler_json_path)
   json = JSON.parse!(file)
   json.each_pair {|key, value| $dalli_cache.set(key, value)}
 else
-  $dalli_cache.set('run_automatic_start', true)
+  $dalli_cache.set('automated_start', true)
   $dalli_cache.set('mod_update_check_schedule', true)
   $dalli_cache.set('server_update_check_schedule', true)
-  File.write("#{WORKING_DIR}/config/schedules.json", "{\n\t\"run_automatic_start\": true,\n\t\"mod_update_check_schedule\": true,\n\t\"server_update_check_schedule\": true\n}")
+  states = {
+      automated_start: true,
+      mod_update_check_schedule: true,
+      server_update_check_schedule: true
+  }
+
+  File.write("#{WORKING_DIR}/config/schedules.json", states.to_json)
 end
 
 unless File.exist?("#{WORKING_DIR}/config/mod_list.json")
