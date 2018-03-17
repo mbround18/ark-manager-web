@@ -6,6 +6,15 @@ class ApiApp < Grape::API
   format :json
   prefix :api
 
+  helpers do
+
+    # @return [SchedulerController]
+    def scheduler_controller
+      @scheduler_controller ||= SchedulerController.new
+    end
+
+  end
+
   get 'get-server-info' do
     {
         'server_ip_address': SERVER_IP_ADDRESS
@@ -13,7 +22,7 @@ class ApiApp < Grape::API
   end
 
   get 'mods/status' do
-    SchedulerController.new.get_mod_status
+    scheduler_controller.get_mod_status
   end
 
   post 'run-command' do
@@ -23,22 +32,25 @@ class ApiApp < Grape::API
     if post_request.has_key? :cmd
       case
         when post_request[:cmd] == 'run_reboot_and_update'
-          SchedulerController.new.run_ark_manager_updates((post_request[:run_reboot_and_update_safely] == 'true'))
+          scheduler_controller.run_ark_manager_updates((post_request[:run_reboot_and_update_safely] == 'true'))
           if post_request[:run_reboot_and_update_safely] == 'true'
             'The server has been restarted! The server was restarted in safemode which means it will restart in about 40 minutes. It will broadcast periodically for 30 minutes then run the reboot command which takes roughly 10 minutes to come online.'
           else
             'The server has been restarted! The server was not restarted safely which means it will be rebooted immediately this process however can take up to 10 minutes to start, so the web page wont update until the servers status changes.'
           end
         when post_request[:cmd] == 'start_server'
-          SchedulerController.new.run_ark_manager_start_server
+          scheduler_controller.run_ark_manager_start_server
           'The server has been started! The server can take up to 10 minutes to start, so the web page wont update until the servers status changes.'
         when post_request[:cmd] == 'stop_server'
-          SchedulerController.new.run_ark_manager_stop_server
+          scheduler_controller.run_ark_manager_stop_server
           if $dalli_cache.get('run_automatic_start')
             "The server has been stopped! The web page may take a few minutes before that status is updated. Also because you have automatic start checked a schedule will start the server again. Please disable the automatic start if you'd like to keep the server offline."
           else
             'The server has been stopped! The web page may take a few minutes before that status is updated.'
           end
+        when post_request[:cmd] == 'broadcast'
+        when post_request[:cmd] == 'save_world'
+        when post_request[:cmd] == 'backup'
         else
           error!('401 Unauthorized', 401)
       end
@@ -48,7 +60,7 @@ class ApiApp < Grape::API
   end
 
   get :status do
-    SchedulerController.new.get_ark_manager_status
+    scheduler_controller.get_ark_manager_status
   end
 
   get 'schedule/states' do
@@ -78,7 +90,15 @@ class ApiApp < Grape::API
     'success'
   end
 
-  get 'players/list' do
+  get 'player/list' do
+    begin
+      scheduler_controller.get_player_list
+    rescue Arkrb::Error::ServerOffline
+      {
+          status: 'failure',
+          message: 'Server Offline!'
+      }
+    end
 
   end
 

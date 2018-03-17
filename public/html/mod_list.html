@@ -1,0 +1,37 @@
+<div class='uk-width-2-3@m'>
+    <div ng-controller="modList" class="uk-card uk-card-default uk-height-large uk-card-body uk-text-center"
+         style="height: 40em;">
+        <h3 class="uk-heading-divider">Mod List</h3>
+        <div class="server-mod-list uk-text-center uk-overflow-auto uk-panel-scrollable uk-height-large">
+            <table class="uk-table uk-table-striped uk-table-small">
+                <thead>
+                <tr>
+                    <th class="uk-text-left">Mod ID</th>
+                    <th class="uk-text-left uk-visible@m">Mod Name</th>
+                    <th class="uk-text-left uk-visible@m">Mod Version</th>
+                    <th class="uk-text-left">Last Updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!--mod in mods-->
+                <!--<tr class='uk-text-left' ng-repeat="let mod in mods">-->
+                <tr class='uk-text-left' ng-repeat="mod in mods">
+                    <td>
+                        <a ng-if="mod.id != 0000000" target='_blank' [href]="'https://steamcommunity.com/sharedfiles/filedetails/?id=' + mod.id">
+                            {{ mod.id }}
+                        </a>
+                        <p ng-if="mod.id == 0000000">
+                            {{ mod.id }}
+                        </p>
+                    </td>
+                    <td class='uk-visible@m'>{{ mod.name }}</td>
+                    <td ng-if="mod.version == 'TW9kIE5vdCBUcmFja2VkIFlldA=='">Not Yet Tracked</td>
+                    <td class='uk-visible@m' ng-if="mod.version != 'TW9kIE5vdCBUcmFja2VkIFlldA=='">{{ mod.version | limitTo:10 }}</td>
+                    <td>{{ mod.last_updated }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -2,19 +2,19 @@
  * Created by mbruno on 2/23/17.
  */
 
-window.setInterval(function () {
-    buildAndAttachModList();
-}, 100000);
+// window.setInterval(function () {
+    // buildAndAttachModList();
+// }, 100000);
 
 window.setInterval(function () {
-    clearAndSetServerStatus();
+    // clearAndSetServerStatus();
     setSchedulesStateFromCheckboxes();
 }, 10000);
 
 window.onload = function () {
     getInitialSchedulesCheckboxes();
-    clearAndSetServerStatus();
-    buildAndAttachModList();
+    // clearAndSetServerStatus();
+    // buildAndAttachModList();
 };
 
 function getInitialSchedulesCheckboxes() {
@@ -57,107 +57,6 @@ function setSchedulesStateFromCheckboxes() {
             // $.post( "/api/schedule/states", { mod_update_check_schedule: mod_update_check_schedule.is(':checked'), server_update_check_schedule: server_update_check_schedule.is(':checked') } );
         }
     })
-}
-
-function clearAndSetServerStatus() {
-    // var serverStatusJSON;
-    $.getJSON("/api/status", function (data) {
-        // console.log(data['running']);
-        $(".server-status-info").empty();
-        if (data.hasOwnProperty('running')) {
-            data['running'] ?
-                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Running!') :
-                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Running!');
-        } else {
-            attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown running state!');
-        }
-        if (data.hasOwnProperty('listening')) {
-            data['listening'] ?
-                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Listening!') :
-                attachAlertToServerStatus('uk-alert-danger', 'Your Server is currently: Not Listening!');
-        } else {
-            attachAlertToServerStatus('uk-alert-warning', 'The Sever is in an unknown listening state!');
-        }
-        if (data.hasOwnProperty('online')) {
-            if (data['online']) {
-                attachAlertToServerStatus('uk-alert-success', 'Your Server is currently: Online!')
-            } else {
-                // attachAlertToServerStatus('uk-alert-warning', "Your Server is currently not online! If you've just clicked start it can take up to 10 min to update.");
-                // console.log(data['server_running']);
-                data['running'] ?
-                    attachAlertToServerStatus('uk-alert-warning', 'Your Server is currently in a boot process! Please Wait...') :
-                    attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
-            }
-        } else {
-            attachAlertToServerStatus('uk-alert-warning', 'The server is completely offline maybe try clicking start?');
-        }
-
-        if (data.hasOwnProperty('active_players')) {
-            $("#active-players-number").text(data['active_players']);
-        }
-
-    });
-}
-
-function attachAlertToServerStatus(ukAlertType, AlertText) {
-    $(".server-status-info").append(
-        "<div class='uk-alert " + ukAlertType + "'><p>" + AlertText + "</p></div>"
-    );
-}
-
-function buildAndAttachModList() {
-    // $('.server-mod-list').empty();
-
-    $('.server-mod-list').empty().append(
-        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
-    );
-
-    $.getJSON("/api/mods/status", function (data) {
-        $.each(data, function (mod_id, mod_info) {
-            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_id + "'>" + mod_id + "</td><td >" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
-        });
-    })
-}
-
-function buildAndAttachModList() {
-    // $('.server-mod-list').empty();
-
-    $('.server-mod-list').empty().append(
-        '<table id="serverModList" class="uk-table uk-table-striped uk-table-small"><thead><tr><th class="uk-text-left">Mod ID</th><th class="uk-text-left uk-visible@m">Mod Name</th><th class="uk-text-left uk-visible@m">Mod Version</th><th class="uk-text-left">Last Updated</th></tr></thead><tbody></tbody></table>'
-    );
-
-    $.getJSON("/api/mods/status", function (data) {
-        $.each(data, function (dat, mod_info) {
-            if (mod_info['version'] === 'TW9kIE5vdCBUcmFja2VkIFlldA==') {
-                mod_info['version'] = 'Not Yet Tracked!'
-            }
-            mod_info['version'] = truncate_string(mod_info['version'], 10, '');
-            $('#serverModList').find("tbody").append("<tr class='uk-text-left'><td ><a target='_blank' href='https://steamcommunity.com/sharedfiles/filedetails/?id=" + mod_info['id'] + "'>" + mod_info['id'] + "</td><td class='uk-visible@m'>" + mod_info['name'] + "</td><td class='uk-visible@m'>" + mod_info['version'] + "</td><td>" + mod_info['last_updated'] + "</td></tr>");
-        });
-    });
-
-    var rows = $('#serverModList').find('tbody  tr').get();
-
-    rows.sort(function (a, b) {
-
-        var A = $(a).children('td').eq(0).text().toUpperCase();
-        var B = $(b).children('td').eq(0).text().toUpperCase();
-
-        if (A < B) {
-            return -1;
-        }
-
-        if (A > B) {
-            return 1;
-        }
-
-        return 0;
-
-    });
-
-    $.each(rows, function (index, row) {
-        $('#serverModList').children('tbody').append(row);
-    });
 }
 
 function run_reboot_and_update(data) {
@@ -240,16 +139,69 @@ function run_command(data) {
 }
 
 
-function truncate_string(str, length, ending) {
-    if (length == null) {
-        length = 100;
+// function truncate_string(str, length, ending) {
+//     if (length == null) {
+//         length = 100;
+//     }
+//     if (ending == null) {
+//         ending = '...';
+//     }
+//     if (str.length > length) {
+//         return str.substring(0, length - ending.length) + ending;
+//     } else {
+//         return str;
+//     }
+// };
+//
+
+
+var app = angular.module('arkManagerWeb', []);
+
+app.controller('serverStatus', function ($scope, $interval, $http) {
+    function loadServerStatus() {
+        $http({
+            method: "GET",
+            url: "/api/status"
+        }).then(function mySuccess(response) {
+            console.log(response.data);
+            $scope.status_info = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+        });
     }
-    if (ending == null) {
-        ending = '...';
+
+    loadServerStatus();
+
+    $interval(function () {
+        loadServerStatus();
+    }, 5000);
+});
+
+app.controller('modList', function ($scope, $interval, $http) {
+    function loadModList() {
+        $http({
+            method: "GET",
+            url: "/api/mods/status"
+        }).then(function mySuccess(response) {
+            $scope.mods = response.data;
+        }, function myError(response) {
+            console.log(response.statusText);
+            // $scope.myWelcome = response.statusText;
+        });
     }
-    if (str.length > length) {
-        return str.substring(0, length - ending.length) + ending;
-    } else {
-        return str;
-    }
-};
+
+    $scope.mods = [{
+        id: '0000000',
+        name: 'Loading...',
+        version: 'Loading...',
+        last_updated: 'Loading...'
+    }];
+
+    // Load mods initially
+    loadModList();
+
+    $interval(function () {
+        loadModList()
+    }, 5000);
+
+});
