@@ -10,7 +10,7 @@ it is up to you the user to install or develop your own security methods and bes
 
 3) There may be future effort for security on this code base but only if its in popular demand.
 
-##### Migrating from version 1.x.x to 2.x.x
+##### Migrating from version 1.x.x to 2.x.x or 2.x.x to 3.x.x
 
 If you happen to be migrating from 1.x.x to 2.x.x you will need to perform the following:
 

@@ -191,6 +191,7 @@ app.controller('modList', function ($scope, $interval, $http) {
     }, 50000);
 
     $scope.installMod = function () {
+        UIkit.notification({message: 'Mod installation in progress.. It may take a minute...', status: 'primary'});
         $http({
             method: "POST",
             url: "/api/mods/install",
