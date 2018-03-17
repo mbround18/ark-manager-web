@@ -1,6 +1,7 @@
 require 'json'
 require 'grape'
 require_relative 'scheduler_controller'
+require_relative '../lib/mod_list'
 class ApiApp < Grape::API
   version 'v1', using: :header, vendor: 'gdz'
   format :json
@@ -21,8 +22,22 @@ class ApiApp < Grape::API
     }
   end
 
-  get 'mods/status' do
-    scheduler_controller.get_mod_status
+  resource :mods do
+
+    desc 'Return the current mods.'
+    get :status do
+      scheduler_controller.get_mod_status
+    end
+
+    desc 'Installs a mod'
+    params do
+      requires :id, type: Integer, desc: 'Mod Id'
+    end
+    post :install do
+      scheduler_controller.install_mod(params[:id])
+      $dalli_cache.set('reboot_required', true)
+      {status: 'success', message: "Success installing #{params[:id]}! Note with Mod Schedule enabled the server will schedule an automatic reboot in 30-45min. If you have it disabled you will have to manually reboot for the mod to fully be installed."}
+    end
   end
 
   post 'run-command' do
@@ -67,7 +82,8 @@ class ApiApp < Grape::API
     {
         run_automatic_start: $dalli_cache.get('run_automatic_start'),
         mod_update_check_schedule: $dalli_cache.get('mod_update_check_schedule'),
-        server_update_check_schedule: $dalli_cache.get('server_update_check_schedule')
+        server_update_check_schedule: $dalli_cache.get('server_update_check_schedule'),
+        reboot_required: $dalli_cache.get('reboot_required')
     }
   end
 

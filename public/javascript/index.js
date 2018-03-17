@@ -3,7 +3,7 @@
  */
 
 // window.setInterval(function () {
-    // buildAndAttachModList();
+// buildAndAttachModList();
 // }, 100000);
 
 window.setInterval(function () {
@@ -139,22 +139,6 @@ function run_command(data) {
 }
 
 
-// function truncate_string(str, length, ending) {
-//     if (length == null) {
-//         length = 100;
-//     }
-//     if (ending == null) {
-//         ending = '...';
-//     }
-//     if (str.length > length) {
-//         return str.substring(0, length - ending.length) + ending;
-//     } else {
-//         return str;
-//     }
-// };
-//
-
-
 var app = angular.module('arkManagerWeb', []);
 
 app.controller('serverStatus', function ($scope, $interval, $http) {
@@ -163,7 +147,6 @@ app.controller('serverStatus', function ($scope, $interval, $http) {
             method: "GET",
             url: "/api/status"
         }).then(function mySuccess(response) {
-            console.log(response.data);
             $scope.status_info = response.data;
         }, function myError(response) {
             console.log(response.statusText);
@@ -204,4 +187,50 @@ app.controller('modList', function ($scope, $interval, $http) {
         loadModList()
     }, 5000);
 
+    $scope.installMod = function() {
+        $http({
+            method: "POST",
+            url: "/api/mods/install",
+            data: { id: $scope.mod_id }
+        }).then(function mySuccess(response) {
+            swal('', response.data.message, response.data.status);
+        }, function myError(response) {
+            console.log(response.statusText);
+            // $scope.myWelcome = response.statusText;
+        });
+    }
+
+
+
 });
+
+
+app.directive('numbersOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModelCtrl) {
+            function fromUser(text) {
+                if (text) {
+                    var transformedInput = text.replace(/[^0-9]/g, '');
+
+                    if (transformedInput !== text) {
+                        ngModelCtrl.$setViewValue(transformedInput);
+                        ngModelCtrl.$render();
+                    }
+                    return transformedInput;
+                }
+                return undefined;
+            }
+            ngModelCtrl.$parsers.push(fromUser);
+        }
+    };
+});
+
+// app.directive('numberMask', function () {
+//     return {
+//         restrict: 'A',
+//         link: function (scope, element, attrs) {
+//             $(element).numeric();
+//         }
+//     }
+// });

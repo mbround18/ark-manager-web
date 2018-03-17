@@ -11,6 +11,10 @@ class SchedulerController
     @ark_server ||= Arkrb::Server.new(@instance)
   end
 
+  def mod_list
+    @mod_list ||= ModList.new
+  end
+
   # @deprecated
   def run_system_command(instance, command, std_out, std_err, detach_from_process = true)
     pid = spawn("#{ARK_MANAGER_CLI} #{command} @#{instance}", out: std_out, err: std_err)
@@ -37,6 +41,7 @@ class SchedulerController
     $scheduler.in delay do
       $logger.warn("The server has been started at: #{Time.now.utc.strftime('%m%d%Y%H%M%S')}")
       # run_system_command(@instance, 'start', log_stdout, log_stderr)
+      $dalli_cache.set('reboot_required', false) unless ark_server.status![:running]
       ark_server.start!
     end
   end
@@ -80,7 +85,10 @@ class SchedulerController
       else
         run_ark_manager_update('3s')
       end
-      $scheduler.in('30m') {File.delete(ARK_UPDATING_LOCK_PATH)}
+      $scheduler.in('30m') {
+        File.delete(ARK_UPDATING_LOCK_PATH)
+        $dalli_cache.set('reboot_required', false)
+      }
     end
   end
 
@@ -93,8 +101,19 @@ class SchedulerController
   end
 
   def get_mod_status
-    file = File.read("#{WORKING_DIR}/config/mod_list.json")
-    JSON.parse!(file, symbolize_names: true)
+    mod_list.mod_list
+    # ModList.new.load_file
+    # file = File.read("#{WORKING_DIR}/config/mod_list.json")
+    # JSON.parse!(file, symbolize_names: true)
+  end
+
+  def install_mod(id)
+    mod_list.add_mod(id)
+    ark_server.enable_mod(id)
+    ark_server.install_mod(id)
+    true
+  rescue => e
+    e
   end
 
   # def get_player_list(instance=@instance)
