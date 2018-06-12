@@ -51,10 +51,10 @@ GEM
       ast
       ruby-ll (~> 2.1)
     oj (3.5.0)
-    rack (2.0.4)
+    rack (2.0.5)
     rack-accept (0.4.5)
       rack (>= 0.4)
-    rack-protection (2.0.1)
+    rack-protection (2.0.3)
       rack
     raindrops (0.19.0)
     rake (12.3.0)
@@ -63,10 +63,10 @@ GEM
       ast
     rufus-scheduler (3.4.2)
       et-orbi (~> 1.0)
-    sinatra (2.0.1)
+    sinatra (2.0.3)
       mustermann (~> 1.0)
       rack (~> 2.0)
-      rack-protection (= 2.0.1)
+      rack-protection (= 2.0.3)
       tilt (~> 2.0)
     temple (0.8.0)
     thor (0.20.0)
@@ -101,7 +101,7 @@ DEPENDENCIES
   rack
   rake
   rufus-scheduler
-  sinatra (>= 2.0.1)
+  sinatra (>= 2.0.2)
   trollop
   tzinfo-data
   unicorn
