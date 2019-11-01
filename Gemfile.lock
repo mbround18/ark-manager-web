@@ -85,7 +85,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    yard (0.9.12)
+    yard (0.9.20)
 
 PLATFORMS
   ruby
@@ -93,4 +93,15 @@ PLATFORMS
 DEPENDENCIES
   arkrb (~> 0.6.0)
   dalli
-  grape...
+  grape (>= 1.1.0)
+  haml
+  highline
+  oga
+  oj
+  rack
+  rake
+  rufus-scheduler
+  sinatra (>= 2.0.2)
+  trollop
+  tzinfo-data
+  unicorn
