@@ -2,7 +2,7 @@ require 'oga'
 require 'open-uri'
 require 'arkrb/server/mod'
 require_relative '../config/environment'
-require_relative '../api/scheduler_controller'
+require_relative '../agent/scheduler_controller'
 require_relative 'mod_list'
 
 $scheduler.every '1h', first_at: Time.now + 15 do

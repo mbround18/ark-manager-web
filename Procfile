@@ -1,1 +1,2 @@
-interface: bundle exec unicorn -c ./config/unicorn.rb --env production -D
+frontend: bundle exec ruby foreman/frontend.rb
+backend: bundle exec ruby foreman/backend.rb

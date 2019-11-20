@@ -1,20 +1,31 @@
 # frozen_string_literal: true
+
+require 'rubygems'
+
 source 'https://rubygems.org'
 
-# gem "rails"
-ruby '2.3.6'
+group :develop do
+  agent_gemfile = './agent/Gemfile'
+  if File.exists?(agent_gemfile) then
+    eval File.read(agent_gemfile), nil, agent_gemfile
+  end
+end
 
-gem 'sinatra', '>= 2.0.1'
-gem 'arkrb', '~> 0.6.0'
-gem 'unicorn'
+gem 'eventmachine', platform: 'ruby'
+
+gem 'sinatra'
+gem 'puma'
 gem 'grape'
 gem 'rack'
-gem 'haml'
-gem 'rufus-scheduler'
-gem 'dalli'
 gem 'rake'
 gem 'oj'
-gem 'trollop'
 gem 'tzinfo-data'
 gem 'highline'
 gem 'oga'
+gem 'mime-types', require: 'mime/types/full'
+gem 'rdiscount'
+gem 'foreman'
+gem 'dotenv'
+gem 'rack-cors'
+gem 'faye-websocket'
+gem 'redis'

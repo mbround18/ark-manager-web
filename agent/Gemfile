@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+
+require 'rubygems'
+
+source 'https://rubygems.org'
+
+gem 'rufus-scheduler'
+gem 'dalli'

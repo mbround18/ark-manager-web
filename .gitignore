@@ -10,6 +10,10 @@ tmp/*
 /config/mod_list*
 /config/schedules*
 /config/env_config*
+dist/
+.cache/
+node_modules/
+.env*
 
 
 
@@ -148,3 +152,4 @@ fabric.properties
 *.box
 
 # End of https://www.gitignore.io/api/ruby,linux,vagrant,rubymine+all
+
