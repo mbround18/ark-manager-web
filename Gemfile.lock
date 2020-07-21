@@ -51,7 +51,7 @@ GEM
       ast
       ruby-ll (~> 2.1)
     oj (3.5.0)
-    rack (2.0.5)
+    rack (2.1.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-protection (2.0.3)
@@ -93,4 +93,15 @@ PLATFORMS
 DEPENDENCIES
   arkrb (~> 0.6.0)
   dalli
-  grape...
+  grape (>= 1.1.0)
+  haml
+  highline
+  oga
+  oj
+  rack
+  rake
+  rufus-scheduler
+  sinatra (>= 2.0.2)
+  trollop
+  tzinfo-data
+  unicorn
