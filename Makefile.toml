@@ -1,0 +1,21 @@
+[tasks.format]
+workspace = false
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+
+[tasks.yew-serve]
+workspace = false
+command = "trunk"
+args = ["watch", "./client/index.html", "--dist", "./dist"]
+
+[tasks.rocket-serve]
+workspace = false
+command = "cargo"
+args = ["run"]
+
+
+[tasks.serve]
+workspace = false
+run_task = { name = ["yew-serve", "rocket-serve"], parallel = true }

@@ -1,1 +1,0 @@
-interface: bundle exec unicorn -c ./config/unicorn.rb --env production -D

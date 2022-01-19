@@ -1,0 +1,12 @@
+services:
+  server:
+    build: .
+    image: docker.io/mbround18/ark-manager-web:latest
+    volumes:
+      - "./tmp/game:/home/steam/ARK"
+      - "./tmp/steam:/home/steam/steamcmd"
+    ports:
+      - "8080:8080"
+      - "27016:27016"
+      - "7778:7778"
+      - "32330:32330"

@@ -1,0 +1,10 @@
+[tasks.build]
+install_crate = "trunk"
+command = "trunk"
+args = ["build", "./index.html", "--dist", "../dist"]
+
+
+[tasks.release]
+install_crate = "trunk"
+command = "trunk"
+args = ["build", "--release", "--dist", "../dist"]
