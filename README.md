@@ -6,6 +6,9 @@
 
 This project is in progress for a major rewrite. I am working toward making the upgrade be backwards compatible but it is a complete overhaul of the frontend, backend, and a new component that will be introduced called agent. The rewrites focus is on replicatability and scalability with the concept of simplicity being a key piece. 
 
+Please see https://github.com/mbround18/ark-manager-web/issues/43 for rewrite updates. 
+
+
 ---
 
 
