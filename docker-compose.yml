@@ -1,7 +1,16 @@
 services:
-  server:
+  client:
+    build:
+      dockerfile: ./Dockerfile.client
+      context: .
+    image: registry.hub.docker.com/mbround18/ark-manager-client:latest
+    entrypoint: ["/bin/sh"]
+
+  instance:
     build: .
-    image: docker.io/mbround18/ark-manager-web:latest
+    image: registry.hub.docker.com/mbround18/ark-manager-web:latest
+    depends_on:
+      - "client"
     volumes:
       - "./tmp/game:/home/steam/ARK"
       - "./tmp/steam:/home/steam/steamcmd"

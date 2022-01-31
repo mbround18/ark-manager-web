@@ -1,19 +1,25 @@
 [package]
-name = "server"
+name = "agent"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[[bin]]
+name = "agent"
+
+[lib]
+
 [dependencies]
-rocket = {version = "0.5.0-rc", features = ["default", "json"] }
-which = "4.2.2"
-regex = "1"
-serde = "1"
+socket2 = "0.4"
+async-process = "1"
+serde ="1"
 serde_json = "1"
+chrono = "0.4"
+which = "4"
+futures = "0.3"
+futures-lite = "1"
 strip-ansi-escapes = "0"
-linemux = "0.2"
-agent = {path = "../agent", features = []}
 
 [features]
-use_binary = []
+agent_only = []

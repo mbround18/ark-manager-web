@@ -1,18 +1,5 @@
-# ------------- #
-# -- Planner -- #
-# ------------- #
-FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as planner
-WORKDIR /data/project
-COPY . .
-RUN cargo chef prepare --recipe-path recipe.json
-
-# ------------- #
-# -- Cacher  -- #
-# ------------- #
-FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as cacher
-WORKDIR /data/project
-COPY --from=planner /data/project/recipe.json recipe.json
-RUN cargo chef cook --release --recipe-path recipe.json
+# Client Build
+FROM registry.hub.docker.com/mbround18/ark-manager-client:latest as ClientBuild
 
 # ----------------------- #
 # -- Project Mangement -- #
@@ -21,27 +8,34 @@ RUN cargo chef cook --release --recipe-path recipe.json
 FROM docker.io/mbround18/cargo-make:latest as cargo-make
 
 # ------------- #
+# -- Planner -- #
+# ------------- #
+FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as planner
+WORKDIR /data/project
+COPY ./Cargo.lock ./Cargo.toml ./
+COPY ./server ./server
+RUN cargo chef prepare --recipe-path recipe.json
+
+# ------------- #
 # -- Builder -- #
 # ------------- #
-FROM docker.io/library/rust:1.58 as builder
+FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as builder
 WORKDIR /data/project
-COPY . .
-# Copy over the cached dependencies
-COPY --from=cacher /data/project/target target
-COPY --from=cacher /usr/local/cargo/registry /usr/local/cargo/
+COPY --from=planner /data/project/recipe.json recipe.json
+RUN cargo chef cook --release --recipe-path recipe.json
+COPY ./Cargo.lock ./Cargo.toml ./
+COPY ./server ./server
 COPY --from=cargo-make /usr/local/bin/cargo-make /usr/local/cargo/bin
 RUN /usr/local/cargo/bin/cargo make release
 
 # ------------- #
 # -- Runtime -- #
 # ------------- #
-FROM docker.io/library/debian:11-slim as runtime
+FROM registry.hub.docker.com/library/debian:11-slim as RustRuntime
 WORKDIR /apps
-COPY --from=builder /data/project/target/release/server /data/project/dist ./
+COPY --from=builder /data/project/target/release/server ./
 
-# --------------- #
-# -- Steam CMD -- #
-# --------------- #
+# Bundled Together
 FROM docker.io/steamcmd/steamcmd:ubuntu
 
 ENV TZ=America/Los_Angeles
@@ -53,14 +47,14 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezo
     # Image utilities
     htop net-tools nano gcc g++ gdb               \
     netcat curl wget zip unzip                    \
-    sudo dos2unix                                 \
+    sudo dos2unix bash                            \
     # Ark Server Tools requirements
     perl-modules lsof libc6-i386 lib32gcc1 bzip2  \
     # Steam Specific
     libsdl2-2.0-0  jq   libc6-dev                 \
     # Clean Up apt lists
-    && rm -rf /var/lib/apt/lists/*          
-    
+    && rm -rf /var/lib/apt/lists/*
+
 
 
 RUN addgroup --system steam     \
@@ -72,12 +66,15 @@ RUN addgroup --system steam     \
     && chmod ugo+rw /tmp/dumps
 
 RUN curl -sL https://git.io/arkmanager | bash -s steam \
-    && chown -R steam:steam /home/steam \
+    && mkdir -p /home/steam/ark-manager-web
+COPY --from=RustRuntime /apps/server /home/steam/ark-manager-web/
+COPY --from=ClientBuild /apps/client /home/steam/ark-manager-web/dist
+
+RUN chown -R steam:steam /home/steam \
     && usermod -d /home/steam steam
 
 USER steam
 ENV HOME=/home/steam
 WORKDIR /home/steam
 
-
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/home/steam/ark-manager-web/server" ]

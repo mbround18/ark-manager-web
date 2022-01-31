@@ -1,7 +1,7 @@
 [workspace]
 members = [
   "server",
-  "client"
+  "agent"
 ]
-default-members = ["server"]
+default-members = ["server", "agent"]
 

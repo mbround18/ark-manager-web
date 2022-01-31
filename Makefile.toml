@@ -7,8 +7,8 @@ args = ["fmt", "--", "--emit=files"]
 
 [tasks.yew-serve]
 workspace = false
-command = "trunk"
-args = ["watch", "./client/index.html", "--dist", "./dist"]
+command = "yarn"
+args = ["workspace", "client", "dev"]
 
 [tasks.rocket-serve]
 workspace = false

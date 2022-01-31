@@ -1,10 +1,8 @@
 [tasks.build]
-install_crate = "trunk"
-command = "trunk"
-args = ["build", "./index.html", "--dist", "../dist"]
+command = "yarn"
+args = ["parcel", "build", "./index.html", "--dist-dir", "../dist"]
 
 
 [tasks.release]
-install_crate = "trunk"
-command = "trunk"
-args = ["build", "--release", "--dist", "../dist"]
+command = "yarn"
+args = ["parcel", "build", "./index.html", "--dist-dir", "../dist"]
