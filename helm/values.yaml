@@ -1,0 +1,16 @@
+global:
+  image: mbround18/ark-manager-web:rebuild
+  ports:
+    - name: web
+      port: 8000
+    - name: ark-1
+      port: 7777
+    - name: ark-2
+      port: 27015
+
+service:
+  clusterIP: None
+
+storage:
+  className: longhorn
+  size: 20G

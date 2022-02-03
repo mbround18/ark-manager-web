@@ -2,12 +2,13 @@
     import Card from "../components/card.svelte"
     import {onMount} from "svelte";
     import {get} from "axios";
+    import {fetchLogs} from "../http";
 
     let sources = [];
     let activeSource = "";
 
     onMount(async ()=> {
-        const {data: {log_files}} = await get('/api/managed/logs')
+        const {data: {log_files}} = await fetchLogs();
         sources = log_files;
         if (log_files?.[0]) {
             activeSource = log_files[0]

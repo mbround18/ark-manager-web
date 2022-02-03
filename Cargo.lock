@@ -12,6 +12,7 @@ dependencies = [
  "futures-lite",
  "serde",
  "serde_json",
+ "shared",
  "socket2",
  "strip-ansi-escapes",
  "which",
@@ -1288,12 +1289,12 @@ dependencies = [
 name = "server"
 version = "0.1.0"
 dependencies = [
- "agent",
  "linemux",
  "regex",
  "rocket",
  "serde",
  "serde_json",
+ "shared",
  "strip-ansi-escapes",
  "which",
 ]
@@ -1320,6 +1321,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "900fba806f70c630b0a382d0d825e17a0f19fcd059a2ade1ff237bcddf446b31"
 dependencies = [
  "lazy_static",
+]
+
+[[package]]
+name = "shared"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "serde_json",
+ "strip-ansi-escapes",
+ "which",
 ]
 
 [[package]]

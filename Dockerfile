@@ -66,7 +66,9 @@ RUN addgroup --system steam     \
       --shell /bin/bash         \
       steam                     \
     && usermod -aG steam steam  \
-    && chmod ugo+rw /tmp/dumps
+    && chmod ugo+rw /tmp/dumps  \
+    && usermod -u 2000 steam    \
+    && groupmod -g 2000 steam
 
 RUN curl -sL https://git.io/arkmanager | bash -s steam \
     && mkdir -p /home/steam/ark-manager-web
@@ -82,5 +84,8 @@ RUN chown -R steam:steam /home/steam \
 USER steam
 ENV HOME=/home/steam
 WORKDIR /home/steam
+
+HEALTHCHECK --interval=1m --timeout=3s \
+            CMD curl -f http://127.0.0.1:8000/heartbeat || exit 1
 
 ENTRYPOINT [ "/entrypoint.sh" ]

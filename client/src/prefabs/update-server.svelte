@@ -4,8 +4,8 @@
     import Tooltip from "../components/tooltip.svelte";
     import {text} from "../locale";
     import {onMount, onDestroy} from "svelte";
-    import {post} from "axios";
     import {Settings} from "../assets/icons";
+    import {sendUpdate} from "../http";
 
     let showOptions = false;
     const localStorageKey = "server-updater-options";
@@ -72,7 +72,7 @@
             acc[id] = state;
             return acc;
         },{})
-        await post('/api/command/update', data)
+        await sendUpdate(data)
     }
 
 </script>

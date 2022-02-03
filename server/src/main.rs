@@ -10,7 +10,7 @@ use rocket::http::Status;
 
 const NOT_FOUND_INDEX: &str = "<html><body><h1>No Index Found</h1></body></html>";
 
-#[get("/healthcheck")]
+#[get("/heartbeat")]
 fn index() -> Status {
     Status::Ok
 }

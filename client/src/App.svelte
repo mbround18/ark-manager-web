@@ -7,15 +7,25 @@
 
     setupLocale("en")
     let showControls = false;
+    let components = [];
+
+    $: {
+        if (showControls) {
+            components = [
+                import('./prefabs/server-actions.svelte'),
+                import('./prefabs/update-server.svelte')
+            ]
+        }
+    }
 
     onMount(async () => {
         // @ts-ignore
         setupLocale(localStorage.getItem("locale") ?? "en")
         // @ts-ignore
         await fetchedStatus.subscribe(v => showControls = v);
-    })
 
-    let name = "Michael"
+
+    })
 </script>
 
 <div id="app">
@@ -29,12 +39,11 @@
                 <svelte:component this={c.default}/>
             {/await}
             {#if showControls}
-                {#await import('./prefabs/server-actions.svelte') then c}
-                    <svelte:component this={c.default}/>
-                {/await}
-                {#await import('./prefabs/update-server.svelte') then c}
-                    <svelte:component this={c.default}/>
-                {/await}
+                {#each components as component}
+                    {#await component then c}
+                        <svelte:component this={c.default}/>
+                    {/await}
+                {/each}
                 {#if false}
                     {#await import('./prefabs/mod-manager.svelte') then c}
                         <svelte:component this={c.default}/>

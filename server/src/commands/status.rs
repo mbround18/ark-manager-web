@@ -8,6 +8,7 @@ const INSTANCE_NAME_REGEX: &str = r#"'([a-zA-Z0-9_]*)'$"#;
 
 use crate::utils::{is_ark_installed, strip_ansi};
 use serde::{Deserialize, Serialize};
+use shared::ark_manager_path;
 
 #[derive(Serialize, Deserialize)]
 pub struct ServerStatus {
@@ -72,7 +73,6 @@ impl ServerStatus {
         }
     }
     pub fn execute() -> ServerStatus {
-        use agent::ark_manager_path;
         let command = Command::new(ark_manager_path())
             .args(["status"])
             .output()

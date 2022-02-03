@@ -2,8 +2,8 @@
     import Card from '../components/card.svelte'
     import ActionButton from '../components/action-button.svelte'
     import {text} from "../locale";
-    import {post} from "axios";
     import {onMount} from "svelte";
+    import {sendInstall, sendRestart, sendStart, sendStop} from "../http";
 
     let installed = false;
 
@@ -24,31 +24,23 @@
     <div class="flex flex-col justify-items-stretch">
         {#if installed}
             <div>
-                <ActionButton type="ok" onClick={async ()=> {
-                    post('/api/command/start')
-                }}>{
+                <ActionButton type="ok" onClick={async ()=> sendStart()}>{
                     $text("prefab.server-actions.actions.start")
                 }</ActionButton>
             </div>
             <div>
-                <ActionButton type="err" onClick={async ()=> {
-                    post('/api/command/stop')
-                }}>{
+                <ActionButton type="err" onClick={async ()=> sendStop()}>{
                     $text("prefab.server-actions.actions.stop")
                 }</ActionButton>
             </div>
             <div>
-                <ActionButton type="warn" onClick={async ()=> {
-                    post('/api/command/restart')
-                }}>{
+                <ActionButton type="warn" onClick={async ()=> sendRestart()}>{
                     $text("prefab.server-actions.actions.restart")
                 }</ActionButton>
             </div>
         {:else}
             <div>
-                <ActionButton type="primary" onClick={async ()=> {
-                    post('/api/command/install')
-                }}>{
+                <ActionButton type="primary" onClick={async ()=> sendInstall()}>{
                     $text("prefab.server-actions.actions.install")
                 }</ActionButton>
             </div>

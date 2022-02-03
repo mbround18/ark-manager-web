@@ -1,7 +1,6 @@
-use crate::ark_manager_path;
-use crate::utils::StateStorage;
 use async_process::{Command, Stdio};
 use futures_lite::{io::BufReader, prelude::*};
+use shared::{ark_manager_path, StateStorage};
 
 fn is_command_locked(sub_command: &str) -> bool {
     StateStorage::read().by_key(sub_command)
@@ -16,7 +15,7 @@ fn set_command_lock(sub_command: &str, value: bool) {
 pub async fn execute_command(sub_command: String, args: Vec<String>) {
     // Use lock to validate & block additional runs.
     if is_command_locked(&sub_command) {
-        crate::agent_log(format!(
+        shared::agent_log(format!(
             "Cannot launch command! Already Running ArkManager::{}",
             sub_command
         ));
@@ -27,7 +26,7 @@ pub async fn execute_command(sub_command: String, args: Vec<String>) {
     let mut additional_args = args.clone();
 
     // Log to agent log about whats going on.
-    crate::agent_log(format!("Launching ArkManager::{}", sub_command));
+    shared::agent_log(format!("Launching ArkManager::{}", sub_command));
 
     // Get arguments and append supplied args
     let mut command_args = vec![String::from(&sub_command)];
@@ -48,7 +47,7 @@ pub async fn execute_command(sub_command: String, args: Vec<String>) {
 
     // Iterate through lines and log to agent log for FE consumption.
     while let Some(line) = lines.next().await {
-        crate::log(
+        shared::log(
             format!("ArkManager::{}", sub_command),
             line.unwrap().to_string(),
         );
@@ -58,5 +57,5 @@ pub async fn execute_command(sub_command: String, args: Vec<String>) {
     set_command_lock(&sub_command, false);
 
     // Log that its compelted
-    crate::agent_log(format!("Complete ArkManager::{}", sub_command));
+    shared::agent_log(format!("Complete ArkManager::{}", sub_command));
 }

@@ -1,4 +1,4 @@
-use crate::utils::constants::STATE_STORAGE_PATH;
+use crate::constants::STATE_STORAGE_PATH;
 use serde::{Deserialize, Serialize};
 use std::{str::FromStr, string::String};
 
@@ -29,7 +29,6 @@ impl FromStr for StateStorage {
 }
 
 impl StateStorage {
-    #[allow(dead_code)]
     pub fn read() -> StateStorage {
         use std::{
             fs::{read, write},
@@ -41,12 +40,11 @@ impl StateStorage {
         let state_string = String::from_utf8(read(STATE_STORAGE_PATH).unwrap()).unwrap();
         StateStorage::from_str(&state_string).unwrap()
     }
-    #[allow(dead_code)]
+
     pub fn write(&self) {
         std::fs::write(STATE_STORAGE_PATH, self.to_string()).unwrap();
     }
 
-    #[allow(dead_code)]
     pub fn by_key(&self, key: &str) -> bool {
         match key {
             "start" => self.start,
@@ -57,7 +55,7 @@ impl StateStorage {
             _ => unreachable!("Unable to access attribute"),
         }
     }
-    #[allow(dead_code)]
+
     pub fn set_by_key(&mut self, key: &str, value: bool) {
         match key {
             "start" => self.start = value,

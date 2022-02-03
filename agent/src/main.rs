@@ -1,14 +1,8 @@
 mod ark_manager;
-mod errors;
 mod utils;
 
 use crate::ark_manager::commands;
-pub use crate::utils::logger::{agent_log, log};
-use crate::utils::{
-    ark_manager_path::ark_manager_path,
-    constants::{DEFAULT_LOG, SOCKET_PATH},
-    AgentCommand, Command,
-};
+use shared::{ark_manager_path, AgentCommand, Command, DEFAULT_LOG, SOCKET_PATH};
 use std::fs::{create_dir, remove_file, write};
 use std::io::{BufRead, BufReader};
 use std::os::unix::net::{UnixListener, UnixStream};
@@ -36,7 +30,10 @@ async fn handle_client(stream: UnixStream) {
                     Command::Status => {
                         StatusCommand::default().invoke(input_command.command_arguments)
                     }
-                    Command::Install => InstallCommand::default().invoke(None),
+                    Command::Install => InstallCommand::default().invoke(Some(vec![
+                        String::from("--dots"),
+                        String::from("--verbose"),
+                    ])),
                 }
                 .await
             }

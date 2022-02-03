@@ -3,10 +3,10 @@
     import LabeledEntity from '../components/labeled-entity.svelte'
     import {text} from "../locale";
     import {onDestroy, onMount} from "svelte";
-    import {get} from 'axios';
     import {installed} from "../state/installed";
     import {fetchedStatus} from "../state/fetchedStatus";
     import {get as stateGet} from 'svelte/store';
+    import {fetchStatus} from "../http";
 
     let statusInterval;
     let status = {
@@ -17,7 +17,8 @@
         build_id: "0"
     }
 
-    function mergeStatus({data}) {
+    async function mergeStatus() {
+        const {data} = await fetchStatus();
         const localStatus = {...status};
         Object.entries(data).forEach(([key, value]) => {
             if (typeof value === "string") {
@@ -37,14 +38,9 @@
         installed.set(status.installed);
     }
 
-    async function fetchStatus() {
-        const {data} = await get('/api/command/status')
-        mergeStatus({data})
-    }
-
     onMount(async ()=> {
-        statusInterval = setInterval(fetchStatus, 5000)
-        await fetchStatus();
+        statusInterval = setInterval(mergeStatus, 5000)
+        await mergeStatus();
     })
 
     onDestroy(() => {

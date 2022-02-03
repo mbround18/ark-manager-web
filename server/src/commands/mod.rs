@@ -10,6 +10,7 @@ use rocket::fairing::AdHoc;
 use rocket::http::Status;
 use rocket::response::stream::{Event, EventStream};
 use rocket::serde::json::Json;
+use shared::{AgentCommand, Command};
 
 #[get("/status")]
 pub fn execute_status() -> Json<ServerStatus> {
@@ -32,34 +33,34 @@ pub async fn tail_log(log: String) -> Result<EventStream![], Status> {
 
 #[post("/start")]
 pub async fn start_command() -> Status {
-    crate::utils::unix_socket::send_command(
-        agent::AgentCommand::from(agent::Command::Start).to_string(),
-    )
-    .unwrap();
+    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Start).to_string())
+        .unwrap();
     Status::Ok
 }
 
 #[post("/stop")]
 pub async fn stop_command() -> Status {
-    crate::utils::unix_socket::send_command(
-        agent::AgentCommand::from(agent::Command::Stop).to_string(),
-    )
-    .unwrap();
+    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Stop).to_string()).unwrap();
     Status::Ok
 }
 
 #[post("/restart")]
 pub async fn restart_command() -> Status {
-    crate::utils::unix_socket::send_command(
-        agent::AgentCommand::from(agent::Command::Restart).to_string(),
-    )
-    .unwrap();
+    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Restart).to_string())
+        .unwrap();
+    Status::Ok
+}
+
+#[post("/install")]
+pub async fn install_command() -> Status {
+    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Install).to_string())
+        .unwrap();
     Status::Ok
 }
 
 #[post("/update", data = "<options>")]
 pub async fn update_command(options: Json<UpdateOptions>) -> Status {
-    let mut command = agent::AgentCommand::from(agent::Command::Update);
+    let mut command = AgentCommand::from(Command::Update);
     command.command_arguments = options.into_inner().to_vec();
     crate::utils::unix_socket::send_command(command.to_string()).unwrap();
     Status::Ok
@@ -75,6 +76,7 @@ pub fn ignite() -> AdHoc {
                 start_command,
                 stop_command,
                 restart_command,
+                install_command,
                 update_command
             ],
         )
