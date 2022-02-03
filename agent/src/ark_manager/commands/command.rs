@@ -3,13 +3,13 @@ use crate::utils::StateStorage;
 use async_process::{Command, Stdio};
 use futures_lite::{io::BufReader, prelude::*};
 
-fn is_command_locked(sub_command: &String) -> bool {
-    StateStorage::read().by_key(sub_command.as_str())
+fn is_command_locked(sub_command: &str) -> bool {
+    StateStorage::read().by_key(sub_command)
 }
 
-fn set_command_lock(sub_command: &String, value: bool) {
+fn set_command_lock(sub_command: &str, value: bool) {
     let mut state = StateStorage::read();
-    state.set_by_key(&sub_command, value);
+    state.set_by_key(sub_command, value);
     state.write();
 }
 
@@ -50,7 +50,7 @@ pub async fn execute_command(sub_command: String, args: Vec<String>) {
     while let Some(line) = lines.next().await {
         crate::log(
             format!("ArkManager::{}", sub_command),
-            format!("{}", line.unwrap()),
+            line.unwrap().to_string(),
         );
     }
 

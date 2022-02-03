@@ -1,3 +1,4 @@
+mod errors;
 mod utils;
 
 pub use utils::ark_manager_path::ark_manager_path;

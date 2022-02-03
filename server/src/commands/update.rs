@@ -8,8 +8,8 @@ pub struct UpdateOptions {
     pub update_mods: Option<bool>,
 }
 
-impl Into<Option<Vec<String>>> for UpdateOptions {
-    fn into(self) -> Option<Vec<String>> {
+impl UpdateOptions {
+    pub(crate) fn to_vec(&self) -> Option<Vec<String>> {
         let mut options = Vec::new();
         // Implement force
         if let Some(force) = self.force {
@@ -57,7 +57,7 @@ impl Into<Option<Vec<String>>> for UpdateOptions {
         if options.is_empty() {
             None
         } else {
-            let ret_options: Vec<String> = options.iter().map(|s| format!("{}", s)).collect();
+            let ret_options: Vec<String> = options.iter().map(|s| s.to_string()).collect();
             Some(ret_options)
         }
     }

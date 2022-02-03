@@ -65,8 +65,8 @@ impl ServerStatus {
     fn instance_from_str(data: &str) -> String {
         let instance_regex = Regex::new(INSTANCE_NAME_REGEX).unwrap();
         let instance_captures = instance_regex.captures(data);
-        if instance_captures.is_some() {
-            String::from(instance_captures.unwrap().get(1).map_or("", |m| m.as_str()))
+        if let Some(captures) = instance_captures {
+            String::from(captures.get(1).map_or("", |m| m.as_str()))
         } else {
             String::from("unknown")
         }

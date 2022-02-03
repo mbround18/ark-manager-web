@@ -1,4 +1,5 @@
 mod ark_manager;
+mod errors;
 mod utils;
 
 use crate::ark_manager::commands;
@@ -24,8 +25,8 @@ async fn handle_client(stream: UnixStream) {
         match input_command.command_type() {
             Ok(cmd) => {
                 use crate::commands::{
-                    ArkCommand, RestartCommand, StartCommand, StatusCommand, StopCommand,
-                    UpdateCommand,
+                    ArkCommand, InstallCommand, RestartCommand, StartCommand, StatusCommand,
+                    StopCommand, UpdateCommand,
                 };
                 match cmd {
                     Command::Start => StartCommand::default().invoke(None),
@@ -35,6 +36,7 @@ async fn handle_client(stream: UnixStream) {
                     Command::Status => {
                         StatusCommand::default().invoke(input_command.command_arguments)
                     }
+                    Command::Install => InstallCommand::default().invoke(None),
                 }
                 .await
             }

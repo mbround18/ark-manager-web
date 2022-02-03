@@ -13,7 +13,7 @@ pub trait ArkCommand {
     fn invoke<'a>(&self, args: Option<Vec<String>>) -> Pin<Box<dyn Future<Output = ()> + 'a>> {
         let mut arguments = self.additional_args();
         if let Some(additional) = args {
-            let mut additional_args = additional.clone();
+            let mut additional_args = additional;
             arguments.append(&mut additional_args);
         }
         Box::pin(execute_command(self.command(), arguments))
@@ -73,4 +73,10 @@ create_command! {
     struct StatusCommand {},
     "status",
     "ADDITIONAL_STATUS_ARGS"
+}
+
+create_command! {
+    struct InstallCommand {},
+    "install",
+    "ADDITIONAL_INSTALL_ARGS"
 }

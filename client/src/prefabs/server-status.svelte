@@ -4,6 +4,9 @@
     import {text} from "../locale";
     import {onDestroy, onMount} from "svelte";
     import {get} from 'axios';
+    import {installed} from "../state/installed";
+    import {fetchedStatus} from "../state/fetchedStatus";
+    import {get as stateGet} from 'svelte/store';
 
     let statusInterval;
     let status = {
@@ -28,6 +31,10 @@
             }
         })
         status = localStatus
+        if (!stateGet(fetchedStatus)) {
+            fetchedStatus.set(true);
+        }
+        installed.set(status.installed);
     }
 
     async function fetchStatus() {

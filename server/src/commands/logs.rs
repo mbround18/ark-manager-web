@@ -10,7 +10,7 @@ impl From<Line> for OutputLogLine {
     fn from(line: Line) -> Self {
         OutputLogLine {
             source: format!("{}", &line.source().display()),
-            message: format!("{}", line.line()),
+            message: line.line().to_string(),
         }
     }
 }

@@ -2,23 +2,13 @@ use crate::utils::constants::STATE_STORAGE_PATH;
 use serde::{Deserialize, Serialize};
 use std::{str::FromStr, string::String};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Default)]
 pub struct StateStorage {
     pub start: bool,
     pub stop: bool,
     pub restart: bool,
-    pub update: bool
-}
-
-impl Default for StateStorage {
-    fn default() -> Self {
-        StateStorage {
-            start: false,
-            stop: false,
-            restart: false,
-            update: false,
-        }
-    }
+    pub update: bool,
+    pub install: bool,
 }
 
 impl ToString for StateStorage {
@@ -63,6 +53,7 @@ impl StateStorage {
             "stop" => self.stop,
             "restart" => self.restart,
             "update" => self.update,
+            "install" => self.install,
             _ => unreachable!("Unable to access attribute"),
         }
     }
@@ -73,6 +64,7 @@ impl StateStorage {
             "stop" => self.stop = value,
             "restart" => self.restart = value,
             "update" => self.update = value,
+            "install" => self.install = value,
             _ => unreachable!("Unable to access attribute"),
         };
     }

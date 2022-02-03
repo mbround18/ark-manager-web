@@ -8,6 +8,7 @@
   "prefab.server-actions.actions.start": "Start",
   "prefab.server-actions.actions.stop": "Stop",
   "prefab.server-actions.actions.restart": "Restart",
+  "prefab.server-actions.actions.install": "Install",
   "prefab.server-status.label.instance": "Instance Name:",
   "prefab.server-status.label.listening": "Listening:",
   "prefab.server-status.label.running": "Running:",

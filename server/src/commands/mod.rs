@@ -60,7 +60,7 @@ pub async fn restart_command() -> Status {
 #[post("/update", data = "<options>")]
 pub async fn update_command(options: Json<UpdateOptions>) -> Status {
     let mut command = agent::AgentCommand::from(agent::Command::Update);
-    command.command_arguments = options.into_inner().into();
+    command.command_arguments = options.into_inner().to_vec();
     crate::utils::unix_socket::send_command(command.to_string()).unwrap();
     Status::Ok
 }

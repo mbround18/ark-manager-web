@@ -75,6 +75,7 @@ COPY --from=RustRuntime /apps/agent /home/steam/ark-manager-web/
 COPY --from=ClientBuild /apps/client /home/steam/ark-manager-web/dist
 COPY ./scripts/entrypoint.sh /entrypoint.sh
 
+
 RUN chown -R steam:steam /home/steam \
     && usermod -d /home/steam steam
 

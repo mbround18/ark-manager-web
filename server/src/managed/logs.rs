@@ -4,7 +4,7 @@ use std::env;
 use std::fs::read;
 use std::path::Path;
 
-const DEFAULT_LOG: &'static str = "/tmp/ark-manager-web/out.log";
+const DEFAULT_LOG: &str = "/tmp/ark-manager-web/out.log";
 
 #[derive(serde::Serialize)]
 pub struct ManagedLogs {
@@ -12,15 +12,11 @@ pub struct ManagedLogs {
 }
 
 fn add_shooter_game_log(logs: &mut Vec<String>) {
-    match env::var("HOME") {
-        Ok(home) => {
-            let shooter_game_log =
-                Path::new(&home).join("ARK/ShooterGame/Saved/Logs/ShooterGame.log");
-            if shooter_game_log.exists() {
-                logs.push(String::from(shooter_game_log.to_str().unwrap()))
-            }
+    if let Ok(home) = env::var("HOME") {
+        let shooter_game_log = Path::new(&home).join("ARK/ShooterGame/Saved/Logs/ShooterGame.log");
+        if shooter_game_log.exists() {
+            logs.push(String::from(shooter_game_log.to_str().unwrap()))
         }
-        _ => {}
     }
 }
 
@@ -53,7 +49,7 @@ impl ManagedLogs {
             return match read(log_file) {
                 Ok(file) => Ok(String::from_utf8(file)
                     .unwrap()
-                    .split("\n")
+                    .split('\n')
                     .map(String::from)
                     .collect::<Vec<String>>()),
                 Err(_) => Err(Status::UnprocessableEntity),

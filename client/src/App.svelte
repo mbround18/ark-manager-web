@@ -3,12 +3,16 @@
     import Header from './prefabs/header.svelte';
     import {onMount} from "svelte";
     import {setupLocale} from "./locale";
+    import {fetchedStatus} from "./state/fetchedStatus";
 
     setupLocale("en")
+    let showControls = false;
 
-    onMount(() => {
+    onMount(async () => {
         // @ts-ignore
         setupLocale(localStorage.getItem("locale") ?? "en")
+        // @ts-ignore
+        await fetchedStatus.subscribe(v => showControls = v);
     })
 
     let name = "Michael"
@@ -24,16 +28,18 @@
             {#await import('./prefabs/server-status.svelte') then c}
                 <svelte:component this={c.default}/>
             {/await}
-            {#await import('./prefabs/server-actions.svelte') then c}
-                <svelte:component this={c.default}/>
-            {/await}
-            {#await import('./prefabs/update-server.svelte') then c}
-                <svelte:component this={c.default}/>
-            {/await}
-            {#if false}
-                {#await import('./prefabs/mod-manager.svelte') then c}
+            {#if showControls}
+                {#await import('./prefabs/server-actions.svelte') then c}
                     <svelte:component this={c.default}/>
                 {/await}
+                {#await import('./prefabs/update-server.svelte') then c}
+                    <svelte:component this={c.default}/>
+                {/await}
+                {#if false}
+                    {#await import('./prefabs/mod-manager.svelte') then c}
+                        <svelte:component this={c.default}/>
+                    {/await}
+                {/if}
             {/if}
         </div>
         <div class="w-11/12">

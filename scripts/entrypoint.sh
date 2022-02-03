@@ -4,7 +4,9 @@
 set -m
 
 # Start the primary process and put it in the background
-/home/steam/ark-manager-web/server &
+ROCKET_ADDRESS="0.0.0.0" \
+PUBLIC_PATH="/home/steam/ark-manager-web/dist" \
+  /home/steam/ark-manager-web/server &
 
 # Start the helper process
 /home/steam/ark-manager-web/agent

@@ -5,9 +5,10 @@ pub mod macros;
 
 mod state;
 
+use crate::errors::failed_to_parse::FailedToParseCommand;
+use serde::{Deserialize, Serialize};
 pub use state::StateStorage;
 use std::str::FromStr;
-use serde::{Serialize, Deserialize};
 
 pub enum Command {
     Start,
@@ -15,31 +16,34 @@ pub enum Command {
     Restart,
     Update,
     Status,
+    Install,
 }
 
 impl ToString for Command {
     fn to_string(&self) -> String {
-        use Command::{Restart, Start, Status, Stop, Update};
+        use Command::{Install, Restart, Start, Status, Stop, Update};
         String::from(match self {
             Start => "ArkManager::Start",
             Stop => "ArkManager::Stop",
             Restart => "ArkManager::Restart",
             Update => "ArkManager::Update",
             Status => "ArkManager::Status",
+            Install => "ArkManager::Install",
         })
     }
 }
 
 impl FromStr for Command {
-    type Err = ();
-    fn from_str(s: &str) -> Result<Self, Self::Err> {
+    type Err = FailedToParseCommand;
+    fn from_str(s: &str) -> Result<Command, FailedToParseCommand> {
         match s {
             "ArkManager::Start" => Ok(Command::Start),
             "ArkManager::Stop" => Ok(Command::Stop),
             "ArkManager::Update" => Ok(Command::Update),
             "ArkManager::Restart" => Ok(Command::Restart),
             "ArkManager::Status" => Ok(Command::Status),
-            _ => Err(()),
+            "ArkManager::Install" => Ok(Command::Install),
+            _ => Err(FailedToParseCommand),
         }
     }
 }
@@ -67,7 +71,7 @@ impl From<Command> for AgentCommand {
 
 impl AgentCommand {
     #[allow(dead_code)]
-    pub fn command_type(&self) -> Result<Command, ()> {
+    pub fn command_type(&self) -> Result<Command, FailedToParseCommand> {
         Command::from_str(&self.namespace)
     }
 }
