@@ -3,5 +3,4 @@ members = [
   "server",
   "agent"
 ]
-default-members = ["server", "agent"]
 

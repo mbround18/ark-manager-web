@@ -1,5 +1,3 @@
-#![feature(async_stream)]
-
 //noinspection RsMainFunctionNotFound
 mod commands;
 mod managed;

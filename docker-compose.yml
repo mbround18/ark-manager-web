@@ -3,12 +3,16 @@ services:
     build:
       dockerfile: ./Dockerfile.client
       context: .
-    image: registry.hub.docker.com/mbround18/ark-manager-client:latest
+    image: mbround18/ark-manager-client:latest
+    platform: linux/amd64
+    pull_policy: if-not-present
     entrypoint: ["/bin/sh"]
 
   instance:
     build: .
-    image: registry.hub.docker.com/mbround18/ark-manager-web:latest
+    image: mbround18/ark-manager-web:rebuild
+    pull_policy: if-not-present
+    platform: linux/amd64
     depends_on:
       - "client"
     volumes:

@@ -1,5 +1,5 @@
 # Client Build
-FROM registry.hub.docker.com/mbround18/ark-manager-client:latest as ClientBuild
+FROM --platform=linux/amd64 mbround18/ark-manager-client:latest as ClientBuild
 
 # ----------------------- #
 # -- Project Mangement -- #
@@ -14,6 +14,7 @@ FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as planner
 WORKDIR /data/project
 COPY ./Cargo.lock ./Cargo.toml ./
 COPY ./server ./server
+COPY ./agent ./agent
 RUN cargo chef prepare --recipe-path recipe.json
 
 # ------------- #
@@ -25,6 +26,7 @@ COPY --from=planner /data/project/recipe.json recipe.json
 RUN cargo chef cook --release --recipe-path recipe.json
 COPY ./Cargo.lock ./Cargo.toml ./
 COPY ./server ./server
+COPY ./agent ./agent
 COPY --from=cargo-make /usr/local/bin/cargo-make /usr/local/cargo/bin
 RUN /usr/local/cargo/bin/cargo make release
 
@@ -34,6 +36,7 @@ RUN /usr/local/cargo/bin/cargo make release
 FROM registry.hub.docker.com/library/debian:11-slim as RustRuntime
 WORKDIR /apps
 COPY --from=builder /data/project/target/release/server ./
+COPY --from=builder /data/project/target/release/agent ./
 
 # Bundled Together
 FROM docker.io/steamcmd/steamcmd:ubuntu
@@ -68,7 +71,9 @@ RUN addgroup --system steam     \
 RUN curl -sL https://git.io/arkmanager | bash -s steam \
     && mkdir -p /home/steam/ark-manager-web
 COPY --from=RustRuntime /apps/server /home/steam/ark-manager-web/
+COPY --from=RustRuntime /apps/agent /home/steam/ark-manager-web/
 COPY --from=ClientBuild /apps/client /home/steam/ark-manager-web/dist
+COPY ./scripts/entrypoint.sh /entrypoint.sh
 
 RUN chown -R steam:steam /home/steam \
     && usermod -d /home/steam steam
@@ -77,4 +82,4 @@ USER steam
 ENV HOME=/home/steam
 WORKDIR /home/steam
 
-ENTRYPOINT [ "/home/steam/ark-manager-web/server" ]
+ENTRYPOINT [ "/entrypoint.sh" ]

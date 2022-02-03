@@ -2,10 +2,12 @@ pub mod ark_manager_path;
 pub mod constants;
 pub mod logger;
 pub mod macros;
+
 mod state;
 
 pub use state::StateStorage;
 use std::str::FromStr;
+use serde::{Serialize, Deserialize};
 
 pub enum Command {
     Start,
@@ -42,7 +44,7 @@ impl FromStr for Command {
     }
 }
 
-#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(Serialize, Deserialize)]
 pub struct AgentCommand {
     namespace: String,
     pub command_arguments: Option<Vec<String>>,
