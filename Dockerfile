@@ -15,6 +15,7 @@ WORKDIR /data/project
 COPY ./Cargo.lock ./Cargo.toml ./
 COPY ./server ./server
 COPY ./agent ./agent
+COPY ./shared ./shared
 RUN cargo chef prepare --recipe-path recipe.json
 
 # ------------- #
@@ -27,6 +28,7 @@ RUN cargo chef cook --release --recipe-path recipe.json
 COPY ./Cargo.lock ./Cargo.toml ./
 COPY ./server ./server
 COPY ./agent ./agent
+COPY ./shared ./shared
 COPY --from=cargo-make /usr/local/bin/cargo-make /usr/local/cargo/bin
 RUN /usr/local/cargo/bin/cargo make release
 

@@ -26,3 +26,9 @@ helm upgrade \
   --install ark-manager \
   ./helm
 ```
+
+
+## Notes
+
+Due to the complexities of kubernetes, 
+there is no ingress or hard node binding here. It will be up to you to expose your server to the world. 

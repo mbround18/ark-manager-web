@@ -1,30 +1,28 @@
 <script lang="ts">
     import './global.css';
     import Header from './prefabs/header.svelte';
-    import {onMount} from "svelte";
+    import {onMount, onDestroy} from "svelte";
     import {setupLocale} from "./locale";
     import {fetchedStatus} from "./state/fetchedStatus";
+    import {fetchState} from "./state/agentState";
+    import {installed} from "./state/installed";
 
     setupLocale("en")
     let showControls = false;
-    let components = [];
-
-    $: {
-        if (showControls) {
-            components = [
-                import('./prefabs/server-actions.svelte'),
-                import('./prefabs/update-server.svelte')
-            ]
-        }
-    }
+    let agentStateInterval;
 
     onMount(async () => {
         // @ts-ignore
         setupLocale(localStorage.getItem("locale") ?? "en")
         // @ts-ignore
         await fetchedStatus.subscribe(v => showControls = v);
-
-
+        await fetchState();
+        agentStateInterval = setInterval(fetchState, 1000);
+    })
+    onDestroy(()=> {
+        if (agentStateInterval) {
+            clearInterval(agentStateInterval)
+        }
     })
 </script>
 
@@ -39,15 +37,20 @@
                 <svelte:component this={c.default}/>
             {/await}
             {#if showControls}
-                {#each components as component}
-                    {#await component then c}
+
+                {#await import("./prefabs/server-actions.svelte") then c}
+                    <svelte:component this={c.default}/>
+                {/await}
+
+                {#if $installed}
+                    {#await import("./prefabs/update-server.svelte") then c}
                         <svelte:component this={c.default}/>
                     {/await}
-                {/each}
-                {#if false}
-                    {#await import('./prefabs/mod-manager.svelte') then c}
-                        <svelte:component this={c.default}/>
-                    {/await}
+                    {#if false}
+                        {#await import('./prefabs/mod-manager.svelte') then c}
+                            <svelte:component this={c.default}/>
+                        {/await}
+                    {/if}
                 {/if}
             {/if}
         </div>

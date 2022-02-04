@@ -8,6 +8,11 @@ global:
     - name: ark-2
       port: 27015
 
+statefulSet:
+  env:
+    - name: DEPLOYED_WITH
+      value: Helm
+
 service:
   clusterIP: None
 

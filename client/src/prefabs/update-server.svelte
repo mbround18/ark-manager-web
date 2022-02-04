@@ -6,6 +6,7 @@
     import {onMount, onDestroy} from "svelte";
     import {Settings} from "../assets/icons";
     import {sendUpdate} from "../http";
+    import {AgentState} from "../state/agentState";
 
     let showOptions = false;
     const localStorageKey = "server-updater-options";
@@ -128,9 +129,10 @@
     </div>
     <div class="flex flex-row place-items-stretch pt-4">
         <ActionButton
-                type="primary"
-                classNames="grow pr-4 pl-4"
-                onClick={()=> handleLaunchUpdate()}
+            type="primary"
+            classNames="grow pr-4 pl-4"
+            onClick={()=> handleLaunchUpdate()}
+            disabled={$AgentState.update}
         >
             {$text("prefab.update-server.actions.update")}
         </ActionButton>

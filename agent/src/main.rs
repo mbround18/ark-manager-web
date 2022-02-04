@@ -2,7 +2,7 @@ mod ark_manager;
 mod utils;
 
 use crate::ark_manager::commands;
-use shared::{ark_manager_path, AgentCommand, Command, DEFAULT_LOG, SOCKET_PATH};
+use shared::{ark_manager_path, AgentCommand, Command, DEFAULT_LOG, SOCKET_PATH, StateStorage};
 use std::fs::{create_dir, remove_file, write};
 use std::io::{BufRead, BufReader};
 use std::os::unix::net::{UnixListener, UnixStream};
@@ -57,6 +57,10 @@ fn main() {
     if socket.exists() {
         remove_file(socket).unwrap()
     }
+
+    // Overwrite state storage on boot.
+    StateStorage::default().write();
+
     let listener = UnixListener::bind(SOCKET_PATH).unwrap();
     println!("Agent bound! Bound to: {}", &socket.to_str().unwrap());
 

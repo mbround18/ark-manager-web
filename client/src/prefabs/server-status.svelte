@@ -7,6 +7,7 @@
     import {fetchedStatus} from "../state/fetchedStatus";
     import {get as stateGet} from 'svelte/store';
     import {fetchStatus} from "../http";
+    import {AgentState} from "../state/agentState";
 
     let statusInterval;
     let status = {
@@ -35,7 +36,10 @@
         if (!stateGet(fetchedStatus)) {
             fetchedStatus.set(true);
         }
-        installed.set(status.installed);
+        if (!stateGet(AgentState).install) {
+            installed.set(status.installed);
+        }
+
     }
 
     onMount(async ()=> {
