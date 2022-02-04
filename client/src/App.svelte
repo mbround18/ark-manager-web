@@ -37,11 +37,9 @@
                 <svelte:component this={c.default}/>
             {/await}
             {#if showControls}
-
                 {#await import("./prefabs/server-actions.svelte") then c}
                     <svelte:component this={c.default}/>
                 {/await}
-
                 {#if $installed}
                     {#await import("./prefabs/update-server.svelte") then c}
                         <svelte:component this={c.default}/>

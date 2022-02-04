@@ -8,8 +8,18 @@ metadata:
 spec:
   ports:
   {{- range $key, $val := .Values.global.ports }}
+  {{- if eq $val.protocol "BOTH" }}
+    - port: {{$val.port}}
+      name: {{$val.name}}-udp
+      protocol: UDP
+    - port: {{$val.port}}
+      name: {{$val.name}}-tcp
+      protocol: TCP
+  {{- else }}
     - port: {{$val.port}}
       name: {{$val.name}}
+      protocol: {{$val.protocol}}
+  {{- end }}
   {{- end }}
   clusterIP: {{ .Values.service.clusterIP }}
   selector:

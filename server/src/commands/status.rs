@@ -25,7 +25,7 @@ pub struct ServerStatus {
 }
 
 fn check_nd_replace_external(link: String) -> String {
-    let reg = r#"^(.*\/(connect|server))/(.*):(27015)$"#;
+    let reg = r#"^(.*/(connect|server))/(.*):(27015)$"#;
     if let Ok(external_address) = env::var("EXTERNAL_ADDRESS") {
         let rex = Regex::new(reg).unwrap();
         rex.replace(&link, |caps: &Captures| {

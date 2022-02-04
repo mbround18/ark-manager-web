@@ -3,15 +3,16 @@ global:
   ports:
     - name: web
       port: 8000
+      protocol: TCP
     - name: ark-1
       port: 7777
+      protocol: BOTH
     - name: ark-2
       port: 27015
+      protocol: BOTH
 
 statefulSet:
-  env:
-    - name: DEPLOYED_WITH
-      value: Helm
+  env: []
 
 service:
   clusterIP: None

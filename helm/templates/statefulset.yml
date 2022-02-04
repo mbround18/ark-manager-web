@@ -24,11 +24,13 @@ spec:
         - name: {{.Release.Name}}
           image: {{.Values.global.image}}
           imagePullPolicy: Always
+          {{- if not (empty .Values.statefulSet.env)}}
           env:
             {{- range $key, $val := .Values.statefulSet.env }}
             - name: {{$val.name}}
               value: {{$val.value}}
             {{- end }}
+          {{- end }}
           ports:
             {{- range $key, $val := .Values.global.ports }}
             - containerPort: {{$val.port}}
