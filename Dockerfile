@@ -90,6 +90,7 @@ RUN chown -R steam:steam /home/steam \
 USER steam
 
 ENV HOME=/home/steam
+ENV ARK_MANAGER_CONFIG_DIRECTORY=/etc/arkmanager
 WORKDIR /home/steam
 
 VOLUME ["/home/steam/ARK"]

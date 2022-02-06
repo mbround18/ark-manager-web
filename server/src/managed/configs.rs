@@ -1,6 +1,6 @@
 use rocket::http::Status;
 use shared::constants::CONFIGS;
-use shared::utils::game_dir;
+use shared::utils::{ark_manager_config_dir, game_dir};
 use std::fs::{read, write};
 use std::path::Path;
 use std::string::FromUtf8Error;
@@ -12,7 +12,13 @@ pub struct ManagedConfig {
 pub fn config_files() -> Vec<String> {
     CONFIGS
         .iter()
-        .map(|e| e.replace("<ARK_DIR>", game_dir().unwrap().as_str()))
+        .map(|e| {
+            e.replace("<ARK_DIR>", game_dir().unwrap().as_str())
+                .replace(
+                    "<ARK_MANAGER_CONFIG_DIR>",
+                    ark_manager_config_dir().unwrap().as_str(),
+                )
+        })
         .collect::<Vec<String>>()
 }
 

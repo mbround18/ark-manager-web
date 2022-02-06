@@ -33,6 +33,7 @@ podman run -d \
   -p "27016:27016/tcp" \
   -p "27016:27016/udp"  \
   --mount "type=bind,source=$(pwd)/ARK,target=/home/steam/ARK" \
+  --mount "type=bind,source=$(pwd)/config,target=/etc/arkmanager/" \
   --user=steam \
   mbround18/ark-manager-web:rebuild
 ```
