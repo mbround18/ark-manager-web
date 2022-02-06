@@ -22,14 +22,19 @@ I have NOT tested it as this project is from 2016-2017 but this should be able t
 ## Usage
 
 ```shell
-docker run \
+mkdir -p ./ARK
+podman run -d \
   -p "8000:8000" \
+  -p "32330:32330" \
   -p "7777:7777/tcp" \
   -p "7777:7777/udp" \
-  -p "27015:27015/tcp" \
-  -p "27015:27015/udp" \
-  -v "./ARK:/home/steam/ARK" \ 
-  mbround18/ark-manager-web:latest
+  -p "7778:7778/tcp" \
+  -p "7778:7778/udp" \
+  -p "27016:27016/tcp" \
+  -p "27016:27016/udp"  \
+  --mount "type=bind,source=$(pwd)/ARK,target=/home/steam/ARK" \
+  --user=steam \
+  mbround18/ark-manager-web:rebuild
 ```
 
 ## Recommendations
@@ -42,3 +47,11 @@ docker run \
 - [Agent](./agent/README.md)
 - [Client](./client/README.md)
 - [Server](./server/README.md)
+
+
+## Gotchya's 
+
+- If you see the error below you can ignore it:
+
+  <img src="./docs/assets/steamcmd-not-found.png" alt="drawing" style="width:25em;"/>
+

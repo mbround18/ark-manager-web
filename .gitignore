@@ -5,7 +5,7 @@
 **/target
 
 values.deploy.yml
-
+ARK/
 **/tmp
 !tmp/.git-keep
 

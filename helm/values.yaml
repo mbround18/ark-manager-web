@@ -8,7 +8,10 @@ global:
       port: 7777
       protocol: BOTH
     - name: ark-2
-      port: 27015
+      port: 7778
+      protocol: BOTH
+    - name: ark-3
+      port: 27016
       protocol: BOTH
 
 statefulSet:

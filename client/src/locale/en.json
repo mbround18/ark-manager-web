@@ -10,6 +10,7 @@
   "prefab.configuration-management.label.editing": "Editing {file}",
   "prefab.configuration-management.label.saved": "Saved {file} at {time}",
   "prefab.configuration-management.links.config-generator": "Config Generator",
+  "prefab.configuration-management.errors.not-found": "Config {file} was not found, try starting the server first to generate the default.",
   "prefab.header.greeting": "Welcome, {name}!",
   "prefab.server-actions.title": "Server Actions",
   "prefab.server-actions.actions.start": "Start",

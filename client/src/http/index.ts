@@ -50,9 +50,9 @@ export async function fetchConfigs(): Promise<AxiosResponse> {
 }
 
 export async function fetchConfig(path: string): Promise<AxiosResponse> {
-    return get(`${MANAGED_ROUTE}/config`, { params: {path}})
+    return get(`${MANAGED_ROUTE}/config`, { params: {path: encodeURIComponent(path)}})
 }
 
 export async function updateFile(path: string, content: string): Promise<AxiosResponse> {
-    return post(`${MANAGED_ROUTE}/config`, content, {params: {path}})
+    return post(`${MANAGED_ROUTE}/config`, content, {params: {path: encodeURIComponent(path)}})
 }

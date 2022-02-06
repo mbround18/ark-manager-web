@@ -1,9 +1,9 @@
+use rocket::http::Status;
 use shared::constants::CONFIGS;
 use shared::utils::game_dir;
 use std::fs::{read, write};
 use std::path::Path;
 use std::string::FromUtf8Error;
-use rocket::http::Status;
 
 pub struct ManagedConfig {
     file_path: String,
@@ -12,9 +12,7 @@ pub struct ManagedConfig {
 pub fn config_files() -> Vec<String> {
     CONFIGS
         .iter()
-        .map(|e| {
-            e.replace("<ARK_DIR>", game_dir().unwrap().as_str())
-        })
+        .map(|e| e.replace("<ARK_DIR>", game_dir().unwrap().as_str()))
         .collect::<Vec<String>>()
 }
 
@@ -22,9 +20,7 @@ impl ManagedConfig {
     pub fn open(file_path: String) -> Result<ManagedConfig, Status> {
         if config_files().contains(&file_path) {
             if Path::new(&file_path).exists() {
-                Ok(ManagedConfig {
-                    file_path
-                })
+                Ok(ManagedConfig { file_path })
             } else {
                 Err(Status::NotFound)
             }

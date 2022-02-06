@@ -15,12 +15,17 @@
     // Switches
     let hasFetched = false;
     let beenSaved = false;
+    let notFound = false
 
     // Data
     let files = [];
     let selectedFile = "";
 
+    // Defaults
     const baseContent = $text('prefab.configuration-management.initial-content');
+    const emptyFile = `\n${"\t".repeat(6)}`.repeat(10);
+
+    // Code
     onMount(async () => {
         jar = CodeJar(editor, withLineNumbers(Prism.highlightElement), {history: false});
         jar.updateCode(baseContent)
@@ -34,17 +39,24 @@
     })
 
     async function openFile(name: string, path: string) {
-        const {data, status } = await fetchConfig(path);
-        if (status === 200) {
-            if (data === "\n") {
-                jar.updateCode(`\n${"\t".repeat(6)}`.repeat(10))
+        try {
+            const {data, status} = await fetchConfig(path);
+            if (status === 200) {
+                notFound = false;
+                if (data === "\n") {
+                    jar.updateCode(emptyFile)
+                } else {
+                    jar.updateCode(data)
+                }
+                selectedFile = name;
             } else {
-                jar.updateCode(data)
+                console.error(data)
             }
-            selectedFile = name;
-        } else {
-            console.error(data)
+        } catch (e) {
+            notFound = e.response.status === 404
+            console.error(e)
         }
+
     }
 
     async function closeFile(save: boolean) {
@@ -62,10 +74,6 @@
         }
     }
 </script>
-
-
-
-
 
 <Card classNames={hasFetched ? "" : "hidden"}>
     <div class="flex flex-row">
@@ -91,6 +99,11 @@
         </div>
         <div class="pl-8">
             <div bind:this={editor} id="editor" class="language-ini"></div>
+            {#if notFound}
+                <p class="text-red-700">{
+                    $text("prefab.configuration-management.errors.not-found", {values: { file: selectedFile }})
+                }</p>
+            {/if}
             {#if selectedFile}
                 <p class:hidden={!beenSaved}>{$text("prefab.configuration-management.label.saved", {values: {
                         file: selectedFile,

@@ -52,7 +52,7 @@ RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezo
     # Image utilities
     htop net-tools nano gcc g++ gdb               \
     netcat curl wget zip unzip                    \
-    sudo dos2unix bash                            \
+    sudo dos2unix bash sudo                       \
     # Ark Server Tools requirements
     perl-modules lsof libc6-i386 lib32gcc1 bzip2  \
     # Steam Specific
@@ -70,22 +70,29 @@ RUN addgroup --system steam     \
     && usermod -aG steam steam  \
     && chmod ugo+rw /tmp/dumps  \
     && usermod -u 2000 steam    \
-    && groupmod -g 2000 steam
+    && groupmod -g 2000 steam   \
+    && mkdir -p /home/steam/ARK \
+    && mkdir -p /home/steam/steamcmd \
+    && echo "steam ALL=(ALL) NOPASSWD: /root.sh" > /etc/sudoers.d/steam
 
 RUN curl -sL https://git.io/arkmanager | bash -s steam \
     && mkdir -p /home/steam/ark-manager-web
+
 COPY --from=RustRuntime /apps/server /home/steam/ark-manager-web/
 COPY --from=RustRuntime /apps/agent /home/steam/ark-manager-web/
 COPY --from=ClientBuild /apps/client /home/steam/ark-manager-web/dist
 COPY ./scripts/entrypoint.sh /entrypoint.sh
-
+COPY ./scripts/root.sh /root.sh
 
 RUN chown -R steam:steam /home/steam \
     && usermod -d /home/steam steam
 
 USER steam
+
 ENV HOME=/home/steam
 WORKDIR /home/steam
+
+VOLUME ["/home/steam/ARK"]
 
 HEALTHCHECK --interval=1m --timeout=3s \
             CMD curl -f http://127.0.0.1:8000/heartbeat || exit 1
