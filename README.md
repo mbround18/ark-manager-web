@@ -35,4 +35,10 @@ docker run \
 ## Recommendations
 
  - If you are hosting this on a server, it is recommended to set this up behind a `nginx` reverse proxy with http basic auth & ssl for port 8000;
- - You do not need to volume mount the `/tmp/ark-manager-web` directory. It can be destroyed at any point. 
+ - You do not need to volume mount the `/tmp/ark-manager-web` directory. It can be destroyed at any point.
+
+## Sub Projects
+
+- [Agent](./agent/README.md)
+- [Client](./client/README.md)
+- [Server](./server/README.md)

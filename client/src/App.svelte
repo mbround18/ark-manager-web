@@ -56,9 +56,11 @@
             {#await import('./prefabs/action-log.svelte') then c}
                 <svelte:component this={c.default} />
             {/await}
-            {#await import('./prefabs/configuration-management.svelte') then c}
-                <svelte:component this={c.default} />
-            {/await}
+            {#if $installed}
+                {#await import('./prefabs/configuration-management.svelte') then c}
+                    <svelte:component this={c.default} />
+                {/await}
+            {/if}
         </div>
     </div>
 </div>
