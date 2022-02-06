@@ -5,6 +5,7 @@ pub mod constants;
 pub mod errors;
 pub mod logger;
 pub mod state;
+pub mod utils;
 
 pub use agent::AgentCommand;
 pub use ark_manager_path::ark_manager_path;

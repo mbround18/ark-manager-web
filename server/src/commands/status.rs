@@ -35,7 +35,8 @@ fn check_nd_replace_external(link: String) -> String {
                 String::from(&caps[4])
             };
             format!("{}/{}:{}", &caps[1], external_address, port)
-        }).to_string()
+        })
+        .to_string()
     } else {
         link
     }
@@ -50,12 +51,14 @@ impl From<String> for ServerStatus {
             listening: ServerStatus::parse_yes_no(&mut lines, "listening"),
             online: ServerStatus::parse_yes_no(&mut lines, "online"),
             installed: is_ark_installed(),
-            ark_servers_link: check_nd_replace_external(
-                ServerStatus::parse_value(&mut lines, "ARKServers")
-            ),
-            steam_connect: check_nd_replace_external(
-                ServerStatus::parse_value(&mut lines, "connect link")
-            ),
+            ark_servers_link: check_nd_replace_external(ServerStatus::parse_value(
+                &mut lines,
+                "ARKServers",
+            )),
+            steam_connect: check_nd_replace_external(ServerStatus::parse_value(
+                &mut lines,
+                "connect link",
+            )),
             build_id: ServerStatus::parse_value(&mut lines, "build ID"),
             version: ServerStatus::parse_value(&mut lines, "version"),
         }

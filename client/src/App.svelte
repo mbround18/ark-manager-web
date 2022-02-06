@@ -17,7 +17,7 @@
         // @ts-ignore
         await fetchedStatus.subscribe(v => showControls = v);
         await fetchState();
-        agentStateInterval = setInterval(fetchState, 1000);
+        agentStateInterval = setInterval(fetchState, 2000);
     })
     onDestroy(()=> {
         if (agentStateInterval) {
@@ -52,9 +52,12 @@
                 {/if}
             {/if}
         </div>
-        <div class="w-11/12">
+        <div class="flex flex-row flex-wrap gap-4">
             {#await import('./prefabs/action-log.svelte') then c}
-                <svelte:component this={c.default}/>
+                <svelte:component this={c.default} />
+            {/await}
+            {#await import('./prefabs/configuration-management.svelte') then c}
+                <svelte:component this={c.default} />
             {/await}
         </div>
     </div>

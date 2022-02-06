@@ -1,19 +1,22 @@
 import {get as sGet} from "svelte/store"
-import {get, post} from 'axios';
+// @ts-ignore
+import axios, {AxiosResponse} from 'axios';
 import {AgentState} from "../state/agentState";
 
 export const COMMAND_ROUTE='/api/command';
 export const MANAGED_ROUTE='/api/managed';
 
-export async function fetchStatus() {
+const {get, post} = axios;
+
+export async function fetchStatus(): Promise<AxiosResponse> {
     return get(`${COMMAND_ROUTE}/status`)
 }
 
-export async function fetchLogs() {
+export async function fetchLogs(): Promise<AxiosResponse> {
     return get(`${MANAGED_ROUTE}/logs`)
 }
 
-async function handleSendCommand(key: string, data?: any) {
+async function handleSendCommand(key: string, data?: any): Promise<AxiosResponse> {
     AgentState.set({
         ...sGet(AgentState),
         [key]: true
@@ -21,23 +24,35 @@ async function handleSendCommand(key: string, data?: any) {
     return post(`${COMMAND_ROUTE}/${key}`, data)
 }
 
-export async function sendStart() {
+export async function sendStart(): Promise<AxiosResponse> {
     return handleSendCommand('start')
 }
 
-export async function sendStop() {
+export async function sendStop(): Promise<AxiosResponse> {
     return handleSendCommand('stop')
 }
 
-export async function sendRestart() {
+export async function sendRestart(): Promise<AxiosResponse> {
     return handleSendCommand('restart')
 }
 
-export async function sendUpdate(data) {
+export async function sendUpdate(data): Promise<AxiosResponse> {
     return handleSendCommand(`update`, data)
 }
 
 
-export async function sendInstall() {
+export async function sendInstall(): Promise<AxiosResponse> {
     return handleSendCommand('install')
+}
+
+export async function fetchConfigs(): Promise<AxiosResponse> {
+    return get(`${MANAGED_ROUTE}/configs`)
+}
+
+export async function fetchConfig(path: string): Promise<AxiosResponse> {
+    return get(`${MANAGED_ROUTE}/config`, { params: {path}})
+}
+
+export async function updateFile(path: string, content: string): Promise<AxiosResponse> {
+    return post(`${MANAGED_ROUTE}/config`, content, {params: {path}})
 }

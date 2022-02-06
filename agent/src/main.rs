@@ -2,7 +2,7 @@ mod ark_manager;
 mod utils;
 
 use crate::ark_manager::commands;
-use shared::{ark_manager_path, AgentCommand, Command, DEFAULT_LOG, SOCKET_PATH, StateStorage};
+use shared::{ark_manager_path, AgentCommand, Command, StateStorage, DEFAULT_LOG, SOCKET_PATH};
 use std::fs::{create_dir, remove_file, write};
 use std::io::{BufRead, BufReader};
 use std::os::unix::net::{UnixListener, UnixStream};

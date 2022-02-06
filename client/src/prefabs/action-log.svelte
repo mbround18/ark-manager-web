@@ -1,7 +1,6 @@
 <script lang="ts">
     import Card from "../components/card.svelte"
     import {onMount} from "svelte";
-    import {get} from "axios";
     import {fetchLogs} from "../http";
 
     let sources = [];
@@ -34,7 +33,7 @@
     }
 </script>
 
-<Card {...$$props} >
+<Card {...$$props} class="min-w-fit max-w-7xl" >
     <div id="action-log">
         <div class="flex flex-row">
             {#each sources as source}

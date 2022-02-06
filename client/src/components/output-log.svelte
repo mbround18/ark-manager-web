@@ -17,7 +17,7 @@
             return {
                 message: content,
                 namespace,
-                time: new Date(timestamp).getTime()
+                time: timestamp
             }
         } catch (_e) {
             return {
@@ -43,7 +43,7 @@
     function initializeStream() {
         stream = new EventSource(`/api/command/tail?log=${encodeURIComponent(source)}`)
         stream.onmessage = ({data}) => {
-            const  {message: logMessage, source} = JSON.parse(data);
+            const  {message: logMessage} = JSON.parse(data);
             let {time, message, namespace} = parseLogMessage(logMessage)
             updateLogs({
                 message, namespace, time
@@ -116,7 +116,7 @@
                 {#key createId({time, message}, index)}
                     <tr>
                         <td class="text-purple-400 pr-2">{
-                            new Date(time).toISOString()
+                            time
                         }</td>
                         <td class="text-green-400 pr-2">{
                             namespace
