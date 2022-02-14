@@ -1,0 +1,25 @@
+global:
+  image: mbround18/ark-manager-web:rebuild
+  ports:
+    - name: web
+      port: 8000
+      protocol: TCP
+    - name: ark-1
+      port: 7777
+      protocol: BOTH
+    - name: ark-2
+      port: 7778
+      protocol: BOTH
+    - name: ark-3
+      port: 27016
+      protocol: BOTH
+
+statefulSet:
+  env: []
+
+service:
+  clusterIP: None
+
+storage:
+  className: longhorn
+  size: 20G

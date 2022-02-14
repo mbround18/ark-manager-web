@@ -1,0 +1,28 @@
+{
+  "name": "ark-manager-web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mbround18/ark-manager-web.git",
+  "author": "Michael Bruno <12646562+mbround18@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@auto-it/git-tag": "^10.32.6",
+    "@auto-it/upload-assets": "^10.32.6",
+    "auto": "^10.32.6",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "client": "yarn workspace client",
+    "serve:client": "yarn client dev",
+    "serve:agent": "nodemon -e rs,toml --watch ./agent --exec 'cargo run --bin agent'",
+    "serve:server": "nodemon -e rs,toml --watch ./server --exec 'cargo run --bin server'",
+    "dev": "concurrently -c green,blue,red \"yarn:serve:*\"",
+    "lint": "cargo fmt &&  yarn client pretty-quick",
+    "release": "auto shipit"
+  },
+  "workspaces": [
+    "./client"
+  ],
+  "packageManager": "yarn@3.1.1"
+}

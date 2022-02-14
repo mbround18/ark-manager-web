@@ -1,0 +1,7 @@
+target/
+**/dist
+**/tmp
+**/log
+**/.vite
+**/.idea
+

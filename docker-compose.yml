@@ -1,0 +1,28 @@
+services:
+  client:
+    build:
+      dockerfile: ./Dockerfile.client
+      context: .
+    image: mbround18/ark-manager-client:latest
+    platform: linux/amd64
+    pull_policy: IfNotPresent
+    entrypoint: ["/bin/sh"]
+
+  instance:
+    build: .
+    image: mbround18/ark-manager-web:rebuild
+    pull_policy: IfNotPresent
+    platform: linux/amd64
+    depends_on:
+      - "client"
+    volumes:
+      - "./ARK:/home/steam/ARK"
+    ports:
+      - "8000:8000"
+      - "27016:27016/udp"
+      - "27016:27016/tcp"
+      - "7777:7777/udp"
+      - "7777:7777/tcp"
+      - "7778:7778/udp"
+      - "7778:7778/tcp"
+      - "32330:32330"

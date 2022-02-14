@@ -1,0 +1,7 @@
+:8080 {
+    root * /apps/client
+	encode zstd gzip
+    templates
+    file_server
+    reverse_proxy /api/* {$API_BACKEND_HOST:127.0.0.1:8081}
+}

@@ -1,0 +1,21 @@
+[package]
+name = "agent"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "agent"
+
+[dependencies]
+shared = {path="../shared"}
+socket2 = "0.4"
+async-process = "1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = "0.4"
+which = "4"
+futures = "0.3"
+futures-lite = "1"
+
