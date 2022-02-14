@@ -15,6 +15,30 @@
 - Adding knowledge of new interface ([@mbround18](https://github.com/mbround18))
 - Added in new gem functionality ([@mbround18](https://github.com/mbround18))
 - Merge tag 'version/2.0.2' into develop ([@mbround18](https://github.com/mbround18))
+
+#### Authors: 1
+
+- Michael ([@mbround18](https://github.com/mbround18))
+
+---
+
+# (Mon Feb 14 2022)
+
+#### ⚠️ Pushed to `main`
+
+- Update README.md ([@mbround18](https://github.com/mbround18))
+- Create FUNDING.yml ([@mbround18](https://github.com/mbround18))
+- Merge branch 'release/3.0.1' ([@mbround18](https://github.com/mbround18))
+- Fixed bug that complains about mod being enabled but not installed ([@mbround18](https://github.com/mbround18))
+- Merge tag 'version/3.0.0' into develop ([@mbround18](https://github.com/mbround18))
+- Merge branch 'release/3.0.0' ([@mbround18](https://github.com/mbround18))
+- Merge branch 'feature/adding_playerlist_and_new_gem' into develop ([@mbround18](https://github.com/mbround18))
+- Converted all the little applets to angularjs based ([@mbround18](https://github.com/mbround18))
+- Adding in mod install feature. ([@mbround18](https://github.com/mbround18))
+- Adding angularjs as replacement for server status and mod list ([@mbround18](https://github.com/mbround18))
+- Adding knowledge of new interface ([@mbround18](https://github.com/mbround18))
+- Added in new gem functionality ([@mbround18](https://github.com/mbround18))
+- Merge tag 'version/2.0.2' into develop ([@mbround18](https://github.com/mbround18))
 - Merge branch 'release/2.0.2' ([@mbround18](https://github.com/mbround18))
 - Bumping gem versions to avoid security vulnerability ([@mbround18](https://github.com/mbround18))
 - Merge branch 'master' of github.com:mbround18/ark-manager-web ([@mbround18](https://github.com/mbround18))
