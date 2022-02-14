@@ -6,11 +6,11 @@
   "author": "Michael Bruno <12646562+mbround18@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "@auto-it/git-tag": "^10.32.6",
-    "@auto-it/upload-assets": "^10.32.6",
-    "auto": "^10.32.6",
-    "concurrently": "^7.0.0",
-    "nodemon": "^2.0.15"
+    "@auto-it/git-tag": "10.32.6",
+    "@auto-it/upload-assets": "10.32.6",
+    "auto": "10.32.6",
+    "concurrently": "7.0.0",
+    "nodemon": "2.0.15"
   },
   "scripts": {
     "client": "yarn workspace client",
