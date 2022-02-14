@@ -1977,7 +1977,7 @@ __metadata:
     svelte-check: 2.4.3
     svelte-i18n: 3.3.13
     svelte-preprocess: 4.10.3
-    tailwindcss: 3.0.18
+    tailwindcss: 3.0.22
     tslib: 2.3.1
     typescript: 4.5.5
     vite: 2.8.2
@@ -4282,7 +4282,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.30, nanoid@npm:^3.2.0":
+"nanoid@npm:^3.2.0":
   version: 3.2.0
   resolution: "nanoid@npm:3.2.0"
   bin:
@@ -4917,17 +4917,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.*":
-  version: 8.4.5
-  resolution: "postcss@npm:8.4.5"
-  dependencies:
-    nanoid: ^3.1.30
-    picocolors: ^1.0.0
-    source-map-js: ^1.0.1
-  checksum: b78abdd89c10f7b48f4bdcd376104a19d6e9c7495ab521729bdb3df315af6c211360e9f06887ad3bc0ab0f61a04b91d68ea11462997c79cced58b9ccd66fac07
-  languageName: node
-  linkType: hard
-
 "prepend-http@npm:^2.0.0":
   version: 2.0.0
   resolution: "prepend-http@npm:2.0.0"
@@ -5225,7 +5214,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.1.7, resolve@npm:^1.21.0":
+"resolve@npm:^1.1.7":
   version: 1.21.0
   resolution: "resolve@npm:1.21.0"
   dependencies:
@@ -5260,7 +5249,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>, resolve@patch:resolve@^1.21.0#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.1.7#~builtin<compat/resolve>":
   version: 1.21.0
   resolution: "resolve@patch:resolve@npm%3A1.21.0#~builtin<compat/resolve>::version=1.21.0&hash=07638b"
   dependencies:
@@ -5605,7 +5594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-js@npm:>=0.6.2 <2.0.0, source-map-js@npm:^1.0.1, source-map-js@npm:^1.0.2":
+"source-map-js@npm:>=0.6.2 <2.0.0, source-map-js@npm:^1.0.2":
   version: 1.0.2
   resolution: "source-map-js@npm:1.0.2"
   checksum: c049a7fc4deb9a7e9b481ae3d424cc793cb4845daa690bc5a05d428bf41bf231ced49b4cf0c9e77f9d42fdb3d20d6187619fc586605f5eabe995a316da8d377c
@@ -5988,9 +5977,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:3.0.18":
-  version: 3.0.18
-  resolution: "tailwindcss@npm:3.0.18"
+"tailwindcss@npm:3.0.22":
+  version: 3.0.22
+  resolution: "tailwindcss@npm:3.0.22"
   dependencies:
     arg: ^5.0.1
     chalk: ^4.1.2
@@ -6005,20 +5994,21 @@ __metadata:
     is-glob: ^4.0.3
     normalize-path: ^3.0.0
     object-hash: ^2.2.0
+    postcss: ^8.4.6
     postcss-js: ^4.0.0
     postcss-load-config: ^3.1.0
     postcss-nested: 5.0.6
     postcss-selector-parser: ^6.0.9
     postcss-value-parser: ^4.2.0
     quick-lru: ^5.1.1
-    resolve: ^1.21.0
+    resolve: ^1.22.0
   peerDependencies:
     autoprefixer: ^10.0.2
     postcss: ^8.0.9
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 3c56692eee2d2bb5e5328429c3c2a951716e7af76bc161c3f2d2efa1bfc5b3963967b64db962cea5fdcc3bc4ae1948c305dd7d9c1dc80603de85b785997d567c
+  checksum: 52ec8c4e635d65b708ce762e93d327b3bed9e100db43749bb515e19d4b1af4fe1b0752b57a09939074c265ff63e5ee3451b6ceb7ab7e0da9aa02584cb33eef29
   languageName: node
   linkType: hard
 
