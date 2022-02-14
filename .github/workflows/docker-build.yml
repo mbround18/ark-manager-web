@@ -1,14 +1,11 @@
 name: Docker Build
 
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    types:
-      - labeled
-      - edited
-      - synchronize
-      - unlabeled
-    branches:
-      - main
+    branches: [ main ]
+
 
 env:
   CARGO_TERM_COLOR: always

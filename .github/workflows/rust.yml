@@ -14,7 +14,8 @@ jobs:
   cancel-previous:
     name: Cancel Previous
     runs-on: ubuntu-latest
-    steps:
+    steps:      - unlabeled
+
       - uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
