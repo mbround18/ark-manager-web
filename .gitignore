@@ -393,3 +393,4 @@ Cargo.lock
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/ruby,linux,vagrant,rubymine+all,rust,docker,visualstudiocode,node,yarn
+!/docker-compose.dev.yml

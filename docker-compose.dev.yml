@@ -1,6 +1,17 @@
 services:
-  server:
+  client:
+    build:
+      dockerfile: ./Dockerfile.client
+      context: .
+    image: mbround18/ark-manager-client:latest
+    platform: linux/amd64
+    pull_policy: IfNotPresent
+    entrypoint: ["/bin/sh"]
+
+  instance:
+    build: .
     image: mbround18/ark-manager-web:latest
+    pull_policy: IfNotPresent
     platform: linux/amd64
     depends_on:
       - "client"
