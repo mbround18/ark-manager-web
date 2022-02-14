@@ -18,7 +18,8 @@
     "serve:agent": "nodemon -e rs,toml --watch ./agent --exec 'cargo run --bin agent'",
     "serve:server": "nodemon -e rs,toml --watch ./server --exec 'cargo run --bin server'",
     "dev": "concurrently -c green,blue,red \"yarn:serve:*\"",
-    "lint": "cargo fmt &&  yarn client pretty-quick"
+    "lint": "cargo fmt &&  yarn client pretty-quick",
+    "release": "auto shipit"
   },
   "workspaces": [
     "./client"
