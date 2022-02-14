@@ -21,9 +21,8 @@ I have NOT tested it as this project is from 2016-2017 but this should be able t
 ## Usage
 
 ```shell
-mkdir -p ./ARK
-dockergit add --all
- girun -d \
+mkdir -p ./ARK ./config
+docker run -d \
   -p "8000:8000" \
   -p "32330:32330" \
   -p "7777:7777/tcp" \
