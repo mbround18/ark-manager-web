@@ -11,15 +11,15 @@ jobs:
       fail-fast: true
       max-parallel: 1
       matrix:
-        image: [client, bundled]
+        image: [client, web]
         include:
           - image: client
             Dockerfile: ./Dockerfile.client
-          - image: bundled
+          - image: web
             Dockerfile: ./Dockerfile
 
     env:
-      IMAGE: mbround18/ark-manager-web
+      IMAGE: mbround18/ark-manager-${{matrix.image}}
     steps:
       - uses: actions/checkout@v2
 
