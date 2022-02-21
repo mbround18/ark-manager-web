@@ -1158,19 +1158,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/core@npm:^3.2.0-rc.16":
-  version: 3.2.0-rc.16
-  resolution: "@yarnpkg/core@npm:3.2.0-rc.16"
+"@yarnpkg/core@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@yarnpkg/core@npm:3.2.0"
   dependencies:
     "@arcanis/slice-ansi": ^1.1.1
     "@types/semver": ^7.1.0
     "@types/treeify": ^1.0.0
-    "@yarnpkg/fslib": ^2.6.1-rc.11
+    "@yarnpkg/fslib": ^2.6.1
     "@yarnpkg/json-proxy": ^2.1.1
-    "@yarnpkg/libzip": ^2.2.3-rc.11
-    "@yarnpkg/parsers": ^2.5.0-rc.14
-    "@yarnpkg/pnp": ^3.1.1-rc.16
-    "@yarnpkg/shell": ^3.2.0-rc.14
+    "@yarnpkg/libzip": ^2.2.3
+    "@yarnpkg/parsers": ^2.5.0
+    "@yarnpkg/pnp": ^3.2.0
+    "@yarnpkg/shell": ^3.2.0
     camelcase: ^5.3.1
     chalk: ^3.0.0
     ci-info: ^3.2.0
@@ -1194,7 +1194,7 @@ __metadata:
     treeify: ^1.1.0
     tslib: ^1.13.0
     tunnel: ^0.0.6
-  checksum: d7dee6cc8277e875297d6cb11b2d18969a37a49090e65e6eb20f6db3ef10b7c6559277b2cd5803f3a3ab83ff30c20ef4617d8cee5d5cfea4e3456eff4974013c
+  checksum: a56839f157dd8239ff61f72eb938d03981ceb74a651593a4f6a2df5176512308d65debf171c0883704952db6035482cec2d571abd23d05fbb60ff27c74220eac
   languageName: node
   linkType: hard
 
@@ -1208,13 +1208,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/fslib@npm:^2.6.1-rc.11":
-  version: 2.6.1-rc.11
-  resolution: "@yarnpkg/fslib@npm:2.6.1-rc.11"
+"@yarnpkg/fslib@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "@yarnpkg/fslib@npm:2.6.1"
   dependencies:
-    "@yarnpkg/libzip": ^2.2.3-rc.11
+    "@yarnpkg/libzip": ^2.2.3
     tslib: ^1.13.0
-  checksum: 5c1171d765df99eaadd46a68c930d7d61b4167d144e3cfb64b4d4879dfd57b6e6f5dc9eb233647eab935e05918e2cb226c65a33f2d82454b66298acebfafb202
+  checksum: e3bbd796a1c586372807da07207230c89901519e53a991b95c070cae59f570ac9617368713e9e83e77c4507d602e21ce026cc15fc70eb171d3477c5bcbbbf60e
   languageName: node
   linkType: hard
 
@@ -1238,68 +1238,68 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/libzip@npm:^2.2.3-rc.11":
-  version: 2.2.3-rc.11
-  resolution: "@yarnpkg/libzip@npm:2.2.3-rc.11"
+"@yarnpkg/libzip@npm:^2.2.3":
+  version: 2.2.4
+  resolution: "@yarnpkg/libzip@npm:2.2.4"
   dependencies:
     "@types/emscripten": ^1.38.0
     tslib: ^1.13.0
-  checksum: 06def4050819da0ecabf34e0faf165102929e77ce3fab9eeab74a110eeed78fdbf569d0ce70179d2c0f95e0fc216497f065690b2ba7f278fd00fb35175c58331
+  checksum: 974a286d4e7ff52bd924d56cb39492898a2306e95774362e4a3eb94690f180273a078243bf4044909e0fe29354552acc1cddd7d10d71ce332f7b1e1ff8eb54d9
   languageName: node
   linkType: hard
 
-"@yarnpkg/nm@npm:^3.0.1-rc.16":
-  version: 3.0.1-rc.16
-  resolution: "@yarnpkg/nm@npm:3.0.1-rc.16"
+"@yarnpkg/nm@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "@yarnpkg/nm@npm:3.0.1"
   dependencies:
-    "@yarnpkg/core": ^3.2.0-rc.16
-    "@yarnpkg/fslib": ^2.6.1-rc.11
-  checksum: 71c17eb1ea0b75c92aad47070c2857a04df2aed2b794bf743aef5b9a83a71da9fd8601ce78fa1a5b523fa01c182f111e8c6dccef16e55ecd2aae6c2a60b01b36
+    "@yarnpkg/core": ^3.2.0
+    "@yarnpkg/fslib": ^2.6.1
+  checksum: bc39d07b4f2715bb114e3290d11cec71baadce2f2b4d0d0f3058eba154b62bf8a954fa57df4b9018dc5bdc12ab58e90822b6b67f8ed9fd13565b0b8acf56acd8
   languageName: node
   linkType: hard
 
-"@yarnpkg/parsers@npm:^2.5.0-rc.14":
-  version: 2.5.0-rc.14
-  resolution: "@yarnpkg/parsers@npm:2.5.0-rc.14"
+"@yarnpkg/parsers@npm:^2.5.0":
+  version: 2.5.0
+  resolution: "@yarnpkg/parsers@npm:2.5.0"
   dependencies:
     js-yaml: ^3.10.0
     tslib: ^1.13.0
-  checksum: 9d9537c903d6987566d7792fda21bb0201e97934b54661b8ae815385e71bdebb6a717417386231af3e7f91771469bd6b091cc61895697ebf60f270d732319008
+  checksum: 02678b7b910eb653c27f0043ac5295c96f2547164959a76e529cad628c2dd48748d1eec2e5d0ee77f79c7d0536549477f203274ca0533e1b478a7f1e0689bb75
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnp@npm:^3.1.1-rc.16":
-  version: 3.1.1-rc.16
-  resolution: "@yarnpkg/pnp@npm:3.1.1-rc.16"
+"@yarnpkg/pnp@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@yarnpkg/pnp@npm:3.2.0"
   dependencies:
     "@types/node": ^13.7.0
-    "@yarnpkg/fslib": ^2.6.1-rc.11
-  checksum: f15075bab1bb2c227b458dfb02c6599294e757a9825ff39e3cc549d57a4fd0cbc7ab82b01ea0734df2f35bd54261fd0341be0b1d4e04b59df38d5b62e9e091b2
+    "@yarnpkg/fslib": ^2.6.1
+  checksum: 5b99f89e774a0e98f6e86b9bdcd36eee4f9dc00b9b5983e8f6df95c3ecc196f5a030616edaaad7648f548d5b06fd7b201226e1205d64e61fe02657fea3860410
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnpify@npm:3.1.1-rc.16":
-  version: 3.1.1-rc.16
-  resolution: "@yarnpkg/pnpify@npm:3.1.1-rc.16"
+"@yarnpkg/pnpify@npm:3.1.1":
+  version: 3.1.1
+  resolution: "@yarnpkg/pnpify@npm:3.1.1"
   dependencies:
-    "@yarnpkg/core": ^3.2.0-rc.16
-    "@yarnpkg/fslib": ^2.6.1-rc.11
-    "@yarnpkg/nm": ^3.0.1-rc.16
+    "@yarnpkg/core": ^3.2.0
+    "@yarnpkg/fslib": ^2.6.1
+    "@yarnpkg/nm": ^3.0.1
     clipanion: ^3.2.0-rc.4
     cross-spawn: 7.0.3
     tslib: ^1.13.0
   bin:
     pnpify: ./lib/cli.js
-  checksum: 2149f4855811ce78025eaca69ca70a4d3d69866bc22b8dc5c423f4906b966c19883d8c73740099511ec3a3a27f2ccc07952aa39a8bbb79f136eb6657b59d1603
+  checksum: 05a96f9299e77954a03ed9f69292d87416dd7a102a58b1ca9d245c6e7665c146e28054f79c8574172f0d94e94ba9295ae9fc15944be3883337e11508c1764eb2
   languageName: node
   linkType: hard
 
-"@yarnpkg/shell@npm:^3.2.0-rc.14":
-  version: 3.2.0-rc.14
-  resolution: "@yarnpkg/shell@npm:3.2.0-rc.14"
+"@yarnpkg/shell@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "@yarnpkg/shell@npm:3.2.0"
   dependencies:
-    "@yarnpkg/fslib": ^2.6.1-rc.11
-    "@yarnpkg/parsers": ^2.5.0-rc.14
+    "@yarnpkg/fslib": ^2.6.1
+    "@yarnpkg/parsers": ^2.5.0
     chalk: ^3.0.0
     clipanion: ^3.2.0-rc.4
     cross-spawn: 7.0.3
@@ -1309,7 +1309,7 @@ __metadata:
     tslib: ^1.13.0
   bin:
     shell: ./lib/cli.js
-  checksum: 32e86060cec135cb0ae68845146480f41cfc37b3e95b1036dcc79b1864f64715bdd111419e8b57e9bd5ec1120924df6faf7e380f8a534e66cdf0188423ceff70
+  checksum: c1ec5f08a3512de538534492e895db631b4a92fdf907c605ba7c7ca60477a865ee796802b96de717fcdfa6ee820183f3d2bbd9962fe5ff302ab47b39fa93592f
   languageName: node
   linkType: hard
 
@@ -1960,7 +1960,7 @@ __metadata:
     "@sveltejs/vite-plugin-svelte": 1.0.0-next.37
     "@tsconfig/svelte": 3.0.0
     "@types/lodash": 4.14.178
-    "@yarnpkg/pnpify": 3.1.1-rc.16
+    "@yarnpkg/pnpify": 3.1.1
     autoprefixer: 10.4.2
     axios: 0.26.0
     codejar: 3.5.0
