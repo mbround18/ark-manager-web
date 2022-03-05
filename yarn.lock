@@ -185,11 +185,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/upload-assets@npm:10.34.0":
-  version: 10.34.0
-  resolution: "@auto-it/upload-assets@npm:10.34.0"
+"@auto-it/upload-assets@npm:10.34.1":
+  version: 10.34.1
+  resolution: "@auto-it/upload-assets@npm:10.34.1"
   dependencies:
-    "@auto-it/core": 10.34.0
+    "@auto-it/core": 10.34.1
     endent: ^2.0.1
     fast-glob: ^3.1.1
     file-type: ^16.0.0
@@ -197,7 +197,7 @@ __metadata:
     io-ts: ^2.1.2
     terminal-link: ^2.1.1
     tslib: 2.1.0
-  checksum: b77804a67268481e726838d8a146f1d69369090a7f1ad8f9242e27a0de1837954f1756f0760fc3b8a60074dfb31e878f47d20526333c26df8f7f3c50a587b675
+  checksum: 7a88b6b5d946275dd294bff4dc8f28b86d9a67c7a5e8e42d83e85865d9d171c927055f489c1b77862e728449b5fdcda06df6ba2377699c74298d46a5f96e9628
   languageName: node
   linkType: hard
 
@@ -1562,7 +1562,7 @@ __metadata:
   resolution: "ark-manager-web@workspace:."
   dependencies:
     "@auto-it/git-tag": 10.34.1
-    "@auto-it/upload-assets": 10.34.0
+    "@auto-it/upload-assets": 10.34.1
     auto: 10.34.0
     concurrently: 7.0.0
     nodemon: 2.0.15
