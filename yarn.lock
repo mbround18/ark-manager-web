@@ -952,13 +952,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@rollup/pluginutils@npm:4.1.2"
+"@rollup/pluginutils@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@rollup/pluginutils@npm:4.2.0"
   dependencies:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
-  checksum: 498d67e7b48c707e3e0d9f7ddaa405833d77575b2d9607cd1914be40455ed534235e0512f9d046bf0e4ed1740e7816fd32ab1c673195e897c4fa180bcbfd7283
+  checksum: 2e86d9bfb95919727bcba0bbbdbedc98e25a1e51fe3047f18ec6d85e0743d1c73e1c0de3f9fdbd2ff6b90c32f30d4b2706c9e794f3c2e7a80156980081558e2e
   languageName: node
   linkType: hard
 
@@ -976,15 +976,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.39":
-  version: 1.0.0-next.39
-  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.39"
+"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.40":
+  version: 1.0.0-next.40
+  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.40"
   dependencies:
-    "@rollup/pluginutils": ^4.1.2
+    "@rollup/pluginutils": ^4.2.0
     debug: ^4.3.3
     kleur: ^4.1.4
-    magic-string: ^0.25.7
-    svelte-hmr: ^0.14.9
+    magic-string: ^0.26.1
+    svelte-hmr: ^0.14.11
   peerDependencies:
     diff-match-patch: ^1.0.5
     svelte: ^3.44.0
@@ -992,7 +992,7 @@ __metadata:
   peerDependenciesMeta:
     diff-match-patch:
       optional: true
-  checksum: c427809eddfe83c20679ea45898eb69f1bb7809b0720622e6aada1a38adbef05705d8cc2299721c1bc1feb290a9df484de1baabc8a0dffc8425f7fb56cb727ba
+  checksum: b6037907ebb9c02507d7d8fc98fcf47eaa0459d62baeb8879d07de81a15d81ac39d8e53d94706c05dc7f8b53d6e29fae1db654332a9a3a04de543406fbfb7706
   languageName: node
   linkType: hard
 
@@ -1979,7 +1979,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 6.0.0
     "@parcel/core": 2.3.2
-    "@sveltejs/vite-plugin-svelte": 1.0.0-next.39
+    "@sveltejs/vite-plugin-svelte": 1.0.0-next.40
     "@tsconfig/svelte": 3.0.0
     "@types/lodash": 4.14.180
     "@yarnpkg/pnpify": 3.1.1
@@ -4033,6 +4033,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"magic-string@npm:^0.26.1":
+  version: 0.26.1
+  resolution: "magic-string@npm:0.26.1"
+  dependencies:
+    sourcemap-codec: ^1.4.8
+  checksum: 23f21f5734346ddfbabd7b9834e3ecda3521e3e1db81166c1513b45b729489bbed1eafa8cd052c7db7fdc7c68ebc5c03bc00dd5a23697edda15dbecaf8c98397
+  languageName: node
+  linkType: hard
+
 "make-dir@npm:^3.0.0":
   version: 3.1.0
   resolution: "make-dir@npm:3.1.0"
@@ -5674,7 +5683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sourcemap-codec@npm:^1.3.0, sourcemap-codec@npm:^1.4.4":
+"sourcemap-codec@npm:^1.3.0, sourcemap-codec@npm:^1.4.4, sourcemap-codec@npm:^1.4.8":
   version: 1.4.8
   resolution: "sourcemap-codec@npm:1.4.8"
   checksum: b57981c05611afef31605732b598ccf65124a9fcb03b833532659ac4d29ac0f7bfacbc0d6c5a28a03e84c7510e7e556d758d0bb57786e214660016fb94279316
@@ -5883,12 +5892,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-hmr@npm:^0.14.9":
-  version: 0.14.9
-  resolution: "svelte-hmr@npm:0.14.9"
+"svelte-hmr@npm:^0.14.11":
+  version: 0.14.11
+  resolution: "svelte-hmr@npm:0.14.11"
   peerDependencies:
     svelte: ">=3.19.0"
-  checksum: f13e152cad53a82181409fe1a3aebfb0465f837109f7f4a7aa52f357ab4153920a9d3aefb077b68d1cbc01e4fc4f907b9b142734bed2aa43b0e64f5b15ae9d98
+  checksum: 87c339d753befeca4efc694064e1b32306f0e0db8e14929b1fb0479a40166c6de799d870f6b84cfcaee43098c6c2a8fd4211f2f72b569414da5b3b28aefda4df
   languageName: node
   linkType: hard
 
