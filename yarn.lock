@@ -28,6 +28,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@auto-it/bot-list@npm:10.36.2":
+  version: 10.36.2
+  resolution: "@auto-it/bot-list@npm:10.36.2"
+  checksum: f1f7e3d1af1d6943b8bb41ff6585bef5437b80c0e45a64ca44cf8b8cf07faa5a243a9ac10bb338dec85fa1a2a31651944c59059d5d76b28c45fbf2b72c0b2ca7
+  languageName: node
+  linkType: hard
+
 "@auto-it/core@npm:10.34.2":
   version: 10.34.2
   resolution: "@auto-it/core@npm:10.34.2"
@@ -128,14 +135,64 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/git-tag@npm:10.36.0":
-  version: 10.36.0
-  resolution: "@auto-it/git-tag@npm:10.36.0"
+"@auto-it/core@npm:10.36.2":
+  version: 10.36.2
+  resolution: "@auto-it/core@npm:10.36.2"
   dependencies:
-    "@auto-it/core": 10.36.0
+    "@auto-it/bot-list": 10.36.2
+    "@endemolshinegroup/cosmiconfig-typescript-loader": ^3.0.2
+    "@octokit/plugin-enterprise-compatibility": 1.3.0
+    "@octokit/plugin-retry": ^3.0.9
+    "@octokit/plugin-throttling": ^3.6.2
+    "@octokit/rest": ^18.12.0
+    await-to-js: ^3.0.0
+    chalk: ^4.0.0
+    cosmiconfig: 7.0.0
+    deepmerge: ^4.0.0
+    dotenv: ^8.0.0
+    endent: ^2.1.0
+    enquirer: ^2.3.4
+    env-ci: ^5.0.1
+    fast-glob: ^3.1.1
+    fp-ts: ^2.5.3
+    fromentries: ^1.2.0
+    gitlog: ^4.0.3
+    https-proxy-agent: ^5.0.0
+    import-cwd: ^3.0.0
+    import-from: ^3.0.0
+    io-ts: ^2.1.2
+    lodash.chunk: ^4.2.0
+    log-symbols: ^4.0.0
+    node-fetch: 2.6.7
+    parse-author: ^2.0.0
+    parse-github-url: 1.0.2
+    pretty-ms: ^7.0.0
+    requireg: ^0.2.2
+    semver: ^7.0.0
+    signale: ^1.4.0
+    tapable: ^2.2.0
+    terminal-link: ^2.1.1
+    tinycolor2: ^1.4.1
+    ts-node: ^9.1.1
+    tslib: 2.1.0
+    type-fest: ^0.21.1
+    typescript-memoize: ^1.0.0-alpha.3
+    url-join: ^4.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: c37f718440923244c12ebc94aa518689063f4006fed769018abb8990c23c1fdc5a6f2bad3113bb0411fb25f23cd356e0e5e647582dff7bd3f98cf11543b9f4d8
+  languageName: node
+  linkType: hard
+
+"@auto-it/git-tag@npm:10.36.2":
+  version: 10.36.2
+  resolution: "@auto-it/git-tag@npm:10.36.2"
+  dependencies:
+    "@auto-it/core": 10.36.2
     semver: ^7.0.0
     tslib: 2.1.0
-  checksum: 2eebe0b0ef3be1296345932aa4ee2733a28f828e3fcc807e43655e299089d36a8401993668f5869bf10243654cd9619ac0206b3c1f4a9a185435c61d00421af7
+  checksum: 9a1750073ef7cee72d251bb384a4adbf9d362f7ae2ee86d90c8d2dd57a44692fe9b27ce04562943a1099bd5c6cca52cf0b0c6b1fbe8e37daddf3691078fcbe43
   languageName: node
   linkType: hard
 
@@ -468,7 +525,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/plugin-retry@npm:^3.0.1":
+"@octokit/plugin-retry@npm:^3.0.1, @octokit/plugin-retry@npm:^3.0.9":
   version: 3.0.9
   resolution: "@octokit/plugin-retry@npm:3.0.9"
   dependencies:
@@ -487,6 +544,18 @@ __metadata:
   peerDependencies:
     "@octokit/core": ^3.5.0
   checksum: 5b4339d12106b7a7250009d169234785136c3542473738f12649bfc958ac509d6f3f5729ab1c64dbc3829f8ebfdd76b57be0bc3928fb9efbf7d96037ca40518f
+  languageName: node
+  linkType: hard
+
+"@octokit/plugin-throttling@npm:^3.6.2":
+  version: 3.6.2
+  resolution: "@octokit/plugin-throttling@npm:3.6.2"
+  dependencies:
+    "@octokit/types": ^6.0.1
+    bottleneck: ^2.15.3
+  peerDependencies:
+    "@octokit/core": ^3.5.0
+  checksum: 69bd8b51662fcc59a10ac39d827ebb99939ec74aaabefaf9a9af11df41b4816618aa44a37e0ac04ae33af898d00892c978ce97b26c327834d5ed4e4026aa6de4
   languageName: node
   linkType: hard
 
@@ -515,7 +584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@octokit/rest@npm:^18.0.0":
+"@octokit/rest@npm:^18.0.0, @octokit/rest@npm:^18.12.0":
   version: 18.12.0
   resolution: "@octokit/rest@npm:18.12.0"
   dependencies:
@@ -1561,7 +1630,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ark-manager-web@workspace:."
   dependencies:
-    "@auto-it/git-tag": 10.36.0
+    "@auto-it/git-tag": 10.36.2
     "@auto-it/upload-assets": 10.36.0
     auto: 10.34.2
     concurrently: 7.0.0
@@ -2604,7 +2673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"endent@npm:^2.0.1":
+"endent@npm:^2.0.1, endent@npm:^2.1.0":
   version: 2.1.0
   resolution: "endent@npm:2.1.0"
   dependencies:
