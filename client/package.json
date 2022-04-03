@@ -23,7 +23,7 @@
     "@faker-js/faker": "6.1.1",
     "@parcel/core": "2.4.1",
     "axios": "0.26.1",
-    "codejar": "3.5.0",
+    "codejar": "3.6.0",
     "immer": "9.0.12",
     "js-base64": "3.7.2",
     "lodash": "4.17.21",
