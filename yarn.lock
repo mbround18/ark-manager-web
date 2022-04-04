@@ -1998,7 +1998,7 @@ __metadata:
     svelte: 3.46.6
     svelte-check: 2.4.6
     svelte-i18n: 3.3.13
-    svelte-preprocess: 4.10.4
+    svelte-preprocess: 4.10.5
     tailwindcss: 3.0.23
     tslib: 2.3.1
     typescript: 4.6.3
@@ -5961,9 +5961,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:4.10.4":
-  version: 4.10.4
-  resolution: "svelte-preprocess@npm:4.10.4"
+"svelte-preprocess@npm:4.10.5":
+  version: 4.10.5
+  resolution: "svelte-preprocess@npm:4.10.5"
   dependencies:
     "@types/pug": ^2.0.4
     "@types/sass": ^1.16.0
@@ -6006,7 +6006,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 323eca0fe691875b2b32a6c421aeb0aeee9e76050116e2d4de1bc027d8991ff150af3667b2880e5d3e19c80ff3fedaa70ff9c5e7b495a50acd5a268659578894
+  checksum: c65f72fe58ce882380583dc14037c6ac89d4e4130113e579e3c237cf632016a9c617da91f49f92fc9c313545a177103b50250c2687a1747486cc8b526c725ffb
   languageName: node
   linkType: hard
 
