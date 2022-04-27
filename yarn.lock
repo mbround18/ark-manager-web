@@ -979,13 +979,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/pluginutils@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "@rollup/pluginutils@npm:4.2.0"
+"@rollup/pluginutils@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "@rollup/pluginutils@npm:4.2.1"
   dependencies:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
-  checksum: 2e86d9bfb95919727bcba0bbbdbedc98e25a1e51fe3047f18ec6d85e0743d1c73e1c0de3f9fdbd2ff6b90c32f30d4b2706c9e794f3c2e7a80156980081558e2e
+  checksum: 6bc41f22b1a0f1efec3043899e4d3b6b1497b3dea4d94292d8f83b4cf07a1073ecbaedd562a22d11913ff7659f459677b01b09e9598a98936e746780ecc93a12
   languageName: node
   linkType: hard
 
@@ -1003,11 +1003,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.41":
-  version: 1.0.0-next.41
-  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.41"
+"@sveltejs/vite-plugin-svelte@npm:1.0.0-next.42":
+  version: 1.0.0-next.42
+  resolution: "@sveltejs/vite-plugin-svelte@npm:1.0.0-next.42"
   dependencies:
-    "@rollup/pluginutils": ^4.2.0
+    "@rollup/pluginutils": ^4.2.1
     debug: ^4.3.4
     kleur: ^4.1.4
     magic-string: ^0.26.1
@@ -1019,7 +1019,7 @@ __metadata:
   peerDependenciesMeta:
     diff-match-patch:
       optional: true
-  checksum: 23e2290aa3e115c638c180a16782ba57eb529e3de832f2302f378b5b28d1963861cf1c1179ecd9d6a09d204985d3dafb04dfa94939c83347569f5970bad3a2b8
+  checksum: adb11ee3b87cba2fb69eed1c2325c14a0e73862695ccbceea10616c0b18cedfb4f5c851b175a7a5ddc0e5294b93090517351723beb8142c1be99fb1da7e58f4f
   languageName: node
   linkType: hard
 
@@ -2021,7 +2021,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 6.2.0
     "@parcel/core": 2.5.0
-    "@sveltejs/vite-plugin-svelte": 1.0.0-next.41
+    "@sveltejs/vite-plugin-svelte": 1.0.0-next.42
     "@tsconfig/svelte": 3.0.0
     "@types/lodash": 4.14.182
     "@yarnpkg/pnpify": 3.1.1
