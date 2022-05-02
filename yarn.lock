@@ -2044,7 +2044,7 @@ __metadata:
     tailwindcss: 3.0.24
     tslib: 2.4.0
     typescript: 4.6.4
-    vite: 2.9.6
+    vite: 2.9.7
   languageName: unknown
   linkType: soft
 
@@ -5102,7 +5102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.13":
+"postcss@npm:8.4.13, postcss@npm:^8.4.13":
   version: 8.4.13
   resolution: "postcss@npm:8.4.13"
   dependencies:
@@ -6590,13 +6590,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:2.9.6":
-  version: 2.9.6
-  resolution: "vite@npm:2.9.6"
+"vite@npm:2.9.7":
+  version: 2.9.7
+  resolution: "vite@npm:2.9.7"
   dependencies:
     esbuild: ^0.14.27
     fsevents: ~2.3.2
-    postcss: ^8.4.12
+    postcss: ^8.4.13
     resolve: ^1.22.0
     rollup: ^2.59.0
   peerDependencies:
@@ -6615,7 +6615,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 79bbf516547f4adb1a297ac8648f8818b3e2a7bb113a7e12acc2355498d247556f58fc50d39eec4891c07250e7420e72773e358eeb8dc62af62fc1ff32c70877
+  checksum: d3d2a86855709e037d244c3066e785d7b700e41bf59ceb776818ea06ee2ed579055c10596ca883dd56de46b3654ec82da53369062013a012a1a60819dbb7c0ee
   languageName: node
   linkType: hard
 
