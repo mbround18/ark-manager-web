@@ -2045,7 +2045,7 @@ __metadata:
     tailwindcss: 3.0.24
     tslib: 2.4.0
     typescript: 4.6.4
-    vite: 2.9.8
+    vite: 2.9.9
   languageName: unknown
   linkType: soft
 
@@ -6591,9 +6591,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:2.9.8":
-  version: 2.9.8
-  resolution: "vite@npm:2.9.8"
+"vite@npm:2.9.9":
+  version: 2.9.9
+  resolution: "vite@npm:2.9.9"
   dependencies:
     esbuild: ^0.14.27
     fsevents: ~2.3.2
@@ -6616,7 +6616,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 7de3450bec4caa06f4540d1d252563ef0b7e1bdd167d04abf03db72cfd8c9a93879e18861283bc7d075e1d094b78b71770ca36f9b965bdf28c66665eafdc29dc
+  checksum: 9292b8ba510a393d0c61c407ebfb4eaa818b2d8d106b3476cdc94cb57a0c59348a535936d698db04b35910a1cfdb16aeaf872f0f995b54cf6d7ed31bc7886deb
   languageName: node
   linkType: hard
 
