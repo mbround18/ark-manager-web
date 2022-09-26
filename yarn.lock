@@ -2180,7 +2180,7 @@ __metadata:
     postcss: 8.4.16
     postcss-import: 15.0.0
     prettier: 2.7.1
-    prettier-plugin-svelte: 2.7.0
+    prettier-plugin-svelte: 2.7.1
     pretty-quick: 3.1.3
     sass: 1.55.0
     svelte: 3.50.1
@@ -5127,13 +5127,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-svelte@npm:2.7.0":
-  version: 2.7.0
-  resolution: "prettier-plugin-svelte@npm:2.7.0"
+"prettier-plugin-svelte@npm:2.7.1":
+  version: 2.7.1
+  resolution: "prettier-plugin-svelte@npm:2.7.1"
   peerDependencies:
     prettier: ^1.16.4 || ^2.0.0
     svelte: ^3.2.0
-  checksum: 4b38d0d856f5d9099ce64cbfaeffc941f4b408285eb8bb6c0624ba484b2cad99c90e82da00bd8ab55eeaa54caf8d0bd89af602cdf63f5b6e1f0b7e0a53672503
+  checksum: 803bead66d88c08742ac9df14ababb22bde95468bd4e87de1fb0ea9bfe91b72d17cedaa343e343b11d4e97d057d912fc75e39cf6ab9a5b8c46d51248327b083b
   languageName: node
   linkType: hard
 
