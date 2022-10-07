@@ -1887,14 +1887,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:1.1.1":
-  version: 1.1.1
-  resolution: "axios@npm:1.1.1"
+"axios@npm:1.1.2":
+  version: 1.1.2
+  resolution: "axios@npm:1.1.2"
   dependencies:
     follow-redirects: ^1.15.0
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
-  checksum: 521f1634ea1a2d528ab657dce956763763dddc378af75f2954875f0b3f0af49f632d303cce2dfade8c4c6249ee2e9101b44b1751f248315c9281155cedd3ecc3
+  checksum: 136c25a5031aa2845fdbda3006c36888bbe351b11d1195f1f898a23c5df1430febbdb1ad034a61f27967e83762d5b5a3e851fff8a363cb4badeb883f8ff21461
   languageName: node
   linkType: hard
 
@@ -2190,7 +2190,7 @@ __metadata:
     "@types/lodash": 4.14.186
     "@yarnpkg/pnpify": 3.1.6
     autoprefixer: 10.4.12
-    axios: 1.1.1
+    axios: 1.1.2
     codejar: 3.6.0
     immer: 9.0.15
     js-base64: 3.7.2
