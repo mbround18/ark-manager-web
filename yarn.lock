@@ -2227,7 +2227,7 @@ __metadata:
     prettier-plugin-svelte: 2.8.1
     pretty-quick: 3.1.3
     sass: 1.56.1
-    svelte: 3.53.1
+    svelte: 3.54.0
     svelte-check: 2.10.1
     svelte-i18n: 3.6.0
     svelte-preprocess: 4.10.7
@@ -6297,10 +6297,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:3.53.1":
-  version: 3.53.1
-  resolution: "svelte@npm:3.53.1"
-  checksum: addf72d3d5daec3af0a37fcd9e1549ad2362cb631b32060674e0a6ed1e45388c459f8b7eeebf486fc411fbd9b882c5fcd70c017ddac94942d86f87888fc13102
+"svelte@npm:3.54.0":
+  version: 3.54.0
+  resolution: "svelte@npm:3.54.0"
+  checksum: 5d8f082b2d1c8ef41b94ee34cf4568e10e11ade2125cfa0445397027fd33dd68e8e61f2e7a68239181f4b49c72258b643523dafaa42bb6c6bad5cc2d16bb9e4b
   languageName: node
   linkType: hard
 
