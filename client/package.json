@@ -2,7 +2,7 @@
   "name": "client",
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "2.0.2",
+    "@sveltejs/vite-plugin-svelte": "2.0.3",
     "@tsconfig/svelte": "3.0.0",
     "@types/lodash": "4.14.191",
     "@yarnpkg/pnpify": "3.1.6",

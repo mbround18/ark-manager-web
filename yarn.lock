@@ -1272,20 +1272,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:2.0.2":
-  version: 2.0.2
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.0.2"
+"@sveltejs/vite-plugin-svelte@npm:2.0.3":
+  version: 2.0.3
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.0.3"
   dependencies:
     debug: ^4.3.4
-    deepmerge: ^4.2.2
+    deepmerge: ^4.3.0
     kleur: ^4.1.5
-    magic-string: ^0.27.0
+    magic-string: ^0.29.0
     svelte-hmr: ^0.15.1
-    vitefu: ^0.2.3
+    vitefu: ^0.2.4
   peerDependencies:
     svelte: ^3.54.0
     vite: ^4.0.0
-  checksum: 6a223da864d74c4e6ea05881ee0cf79db8390953df6d506b79d2c37a365fe291e5a5bb330dcfb5366b61ee3915544fd37db3e134865085981342bab392a6a991
+  checksum: 2584728109c6d52d310c7112554afb5b029da2b077809bf7fc5841f489198921609fb1957ff85d4aa176e89a6f32713447a60eb3db57249244f8536b4bf36872
   languageName: node
   linkType: hard
 
@@ -2364,7 +2364,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 7.6.0
     "@parcel/core": 2.8.3
-    "@sveltejs/vite-plugin-svelte": 2.0.2
+    "@sveltejs/vite-plugin-svelte": 2.0.3
     "@tsconfig/svelte": 3.0.0
     "@types/lodash": 4.14.191
     "@yarnpkg/pnpify": 3.1.6
@@ -2715,6 +2715,13 @@ __metadata:
   version: 4.2.2
   resolution: "deepmerge@npm:4.2.2"
   checksum: a8c43a1ed8d6d1ed2b5bf569fa4c8eb9f0924034baf75d5d406e47e157a451075c4db353efea7b6bcc56ec48116a8ce72fccf867b6e078e7c561904b5897530b
+  languageName: node
+  linkType: hard
+
+"deepmerge@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "deepmerge@npm:4.3.0"
+  checksum: c7980eb5c5be040b371f1df0d566473875cfabed9f672ccc177b81ba8eee5686ce2478de2f1d0076391621cbe729e5eacda397179a59ef0f68901849647db126
   languageName: node
   linkType: hard
 
@@ -4280,6 +4287,15 @@ __metadata:
   dependencies:
     "@jridgewell/sourcemap-codec": ^1.4.13
   checksum: 273faaa50baadb7a2df6e442eac34ad611304fc08fe16e24fe2e472fd944bfcb73ffb50d2dc972dc04e92784222002af46868cb9698b1be181c81830fd95a13e
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.29.0":
+  version: 0.29.0
+  resolution: "magic-string@npm:0.29.0"
+  dependencies:
+    "@jridgewell/sourcemap-codec": ^1.4.13
+  checksum: 19e5398fcfc44804917127c72ad622c68a19a0a10cbdb8d4f9f9417584a087fe9e117140bfb2463d86743cf1ed9cf4182ae0b0ad1a7536f7fdda257ee4449ffb
   languageName: node
   linkType: hard
 
@@ -6785,15 +6801,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitefu@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "vitefu@npm:0.2.3"
+"vitefu@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "vitefu@npm:0.2.4"
   peerDependencies:
     vite: ^3.0.0 || ^4.0.0
   peerDependenciesMeta:
     vite:
       optional: true
-  checksum: d4b3b76cf4a6c8efd28df2a0c4c3a6ff8879397861ff812ec46cbd824b8dbf83b4aa8c0436505c404883df6c13ca67c2497f8140a4070fa8feeeaaf727b8654a
+  checksum: 4add282ffec4f27388aa75df2cd7db9a674d51bf9471907441ca23ff5ac70fc9540344dbf3a53af0aa53685f1d7b8c756da5f9749afe91aac66c82a25ade7821
   languageName: node
   linkType: hard
 
