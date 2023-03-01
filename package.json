@@ -8,7 +8,7 @@
   "devDependencies": {
     "@auto-it/git-tag": "10.43.0",
     "@auto-it/upload-assets": "10.43.0",
-    "auto": "10.42.2",
+    "auto": "10.43.0",
     "concurrently": "7.6.0",
     "nodemon": "2.0.20"
   },
