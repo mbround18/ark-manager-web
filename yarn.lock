@@ -2372,7 +2372,7 @@ __metadata:
     prettier: 2.8.4
     prettier-plugin-svelte: 2.9.0
     pretty-quick: 3.1.3
-    sass: 1.59.1
+    sass: 1.59.2
     svelte: 3.56.0
     svelte-check: 3.1.2
     svelte-i18n: 3.6.0
@@ -5752,16 +5752,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.59.1":
-  version: 1.59.1
-  resolution: "sass@npm:1.59.1"
+"sass@npm:1.59.2":
+  version: 1.59.2
+  resolution: "sass@npm:1.59.2"
   dependencies:
     chokidar: ">=3.0.0 <4.0.0"
     immutable: ^4.0.0
     source-map-js: ">=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 815bfd274a6d27f611fd280e7b3bd2b9672eb8ff98e58ed3abf2e43a210957e46ac1efc57557974afe623ad39c95697cb182c5141752c9c6deba73e18885618f
+  checksum: ab015ac49beb1252373023cc79b687aabd7850a7f450250b2fbe4eb3f64b0aef6759f8c7b33234221788a0e42cdd3999edfb5995218e474123b99cb126773e30
   languageName: node
   linkType: hard
 
