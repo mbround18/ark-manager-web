@@ -2376,7 +2376,7 @@ __metadata:
     svelte: 3.57.0
     svelte-check: 3.1.4
     svelte-i18n: 3.6.0
-    svelte-preprocess: 5.0.2
+    svelte-preprocess: 5.0.3
     tailwindcss: 3.2.7
     tslib: 2.5.0
     typescript: 5.0.2
@@ -6214,9 +6214,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:5.0.2":
-  version: 5.0.2
-  resolution: "svelte-preprocess@npm:5.0.2"
+"svelte-preprocess@npm:5.0.3":
+  version: 5.0.3
+  resolution: "svelte-preprocess@npm:5.0.3"
   dependencies:
     "@types/pug": ^2.0.6
     detect-indent: ^6.1.0
@@ -6256,7 +6256,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 56a756341d3c749147934a705225c0086baf4b8b3424b3004ff73bd4556b06bddd81245f1cabeea55af1a59772bb1640ace4442f3f9cd634a3f92c271c1990b0
+  checksum: fedec5f8ce90ed11c3408d739e1403b0df1d32206702e3607043a6d06e6007d2f3d9efc6c261b2c2cb4f6e48311e2bad12d42f1de05acc4f908100735e29fac9
   languageName: node
   linkType: hard
 
