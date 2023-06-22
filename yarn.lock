@@ -1402,34 +1402,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte-inspector@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:1.0.2"
+"@sveltejs/vite-plugin-svelte-inspector@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:1.0.3"
   dependencies:
     debug: ^4.3.4
   peerDependencies:
     "@sveltejs/vite-plugin-svelte": ^2.2.0
-    svelte: ^3.54.0 || ^4.0.0-next.0
+    svelte: ^3.54.0 || ^4.0.0
     vite: ^4.0.0
-  checksum: e46ee14f0ef25e6ac249f703d8d84874801186d124faf648a4889deb0a45f4ef6d68a4f9baea1fc699bb7ba792c1680b712207e73cab5293162aa81d355d3bb9
+  checksum: 868574e32974196a49670137c171e788f95610548d8ff090267d4a6e92fd2d5e3ab862e0c367e69268d57ab6edd972e3ba5139926d7e2e7f995f23336d8d53be
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:2.4.1":
-  version: 2.4.1
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.1"
+"@sveltejs/vite-plugin-svelte@npm:2.4.2":
+  version: 2.4.2
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.2"
   dependencies:
-    "@sveltejs/vite-plugin-svelte-inspector": ^1.0.2
+    "@sveltejs/vite-plugin-svelte-inspector": ^1.0.3
     debug: ^4.3.4
     deepmerge: ^4.3.1
     kleur: ^4.1.5
     magic-string: ^0.30.0
-    svelte-hmr: ^0.15.1
+    svelte-hmr: ^0.15.2
     vitefu: ^0.2.4
   peerDependencies:
-    svelte: ^3.54.0 || ^4.0.0-next.0
+    svelte: ^3.54.0 || ^4.0.0
     vite: ^4.0.0
-  checksum: 9beddaf2bf1a5082db60d6c6b3236089032c7dd9543cf0fd5b4bf6e6999fd6cb3ff9722b4a953afb16f2f85e08c40c6c58fbf44afe82fb248bff929d63411999
+  checksum: 7da34ec671abca010e95167e21df138fc4e18717dbcb595f34f0f5a68a281a313c9e2aa70559e7a95458482d44243a575bee8adb007ff59855e80fd44ad323af
   languageName: node
   linkType: hard
 
@@ -2499,7 +2499,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 8.0.2
     "@parcel/core": 2.9.2
-    "@sveltejs/vite-plugin-svelte": 2.4.1
+    "@sveltejs/vite-plugin-svelte": 2.4.2
     "@tsconfig/svelte": 4.0.1
     "@types/lodash": 4.14.195
     "@yarnpkg/pnpify": 3.1.6
@@ -6487,12 +6487,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-hmr@npm:^0.15.1":
-  version: 0.15.1
-  resolution: "svelte-hmr@npm:0.15.1"
+"svelte-hmr@npm:^0.15.2":
+  version: 0.15.2
+  resolution: "svelte-hmr@npm:0.15.2"
   peerDependencies:
-    svelte: ">=3.19.0"
-  checksum: af2e5c356ed6467d6567ce1b908bc077c9d08a89f3ffda81e63989c1c3f374a88b1b67453e86e3674320aa10e7cdf42a10dc551900997b627b4702db447f2bf3
+    svelte: ^3.19.0 || ^4.0.0-next.0
+  checksum: bf1179de47100353ef002d96e2b20782420a388cc5a451a1c3564643fde0423ac7b689a4cded728a6dee5e30a80e44089790be4bf5c37189b14704bf8a6efaf6
   languageName: node
   linkType: hard
 
