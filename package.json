@@ -10,7 +10,7 @@
     "@auto-it/upload-assets": "10.46.0",
     "auto": "10.46.0",
     "concurrently": "8.2.0",
-    "nodemon": "2.0.22"
+    "nodemon": "3.0.0"
   },
   "scripts": {
     "client": "yarn workspace client",
