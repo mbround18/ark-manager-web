@@ -2505,7 +2505,7 @@ __metadata:
     "@yarnpkg/pnpify": 3.1.6
     autoprefixer: 10.4.14
     axios: 1.4.0
-    codejar: 4.0.0
+    codejar: 4.1.1
     immer: 10.0.2
     js-base64: 3.7.5
     lodash: 4.17.21
@@ -2588,10 +2588,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"codejar@npm:4.0.0":
-  version: 4.0.0
-  resolution: "codejar@npm:4.0.0"
-  checksum: a51cd17850376d4db3babc261157bbe0ca7dd6f08e5c86169610c9b1ebdf85318541cb47aee819f8507c90c656457b4e7342d6f673b5c6f11d55959b303c75f6
+"codejar@npm:4.1.1":
+  version: 4.1.1
+  resolution: "codejar@npm:4.1.1"
+  checksum: 0b0d5750cbea91f1197d032acb6d42b14368025d6c661a964bede8b450db26cf993945e8d91c233e18a87b8d17869ca74d77ab8bb0c4eaa5c893d92df38224e0
   languageName: node
   linkType: hard
 
