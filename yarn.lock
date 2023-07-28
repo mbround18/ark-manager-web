@@ -38,6 +38,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@auto-it/bot-list@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@auto-it/bot-list@npm:11.0.0"
+  checksum: 25185de8749afcca64b964a5bb2ed7d9392aac0147ea521fb394bcb793c61f4e7fe6e43d26c56fc119dd26ebc66d099ac6a7dbd80757537a9ca7780523f1a792
+  languageName: node
+  linkType: hard
+
 "@auto-it/core@npm:10.46.0":
   version: 10.46.0
   resolution: "@auto-it/core@npm:10.46.0"
@@ -91,14 +98,67 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/git-tag@npm:10.46.0":
-  version: 10.46.0
-  resolution: "@auto-it/git-tag@npm:10.46.0"
+"@auto-it/core@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@auto-it/core@npm:11.0.0"
   dependencies:
-    "@auto-it/core": 10.46.0
+    "@auto-it/bot-list": 11.0.0
+    "@endemolshinegroup/cosmiconfig-typescript-loader": ^3.0.2
+    "@octokit/core": ^3.5.1
+    "@octokit/plugin-enterprise-compatibility": 1.3.0
+    "@octokit/plugin-retry": ^3.0.9
+    "@octokit/plugin-throttling": ^3.6.2
+    "@octokit/rest": ^18.12.0
+    await-to-js: ^3.0.0
+    chalk: ^4.0.0
+    cosmiconfig: 7.0.0
+    deepmerge: ^4.0.0
+    dotenv: ^8.0.0
+    endent: ^2.1.0
+    enquirer: ^2.3.4
+    env-ci: ^5.0.1
+    fast-glob: ^3.1.1
+    fp-ts: ^2.5.3
+    fromentries: ^1.2.0
+    gitlog: ^4.0.3
+    https-proxy-agent: ^5.0.0
+    import-cwd: ^3.0.0
+    import-from: ^3.0.0
+    io-ts: ^2.1.2
+    lodash.chunk: ^4.2.0
+    log-symbols: ^4.0.0
+    node-fetch: 2.6.7
+    parse-author: ^2.0.0
+    parse-github-url: 1.0.2
+    pretty-ms: ^7.0.0
+    requireg: ^0.2.2
+    semver: ^7.0.0
+    signale: ^1.4.0
+    tapable: ^2.2.0
+    terminal-link: ^2.1.1
+    tinycolor2: ^1.4.1
+    ts-node: ^10.9.1
+    tslib: 2.1.0
+    type-fest: ^0.21.1
+    typescript-memoize: ^1.0.0-alpha.3
+    url-join: ^4.0.0
+  peerDependencies:
+    typescript: ">=2.7"
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+  checksum: fc3ced864cbdc7da35ef3e2804063bf9bce507a367a5236cec718e4b19b64985760aff43ebe1330acebc9f36b9aa5745ea79d6121434f282cbd1834632ae7268
+  languageName: node
+  linkType: hard
+
+"@auto-it/git-tag@npm:11.0.0":
+  version: 11.0.0
+  resolution: "@auto-it/git-tag@npm:11.0.0"
+  dependencies:
+    "@auto-it/core": 11.0.0
     semver: ^7.0.0
     tslib: 2.1.0
-  checksum: 2c80d3d22777304468788c5e7b306efc61e73844e533bdfc898a48bf6508bdb3e5bf20c8a45c2e4ca15a281e67bf831dd29ae487bb46c0084c16a8a7707c5860
+  checksum: 15a967dc5ac7c5d226e48678a4c887cd0b421d954343c07cc57fcb1425f3e1222b507814411a291f2d680f20a726a8cc11fb37a6f0943e9c5ffad9a6f0364fb7
   languageName: node
   linkType: hard
 
@@ -2045,7 +2105,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ark-manager-web@workspace:."
   dependencies:
-    "@auto-it/git-tag": 10.46.0
+    "@auto-it/git-tag": 11.0.0
     "@auto-it/upload-assets": 10.46.0
     auto: 10.46.0
     concurrently: 8.2.0
