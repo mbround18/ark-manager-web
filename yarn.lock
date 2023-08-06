@@ -1415,21 +1415,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:2.4.3":
-  version: 2.4.3
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.3"
+"@sveltejs/vite-plugin-svelte@npm:2.4.4":
+  version: 2.4.4
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.4"
   dependencies:
     "@sveltejs/vite-plugin-svelte-inspector": ^1.0.3
     debug: ^4.3.4
     deepmerge: ^4.3.1
     kleur: ^4.1.5
-    magic-string: ^0.30.1
-    svelte-hmr: ^0.15.2
+    magic-string: ^0.30.2
+    svelte-hmr: ^0.15.3
     vitefu: ^0.2.4
   peerDependencies:
     svelte: ^3.54.0 || ^4.0.0
     vite: ^4.0.0
-  checksum: 8f8edab4358df0bb65c0f7e469c9a08cd44257fc85651e976331764d68b43f96009ec98c4707e5ffa23297488b151943dbac7f336fc21fbac1a6dbcb8f4aa350
+  checksum: 63c52aed14486c76c8e74db729cef626621cd7df7a6641b5e916b23ab0d5e4a478b996bbababcd99b418600bc10faa30693b0c3809dee298ce7bfa6807124b28
   languageName: node
   linkType: hard
 
@@ -2499,7 +2499,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 8.0.2
     "@parcel/core": 2.9.3
-    "@sveltejs/vite-plugin-svelte": 2.4.3
+    "@sveltejs/vite-plugin-svelte": 2.4.4
     "@tsconfig/svelte": 5.0.0
     "@types/lodash": 4.14.196
     "@yarnpkg/pnpify": 3.1.6
@@ -4503,12 +4503,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.1":
-  version: 0.30.1
-  resolution: "magic-string@npm:0.30.1"
+"magic-string@npm:^0.30.2":
+  version: 0.30.2
+  resolution: "magic-string@npm:0.30.2"
   dependencies:
     "@jridgewell/sourcemap-codec": ^1.4.15
-  checksum: 7bc7e4493e32a77068f3753bf8652d4ab44142122eb7fb9fa871af83bef2cd2c57518a6769701cd5d0379bd624a13bc8c72ca25ac5655b27e5a61adf1fd38db2
+  checksum: c0bbb9b27b2772e6bfaa5d0f6452d47c462d588ae7c43fbaac062b07836d3ec0140fcdd42a57aa53ed990abafcdd0fc17907813921b5df04eccf43e67674bc57
   languageName: node
   linkType: hard
 
@@ -6498,12 +6498,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-hmr@npm:^0.15.2":
-  version: 0.15.2
-  resolution: "svelte-hmr@npm:0.15.2"
+"svelte-hmr@npm:^0.15.3":
+  version: 0.15.3
+  resolution: "svelte-hmr@npm:0.15.3"
   peerDependencies:
-    svelte: ^3.19.0 || ^4.0.0-next.0
-  checksum: bf1179de47100353ef002d96e2b20782420a388cc5a451a1c3564643fde0423ac7b689a4cded728a6dee5e30a80e44089790be4bf5c37189b14704bf8a6efaf6
+    svelte: ^3.19.0 || ^4.0.0
+  checksum: 09518aad14288b15e723e69376d2044330f52f49c2730a5e1357b4bee5928c04c5e4022f713856f51ef08ccf3fb5639e870ac89a44c0cb573cedf395017e2402
   languageName: node
   linkType: hard
 
