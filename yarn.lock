@@ -1475,9 +1475,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:2.4.4":
-  version: 2.4.4
-  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.4"
+"@sveltejs/vite-plugin-svelte@npm:2.4.5":
+  version: 2.4.5
+  resolution: "@sveltejs/vite-plugin-svelte@npm:2.4.5"
   dependencies:
     "@sveltejs/vite-plugin-svelte-inspector": ^1.0.3
     debug: ^4.3.4
@@ -1489,7 +1489,7 @@ __metadata:
   peerDependencies:
     svelte: ^3.54.0 || ^4.0.0
     vite: ^4.0.0
-  checksum: 63c52aed14486c76c8e74db729cef626621cd7df7a6641b5e916b23ab0d5e4a478b996bbababcd99b418600bc10faa30693b0c3809dee298ce7bfa6807124b28
+  checksum: 6a30b526fc1d18f3c37e2f00dd678a69910c800ed059aa68bb3f68fc176e715709c6fa2f2b106a6f2007e08bec16f09dddd5e7173a6b3874fc5c5827ff2d699c
   languageName: node
   linkType: hard
 
@@ -2559,7 +2559,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": 8.0.2
     "@parcel/core": 2.9.3
-    "@sveltejs/vite-plugin-svelte": 2.4.4
+    "@sveltejs/vite-plugin-svelte": 2.4.5
     "@tsconfig/svelte": 5.0.0
     "@types/lodash": 4.14.197
     "@yarnpkg/pnpify": 3.1.6
