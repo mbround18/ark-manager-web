@@ -1484,10 +1484,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/svelte@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@tsconfig/svelte@npm:5.0.0"
-  checksum: 785b0156cbe14f722f9259ae09e7ad4de7cc7baa969a52f9ef015b2ca6927ac7507d5e48af13a83ec42b7f98f7b0dac146173e4130d39476086c7c6a8b3c4252
+"@tsconfig/svelte@npm:5.0.1":
+  version: 5.0.1
+  resolution: "@tsconfig/svelte@npm:5.0.1"
+  checksum: c9fa08c895219c5dda2532de90eeb5d591561ec341eb70a7caf8e527a08029beb17330bc08b11fa1f73849b4f8e9bc65cfcac686ab90c808dd27b40f39370a95
   languageName: node
   linkType: hard
 
@@ -2500,7 +2500,7 @@ __metadata:
     "@faker-js/faker": 8.0.2
     "@parcel/core": 2.9.3
     "@sveltejs/vite-plugin-svelte": 2.4.5
-    "@tsconfig/svelte": 5.0.0
+    "@tsconfig/svelte": 5.0.1
     "@types/lodash": 4.14.197
     "@yarnpkg/pnpify": 3.1.6
     autoprefixer: 10.4.15
