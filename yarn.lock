@@ -2671,7 +2671,7 @@ __metadata:
     sass: 1.66.1
     svelte: 4.2.0
     svelte-check: 3.5.1
-    svelte-i18n: 3.7.3
+    svelte-i18n: 3.7.4
     svelte-preprocess: 5.0.4
     tailwindcss: 3.3.3
     tslib: 2.6.2
@@ -6738,9 +6738,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-i18n@npm:3.7.3":
-  version: 3.7.3
-  resolution: "svelte-i18n@npm:3.7.3"
+"svelte-i18n@npm:3.7.4":
+  version: 3.7.4
+  resolution: "svelte-i18n@npm:3.7.4"
   dependencies:
     cli-color: ^2.0.3
     deepmerge: ^4.2.2
@@ -6753,7 +6753,7 @@ __metadata:
     svelte: ^3 || ^4
   bin:
     svelte-i18n: dist/cli.js
-  checksum: 4b989d27b194b91af4f404e9e261d5aeac6d4a9cf978f962c286b9cbab12d4e9941732076a0cd86c0647415b8e51c0eeb6658de1d8405595788a08a1e51a8029
+  checksum: 3af9ed68bdc9bbbb0a3a472235ad6d7702aa57ff5e963dbefbd0ae5509352ea16cc11c492ca057b02d32033c4719d13dc145e5096c45764b09e26ee20ce05f7e
   languageName: node
   linkType: hard
 
