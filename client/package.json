@@ -4,7 +4,7 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "2.4.5",
     "@tsconfig/svelte": "5.0.2",
-    "@types/lodash": "4.14.197",
+    "@types/lodash": "4.14.198",
     "@yarnpkg/pnpify": "3.1.6",
     "autoprefixer": "10.4.15",
     "postcss": "8.4.29",
