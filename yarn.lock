@@ -3,7 +3,7 @@
 
 __metadata:
   version: 8
-  cacheKey: 10
+  cacheKey: 10c0
 
 "@alloc/quick-lru@npm:^5.2.0":
   version: 5.2.0
@@ -1652,7 +1652,7 @@ __metadata:
 "@types/emscripten@npm:^1.39.6":
   version: 1.39.9
   resolution: "@types/emscripten@npm:1.39.9"
-  checksum: ee15b602a0d3a4353c8f3aafb65d7133ffa1055dab6744349c45643f6ab243b9f2aa1c843a9ed7e4de06e35873f6bc3a8ad0cf2571176bdde9273af64f0ed473
+  checksum: 10/ee15b602a0d3a4353c8f3aafb65d7133ffa1055dab6744349c45643f6ab243b9f2aa1c843a9ed7e4de06e35873f6bc3a8ad0cf2571176bdde9273af64f0ed473
   languageName: node
   linkType: hard
 
@@ -1703,7 +1703,7 @@ __metadata:
 "@types/node@npm:^18.17.15":
   version: 18.18.6
   resolution: "@types/node@npm:18.18.6"
-  checksum: ba8b71c724c4c9b1908faf09be1aa062790ef4194f956f6c7ae9791f8d2c1d123635695e41c3c8326223d2262bae2b3b5c8774c7a6c5885a98437b6fb04a2f0c
+  checksum: 10/ba8b71c724c4c9b1908faf09be1aa062790ef4194f956f6c7ae9791f8d2c1d123635695e41c3c8326223d2262bae2b3b5c8774c7a6c5885a98437b6fb04a2f0c
   languageName: node
   linkType: hard
 
@@ -1774,7 +1774,7 @@ __metadata:
     treeify: "npm:^1.1.0"
     tslib: "npm:^2.4.0"
     tunnel: "npm:^0.0.6"
-  checksum: 755067cd2f69244074dd080c19bbf10480f5d42c1a6853b20e47504bb0c7caca49f058490d87ca34a48ac2ca43129e3324a8c5c788ed86a634c8daa97791055b
+  checksum: 10/755067cd2f69244074dd080c19bbf10480f5d42c1a6853b20e47504bb0c7caca49f058490d87ca34a48ac2ca43129e3324a8c5c788ed86a634c8daa97791055b
   languageName: node
   linkType: hard
 
@@ -1783,7 +1783,7 @@ __metadata:
   resolution: "@yarnpkg/fslib@npm:3.0.0"
   dependencies:
     tslib: "npm:^2.4.0"
-  checksum: 95a4e4b7934fbcc1a3f6ee79f78266636460e2c7d53c1ed85ff50bebd800a74355cf17bcbc53a267860e96cb32825adaceba0f25f797aa24b9e556de34a0ff1b
+  checksum: 10/95a4e4b7934fbcc1a3f6ee79f78266636460e2c7d53c1ed85ff50bebd800a74355cf17bcbc53a267860e96cb32825adaceba0f25f797aa24b9e556de34a0ff1b
   languageName: node
   linkType: hard
 
@@ -1796,7 +1796,7 @@ __metadata:
     tslib: "npm:^2.4.0"
   peerDependencies:
     "@yarnpkg/fslib": ^3.0.0
-  checksum: a157ec83da77d01ae0120423185380bf78ed85ac7352b094651e08757458461c97268d9b0dc48753807e464c3ac23e85c999790fa113da8f981ef72a21f1b8fc
+  checksum: 10/a157ec83da77d01ae0120423185380bf78ed85ac7352b094651e08757458461c97268d9b0dc48753807e464c3ac23e85c999790fa113da8f981ef72a21f1b8fc
   languageName: node
   linkType: hard
 
@@ -1807,7 +1807,7 @@ __metadata:
     "@yarnpkg/core": "npm:^4.0.0"
     "@yarnpkg/fslib": "npm:^3.0.0"
     "@yarnpkg/pnp": "npm:^4.0.0"
-  checksum: 89701a6a21685be200cc687ccaa6d2d7abd6b3bbf8b69cbb17a5650d8f99d56a62b44aa8c3dab3fb380618bde89e878974692da3e2c138c2df931c14a19a1cdd
+  checksum: 10/89701a6a21685be200cc687ccaa6d2d7abd6b3bbf8b69cbb17a5650d8f99d56a62b44aa8c3dab3fb380618bde89e878974692da3e2c138c2df931c14a19a1cdd
   languageName: node
   linkType: hard
 
@@ -1817,7 +1817,7 @@ __metadata:
   dependencies:
     js-yaml: "npm:^3.10.0"
     tslib: "npm:^2.4.0"
-  checksum: 5e904d257b85a75feb1332452e6ec7514b9707e6f7fac369b5dc4b3cdfce410efe8206dc76f9b37baee0f23215afb71f64351a783367545598b0458c285180a9
+  checksum: 10/5e904d257b85a75feb1332452e6ec7514b9707e6f7fac369b5dc4b3cdfce410efe8206dc76f9b37baee0f23215afb71f64351a783367545598b0458c285180a9
   languageName: node
   linkType: hard
 
@@ -1827,7 +1827,7 @@ __metadata:
   dependencies:
     "@types/node": "npm:^18.17.15"
     "@yarnpkg/fslib": "npm:^3.0.0"
-  checksum: 35eec148c8fb951179b1ac0d6c6d8ae5f6fb191f16bdacf538d19859e9fae441b16367ef225873e7541bfbb6ad2aeb104128f37a3268b541651517a31bba758a
+  checksum: 10/35eec148c8fb951179b1ac0d6c6d8ae5f6fb191f16bdacf538d19859e9fae441b16367ef225873e7541bfbb6ad2aeb104128f37a3268b541651517a31bba758a
   languageName: node
   linkType: hard
 
@@ -1842,7 +1842,7 @@ __metadata:
     tslib: "npm:^2.4.0"
   bin:
     pnpify: ./lib/cli.js
-  checksum: d196bf035e7ffc70f9005bd615c93e8801bf9d54d8256f5d83667e522e034fcddccbe8babc54942a538f47b2022cfb4b176eb79f9856473009bc694d118163de
+  checksum: 10/d196bf035e7ffc70f9005bd615c93e8801bf9d54d8256f5d83667e522e034fcddccbe8babc54942a538f47b2022cfb4b176eb79f9856473009bc694d118163de
   languageName: node
   linkType: hard
 
@@ -1860,7 +1860,7 @@ __metadata:
     tslib: "npm:^2.4.0"
   bin:
     shell: ./lib/cli.js
-  checksum: f128756cf0ee51f37b0c2820d395d4b06d8e47358c69dc6e966ae4274a163df8cadbde9a57eeeddc6084ef6ece98317e4c84943d2ca0434c950a1bc462968aed
+  checksum: 10/f128756cf0ee51f37b0c2820d395d4b06d8e47358c69dc6e966ae4274a163df8cadbde9a57eeeddc6084ef6ece98317e4c84943d2ca0434c950a1bc462968aed
   languageName: node
   linkType: hard
 
@@ -2506,7 +2506,7 @@ __metadata:
     svelte-check: "npm:3.5.2"
     svelte-i18n: "npm:4.0.0"
     svelte-preprocess: "npm:5.0.4"
-    tailwindcss: "npm:3.3.3"
+    tailwindcss: "npm:3.3.4"
     tslib: "npm:2.6.2"
     typescript: "npm:5.2.2"
     vite: "npm:4.5.0"
@@ -2520,7 +2520,7 @@ __metadata:
     typanion: "npm:^3.8.0"
   peerDependencies:
     typanion: "*"
-  checksum: 00a478d46f2983eba02b059a16a3c1fc3f1de2a056d2f75386e253c5e8b01322fdbdd1db1dfdb57ccc81d8fd57c5fc9890ee96003b5702ac5692f1397c2c9c6b
+  checksum: 10/00a478d46f2983eba02b059a16a3c1fc3f1de2a056d2f75386e253c5e8b01322fdbdd1db1dfdb57ccc81d8fd57c5fc9890ee96003b5702ac5692f1397c2c9c6b
   languageName: node
   linkType: hard
 
@@ -2980,7 +2980,7 @@ __metadata:
 "dotenv@npm:^16.3.1":
   version: 16.3.1
   resolution: "dotenv@npm:16.3.1"
-  checksum: dbb778237ef8750e9e3cd1473d3c8eaa9cc3600e33a75c0e36415d0fa0848197f56c3800f77924c70e7828f0b03896818cd52f785b07b9ad4d88dba73fbba83f
+  checksum: 10/dbb778237ef8750e9e3cd1473d3c8eaa9cc3600e33a75c0e36415d0fa0848197f56c3800f77924c70e7828f0b03896818cd52f785b07b9ad4d88dba73fbba83f
   languageName: node
   linkType: hard
 
@@ -3426,16 +3426,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.12":
-  version: 3.2.12
-  resolution: "fast-glob@npm:3.2.12"
+"fast-glob@npm:^3.3.0":
+  version: 3.3.1
+  resolution: "fast-glob@npm:3.3.1"
   dependencies:
     "@nodelib/fs.stat": "npm:^2.0.2"
     "@nodelib/fs.walk": "npm:^1.2.3"
     glob-parent: "npm:^5.1.2"
     merge2: "npm:^1.3.0"
     micromatch: "npm:^4.0.4"
-  checksum: 8/0b1990f6ce831c7e28c4d505edcdaad8e27e88ab9fa65eedadb730438cfc7cde4910d6c975d6b7b8dc8a73da4773702ebcfcd6e3518e73938bb1383badfe01c2
+  checksum: b68431128fb6ce4b804c5f9622628426d990b66c75b21c0d16e3d80e2d1398bf33f7e1724e66a2e3f299285dcf5b8d745b122d0304e7dd66f5231081f33ec67c
   languageName: node
   linkType: hard
 
@@ -4197,12 +4197,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^1.18.2":
-  version: 1.18.2
-  resolution: "jiti@npm:1.18.2"
+"jiti@npm:^1.19.1":
+  version: 1.20.0
+  resolution: "jiti@npm:1.20.0"
   bin:
     jiti: bin/jiti.js
-  checksum: 8/46c41cd82d01c6efdee3fc0ae9b3e86ed37457192d6366f19157d863d64961b07982ab04e9d5879576a1af99cc4d132b0b73b336094f86a5ce9fb1029ec2d29f
+  checksum: e71999db5e436d38c32ca713c3688b5da2a686f264584d927dcca80a4eaece83af7dd32c047524e74084bb11bdfa148f5f91b7e9a0044b4803feffe3c2c30dbc
   languageName: node
   linkType: hard
 
@@ -5826,7 +5826,7 @@ __metadata:
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 537da5481b5f74593d2c860eba1953c248579fd461085a658a9b08a3fdb9cc4e59f082e127e03eb13282fd59062a93bd1827a930b30bf8f7f6b27a0939335428
+  checksum: 10/537da5481b5f74593d2c860eba1953c248579fd461085a658a9b08a3fdb9cc4e59f082e127e03eb13282fd59062a93bd1827a930b30bf8f7f6b27a0939335428
   languageName: node
   linkType: hard
 
@@ -5839,7 +5839,7 @@ __metadata:
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: b775dffbad4d4ed3ae498a37d33a96282d64de50955f7642258aeaa2886e419598f4dfe837c0e31bcc6eb448287c1578e899dffe49eca76ef393bf8605a3b543
+  checksum: 10/b775dffbad4d4ed3ae498a37d33a96282d64de50955f7642258aeaa2886e419598f4dfe837c0e31bcc6eb448287c1578e899dffe49eca76ef393bf8605a3b543
   languageName: node
   linkType: hard
 
@@ -5848,7 +5848,7 @@ __metadata:
   resolution: "resolve@patch:resolve@npm%3A1.7.1#optional!builtin<compat/resolve>::version=1.7.1&hash=3bafbf"
   dependencies:
     path-parse: "npm:^1.0.5"
-  checksum: 3bfc4ed0768c158d320bdd1076875e2c783cba03985d6052cd5142ed971e413eb8f8a81753fc4f12f3051723356898bf9c5a24d6c988dfb9de9587f710ca692d
+  checksum: 10/3bfc4ed0768c158d320bdd1076875e2c783cba03985d6052cd5142ed971e413eb8f8a81753fc4f12f3051723356898bf9c5a24d6c988dfb9de9587f710ca692d
   languageName: node
   linkType: hard
 
@@ -6467,19 +6467,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:3.3.3":
-  version: 3.3.3
-  resolution: "tailwindcss@npm:3.3.3"
+"tailwindcss@npm:3.3.4":
+  version: 3.3.4
+  resolution: "tailwindcss@npm:3.3.4"
   dependencies:
     "@alloc/quick-lru": "npm:^5.2.0"
     arg: "npm:^5.0.2"
     chokidar: "npm:^3.5.3"
     didyoumean: "npm:^1.2.2"
     dlv: "npm:^1.1.3"
-    fast-glob: "npm:^3.2.12"
+    fast-glob: "npm:^3.3.0"
     glob-parent: "npm:^6.0.2"
     is-glob: "npm:^4.0.3"
-    jiti: "npm:^1.18.2"
+    jiti: "npm:^1.19.1"
     lilconfig: "npm:^2.1.0"
     micromatch: "npm:^4.0.5"
     normalize-path: "npm:^3.0.0"
@@ -6496,7 +6496,7 @@ __metadata:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 8/0195c7a3ebb0de5e391d2a883d777c78a4749f0c532d204ee8aea9129f2ed8e701d8c0c276aa5f7338d07176a3c2a7682c1d0ab9c8a6c2abe6d9325c2954eb50
+  checksum: a1a0c8c1793b1b1b67503484fe924dc84f79e74c1ddc576095d616eaecc18bbd8fcdbf7c62e07a181673466f4913ebc20d92b93b87da730148b05f7c95e6c83e
   languageName: node
   linkType: hard
 
@@ -6579,7 +6579,7 @@ __metadata:
 "tinylogic@npm:^2.0.0":
   version: 2.0.0
   resolution: "tinylogic@npm:2.0.0"
-  checksum: 6467b1ed9b602dae035726ee3faf2682bddffb5389b42fdb4daf13878037420ed9981a572ca7db467bd26c4ab00fb4eefe654f24e35984ec017fb5e83081db97
+  checksum: 10/6467b1ed9b602dae035726ee3faf2682bddffb5389b42fdb4daf13878037420ed9981a572ca7db467bd26c4ab00fb4eefe654f24e35984ec017fb5e83081db97
   languageName: node
   linkType: hard
 
@@ -6747,7 +6747,7 @@ __metadata:
 "typanion@npm:^3.8.0":
   version: 3.14.0
   resolution: "typanion@npm:3.14.0"
-  checksum: 5e88d9e6121ff0ec543f572152fdd1b70e9cca35406d79013ec8e08defa8ef96de5fec9e98da3afbd1eb4426b9e8e8fe423163d0b482e34a40103cab1ef29abd
+  checksum: 10/5e88d9e6121ff0ec543f572152fdd1b70e9cca35406d79013ec8e08defa8ef96de5fec9e98da3afbd1eb4426b9e8e8fe423163d0b482e34a40103cab1ef29abd
   languageName: node
   linkType: hard
 
@@ -6805,7 +6805,7 @@ __metadata:
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f79cc2ba802c94c2b78dbb00d767a10adb67368ae764709737dc277273ec148aa4558033a03ce901406b35fddf4eac46dabc94a1e1d12d2587e2b9cfe5707b4a
+  checksum: 10/f79cc2ba802c94c2b78dbb00d767a10adb67368ae764709737dc277273ec148aa4558033a03ce901406b35fddf4eac46dabc94a1e1d12d2587e2b9cfe5707b4a
   languageName: node
   linkType: hard
 
@@ -6815,7 +6815,7 @@ __metadata:
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: f1122fdfd2bba3ba92c9afc6a6670eeedf754ea74e3b511f04bdf7350a03c4458590538f2dcc4aace4ebc21ad391054779c526a311776799f3d5054ccb50ad88
+  checksum: 10/f1122fdfd2bba3ba92c9afc6a6670eeedf754ea74e3b511f04bdf7350a03c4458590538f2dcc4aace4ebc21ad391054779c526a311776799f3d5054ccb50ad88
   languageName: node
   linkType: hard
 
