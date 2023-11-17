@@ -28,7 +28,7 @@
     "js-base64": "3.7.5",
     "lodash": "4.17.21",
     "sass": "1.69.5",
-    "svelte": "4.2.4",
+    "svelte": "4.2.5",
     "svelte-i18n": "4.0.0",
     "typescript": "5.2.2"
   },
