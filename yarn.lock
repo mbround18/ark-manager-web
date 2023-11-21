@@ -2598,7 +2598,7 @@ __metadata:
     svelte: "npm:4.2.7"
     svelte-check: "npm:3.6.0"
     svelte-i18n: "npm:4.0.0"
-    svelte-preprocess: "npm:5.1.0"
+    svelte-preprocess: "npm:5.1.1"
     tailwindcss: "npm:3.3.5"
     tslib: "npm:2.6.2"
     typescript: "npm:5.3.2"
@@ -6504,7 +6504,53 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:5.1.0, svelte-preprocess@npm:^5.1.0":
+"svelte-preprocess@npm:5.1.1":
+  version: 5.1.1
+  resolution: "svelte-preprocess@npm:5.1.1"
+  dependencies:
+    "@types/pug": "npm:^2.0.6"
+    detect-indent: "npm:^6.1.0"
+    magic-string: "npm:^0.27.0"
+    sorcery: "npm:^0.11.0"
+    strip-indent: "npm:^3.0.0"
+  peerDependencies:
+    "@babel/core": ^7.10.2
+    coffeescript: ^2.5.1
+    less: ^3.11.3 || ^4.0.0
+    postcss: ^7 || ^8
+    postcss-load-config: ^2.1.0 || ^3.0.0 || ^4.0.0
+    pug: ^3.0.0
+    sass: ^1.26.8
+    stylus: ^0.55.0
+    sugarss: ^2.0.0 || ^3.0.0 || ^4.0.0
+    svelte: ^3.23.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
+    typescript: ">=3.9.5 || ^4.0.0 || ^5.0.0"
+  peerDependenciesMeta:
+    "@babel/core":
+      optional: true
+    coffeescript:
+      optional: true
+    less:
+      optional: true
+    postcss:
+      optional: true
+    postcss-load-config:
+      optional: true
+    pug:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    typescript:
+      optional: true
+  checksum: 8de6571ddca032dc7a33c37a6cd7caa72eeabf6acbe81924e26f14e9f5de8bbf2806c86d1ac3cb435923c3953d0d9365dfbe2a8c94cd3b383ecfe50957e1b8f9
+  languageName: node
+  linkType: hard
+
+"svelte-preprocess@npm:^5.1.0":
   version: 5.1.0
   resolution: "svelte-preprocess@npm:5.1.0"
   dependencies:
