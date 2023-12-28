@@ -4860,17 +4860,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msgpackr-extract@npm:^1.0.14":
-  version: 1.0.16
-  resolution: "msgpackr-extract@npm:1.0.16"
-  dependencies:
-    nan: "npm:^2.14.2"
-    node-gyp: "npm:latest"
-    node-gyp-build: "npm:^4.2.3"
-  checksum: 8/92579bcecf1a0bce090165d46e18338850b1cfef9e5e4cd91e8d95fe01516479d96d09dc1bbb344083950669b4e6b3c8193a1f8e510a0cd7a1634d4a44c4c6b2
-  languageName: node
-  linkType: hard
-
 "msgpackr-extract@npm:^3.0.2":
   version: 3.0.2
   resolution: "msgpackr-extract@npm:3.0.2"
@@ -4902,27 +4891,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msgpackr@npm:^1.5.1, msgpackr@npm:^1.5.2":
-  version: 1.5.2
-  resolution: "msgpackr@npm:1.5.2"
-  dependencies:
-    msgpackr-extract: "npm:^1.0.14"
-  dependenciesMeta:
-    msgpackr-extract:
-      optional: true
-  checksum: 8/7102558a772df233189378f223234970d52c755b90cd1ebcb83d00c6a6c2ac7caea98113d941e6ca247365aad4fc3a81b1c1f0e97f3dac6024ebb6cec1bec11d
-  languageName: node
-  linkType: hard
-
-"msgpackr@npm:^1.9.5, msgpackr@npm:^1.9.9":
-  version: 1.9.9
-  resolution: "msgpackr@npm:1.9.9"
+"msgpackr@npm:^1.5.1, msgpackr@npm:^1.5.2, msgpackr@npm:^1.9.5, msgpackr@npm:^1.9.9":
+  version: 1.10.1
+  resolution: "msgpackr@npm:1.10.1"
   dependencies:
     msgpackr-extract: "npm:^3.0.2"
   dependenciesMeta:
     msgpackr-extract:
       optional: true
-  checksum: 8/b63182d99f479d79f0d082fd2688ce7cf699b1aee71e20f28591c30b48743bb57868fdd72656759a892891072d186d864702c756434520709e8fe7e0d350a119
+  checksum: 2e6ed91af89ec15d1e5595c5b837a4adcbb185b0fbd4773d728ced89ab4abbdd3401f6777b193d487d9807e1cb0cf3da1ba9a0bd2d5a553e22355cea84a36bab
   languageName: node
   linkType: hard
 
