@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "8.3.1",
-    "@parcel/core": "2.10.3",
+    "@parcel/core": "2.11.0",
     "axios": "1.6.4",
     "codejar": "4.2.0",
     "immer": "10.0.3",
