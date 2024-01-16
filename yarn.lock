@@ -2593,7 +2593,7 @@ __metadata:
     postcss-import: "npm:16.0.0"
     prettier: "npm:3.2.2"
     prettier-plugin-svelte: "npm:3.1.2"
-    pretty-quick: "npm:3.1.3"
+    pretty-quick: "npm:3.1.4"
     sass: "npm:1.69.7"
     svelte: "npm:4.2.8"
     svelte-check: "npm:3.6.3"
@@ -3441,7 +3441,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^4.0.0":
+"execa@npm:^4.1.0":
   version: 4.1.0
   resolution: "execa@npm:4.1.0"
   dependencies:
@@ -4024,10 +4024,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^5.1.4":
-  version: 5.2.0
-  resolution: "ignore@npm:5.2.0"
-  checksum: 8/6b1f926792d614f64c6c83da3a1f9c83f6196c2839aa41e1e32dd7b8d174cef2e329d75caabb62cb61ce9dc432f75e67d07d122a037312db7caa73166a1bdb77
+"ignore@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "ignore@npm:5.3.0"
+  checksum: dc06bea5c23aae65d0725a957a0638b57e235ae4568dda51ca142053ed2c352de7e3bc93a69b2b32ac31966a1952e9a93c5ef2e2ab7c6b06aef9808f6b55b571
   languageName: node
   linkType: hard
 
@@ -4839,7 +4839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mri@npm:^1.1.0, mri@npm:^1.1.5":
+"mri@npm:^1.1.0, mri@npm:^1.2.0":
   version: 1.2.0
   resolution: "mri@npm:1.2.0"
   checksum: 8/83f515abbcff60150873e424894a2f65d68037e5a7fcde8a9e2b285ee9c13ac581b63cfc1e6826c4732de3aeb84902f7c1e16b7aff46cd3f897a0f757a894e85
@@ -4903,16 +4903,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multimatch@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "multimatch@npm:4.0.0"
+"multimatch@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "multimatch@npm:5.0.0"
   dependencies:
     "@types/minimatch": "npm:^3.0.3"
     array-differ: "npm:^3.0.0"
     array-union: "npm:^2.1.0"
     arrify: "npm:^2.0.1"
     minimatch: "npm:^3.0.4"
-  checksum: 8/bdb6a98dad4e919d9a1a2a0db872f44fa2337315f2fd5827d91ae005cf22f4425782bdfa97c10b80d567f0cb3c226c31f4e85f8f6a4a4be4facf9af0de1bb0c2
+  checksum: 252ffae6d19491c169c22fc30cf8a99f6031f94a3495f187d3430b06200e9f05a7efae90ab9d834f090834e0d9c979ab55e7ad21f61a37995d807b4b0ccdcbd1
   languageName: node
   linkType: hard
 
@@ -5647,21 +5647,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-quick@npm:3.1.3":
-  version: 3.1.3
-  resolution: "pretty-quick@npm:3.1.3"
+"pretty-quick@npm:3.1.4":
+  version: 3.1.4
+  resolution: "pretty-quick@npm:3.1.4"
   dependencies:
-    chalk: "npm:^3.0.0"
-    execa: "npm:^4.0.0"
+    chalk: "npm:^4.1.2"
+    execa: "npm:^4.1.0"
     find-up: "npm:^4.1.0"
-    ignore: "npm:^5.1.4"
-    mri: "npm:^1.1.5"
-    multimatch: "npm:^4.0.0"
+    ignore: "npm:^5.3.0"
+    mri: "npm:^1.2.0"
+    multimatch: "npm:^5.0.0"
   peerDependencies:
-    prettier: ">=2.0.0"
+    prettier: ^2.0.0
   bin:
     pretty-quick: bin/pretty-quick.js
-  checksum: 8/28bdc32571e6308e049497f58a9245f272275973782b6ed7fbcf98937101cc605a81b3ab48629dba4687b7e86c87a3733febacdc0746ca4da5d1c80a0b88cf45
+  checksum: e8ba8dc6cffcdee24c4946a24b3f9a44f4657925ab59f2089f756239b29d5bbe1e0f8418b2e80da715ea1b823dbe59169269934d2e6a9cf84ed6ae190e8daf9c
   languageName: node
   linkType: hard
 
