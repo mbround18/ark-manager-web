@@ -1777,13 +1777,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/minimatch@npm:^3.0.3":
-  version: 3.0.5
-  resolution: "@types/minimatch@npm:3.0.5"
-  checksum: 8/c41d136f67231c3131cf1d4ca0b06687f4a322918a3a5adddc87ce90ed9dbd175a3610adee36b106ae68c0b92c637c35e02b58c8a56c424f71d30993ea220b92
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*":
   version: 17.0.10
   resolution: "@types/node@npm:17.0.10"
@@ -2175,13 +2168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-differ@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "array-differ@npm:3.0.0"
-  checksum: 8/117edd9df5c1530bd116c6e8eea891d4bd02850fd89b1b36e532b6540e47ca620a373b81feca1c62d1395d9ae601516ba538abe5e8172d41091da2c546b05fb7
-  languageName: node
-  linkType: hard
-
 "array-union@npm:^1.0.1":
   version: 1.0.2
   resolution: "array-union@npm:1.0.2"
@@ -2191,24 +2177,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-union@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "array-union@npm:2.1.0"
-  checksum: 8/5bee12395cba82da674931df6d0fea23c4aa4660cb3b338ced9f828782a65caa232573e6bf3968f23e0c5eb301764a382cef2f128b170a9dc59de0e36c39f98d
-  languageName: node
-  linkType: hard
-
 "array-uniq@npm:^1.0.1":
   version: 1.0.3
   resolution: "array-uniq@npm:1.0.3"
   checksum: 8/1625f06b093d8bf279b81adfec6e72951c0857d65b5e3f65f053fffe9f9dd61c2fc52cff57e38a4700817e7e3f01a4faa433d505ea9e33cdae4514c334e0bf9e
-  languageName: node
-  linkType: hard
-
-"arrify@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "arrify@npm:2.0.1"
-  checksum: 8/067c4c1afd182806a82e4c1cb8acee16ab8b5284fbca1ce29408e6e91281c36bb5b612f6ddfbd40a0f7a7e0c75bf2696eb94c027f6e328d6e9c52465c98e4209
   languageName: node
   linkType: hard
 
@@ -2600,7 +2572,7 @@ __metadata:
     postcss-import: "npm:16.0.0"
     prettier: "npm:3.2.4"
     prettier-plugin-svelte: "npm:3.1.2"
-    pretty-quick: "npm:3.2.1"
+    pretty-quick: "npm:3.3.1"
     sass: "npm:1.69.7"
     svelte: "npm:4.2.9"
     svelte-check: "npm:3.6.3"
@@ -4910,19 +4882,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multimatch@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "multimatch@npm:5.0.0"
-  dependencies:
-    "@types/minimatch": "npm:^3.0.3"
-    array-differ: "npm:^3.0.0"
-    array-union: "npm:^2.1.0"
-    arrify: "npm:^2.0.1"
-    minimatch: "npm:^3.0.4"
-  checksum: 252ffae6d19491c169c22fc30cf8a99f6031f94a3495f187d3430b06200e9f05a7efae90ab9d834f090834e0d9c979ab55e7ad21f61a37995d807b4b0ccdcbd1
-  languageName: node
-  linkType: hard
-
 "mz@npm:^2.7.0":
   version: 2.7.0
   resolution: "mz@npm:2.7.0"
@@ -5479,6 +5438,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"picomatch@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "picomatch@npm:3.0.1"
+  checksum: 70ec738569f1864658378b7abdab8939d15dae0718c1df994eae3346fd33daf6a3c1ff4e0c1a0cd1e2c0319130985b63a2cff34d192f2f2acbb78aca76111736
+  languageName: node
+  linkType: hard
+
 "pify@npm:^2.3.0":
   version: 2.3.0
   resolution: "pify@npm:2.3.0"
@@ -5654,22 +5620,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-quick@npm:3.2.1":
-  version: 3.2.1
-  resolution: "pretty-quick@npm:3.2.1"
+"pretty-quick@npm:3.3.1":
+  version: 3.3.1
+  resolution: "pretty-quick@npm:3.3.1"
   dependencies:
-    chalk: "npm:^4.1.2"
     execa: "npm:^4.1.0"
     find-up: "npm:^4.1.0"
     ignore: "npm:^5.3.0"
     mri: "npm:^1.2.0"
-    multimatch: "npm:^5.0.0"
+    picocolors: "npm:^1.0.0"
+    picomatch: "npm:^3.0.1"
     tslib: "npm:^2.6.2"
   peerDependencies:
     prettier: ^2.0.0
   bin:
     pretty-quick: dist/cli.js
-  checksum: 2320e2e4cbe0ccef07a0a91b80c2f88164bbaad34efbeeb4b09d0149585113a1a41b937a85bc6cedb6aacaf9170d893a76a0788b9193442fb76b3d12af322bbc
+  checksum: fae5d5e5a49f05368b5787d8b25106eb8a593624561395616a4f19f37105700996ea5d8030231c66041d00f77b081bb3e01a527b5fff2fa9ab0a892c71870011
   languageName: node
   linkType: hard
 
