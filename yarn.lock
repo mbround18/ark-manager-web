@@ -2559,7 +2559,7 @@ __metadata:
     axios: "npm:1.6.5"
     codejar: "npm:4.2.0"
     immer: "npm:10.0.3"
-    js-base64: "npm:3.7.5"
+    js-base64: "npm:3.7.6"
     lodash: "npm:4.17.21"
     postcss: "npm:8.4.33"
     postcss-import: "npm:16.0.0"
@@ -4257,10 +4257,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-base64@npm:3.7.5":
-  version: 3.7.5
-  resolution: "js-base64@npm:3.7.5"
-  checksum: 8/67a78c8b1c47b73f1c6fba1957e9fe6fd9dc78ac93ac46cc2e43472dcb9cf150d126fb0e593192e88e0497354fa634d17d255add7cc6ee3c7b4d29870faa8e18
+"js-base64@npm:3.7.6":
+  version: 3.7.6
+  resolution: "js-base64@npm:3.7.6"
+  checksum: d9ae30a04e28e5814c6c606d08ecf9aac16daea0fcbc549e3b971042a4d4ecc7cf60ea96e1c9e8a463ca75fcbfd13613b87bddb3a8fe92801271e7eedcd3e8d3
   languageName: node
   linkType: hard
 
