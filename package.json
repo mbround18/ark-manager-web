@@ -7,7 +7,7 @@
   "license": "MIT",
   "devDependencies": {
     "@auto-it/git-tag": "11.0.7",
-    "@auto-it/upload-assets": "11.0.6",
+    "@auto-it/upload-assets": "11.0.7",
     "auto": "11.0.7",
     "concurrently": "8.2.2",
     "nodemon": "3.1.0"
