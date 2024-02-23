@@ -151,14 +151,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/git-tag@npm:11.0.6":
-  version: 11.0.6
-  resolution: "@auto-it/git-tag@npm:11.0.6"
+"@auto-it/git-tag@npm:11.0.7":
+  version: 11.0.7
+  resolution: "@auto-it/git-tag@npm:11.0.7"
   dependencies:
-    "@auto-it/core": "npm:11.0.6"
+    "@auto-it/core": "npm:11.0.7"
     semver: "npm:^7.0.0"
     tslib: "npm:2.1.0"
-  checksum: 10c0/5245b0c7c2a5987013c3807d98d7bfde56d7085669ed20987c1fcb3c0748dd754c80c71ac999e7c4ad3bc3baa9341d6fc53b63eac03591831f3dd1a313099132
+  checksum: 10c0/9cb3ba0feb870cdf1bc2d0adae873f8c7533a4a8828284f2bc63d3d3391463497e9ea206d0da94db80ae7321517fea7ebaa380c4814c14b87459f479abdf794b
   languageName: node
   linkType: hard
 
@@ -2206,7 +2206,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ark-manager-web@workspace:."
   dependencies:
-    "@auto-it/git-tag": "npm:11.0.6"
+    "@auto-it/git-tag": "npm:11.0.7"
     "@auto-it/upload-assets": "npm:11.0.6"
     auto: "npm:11.0.7"
     concurrently: "npm:8.2.2"
