@@ -2720,7 +2720,7 @@ __metadata:
     pretty-quick: "npm:4.0.0"
     sass: "npm:1.72.0"
     svelte: "npm:4.2.12"
-    svelte-check: "npm:3.6.8"
+    svelte-check: "npm:3.6.9"
     svelte-i18n: "npm:4.0.0"
     svelte-preprocess: "npm:5.1.3"
     tailwindcss: "npm:3.4.3"
@@ -6568,9 +6568,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-check@npm:3.6.8":
-  version: 3.6.8
-  resolution: "svelte-check@npm:3.6.8"
+"svelte-check@npm:3.6.9":
+  version: 3.6.9
+  resolution: "svelte-check@npm:3.6.9"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.17"
     chokidar: "npm:^3.4.1"
@@ -6584,7 +6584,7 @@ __metadata:
     svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
   bin:
     svelte-check: bin/svelte-check
-  checksum: 10c0/4caeb23a46c4bac4237efddddc591bd92183e7b64713ef5db88a64fa07677d369218fe8fba17b938f294eaa803876f1f443e2dca2221cd35bd849c129a240907
+  checksum: 10c0/9d05208d74041f10b4176a74481acf7f1c729eddcacfce5be180cdf41059655746591ffbca6ac5bdd53aede7ce135d09bd97ec523416cdd92ca82eed76df4306
   languageName: node
   linkType: hard
 
