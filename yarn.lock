@@ -38,13 +38,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/bot-list@npm:11.1.4":
-  version: 11.1.4
-  resolution: "@auto-it/bot-list@npm:11.1.4"
-  checksum: 10c0/c899c81a1f3fba780999b4f984e16c8efe845c9ad8df472c7f0fa425386a344b37033892cf702e2af43c71d8656016608788c9fa2d13e039db1fad813e52357b
-  languageName: node
-  linkType: hard
-
 "@auto-it/bot-list@npm:11.1.6":
   version: 11.1.6
   resolution: "@auto-it/bot-list@npm:11.1.6"
@@ -102,59 +95,6 @@ __metadata:
     "@types/node":
       optional: true
   checksum: 10c0/738d009a565a2d336a1c15d6f06aff2185f88c192f0f3648b9f05e356db224308d1a28e9095f276be985a35d1700b091d1aa6e412e27c9588af941e3bd86a38f
-  languageName: node
-  linkType: hard
-
-"@auto-it/core@npm:11.1.4":
-  version: 11.1.4
-  resolution: "@auto-it/core@npm:11.1.4"
-  dependencies:
-    "@auto-it/bot-list": "npm:11.1.4"
-    "@endemolshinegroup/cosmiconfig-typescript-loader": "npm:^3.0.2"
-    "@octokit/core": "npm:^3.5.1"
-    "@octokit/plugin-enterprise-compatibility": "npm:1.3.0"
-    "@octokit/plugin-retry": "npm:^3.0.9"
-    "@octokit/plugin-throttling": "npm:^3.6.2"
-    "@octokit/rest": "npm:^18.12.0"
-    await-to-js: "npm:^3.0.0"
-    chalk: "npm:^4.0.0"
-    cosmiconfig: "npm:7.0.0"
-    deepmerge: "npm:^4.0.0"
-    dotenv: "npm:^8.0.0"
-    endent: "npm:^2.1.0"
-    enquirer: "npm:^2.3.4"
-    env-ci: "npm:^5.0.1"
-    fast-glob: "npm:^3.1.1"
-    fp-ts: "npm:^2.5.3"
-    fromentries: "npm:^1.2.0"
-    gitlog: "npm:^4.0.3"
-    https-proxy-agent: "npm:^5.0.0"
-    import-cwd: "npm:^3.0.0"
-    import-from: "npm:^3.0.0"
-    io-ts: "npm:^2.1.2"
-    lodash.chunk: "npm:^4.2.0"
-    log-symbols: "npm:^4.0.0"
-    node-fetch: "npm:2.6.7"
-    parse-author: "npm:^2.0.0"
-    parse-github-url: "npm:1.0.2"
-    pretty-ms: "npm:^7.0.0"
-    requireg: "npm:^0.2.2"
-    semver: "npm:^7.0.0"
-    signale: "npm:^1.4.0"
-    tapable: "npm:^2.2.0"
-    terminal-link: "npm:^2.1.1"
-    tinycolor2: "npm:^1.4.1"
-    ts-node: "npm:^10.9.1"
-    tslib: "npm:2.1.0"
-    type-fest: "npm:^0.21.1"
-    typescript-memoize: "npm:^1.0.0-alpha.3"
-    url-join: "npm:^4.0.0"
-  peerDependencies:
-    typescript: ">=2.7"
-  peerDependenciesMeta:
-    "@types/node":
-      optional: true
-  checksum: 10c0/c8e45cfa6d4c0c21b7522029c9e34dfc98790fddf1fab13a320e495bdb66f609da66e64c7e1807d7b79ed24858308ef856f5233c074822ee13c6fc8ce2ee764e
   languageName: node
   linkType: hard
 
@@ -268,11 +208,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/upload-assets@npm:11.1.4":
-  version: 11.1.4
-  resolution: "@auto-it/upload-assets@npm:11.1.4"
+"@auto-it/upload-assets@npm:11.1.6":
+  version: 11.1.6
+  resolution: "@auto-it/upload-assets@npm:11.1.6"
   dependencies:
-    "@auto-it/core": "npm:11.1.4"
+    "@auto-it/core": "npm:11.1.6"
     endent: "npm:^2.1.0"
     fast-glob: "npm:^3.1.1"
     file-type: "npm:^16.0.0"
@@ -280,7 +220,7 @@ __metadata:
     io-ts: "npm:^2.1.2"
     terminal-link: "npm:^2.1.1"
     tslib: "npm:2.1.0"
-  checksum: 10c0/dcff2d5bc8cbe096735323ab2ab07dfffc9cd29487e6002deef7ab078c9edef164bdcc2f8584505533a7582f7ccc4a6a0bacf28f01db51e4be1a286404e283de
+  checksum: 10c0/28487e93a6115de7fb99f8230d42d13f6e5bae04057659fb1c349e314e7c9be6361160fc5c7e0e62dc30f377b9eef5045ff83d9a1a608d16d07bb9cc4c40af03
   languageName: node
   linkType: hard
 
@@ -2412,7 +2352,7 @@ __metadata:
   resolution: "ark-manager-web@workspace:."
   dependencies:
     "@auto-it/git-tag": "npm:11.1.6"
-    "@auto-it/upload-assets": "npm:11.1.4"
+    "@auto-it/upload-assets": "npm:11.1.6"
     auto: "npm:11.1.3"
     concurrently: "npm:8.2.2"
     nodemon: "npm:3.1.0"
