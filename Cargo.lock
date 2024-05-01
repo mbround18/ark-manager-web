@@ -73,7 +73,7 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "336d835910fab747186c56586562cb46f42809c2843ef3a84f47509009522838"
 dependencies = [
- "concurrent-queue 2.3.0",
+ "concurrent-queue 2.5.0",
  "event-listener 3.0.1",
  "event-listener-strategy",
  "futures-core",
@@ -88,7 +88,7 @@ checksum = "10da8f3146014722c89e7859e1d7bb97873125d7346d10ca642ffab794355828"
 dependencies = [
  "async-lock 2.8.0",
  "cfg-if",
- "concurrent-queue 2.3.0",
+ "concurrent-queue 2.5.0",
  "futures-io",
  "futures-lite 1.12.0",
  "parking",
@@ -122,20 +122,22 @@ dependencies = [
 
 [[package]]
 name = "async-process"
-version = "2.0.0"
+version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "492cd91ac1bad2bb910e38cb324891bf3d71845f64ae503a2ddcfa64fe7f03b0"
+checksum = "a53fc6301894e04a92cb2584fedde80cb25ba8e02d9dc39d4a87d036e22f397d"
 dependencies = [
  "async-channel 2.0.0",
  "async-io",
  "async-lock 3.0.0",
  "async-signal",
+ "async-task",
  "blocking",
  "cfg-if",
- "event-listener 3.0.1",
+ "event-listener 5.3.0",
  "futures-lite 2.0.0",
  "rustix",
- "windows-sys 0.48.0",
+ "tracing",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -179,9 +181,9 @@ dependencies = [
 
 [[package]]
 name = "async-task"
-version = "4.1.0"
+version = "4.7.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "677d306121baf53310a3fd342d88dc0824f6bbeace68347593658525565abee8"
+checksum = "8b75356056920673b02621b35afd0f7dda9306d03c79a30f5c56c44cf256e3de"
 
 [[package]]
 name = "async-trait"
@@ -302,9 +304,9 @@ dependencies = [
 
 [[package]]
 name = "concurrent-queue"
-version = "2.3.0"
+version = "2.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f057a694a54f12365049b0958a1685bb52d567f5593b355fbf685838e873d400"
+checksum = "4ca0197aee26d1ae37445ee532fefce43251d24cc7c166799f4d46817f1d3973"
 dependencies = [
  "crossbeam-utils",
 ]
@@ -421,7 +423,18 @@ version = "3.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "01cec0252c2afff729ee6f00e903d479fba81784c8e2bd77447673471fdfaea1"
 dependencies = [
- "concurrent-queue 2.3.0",
+ "concurrent-queue 2.5.0",
+ "parking",
+ "pin-project-lite",
+]
+
+[[package]]
+name = "event-listener"
+version = "5.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6d9944b8ca13534cdfb2800775f8dd4902ff3fc75a50101466decadfdf322a24"
+dependencies = [
+ "concurrent-queue 2.5.0",
  "parking",
  "pin-project-lite",
 ]
@@ -1098,7 +1111,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e53b6af1f60f36f8c2ac2aad5459d75a5a9b4be1e8cdd40264f315d78193e531"
 dependencies = [
  "cfg-if",
- "concurrent-queue 2.3.0",
+ "concurrent-queue 2.5.0",
  "pin-project-lite",
  "rustix",
  "tracing",
