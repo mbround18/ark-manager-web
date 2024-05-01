@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 which = "6"
-serde = { version = "1", features = ["derive"] }
+serde = { version = "1.0.199", features = ["derive"] }
 serde_json = "1"
 chrono = "0.4.38"
 strip-ansi-escapes = "0"
