@@ -12,7 +12,7 @@ name = "agent"
 shared = {path="../shared"}
 socket2 = "0.5"
 async-process = "2"
-serde = { version = "1.0.199", features = ["derive"] }
+serde = { version = "1.0.200", features = ["derive"] }
 serde_json = "1"
 chrono = "0.4.38"
 which = "6"
