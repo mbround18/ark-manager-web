@@ -9,7 +9,7 @@ dependencies = [
  "async-process",
  "chrono",
  "futures",
- "futures-lite 2.0.0",
+ "futures-lite 2.3.0",
  "serde",
  "serde_json",
  "shared",
@@ -134,7 +134,7 @@ dependencies = [
  "blocking",
  "cfg-if",
  "event-listener 5.3.0",
- "futures-lite 2.0.0",
+ "futures-lite 2.3.0",
  "rustix",
  "tracing",
  "windows-sys 0.52.0",
@@ -561,17 +561,15 @@ dependencies = [
 
 [[package]]
 name = "futures-lite"
-version = "2.0.0"
+version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9c1155db57329dca6d018b61e76b1488ce9a2e5e44028cac420a5898f4fcef63"
+checksum = "52527eb5074e35e9339c6b4e8d12600c7128b68fb25dcb9fa9dec18f7c25f3a5"
 dependencies = [
  "fastrand 2.0.1",
  "futures-core",
  "futures-io",
- "memchr",
  "parking",
  "pin-project-lite",
- "waker-fn",
 ]
 
 [[package]]
@@ -1036,9 +1034,9 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 
 [[package]]
 name = "parking"
-version = "2.0.0"
+version = "2.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "427c3892f9e783d91cc128285287e70a59e206ca452770ece88a76f7a3eddd72"
+checksum = "bb813b8af86854136c6922af0598d719255ecb2179515e6e7730d468f05c9cae"
 
 [[package]]
 name = "parking_lot"
