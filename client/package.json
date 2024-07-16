@@ -14,7 +14,7 @@
     "pretty-quick": "4.0.0",
     "svelte-check": "3.8.4",
     "svelte-preprocess": "6.0.2",
-    "tailwindcss": "3.4.5",
+    "tailwindcss": "3.4.6",
     "tslib": "2.6.3",
     "typescript": "5.5.3",
     "vite": "5.3.4"
