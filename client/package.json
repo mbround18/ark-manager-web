@@ -1,11 +1,11 @@
 {
   "name": "client",
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.4.0",
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "3.1.1",
     "@tsconfig/svelte": "5.0.4",
     "@types/lodash": "4.17.7",
-    "@yarnpkg/pnpify": "4.1.0",
+    "@yarnpkg/pnpify": "4.1.1",
     "autoprefixer": "10.4.20",
     "postcss": "8.4.40",
     "postcss-import": "16.1.0",
