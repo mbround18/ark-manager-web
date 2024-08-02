@@ -1973,7 +1973,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/core@npm:^4.0.3, @yarnpkg/core@npm:^4.0.5":
+"@yarnpkg/core@npm:^4.0.3":
   version: 4.0.5
   resolution: "@yarnpkg/core@npm:4.0.5"
   dependencies:
@@ -2007,6 +2007,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yarnpkg/core@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "@yarnpkg/core@npm:4.1.2"
+  dependencies:
+    "@arcanis/slice-ansi": "npm:^1.1.1"
+    "@types/semver": "npm:^7.1.0"
+    "@types/treeify": "npm:^1.0.0"
+    "@yarnpkg/fslib": "npm:^3.1.0"
+    "@yarnpkg/libzip": "npm:^3.1.0"
+    "@yarnpkg/parsers": "npm:^3.0.2"
+    "@yarnpkg/shell": "npm:^4.0.2"
+    camelcase: "npm:^5.3.1"
+    chalk: "npm:^3.0.0"
+    ci-info: "npm:^4.0.0"
+    clipanion: "npm:^4.0.0-rc.2"
+    cross-spawn: "npm:7.0.3"
+    diff: "npm:^5.1.0"
+    dotenv: "npm:^16.3.1"
+    fast-glob: "npm:^3.2.2"
+    got: "npm:^11.7.0"
+    lodash: "npm:^4.17.15"
+    micromatch: "npm:^4.0.2"
+    p-limit: "npm:^2.2.0"
+    semver: "npm:^7.1.2"
+    strip-ansi: "npm:^6.0.0"
+    tar: "npm:^6.0.5"
+    tinylogic: "npm:^2.0.0"
+    treeify: "npm:^1.1.0"
+    tslib: "npm:^2.4.0"
+    tunnel: "npm:^0.0.6"
+  checksum: 10c0/c92941a58fa492b169ba6c4f20f49212306b0233d1d721533e40c78f7056b8738f00fd7142807e7418388d2c91f15b0f463ab033f48dacecaab75b7993c743c7
+  languageName: node
+  linkType: hard
+
 "@yarnpkg/fslib@npm:^3.0.2, @yarnpkg/fslib@npm:^3.1.0":
   version: 3.1.0
   resolution: "@yarnpkg/fslib@npm:3.1.0"
@@ -2016,7 +2050,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/libzip@npm:^3.0.1":
+"@yarnpkg/libzip@npm:^3.0.1, @yarnpkg/libzip@npm:^3.1.0":
   version: 3.1.0
   resolution: "@yarnpkg/libzip@npm:3.1.0"
   dependencies:
@@ -2060,18 +2094,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnpify@npm:4.1.0":
-  version: 4.1.0
-  resolution: "@yarnpkg/pnpify@npm:4.1.0"
+"@yarnpkg/pnpify@npm:4.1.1":
+  version: 4.1.1
+  resolution: "@yarnpkg/pnpify@npm:4.1.1"
   dependencies:
-    "@yarnpkg/core": "npm:^4.0.5"
+    "@yarnpkg/core": "npm:^4.1.2"
     "@yarnpkg/fslib": "npm:^3.1.0"
     "@yarnpkg/nm": "npm:^4.0.2"
     clipanion: "npm:^4.0.0-rc.2"
     tslib: "npm:^2.4.0"
   bin:
     pnpify: ./lib/cli.js
-  checksum: 10c0/d38970bc9b8c0b343a3d83ae575855c94b54df8d92d192d628a577cf68d71396c5db831ea2c48a36721f532fd127bd211a979e8cb47d1bb48739b3abefef825e
+  checksum: 10c0/b472bc315d4a51c43096dc27a681a284a42756c39c68ea2f198236ecdbee83fddd88a6bb11f499381a6193d34f125bf96603b98eec9bb8402fe58caeff2e9c7b
   languageName: node
   linkType: hard
 
@@ -2661,6 +2695,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ci-info@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "ci-info@npm:4.0.0"
+  checksum: 10c0/ecc003e5b60580bd081d83dd61d398ddb8607537f916313e40af4667f9c92a1243bd8e8a591a5aa78e418afec245dbe8e90a0e26e39ca0825129a99b978dd3f9
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -2690,7 +2731,7 @@ __metadata:
     "@sveltejs/vite-plugin-svelte": "npm:3.1.1"
     "@tsconfig/svelte": "npm:5.0.4"
     "@types/lodash": "npm:4.17.7"
-    "@yarnpkg/pnpify": "npm:4.1.0"
+    "@yarnpkg/pnpify": "npm:4.1.1"
     autoprefixer: "npm:10.4.20"
     axios: "npm:1.7.3"
     codejar: "npm:4.2.0"
