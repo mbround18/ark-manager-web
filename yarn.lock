@@ -2298,7 +2298,7 @@ __metadata:
     "@auto-it/upload-assets": "npm:11.2.1"
     auto: "npm:11.2.1"
     concurrently: "npm:9.0.1"
-    nodemon: "npm:3.1.4"
+    nodemon: "npm:3.1.5"
   languageName: unknown
   linkType: soft
 
@@ -5166,9 +5166,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemon@npm:3.1.4":
-  version: 3.1.4
-  resolution: "nodemon@npm:3.1.4"
+"nodemon@npm:3.1.5":
+  version: 3.1.5
+  resolution: "nodemon@npm:3.1.5"
   dependencies:
     chokidar: "npm:^3.5.2"
     debug: "npm:^4"
@@ -5182,7 +5182,7 @@ __metadata:
     undefsafe: "npm:^2.0.5"
   bin:
     nodemon: bin/nodemon.js
-  checksum: 10c0/be2335396a4c25549f86e9c69bb57e6a21758a9649d74182a359d88b80afbe84f67a1651e293a08c6d77ecdf5c6224d02990de9de225f70d7c659021206c877f
+  checksum: 10c0/9282b6d1480e13aabd295b817a31f0d2345fb35de71e80caaaf0623ed7ec67fa2503429fe91e1f1979ecfba4d85d20183df5cbb1b87f36c273ff13686f819e6b
   languageName: node
   linkType: hard
 
