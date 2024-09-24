@@ -1934,10 +1934,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:4.17.8":
-  version: 4.17.8
-  resolution: "@types/lodash@npm:4.17.8"
-  checksum: 10c0/e29d5fc3e4887ffe0e8365170ccc406a54f34692c3922b3ddaf6b1e208bf099fe512f53a512bf101200e3f4f50d13de8e99219c4859c2711b91c9e15d8c61ef4
+"@types/lodash@npm:4.17.9":
+  version: 4.17.9
+  resolution: "@types/lodash@npm:4.17.9"
+  checksum: 10c0/54de935e835508b5f835a5dfaedd2b9a299685a21d11e9c5cd2dde57331d03bc2f98b71d2424ca8460f447ecd55a673e45ccdb70e58f9f72745710f6b91abc60
   languageName: node
   linkType: hard
 
@@ -2703,7 +2703,7 @@ __metadata:
     "@parcel/core": "npm:2.12.0"
     "@sveltejs/vite-plugin-svelte": "npm:3.1.2"
     "@tsconfig/svelte": "npm:5.0.4"
-    "@types/lodash": "npm:4.17.8"
+    "@types/lodash": "npm:4.17.9"
     "@yarnpkg/pnpify": "npm:4.1.2"
     autoprefixer: "npm:10.4.20"
     axios: "npm:1.7.7"
