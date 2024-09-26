@@ -2729,7 +2729,7 @@ __metadata:
     svelte: "npm:4.2.19"
     svelte-check: "npm:4.0.3"
     svelte-i18n: "npm:4.0.0"
-    svelte-preprocess: "npm:6.0.2"
+    svelte-preprocess: "npm:6.0.3"
     tailwindcss: "npm:3.4.13"
     tslib: "npm:2.7.0"
     typescript: "npm:5.6.2"
@@ -6593,9 +6593,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte-preprocess@npm:6.0.2":
-  version: 6.0.2
-  resolution: "svelte-preprocess@npm:6.0.2"
+"svelte-preprocess@npm:6.0.3":
+  version: 6.0.3
+  resolution: "svelte-preprocess@npm:6.0.3"
   peerDependencies:
     "@babel/core": ^7.10.2
     coffeescript: ^2.5.1
@@ -6629,7 +6629,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/31569a0f773f61ef9d51f221aee83ea30b7e73e71d61a5e0364fb15041cbd2b9c61ef94b9bf4ae94aa8dcdc2bd35a5d4a56393acdd35d278f7f1216a5d04b0c9
+  checksum: 10c0/ee6d92f0ae9b00830cae764ce7c286b83e52f142fb617a932bd81f09b4b29c8b2c02ef5e4b6bbade9729cc7c65f7fef55e1a366758766b15a06538df1e55e8ce
   languageName: node
   linkType: hard
 
