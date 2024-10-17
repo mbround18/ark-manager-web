@@ -2859,7 +2859,7 @@ __metadata:
     prettier: "npm:3.3.3"
     prettier-plugin-svelte: "npm:3.2.7"
     pretty-quick: "npm:4.0.0"
-    sass: "npm:1.80.0"
+    sass: "npm:1.80.1"
     svelte: "npm:4.2.19"
     svelte-check: "npm:4.0.5"
     svelte-i18n: "npm:4.0.0"
@@ -6337,9 +6337,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.80.0":
-  version: 1.80.0
-  resolution: "sass@npm:1.80.0"
+"sass@npm:1.80.1":
+  version: 1.80.1
+  resolution: "sass@npm:1.80.1"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -6347,7 +6347,7 @@ __metadata:
     source-map-js: "npm:>=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 10c0/d28ce6b0a924f1aa7fe6d7a9f2f1fbb19c7e552bb6f4b9d0b35e58af50e53620f78a18f7bf040f127dd665a8adafcb178235e072252af9720b10cdedcaf6783d
+  checksum: 10c0/91ec2b8bcba4c3c68c047fdcbe04cb82646b5cc6446e04d9134ff3c642d9895363de5cbf88869f0a6aa81bcd2de9b8ccba7df7ff35d33a07a18754014ee7a31a
   languageName: node
   linkType: hard
 
