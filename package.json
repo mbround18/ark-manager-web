@@ -6,7 +6,7 @@
   "author": "Michael Bruno <12646562+mbround18@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "@auto-it/git-tag": "11.2.1",
+    "@auto-it/git-tag": "11.3.0",
     "@auto-it/upload-assets": "11.2.1",
     "auto": "11.2.1",
     "concurrently": "9.0.1",
