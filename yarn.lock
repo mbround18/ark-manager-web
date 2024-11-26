@@ -1870,24 +1870,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte-inspector@npm:^3.0.0-next.0||^3.0.0":
-  version: 3.0.0
-  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:3.0.0"
+"@sveltejs/vite-plugin-svelte-inspector@npm:^4.0.0":
+  version: 4.0.1
+  resolution: "@sveltejs/vite-plugin-svelte-inspector@npm:4.0.1"
   dependencies:
     debug: "npm:^4.3.7"
   peerDependencies:
-    "@sveltejs/vite-plugin-svelte": ^4.0.0-next.0||^4.0.0
-    svelte: ^5.0.0-next.96 || ^5.0.0
-    vite: ^5.0.0
-  checksum: 10c0/f400758f698394a8e0c6641454ffd85d5c61f8bf50626fddaa688172f3b910a4840882380782e844e54464a7491fcc61bf0e6b1b8f898cdfe3696bcf0e774159
+    "@sveltejs/vite-plugin-svelte": ^5.0.0
+    svelte: ^5.0.0
+    vite: ^6.0.0
+  checksum: 10c0/03cc334346fcf291d3d0cba435bf752d15df91c0ac55dccdb5bf1372ae5a85fcb25f0f63ca3d1f7a25ebaa9e711fd1178d8a1fd6f495d57ac2eb327b855c0aea
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@sveltejs/vite-plugin-svelte@npm:5.0.0"
+"@sveltejs/vite-plugin-svelte@npm:5.0.1":
+  version: 5.0.1
+  resolution: "@sveltejs/vite-plugin-svelte@npm:5.0.1"
   dependencies:
-    "@sveltejs/vite-plugin-svelte-inspector": "npm:^3.0.0-next.0||^3.0.0"
+    "@sveltejs/vite-plugin-svelte-inspector": "npm:^4.0.0"
     debug: "npm:^4.3.7"
     deepmerge: "npm:^4.3.1"
     kleur: "npm:^4.1.5"
@@ -1896,7 +1896,7 @@ __metadata:
   peerDependencies:
     svelte: ^5.0.0
     vite: ^6.0.0
-  checksum: 10c0/f4e783da5d64b15d9e32197b771f4bfd5b642025023b6c8e422a97a141dc1ed00df55d8d4ccdfd532881218fbe1baa479571bcb9ef683adb4e6427c16d16aa3b
+  checksum: 10c0/bc0ea707b3f37d05ca953d6be9b75ea651609d73289e7a51f714102c29741825d47eb78c573ccc2766db90794570f432423f0bf8e7e9f755853443ecb8188345
   languageName: node
   linkType: hard
 
@@ -2976,7 +2976,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": "npm:9.2.0"
     "@parcel/core": "npm:2.13.2"
-    "@sveltejs/vite-plugin-svelte": "npm:5.0.0"
+    "@sveltejs/vite-plugin-svelte": "npm:5.0.1"
     "@tsconfig/svelte": "npm:5.0.4"
     "@types/lodash": "npm:4.17.13"
     "@yarnpkg/pnpify": "npm:4.1.3"
