@@ -1862,20 +1862,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sveltejs/vite-plugin-svelte@npm:4.0.2":
-  version: 4.0.2
-  resolution: "@sveltejs/vite-plugin-svelte@npm:4.0.2"
+"@sveltejs/vite-plugin-svelte@npm:5.0.0":
+  version: 5.0.0
+  resolution: "@sveltejs/vite-plugin-svelte@npm:5.0.0"
   dependencies:
     "@sveltejs/vite-plugin-svelte-inspector": "npm:^3.0.0-next.0||^3.0.0"
     debug: "npm:^4.3.7"
     deepmerge: "npm:^4.3.1"
     kleur: "npm:^4.1.5"
-    magic-string: "npm:^0.30.12"
+    magic-string: "npm:^0.30.13"
     vitefu: "npm:^1.0.3"
   peerDependencies:
-    svelte: ^5.0.0-next.96 || ^5.0.0
-    vite: ^5.0.0
-  checksum: 10c0/3e08c3fd0e7554d9d2ef84208e49fc8afc411c616f4e19c4eaaae16a83ecbcf610ed368df8b9500415264aa4e6519f23790149cf565f40ed5981ef30b6bd430c
+    svelte: ^5.0.0
+    vite: ^6.0.0
+  checksum: 10c0/f4e783da5d64b15d9e32197b771f4bfd5b642025023b6c8e422a97a141dc1ed00df55d8d4ccdfd532881218fbe1baa479571bcb9ef683adb4e6427c16d16aa3b
   languageName: node
   linkType: hard
 
@@ -2955,7 +2955,7 @@ __metadata:
   dependencies:
     "@faker-js/faker": "npm:9.2.0"
     "@parcel/core": "npm:2.13.2"
-    "@sveltejs/vite-plugin-svelte": "npm:4.0.2"
+    "@sveltejs/vite-plugin-svelte": "npm:5.0.0"
     "@tsconfig/svelte": "npm:5.0.4"
     "@types/lodash": "npm:4.17.13"
     "@yarnpkg/pnpify": "npm:4.1.3"
@@ -5010,12 +5010,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.30.11, magic-string@npm:^0.30.12":
+"magic-string@npm:^0.30.11":
   version: 0.30.12
   resolution: "magic-string@npm:0.30.12"
   dependencies:
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
   checksum: 10c0/469f457d18af37dfcca8617086ea8a65bcd8b60ba8a1182cb024ce43e470ace3c9d1cb6bee58d3b311768fb16bc27bd50bdeebcaa63dadd0fd46cac4d2e11d5f
+  languageName: node
+  linkType: hard
+
+"magic-string@npm:^0.30.13":
+  version: 0.30.14
+  resolution: "magic-string@npm:0.30.14"
+  dependencies:
+    "@jridgewell/sourcemap-codec": "npm:^1.5.0"
+  checksum: 10c0/c52c2a6e699dfa8a840e13154da35464a40cd8b07049b695a8b282883b0426c0811af1e36ac26860b4267289340b42772c156a5608e87be97b63d510e617e87a
   languageName: node
   linkType: hard
 
