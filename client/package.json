@@ -17,7 +17,7 @@
     "tailwindcss": "3.4.17",
     "tslib": "2.8.1",
     "typescript": "5.7.2",
-    "vite": "6.0.3"
+    "vite": "6.0.4"
   },
   "dependencies": {
     "@faker-js/faker": "9.3.0",
