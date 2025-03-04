@@ -2871,7 +2871,7 @@ __metadata:
     postcss-import: "npm:16.1.0"
     prettier: "npm:3.5.3"
     prettier-plugin-svelte: "npm:3.3.3"
-    pretty-quick: "npm:4.1.0"
+    pretty-quick: "npm:4.1.1"
     sass: "npm:1.85.1"
     svelte: "npm:5.22.1"
     svelte-check: "npm:4.1.4"
@@ -5726,9 +5726,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-quick@npm:4.1.0":
-  version: 4.1.0
-  resolution: "pretty-quick@npm:4.1.0"
+"pretty-quick@npm:4.1.1":
+  version: 4.1.1
+  resolution: "pretty-quick@npm:4.1.1"
   dependencies:
     find-up: "npm:^5.0.0"
     ignore: "npm:^7.0.3"
@@ -5741,7 +5741,7 @@ __metadata:
     prettier: ^3.0.0
   bin:
     pretty-quick: lib/cli.mjs
-  checksum: 10c0/c1c1132774f888006f4ae2f9efd042ad3350bd572ce0bb4b31f40bc1afd50dcf2b4b9ae42cc8143a70965ee3fdf804b78efb191242efa930d34f6a21bff3ac57
+  checksum: 10c0/c0362aff7d7679f58c044891047e7bbb03d461543aa30b1c57fef9400fa8c4d1daef4aa2b146a9c9072ce050c60860a88eb64b3fd722826dc56616f7cd1d6011
   languageName: node
   linkType: hard
 
