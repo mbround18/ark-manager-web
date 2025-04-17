@@ -2892,7 +2892,7 @@ __metadata:
     prettier-plugin-svelte: "npm:3.3.3"
     pretty-quick: "npm:4.1.1"
     sass: "npm:1.86.3"
-    svelte: "npm:5.27.0"
+    svelte: "npm:5.27.1"
     svelte-check: "npm:4.1.6"
     svelte-i18n: "npm:4.0.1"
     svelte-preprocess: "npm:6.0.3"
@@ -6577,9 +6577,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:5.27.0":
-  version: 5.27.0
-  resolution: "svelte@npm:5.27.0"
+"svelte@npm:5.27.1":
+  version: 5.27.1
+  resolution: "svelte@npm:5.27.1"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -6595,7 +6595,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/f988de24f4f4ced0b7360ef53e23175ecf0f6a0aadbb506867acd22c38bd595974dd4caffe5b92c8be47b7947b0849bb35b381ba2ac8c1a79091280dc1f2af10
+  checksum: 10c0/42ad0ec2c61e67751039c15ee7f053eedd0ad484c0e89d17785c9b95c520eef9d715690609f70e383aaa7fba25bf615b9073957c01c5b6e37eaea9059a6aaf49
   languageName: node
   linkType: hard
 
