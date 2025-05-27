@@ -131,9 +131,9 @@ dependencies = [
 
 [[package]]
 name = "async-process"
-version = "2.3.0"
+version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "63255f1dc2381611000436537bbedfe83183faa303a5a0edaf191edef06526bb"
+checksum = "cde3f4e40e6021d7acffc90095cbd6dc54cb593903d1de5832f435eb274b85dc"
 dependencies = [
  "async-channel 2.0.0",
  "async-io",
@@ -144,7 +144,7 @@ dependencies = [
  "cfg-if",
  "event-listener 5.3.0",
  "futures-lite 2.6.0",
- "rustix 0.38.30",
+ "rustix 1.0.5",
  "tracing",
 ]
 
