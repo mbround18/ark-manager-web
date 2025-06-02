@@ -3000,7 +3000,7 @@ __metadata:
     postcss-import: "npm:16.1.0"
     prettier: "npm:3.5.3"
     prettier-plugin-svelte: "npm:3.4.0"
-    pretty-quick: "npm:4.2.0"
+    pretty-quick: "npm:4.2.2"
     sass: "npm:1.89.1"
     svelte: "npm:5.33.13"
     svelte-check: "npm:4.2.1"
@@ -5871,22 +5871,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pretty-quick@npm:4.2.0":
-  version: 4.2.0
-  resolution: "pretty-quick@npm:4.2.0"
+"pretty-quick@npm:4.2.2":
+  version: 4.2.2
+  resolution: "pretty-quick@npm:4.2.2"
   dependencies:
     "@pkgr/core": "npm:^0.2.7"
     ignore: "npm:^7.0.5"
     mri: "npm:^1.2.0"
     picocolors: "npm:^1.1.1"
     picomatch: "npm:^4.0.2"
-    tinyexec: "npm:^1.0.1"
+    tinyexec: "npm:^0.3.2"
     tslib: "npm:^2.8.1"
   peerDependencies:
     prettier: ^3.0.0
   bin:
     pretty-quick: lib/cli.mjs
-  checksum: 10c0/d39c9d1eaa1c3aa4ae34bbd251d3fa76573326ebb4c7b814e32429c8b45d8000357e368acde741a5dfbb19cf35dd84294e66ac5b7fb7fad2acf0c43c10aca9ed
+  checksum: 10c0/3062677741d144e0439971f24742b39eb1ae78b263c5431b2d320b98a4d91de033e1a0b91267c2df7b51159f37446d250c6e33c094b56aa1185e6a4c38d5604f
   languageName: node
   linkType: hard
 
@@ -6806,10 +6806,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinyexec@npm:^1.0.1":
-  version: 1.0.1
-  resolution: "tinyexec@npm:1.0.1"
-  checksum: 10c0/e1ec3c8194a0427ce001ba69fd933d0c957e2b8994808189ed8020d3e0c01299aea8ecf0083cc514ecbf90754695895f2b5c0eac07eb2d0c406f7d4fbb8feade
+"tinyexec@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "tinyexec@npm:0.3.2"
+  checksum: 10c0/3efbf791a911be0bf0821eab37a3445c2ba07acc1522b1fa84ae1e55f10425076f1290f680286345ed919549ad67527d07281f1c19d584df3b74326909eb1f90
   languageName: node
   linkType: hard
 
