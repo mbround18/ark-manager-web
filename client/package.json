@@ -20,7 +20,7 @@
     "vite": "7.0.0"
   },
   "dependencies": {
-    "@faker-js/faker": "9.8.0",
+    "@faker-js/faker": "9.9.0",
     "@parcel/core": "2.15.4",
     "axios": "1.10.0",
     "codejar": "4.2.0",
