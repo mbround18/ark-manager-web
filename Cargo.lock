@@ -24,7 +24,7 @@ dependencies = [
  "async-process",
  "chrono",
  "futures",
- "futures-lite 2.6.0",
+ "futures-lite 2.6.1",
  "serde",
  "serde_json",
  "shared",
@@ -99,7 +99,7 @@ dependencies = [
  "cfg-if",
  "concurrent-queue 2.5.0",
  "futures-io",
- "futures-lite 2.6.0",
+ "futures-lite 2.6.1",
  "parking",
  "polling",
  "rustix 0.38.30",
@@ -142,7 +142,7 @@ dependencies = [
  "blocking",
  "cfg-if",
  "event-listener 5.3.0",
- "futures-lite 2.6.0",
+ "futures-lite 2.6.1",
  "rustix 1.0.5",
 ]
 
@@ -588,9 +588,9 @@ dependencies = [
 
 [[package]]
 name = "futures-lite"
-version = "2.6.0"
+version = "2.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f5edaec856126859abb19ed65f39e90fea3a9574b9707f13539acf4abf7eb532"
+checksum = "f78e10609fe0e0b3f4157ffab1876319b5b0db102a2c60dc4626306dc46b44ad"
 dependencies = [
  "fastrand 2.0.1",
  "futures-core",
