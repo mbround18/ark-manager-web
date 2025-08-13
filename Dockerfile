@@ -35,7 +35,7 @@ RUN /usr/local/cargo/bin/cargo make release
 # ------------- #
 # -- Runtime -- #
 # ------------- #
-FROM registry.hub.docker.com/library/debian:12-slim as RustRuntime
+FROM registry.hub.docker.com/library/debian:13-slim as RustRuntime
 WORKDIR /apps
 COPY --from=builder /data/project/target/release/server ./
 COPY --from=builder /data/project/target/release/agent ./
