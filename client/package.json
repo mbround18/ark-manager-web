@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "packageManager": "yarn@4.9.4",
+  "packageManager": "yarn@4.10.1",
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "6.2.0",
     "@tsconfig/svelte": "5.0.5",
