@@ -14,18 +14,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auto-it/bot-list@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/bot-list@npm:11.3.0"
-  checksum: 10c0/17facb15164a094bdbae7e9635a661068fd8d15ce8aae3d0c4995cff58cb0799d990d6a851937f6c9475f6d94f84a8139c108422237de8f4bca006e48e724593
+"@auto-it/bot-list@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/bot-list@npm:11.3.5"
+  checksum: 10c0/6d8dc5cb85e2313579c9e3289a56a2a83c9e0656066e98cef9dd6717bdd3cc61140c9f04cb6e7da305dcb686262ff1847e99c515903d01a3619f08a656838ebc
   languageName: node
   linkType: hard
 
-"@auto-it/core@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/core@npm:11.3.0"
+"@auto-it/core@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/core@npm:11.3.5"
   dependencies:
-    "@auto-it/bot-list": "npm:11.3.0"
+    "@auto-it/bot-list": "npm:11.3.5"
     "@endemolshinegroup/cosmiconfig-typescript-loader": "npm:^3.0.2"
     "@octokit/core": "npm:^3.5.1"
     "@octokit/plugin-enterprise-compatibility": "npm:1.3.0"
@@ -70,32 +70,32 @@ __metadata:
   peerDependenciesMeta:
     "@types/node":
       optional: true
-  checksum: 10c0/c93ce7772f213ef893682a9c51d6938c087e65054d3dbdf1c7fe6ce55aeb5cc19db619e3fa7002e52e8c2212cea6c9fc20272920a54a97e1b96590dc0cfbb3bc
+  checksum: 10c0/7b7c12356adeedd2c66158b736ff95c8f72fa69b5e8b3fd3bf3821ea1d871fc0ac0e6afc2dcb3d8c4211484f2071c816519a9e9c556b868ceb4ea9eaed53db2b
   languageName: node
   linkType: hard
 
-"@auto-it/git-tag@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/git-tag@npm:11.3.0"
+"@auto-it/git-tag@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/git-tag@npm:11.3.5"
   dependencies:
-    "@auto-it/core": "npm:11.3.0"
+    "@auto-it/core": "npm:11.3.5"
     semver: "npm:^7.0.0"
     tslib: "npm:2.1.0"
-  checksum: 10c0/41790c6952e1bd21fb8fee7d87afd64b5abdafd9b73e42de7a81bf8b88e9f51e25a35c8cc0a57544a8127bc2ec72790301ae7b6e7b37bb7e0de15029653bfb40
+  checksum: 10c0/bef25b6630f2feceb4e87e240998bfe98a055b6f27d517f7361b2dd145066505c9ac6ed2106e9b1a90fb77840a3f139c38537475ca4900fcce6a1b35da1a2bbc
   languageName: node
   linkType: hard
 
-"@auto-it/npm@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/npm@npm:11.3.0"
+"@auto-it/npm@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/npm@npm:11.3.5"
   dependencies:
-    "@auto-it/core": "npm:11.3.0"
-    "@auto-it/package-json-utils": "npm:11.3.0"
+    "@auto-it/core": "npm:11.3.5"
+    "@auto-it/package-json-utils": "npm:11.3.5"
     await-to-js: "npm:^3.0.0"
     endent: "npm:^2.1.0"
     env-ci: "npm:^5.0.1"
     fp-ts: "npm:^2.5.3"
-    get-monorepo-packages: "npm:^1.1.0"
+    get-monorepo-packages: "npm:^1.3.0"
     io-ts: "npm:^2.1.2"
     registry-url: "npm:^5.1.0"
     semver: "npm:^7.0.0"
@@ -103,39 +103,39 @@ __metadata:
     typescript-memoize: "npm:^1.0.0-alpha.3"
     url-join: "npm:^4.0.0"
     user-home: "npm:^2.0.0"
-  checksum: 10c0/0410de3d27b61665b8c53c4f0cc0c8de567bf209dcbee7c9e58423afb87e9a410231f59982140392b005b8d2cdec9b8401f97e0445e2bd5a01e09c114ad4fe21
+  checksum: 10c0/872ce0e2bab5c030437104c8d011ff52c5f549ceefee4e4555ec57b54ae5d023eb36958c1186375398ca2df431338bc244f3532f7b976b27cd25a00ca1a9f1ad
   languageName: node
   linkType: hard
 
-"@auto-it/package-json-utils@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/package-json-utils@npm:11.3.0"
+"@auto-it/package-json-utils@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/package-json-utils@npm:11.3.5"
   dependencies:
     parse-author: "npm:^2.0.0"
     parse-github-url: "npm:1.0.2"
-  checksum: 10c0/4ad477a7690efea90a4220930c6b83d3da6d7085f36f20b88c334bc51b8e0db42c9d7d084f8649356e375643887cd90ed9e105da6bae68f2b5030688dfb31773
+  checksum: 10c0/3b598ff4db308470f310da6f8fc693c44fb399c4364b6a63e787e3305064a0fef814f87c1c448bf947a327ac0c145567388128937d1f398603e87752b6af4d6c
   languageName: node
   linkType: hard
 
-"@auto-it/released@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/released@npm:11.3.0"
+"@auto-it/released@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/released@npm:11.3.5"
   dependencies:
-    "@auto-it/bot-list": "npm:11.3.0"
-    "@auto-it/core": "npm:11.3.0"
+    "@auto-it/bot-list": "npm:11.3.5"
+    "@auto-it/core": "npm:11.3.5"
     deepmerge: "npm:^4.0.0"
     fp-ts: "npm:^2.5.3"
     io-ts: "npm:^2.1.2"
     tslib: "npm:2.1.0"
-  checksum: 10c0/26a44d071b86014dc70b03b60b015835c8b2ca798981eff1027a20bf76ee1abc5fa29b46f0a33c0537d2d4f63c76aa3f7f35a6ee148cc91ddb327d577452f6ef
+  checksum: 10c0/922c200c9d68678ad21cfee5f5cd3191f0c4a9dd98082ab82e735c4c33eb75f8684f5864e240e47581f441012aaccc8e2652f448bd416e3fb81d5bf3d31b5802
   languageName: node
   linkType: hard
 
-"@auto-it/upload-assets@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/upload-assets@npm:11.3.0"
+"@auto-it/upload-assets@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/upload-assets@npm:11.3.5"
   dependencies:
-    "@auto-it/core": "npm:11.3.0"
+    "@auto-it/core": "npm:11.3.5"
     endent: "npm:^2.1.0"
     fast-glob: "npm:^3.1.1"
     file-type: "npm:^16.0.0"
@@ -143,20 +143,20 @@ __metadata:
     io-ts: "npm:^2.1.2"
     terminal-link: "npm:^2.1.1"
     tslib: "npm:2.1.0"
-  checksum: 10c0/d8f68bf764076d487236e83daffe490ec928fc0f807d8c7af31f8b2858db9ba3ecbeb41466951223f872778a0910921ca80890586da852619e75d9ede0703739
+  checksum: 10c0/5983c635d0cb35b08e1f6b36f98c0e67fabb222567f2d67d4ef3874eda3f5548746e1923114fd35b8c894da8cff0141a72357f8a59d904e85c39700229cc16fa
   languageName: node
   linkType: hard
 
-"@auto-it/version-file@npm:11.3.0":
-  version: 11.3.0
-  resolution: "@auto-it/version-file@npm:11.3.0"
+"@auto-it/version-file@npm:11.3.5":
+  version: 11.3.5
+  resolution: "@auto-it/version-file@npm:11.3.5"
   dependencies:
-    "@auto-it/core": "npm:11.3.0"
+    "@auto-it/core": "npm:11.3.5"
     fp-ts: "npm:^2.5.3"
     io-ts: "npm:^2.1.2"
     semver: "npm:^7.0.0"
     tslib: "npm:1.10.0"
-  checksum: 10c0/c62f52a89ed003dd8c00c54788750a6b5dbc047fc54ce50753c64a6261b548ad8b8d9ed23b5f92663c4c012b99651e6910438c0d8654374c7bee1a2593017c9b
+  checksum: 10c0/c658c5a7668ef05cff2277982dbe4dd5f6b8a0101c9b249a3f27064aa83c78cbf61e81a533b0575720c6bd71dd7219ae516acbc8ac1f8f089624bdf5b6665e4f
   languageName: node
   linkType: hard
 
@@ -2613,9 +2613,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ark-manager-web@workspace:."
   dependencies:
-    "@auto-it/git-tag": "npm:11.3.0"
-    "@auto-it/upload-assets": "npm:11.3.0"
-    auto: "npm:11.3.0"
+    "@auto-it/git-tag": "npm:11.3.5"
+    "@auto-it/upload-assets": "npm:11.3.5"
+    auto: "npm:11.3.5"
     concurrently: "npm:9.2.1"
     nodemon: "npm:3.1.11"
   languageName: unknown
@@ -2672,14 +2672,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auto@npm:11.3.0":
-  version: 11.3.0
-  resolution: "auto@npm:11.3.0"
+"auto@npm:11.3.5":
+  version: 11.3.5
+  resolution: "auto@npm:11.3.5"
   dependencies:
-    "@auto-it/core": "npm:11.3.0"
-    "@auto-it/npm": "npm:11.3.0"
-    "@auto-it/released": "npm:11.3.0"
-    "@auto-it/version-file": "npm:11.3.0"
+    "@auto-it/core": "npm:11.3.5"
+    "@auto-it/npm": "npm:11.3.5"
+    "@auto-it/released": "npm:11.3.5"
+    "@auto-it/version-file": "npm:11.3.5"
     await-to-js: "npm:^3.0.0"
     chalk: "npm:^4.0.0"
     command-line-application: "npm:^0.10.1"
@@ -2690,7 +2690,7 @@ __metadata:
     tslib: "npm:2.1.0"
   bin:
     auto: dist/bin/auto.js
-  checksum: 10c0/01389c0a7721848caddc89faadd895a2a19319eacb156a62bae1bc01601eacfb504b3d8d06e81de1d5ac1febc6c8055d73ec031b4137fcaf026143ac68dda3c9
+  checksum: 10c0/6abe043a291b829079ba6ab704f85b498533cbe8a1e5b96178ba755bdb59a202ffc4bad70357a991714ca558eaa3c723d17c08785994a8f5669a8a09f02afb34
   languageName: node
   linkType: hard
 
@@ -4286,13 +4286,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-monorepo-packages@npm:^1.1.0":
-  version: 1.2.0
-  resolution: "get-monorepo-packages@npm:1.2.0"
+"get-monorepo-packages@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "get-monorepo-packages@npm:1.3.0"
   dependencies:
     globby: "npm:^7.1.1"
     load-json-file: "npm:^4.0.0"
-  checksum: 8/f9321c11b8e11f02138758db6589d8ab8b7e1b05e78cac92493b635faea10aa100c20fe40f2cf110c82ec100c118c6c131dff4c65d32a721c617dc2928f7b277
+  checksum: 10c0/2b2e94cd427a69df981780d1dd8e10caeb416aac1276719f777ce30a2b1c9ad4f606d324f8553bc4cde2cc27ed8c5faa2428a3c5bb332ee89267f9120de7c363
   languageName: node
   linkType: hard
 
