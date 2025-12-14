@@ -10,7 +10,7 @@
     "postcss": "8.5.6",
     "postcss-import": "16.1.1",
     "prettier": "3.7.4",
-    "prettier-plugin-svelte": "3.4.0",
+    "prettier-plugin-svelte": "3.4.1",
     "pretty-quick": "4.2.2",
     "svelte-check": "4.3.4",
     "svelte-preprocess": "6.0.3",
