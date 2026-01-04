@@ -546,10 +546,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@faker-js/faker@npm:10.1.0":
-  version: 10.1.0
-  resolution: "@faker-js/faker@npm:10.1.0"
-  checksum: 10c0/3dc277245ec1bef8b839a9dc45b4ccb1688d21b8bde6531a849c1773193de30047e40e085b7e900c42c940911ecf1645b582ad3c85093df5bfdbddeb44a2b554
+"@faker-js/faker@npm:10.2.0":
+  version: 10.2.0
+  resolution: "@faker-js/faker@npm:10.2.0"
+  checksum: 10c0/72b5048ff32e90b2876560015e177f91b0625dafaaa43631302e413329105be331a1c126c8f7b0f95817cacd51c9222b58e62b6f09f5485522302e6103f19f09
   languageName: node
   linkType: hard
 
@@ -3055,7 +3055,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "client@workspace:client"
   dependencies:
-    "@faker-js/faker": "npm:10.1.0"
+    "@faker-js/faker": "npm:10.2.0"
     "@parcel/core": "npm:2.16.3"
     "@sveltejs/vite-plugin-svelte": "npm:6.2.1"
     "@tsconfig/svelte": "npm:5.0.6"
