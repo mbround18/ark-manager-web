@@ -2701,9 +2701,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.4.25":
-  version: 10.4.25
-  resolution: "autoprefixer@npm:10.4.25"
+"autoprefixer@npm:10.4.27":
+  version: 10.4.27
+  resolution: "autoprefixer@npm:10.4.27"
   dependencies:
     browserslist: "npm:^4.28.1"
     caniuse-lite: "npm:^1.0.30001774"
@@ -2714,7 +2714,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 10c0/d1620bda732b6a424ad00b0ebd5968b2d97c7b58835b3f9922654d143643c09eec36ed10749277a8fff40d907b37b5eb9adb550e2dd02e3f14aea02cdc174fef
+  checksum: 10c0/698ad9e23436635af1806d4a8b80393020135174d1d4a97eb81887cdddac2f297f198d1d717932db8503b325f9f2dc3accb6e290b2d3ce1a7ddeb947100e5b25
   languageName: node
   linkType: hard
 
@@ -3084,7 +3084,7 @@ __metadata:
     "@tsconfig/svelte": "npm:5.0.8"
     "@types/lodash": "npm:4.17.24"
     "@yarnpkg/pnpify": "npm:4.1.6"
-    autoprefixer: "npm:10.4.25"
+    autoprefixer: "npm:10.4.27"
     axios: "npm:1.13.5"
     codejar: "npm:4.3.0"
     immer: "npm:11.1.4"
