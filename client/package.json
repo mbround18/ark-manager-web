@@ -6,7 +6,7 @@
     "@tsconfig/svelte": "5.0.8",
     "@types/lodash": "4.17.24",
     "@yarnpkg/pnpify": "4.1.6",
-    "autoprefixer": "10.4.25",
+    "autoprefixer": "10.4.27",
     "postcss": "8.5.6",
     "postcss-import": "16.1.1",
     "prettier": "3.8.1",
