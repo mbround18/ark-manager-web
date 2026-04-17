@@ -16,7 +16,7 @@
     "svelte-preprocess": "6.0.3",
     "tailwindcss": "4.2.2",
     "tslib": "2.8.1",
-    "typescript": "6.0.2",
+    "typescript": "6.0.3",
     "vite": "8.0.8"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "sass": "1.99.0",
     "svelte": "5.55.4",
     "svelte-i18n": "4.0.1",
-    "typescript": "6.0.2"
+    "typescript": "6.0.3"
   },
   "scripts": {
     "dev": "yarn build --watch",
