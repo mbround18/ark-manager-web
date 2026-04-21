@@ -2943,7 +2943,7 @@ __metadata:
     svelte-check: "npm:4.4.6"
     svelte-i18n: "npm:4.0.1"
     svelte-preprocess: "npm:6.0.3"
-    tailwindcss: "npm:4.2.2"
+    tailwindcss: "npm:4.2.3"
     tslib: "npm:2.8.1"
     typescript: "npm:6.0.3"
     vite: "npm:8.0.9"
@@ -6833,10 +6833,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.2.2":
-  version: 4.2.2
-  resolution: "tailwindcss@npm:4.2.2"
-  checksum: 10c0/6eae8a125c35d504ba6c518d26ec64fba694ff4a9ab9b9cd9883050128e0b7afdf491388c472d9bed2624664c1c7d4a133d19b653151a6b52e6ce6953168a857
+"tailwindcss@npm:4.2.3":
+  version: 4.2.3
+  resolution: "tailwindcss@npm:4.2.3"
+  checksum: 10c0/a7b67c3bb66650cf5da2dd484607562a2fe710fc496734fb4bee34d2a30f8be2fc714865c92e354468c490e76f6c7668648ecdc5a5cd9d6f3456f1f7a61f0030
   languageName: node
   linkType: hard
 
