@@ -2930,7 +2930,7 @@ __metadata:
     autoprefixer: "npm:10.5.0"
     axios: "npm:1.16.0"
     codejar: "npm:4.3.0"
-    immer: "npm:11.1.4"
+    immer: "npm:11.1.6"
     js-base64: "npm:3.7.8"
     lodash: "npm:4.18.1"
     postcss: "npm:8.5.13"
@@ -4379,10 +4379,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:11.1.4":
-  version: 11.1.4
-  resolution: "immer@npm:11.1.4"
-  checksum: 10c0/77beca6b0a4e361b30414189d63c64beb7df40ac1d8cbf524308fcbabe755e9aa49db3c6e95a6e412911416fec621f2c8470be5ec79feedc6abd6e4f7f18a9ce
+"immer@npm:11.1.6":
+  version: 11.1.6
+  resolution: "immer@npm:11.1.6"
+  checksum: 10c0/1456030d6b8bb1f69f196375e9c4d0f855561009509de6ce57bbb15ec104cd91bedb0e14d28dce21ae8b551fba4002b47b06a22fc47bbd27fe2412b8cbb4ced9
   languageName: node
   linkType: hard
 
