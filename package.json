@@ -9,7 +9,7 @@
     "@auto-it/git-tag": "11.3.6",
     "@auto-it/upload-assets": "11.3.6",
     "auto": "11.3.6",
-    "concurrently": "10.0.0",
+    "concurrently": "10.0.3",
     "nodemon": "3.1.14"
   },
   "scripts": {
