@@ -2954,7 +2954,7 @@ __metadata:
     prettier-plugin-svelte: "npm:4.0.1"
     pretty-quick: "npm:4.2.2"
     sass: "npm:1.100.0"
-    svelte: "npm:5.56.0"
+    svelte: "npm:5.56.2"
     svelte-check: "npm:4.4.8"
     svelte-i18n: "npm:4.0.1"
     svelte-preprocess: "npm:6.0.5"
@@ -3754,7 +3754,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esrap@npm:^2.2.9":
+"esrap@npm:^2.2.11":
   version: 2.2.11
   resolution: "esrap@npm:2.2.11"
   dependencies:
@@ -6858,9 +6858,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:5.56.0":
-  version: 5.56.0
-  resolution: "svelte@npm:5.56.0"
+"svelte@npm:5.56.2":
+  version: 5.56.2
+  resolution: "svelte@npm:5.56.2"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.4"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -6873,12 +6873,12 @@ __metadata:
     clsx: "npm:^2.1.1"
     devalue: "npm:^5.8.1"
     esm-env: "npm:^1.2.1"
-    esrap: "npm:^2.2.9"
+    esrap: "npm:^2.2.11"
     is-reference: "npm:^3.0.3"
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/0b71ff8256b06b2661dee13e7ebae04d98a4781b43093cd4efcc80ffcc33af0850521c266d4d45ac0ed690d3a9eca3987c362eca78879b5ea90a9f1871777d8a
+  checksum: 10c0/8a3613ba28f1d6d4d431741c251b148668b920abc82867fff82c15c0baf2000daa0817dde990050853c4b3f1ee439238d0cc99cf77f5d13d7356d8ea91b5d602
   languageName: node
   linkType: hard
 
