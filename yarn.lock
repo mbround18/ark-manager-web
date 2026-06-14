@@ -2957,15 +2957,15 @@ __metadata:
     lodash: "npm:4.18.1"
     postcss: "npm:8.5.15"
     postcss-import: "npm:16.1.1"
-    prettier: "npm:3.8.3"
+    prettier: "npm:3.8.4"
     prettier-plugin-svelte: "npm:4.1.0"
     pretty-quick: "npm:4.2.2"
-    sass: "npm:1.100.0"
-    svelte: "npm:5.56.2"
+    sass: "npm:1.101.0"
+    svelte: "npm:5.56.3"
     svelte-check: "npm:4.6.0"
     svelte-i18n: "npm:4.0.1"
     svelte-preprocess: "npm:6.0.5"
-    tailwindcss: "npm:4.3.0"
+    tailwindcss: "npm:4.3.1"
     tslib: "npm:2.8.1"
     typescript: "npm:6.0.3"
     vite: "npm:8.0.16"
@@ -6010,12 +6010,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.8.3":
-  version: 3.8.3
-  resolution: "prettier@npm:3.8.3"
+"prettier@npm:3.8.4":
+  version: 3.8.4
+  resolution: "prettier@npm:3.8.4"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/754816fd7593eb80f6376d7476d463e832c38a12f32775a82683adb6e35b772b1f484d65f19401507b983a8c8a7cd5a4a9f12006bd56491e8f35503473f77473
+  checksum: 10c0/b90a0cbe75b88ac0af9c13fe0f359bd19926fabccd88483227b21f71f0c1cc42da056fc1ac3a361e665577c568371d5ccfb2c62c31c8a1186f8d1bd531a063e9
   languageName: node
   linkType: hard
 
@@ -6429,9 +6429,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:1.100.0":
-  version: 1.100.0
-  resolution: "sass@npm:1.100.0"
+"sass@npm:1.101.0":
+  version: 1.101.0
+  resolution: "sass@npm:1.101.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^5.0.0"
@@ -6442,7 +6442,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/e2aab47c87b69d2d4f8e48fa665138548069f56a7fd0fc4e15c9bde888b715798e49d33436e873918a8849ca3cc6c141a68618f58e2f3b2e6ec179cc309ca622
+  checksum: 10c0/1fbbcef2f767dec4d97773a2a084f4e1ef2e4abecf574e08743e52237069f1129a6b43b07b5c23aa3bcbf395509e40db758d9748a07940da227aa1626329a74d
   languageName: node
   linkType: hard
 
@@ -6866,9 +6866,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:5.56.2":
-  version: 5.56.2
-  resolution: "svelte@npm:5.56.2"
+"svelte@npm:5.56.3":
+  version: 5.56.3
+  resolution: "svelte@npm:5.56.3"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.4"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -6886,7 +6886,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/8a3613ba28f1d6d4d431741c251b148668b920abc82867fff82c15c0baf2000daa0817dde990050853c4b3f1ee439238d0cc99cf77f5d13d7356d8ea91b5d602
+  checksum: 10c0/04300af7549e9288c5679aaedad34f4117c95e6068d3078a168c43b6ed97ca7989a3baac966dd91d7867a480042aa4ff08654c379d2252a35cb145dfaa0f5afe
   languageName: node
   linkType: hard
 
@@ -6902,10 +6902,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.3.0":
-  version: 4.3.0
-  resolution: "tailwindcss@npm:4.3.0"
-  checksum: 10c0/4cde389ee5e9132e7ef90e4c1d05978d52821761a00700c18b7d46d325881086f0a9c9ec7f616929ecd6e26109c41913538883e066c6dd4bd993debbbbc99084
+"tailwindcss@npm:4.3.1":
+  version: 4.3.1
+  resolution: "tailwindcss@npm:4.3.1"
+  checksum: 10c0/7d852a242cd9367c1ba54c0aa4a9f7e437753ed3530f0dd7eb6c9c5be577323695412d3e14df80c28013bfc22cc2b55255558005fc0b73de8d633ff2dfc29b5f
   languageName: node
   linkType: hard
 
