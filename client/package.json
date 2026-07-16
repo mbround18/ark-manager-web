@@ -9,7 +9,7 @@
     "autoprefixer": "10.5.3",
     "postcss": "8.5.16",
     "postcss-import": "16.1.1",
-    "prettier": "3.9.4",
+    "prettier": "3.9.5",
     "prettier-plugin-svelte": "4.1.1",
     "pretty-quick": "4.2.2",
     "svelte-check": "4.7.1",
