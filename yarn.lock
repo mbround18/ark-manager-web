@@ -6292,14 +6292,14 @@ __metadata:
 
 "resolve@patch:resolve@npm%3A^1.1.7#optional!builtin<compat/resolve>":
   version: 1.21.0
-  resolution: "resolve@patch:resolve@npm%3A1.21.0#optional!builtin<compat/resolve>::version=1.21.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.21.0#optional!builtin<compat/resolve>::version=1.21.0&hash=9bd1a5"
   dependencies:
     is-core-module: "npm:^2.8.0"
     path-parse: "npm:^1.0.7"
     supports-preserve-symlinks-flag: "npm:^1.0.0"
   bin:
     resolve: bin/resolve
-  checksum: 10/537da5481b5f74593d2c860eba1953c248579fd461085a658a9b08a3fdb9cc4e59f082e127e03eb13282fd59062a93bd1827a930b30bf8f7f6b27a0939335428
+  checksum: 10c0/5c43cbace73f5de09fb78866c9d8e5bf930aab5e30e23b88ba7b96ef65166b2c353014d5e427c12c6f24242c7498e939de78475380e328810022993904581ffb
   languageName: node
   linkType: hard
 
