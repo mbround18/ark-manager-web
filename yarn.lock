@@ -2557,7 +2557,7 @@ __metadata:
     "@auto-it/git-tag": "npm:11.3.6"
     "@auto-it/upload-assets": "npm:11.3.6"
     auto: "npm:11.3.6"
-    concurrently: "npm:10.0.4"
+    concurrently: "npm:10.0.5"
     nodemon: "npm:3.1.14"
   languageName: unknown
   linkType: soft
@@ -3040,12 +3040,12 @@ __metadata:
     js-base64: "npm:3.9.2"
     lodash: "npm:4.18.1"
     postcss: "npm:8.5.26"
-    postcss-import: "npm:16.1.1"
+    postcss-import: "npm:16.2.0"
     prettier: "npm:3.9.6"
     prettier-plugin-svelte: "npm:4.1.1"
     pretty-quick: "npm:4.2.2"
     sass: "npm:1.102.0"
-    svelte: "npm:5.56.8"
+    svelte: "npm:5.56.9"
     svelte-check: "npm:4.7.5"
     svelte-i18n: "npm:4.0.1"
     svelte-preprocess: "npm:6.0.5"
@@ -3212,9 +3212,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:10.0.4":
-  version: 10.0.4
-  resolution: "concurrently@npm:10.0.4"
+"concurrently@npm:10.0.5":
+  version: 10.0.5
+  resolution: "concurrently@npm:10.0.5"
   dependencies:
     chalk: "npm:5.6.2"
     rxjs: "npm:7.8.2"
@@ -3225,7 +3225,7 @@ __metadata:
   bin:
     conc: dist/bin/index.js
     concurrently: dist/bin/index.js
-  checksum: 10c0/8f4c1380541230425350cba407df59728532728105a1575cba3d9fae97e13621b905cde0f03f22f26be21505544b3b1e10a45080db27330bb1891495c019a8df
+  checksum: 10c0/2e66ece2f2a016b4f8b175f88f67d84bbedc8eff864310d37fe8c82e58459a40cfe69c5f0fe8ce9fc97f028157d7adb1c71629433e305e95f447a7840e417ad9
   languageName: node
   linkType: hard
 
@@ -6076,16 +6076,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-import@npm:16.1.1":
-  version: 16.1.1
-  resolution: "postcss-import@npm:16.1.1"
+"postcss-import@npm:16.2.0":
+  version: 16.2.0
+  resolution: "postcss-import@npm:16.2.0"
   dependencies:
     postcss-value-parser: "npm:^4.0.0"
     read-cache: "npm:^1.0.0"
     resolve: "npm:^1.1.7"
   peerDependencies:
     postcss: ^8.0.0
-  checksum: 10c0/b91245971564891110cb407c7459bd470893ccbdd3328fdd384ef2be4d0e5f304e5834acbb8b537ad562c001db34bee1c29b55994bead5ab5a53b1edc2a687b9
+  checksum: 10c0/f7773cf3be4ea450e2e809b1bf3aeb0dfa113c81d2f51e50e49a471eab91855f1b142313ae0322a543d030bd01887189c4d66a23b33b0377b76613c4c05916bd
   languageName: node
   linkType: hard
 
@@ -6979,9 +6979,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"svelte@npm:5.56.8":
-  version: 5.56.8
-  resolution: "svelte@npm:5.56.8"
+"svelte@npm:5.56.9":
+  version: 5.56.9
+  resolution: "svelte@npm:5.56.9"
   dependencies:
     "@jridgewell/remapping": "npm:^2.3.4"
     "@jridgewell/sourcemap-codec": "npm:^1.5.0"
@@ -6999,7 +6999,7 @@ __metadata:
     locate-character: "npm:^3.0.0"
     magic-string: "npm:^0.30.11"
     zimmerframe: "npm:^1.1.2"
-  checksum: 10c0/1aec87508116e548b7502ee9f65bac9126a3769fb981bc51e497c76cb8ef6ec83472778ac27127dd73fcf6adbb4ac8fa3e28290163e6f72e2860491c24f018c8
+  checksum: 10c0/0c48b69aae9cb1954394a94854bba8b315c2156bca62b2540dcb0e6492972cc8a47d0c2f78fe272822dbee616472ede097edff8311a8f643353144de7ca1cd21
   languageName: node
   linkType: hard
 
