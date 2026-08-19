@@ -31,10 +31,9 @@ jobs:
           node-version: '24'
 
       - name: Setup | Rust | Nightly
-        uses: ATiltedTree/setup-rust@v1
+        uses: dtolnay/rust-toolchain@nightly
         with:
-          rust-version: nightly
-          components: clippy rustfmt
+          components: clippy, rustfmt
 
       - uses: davidB/rust-cargo-make@v1
         name: Install Cargo Make
