@@ -3036,11 +3036,11 @@ __metadata:
     autoprefixer: "npm:10.5.4"
     axios: "npm:1.19.0"
     codejar: "npm:4.3.0"
-    immer: "npm:11.1.16"
-    js-base64: "npm:3.9.2"
+    immer: "npm:11.1.17"
+    js-base64: "npm:3.9.3"
     lodash: "npm:4.18.1"
     postcss: "npm:8.5.26"
-    postcss-import: "npm:16.2.0"
+    postcss-import: "npm:17.0.0"
     prettier: "npm:3.9.6"
     prettier-plugin-svelte: "npm:4.1.1"
     pretty-quick: "npm:4.2.2"
@@ -4522,10 +4522,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:11.1.16":
-  version: 11.1.16
-  resolution: "immer@npm:11.1.16"
-  checksum: 10c0/34670f732f51e465398ec7c64e62a89478565064d9104b789d950ea4e54f6c48c1f9ffa95d002137070878da0c3ad2ecb8e13e8c85a11ef6fa5749945b622f25
+"immer@npm:11.1.17":
+  version: 11.1.17
+  resolution: "immer@npm:11.1.17"
+  checksum: 10c0/4205c65003c2e5288d681c33c125043902b11ff7ad1d4f770bdcc9aadb4fa5bec2128a3253b9e270853a8ce93e028f235babdfbbba2fcc695b8d1a12622d3fb8
   languageName: node
   linkType: hard
 
@@ -4782,10 +4782,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-base64@npm:3.9.2":
-  version: 3.9.2
-  resolution: "js-base64@npm:3.9.2"
-  checksum: 10c0/59bfa7f05953aa3e630812d3fcf96ea56597100b4baf367fdaacb696712e5b774cbb95f90185f88cf0ccbb864fcf62b1f75e8eed283214076d6bec8952f621dc
+"js-base64@npm:3.9.3":
+  version: 3.9.3
+  resolution: "js-base64@npm:3.9.3"
+  checksum: 10c0/bb293c11b946139a45624b1daf7ba8a996994ffd1694a2676f2df30047df96335967b9b1a8159ae58dd9dd6978c841e9f7a478bc378609bbe586835a36a9e4e7
   languageName: node
   linkType: hard
 
@@ -6076,16 +6076,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-import@npm:16.2.0":
-  version: 16.2.0
-  resolution: "postcss-import@npm:16.2.0"
+"postcss-import@npm:17.0.0":
+  version: 17.0.0
+  resolution: "postcss-import@npm:17.0.0"
   dependencies:
     postcss-value-parser: "npm:^4.0.0"
     read-cache: "npm:^1.0.0"
     resolve: "npm:^1.1.7"
   peerDependencies:
     postcss: ^8.0.0
-  checksum: 10c0/f7773cf3be4ea450e2e809b1bf3aeb0dfa113c81d2f51e50e49a471eab91855f1b142313ae0322a543d030bd01887189c4d66a23b33b0377b76613c4c05916bd
+  checksum: 10c0/67080e7d0770b02814e1188fd7624cf6d0076971eb6ff425f5834f58cd3af7126e05b6460006c987b298496ac5339921f5297b5511f10d48f1d7be35bf15f3c0
   languageName: node
   linkType: hard
 
