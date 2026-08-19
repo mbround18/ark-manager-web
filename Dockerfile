@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # ── Client build ────────────────────────────────────────────────────────────
-FROM node:22-bookworm-slim AS ClientBuild
+FROM node:24-bookworm-slim AS ClientBuild
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@11.22.0 --activate
