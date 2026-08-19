@@ -8,6 +8,7 @@ pub mod state;
 pub mod utils;
 
 pub use agent::AgentCommand;
+#[allow(deprecated)]
 pub use ark_manager_path::ark_manager_path;
 pub use command::Command;
 pub use constants::{DEFAULT_LOG, SOCKET_PATH, STATE_STORAGE_PATH};

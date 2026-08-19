@@ -10,12 +10,8 @@ name = "agent"
 
 [dependencies]
 shared = {path="../shared"}
-socket2 = "0.6.5"
-async-process = "2.5.0"
+gsm-instance = { git = "https://github.com/mbround18/game-server-management", tag = "v0.1.1" }
+gsm-shared = { git = "https://github.com/mbround18/game-server-management", tag = "v0.1.1" }
 serde = { version = "1.0.229", features = ["derive"] }
 serde_json = "1.0.151"
-chrono = "0.4.45"
-which = "8.0.5"
-futures = "0.3.34"
-futures-lite = "2.6.1"
 

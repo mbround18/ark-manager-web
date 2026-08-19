@@ -1,99 +1,52 @@
 # Client Build
 FROM --platform=linux/amd64 mbround18/ark-manager-client:latest as ClientBuild
 
-# ----------------------- #
-# -- Project Mangement -- #
-# ----------------------- #
-
-FROM docker.io/mbround18/cargo-make:latest as cargo-make
-
-# ------------- #
-# -- Planner -- #
-# ------------- #
-FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as planner
+# Rust Binaries Build
+FROM rust:1.89-bookworm as RustBuild
 WORKDIR /data/project
 COPY ./Cargo.lock ./Cargo.toml ./
 COPY ./server ./server
 COPY ./agent ./agent
 COPY ./shared ./shared
-RUN cargo chef prepare --recipe-path recipe.json
+RUN cargo build --release --workspace --bins
 
-# ------------- #
-# -- Builder -- #
-# ------------- #
-FROM docker.io/lukemathwalker/cargo-chef:latest-rust-1.58-alpine as builder
-WORKDIR /data/project
-COPY --from=planner /data/project/recipe.json recipe.json
-RUN cargo chef cook --release --recipe-path recipe.json
-COPY ./Cargo.lock ./Cargo.toml ./
-COPY ./server ./server
-COPY ./agent ./agent
-COPY ./shared ./shared
-COPY --from=cargo-make /usr/local/bin/cargo-make /usr/local/cargo/bin
-RUN /usr/local/cargo/bin/cargo make release
-
-# ------------- #
-# -- Runtime -- #
-# ------------- #
-FROM registry.hub.docker.com/library/debian:13-slim as RustRuntime
-WORKDIR /apps
-COPY --from=builder /data/project/target/release/server ./
-COPY --from=builder /data/project/target/release/agent ./
-
-# Bundled Together
-FROM docker.io/steamcmd/steamcmd:ubuntu
+# Runtime
+FROM docker.io/mbround18/steamcmd:latest
 
 ENV TZ=America/Los_Angeles
 
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone \
-    && apt-get update                             \
-    && apt-get upgrade -y                         \
-    && apt-get install -y -q                      \
-    # Image utilities
-    htop net-tools nano gcc g++ gdb               \
-    netcat curl wget zip unzip                    \
-    sudo dos2unix bash sudo                       \
-    # Ark Server Tools requirements
-    perl-modules lsof libc6-i386 lib32gcc1 bzip2  \
-    # Steam Specific
-    libsdl2-2.0-0  jq   libc6-dev                 \
-    # Clean Up apt lists
+    && apt-get update \
+    && apt-get install -y --no-install-recommends curl sudo ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-
-
-RUN addgroup --system steam     \
-    && adduser --system         \
-      --home /home/steam        \
-      --shell /bin/bash         \
-      steam                     \
-    && usermod -aG steam steam  \
-    && chmod ugo+rw /tmp/dumps  \
-    && usermod -u 2000 steam    \
-    && groupmod -g 2000 steam   \
+RUN mkdir -p /home/steam/ark-manager-web \
     && mkdir -p /home/steam/ARK \
-    && mkdir -p /home/steam/steamcmd \
+    && mkdir -p /etc/arkmanager \
     && echo "steam ALL=(ALL) NOPASSWD: /root.sh" > /etc/sudoers.d/steam
 
-RUN curl -sL https://git.io/arkmanager | bash -s steam \
-    && mkdir -p /home/steam/ark-manager-web
-
-COPY --from=RustRuntime /apps/server /home/steam/ark-manager-web/
-COPY --from=RustRuntime /apps/agent /home/steam/ark-manager-web/
+COPY --from=RustBuild /data/project/target/release/server /home/steam/ark-manager-web/
+COPY --from=RustBuild /data/project/target/release/agent /home/steam/ark-manager-web/
 COPY --from=ClientBuild /apps/client /home/steam/ark-manager-web/dist
 COPY ./scripts/entrypoint.sh /entrypoint.sh
 COPY ./scripts/root.sh /root.sh
 
-RUN chown -R steam:steam /home/steam \
-    && usermod -d /home/steam steam
+RUN chmod +x /entrypoint.sh /root.sh \
+    && chown -R steam:steam /home/steam \
+    && chown -R steam:steam /etc/arkmanager
 
 USER steam
 
 ENV HOME=/home/steam
 ENV ARK_MANAGER_CONFIG_DIRECTORY=/etc/arkmanager
+ENV ARK_DIRECTORY=/home/steam/ARK
+ENV APP_ID=376030
+ENV INSTALL_PATH=/home/steam/ARK
+ENV EXECUTABLE=./ShooterGame/Binaries/Linux/ShooterGameServer
+
 WORKDIR /home/steam
 
-VOLUME ["/home/steam/ARK"]
+VOLUME ["/home/steam/ARK", "/etc/arkmanager"]
 
 HEALTHCHECK --interval=1m --timeout=3s \
             CMD curl -f http://127.0.0.1:8000/heartbeat || exit 1
