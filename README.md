@@ -37,6 +37,20 @@ docker run -d \
   mbround18/ark-manager-web:latest
 ```
 
+### Runtime backend
+
+This image now uses [`gsm-cli`](https://github.com/mbround18/game-server-management/tree/main/apps/gsm-cli)
+instead of `arkmanager`. Default runtime values:
+
+- `APP_ID=376030`
+- `INSTALL_PATH=/home/steam/ARK`
+- `EXECUTABLE=./ShooterGame/Binaries/Linux/ShooterGameServer`
+
+Optional compatibility bridge:
+
+- `ADDITIONAL_START_ARGS` maps to `LAUNCH_ARGS` if `LAUNCH_ARGS` is unset.
+- `ADDITIONAL_INSTALL_ARGS` maps to `INSTALL_ARGS` if `INSTALL_ARGS` is unset.
+
 ## Recommendations
 
  - If you are hosting this on a server, it is recommended to set this up behind a `nginx` reverse proxy with http basic auth & ssl for port 8000;
@@ -54,5 +68,4 @@ docker run -d \
 - If you see the error below you can ignore it:
 
   <img src="./docs/assets/steamcmd-not-found.png" alt="drawing" style="width:25em;"/>
-
 

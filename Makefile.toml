@@ -10,12 +10,16 @@ workspace = false
 command = "yarn"
 args = ["workspace", "client", "dev"]
 
-[tasks.rocket-serve]
+[tasks.server-serve]
 workspace = false
 command = "cargo"
 args = ["run"]
 
+[tasks.rocket-serve]
+workspace = false
+run_task = "server-serve"
+
 
 [tasks.serve]
 workspace = false
-run_task = { name = ["yew-serve", "rocket-serve"], parallel = true }
+run_task = { name = ["yew-serve", "server-serve"], parallel = true }

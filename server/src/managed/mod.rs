@@ -1,75 +1,79 @@
 use crate::managed::configs::{config_files, ManagedConfig};
 use crate::managed::logs::ManagedLogs;
-use rocket::fairing::AdHoc;
-use rocket::http::Status;
-use rocket::serde::json::Json;
+use actix_web::{http::StatusCode, web, HttpResponse};
 use shared::{log, StateStorage};
 
 pub(crate) mod configs;
 pub(crate) mod logs;
 
-#[get("/state")]
-pub async fn get_state() -> Json<StateStorage> {
-    Json(StateStorage::read())
+#[derive(serde::Deserialize)]
+struct PathQuery {
+    path: String,
 }
 
-#[get("/logs")]
-pub async fn log_files() -> Json<ManagedLogs> {
-    Json(ManagedLogs::new())
+pub fn configure(cfg: &mut web::ServiceConfig) {
+    cfg.service(
+        web::scope("/api/managed")
+            .route("/state", web::get().to(get_state))
+            .route("/logs", web::get().to(log_files))
+            .route("/log", web::get().to(log_file))
+            .route("/configs", web::get().to(get_configs))
+            .route("/config", web::get().to(read_config))
+            .route("/config", web::post().to(write_config)),
+    );
 }
 
-#[get("/log?<path>")]
-pub async fn log_file(path: String) -> Result<Json<Vec<String>>, Status> {
-    match ManagedLogs::new().read(path).await {
-        Ok(res) => Ok(Json(res)),
-        Err(e) => Err(e),
+async fn get_state() -> web::Json<StateStorage> {
+    web::Json(StateStorage::read())
+}
+
+async fn log_files() -> web::Json<ManagedLogs> {
+    web::Json(ManagedLogs::new())
+}
+
+async fn log_file(query: web::Query<PathQuery>) -> HttpResponse {
+    match ManagedLogs::new().read(query.path.clone()).await {
+        Ok(res) => HttpResponse::Ok().json(res),
+        Err(status) => HttpResponse::build(status).finish(),
     }
 }
 
-#[get("/configs")]
-pub fn get_configs() -> Json<Vec<String>> {
-    Json(config_files())
+async fn get_configs() -> web::Json<Vec<String>> {
+    web::Json(config_files())
 }
 
-#[get("/config?<path>")]
-pub async fn read_config(path: String) -> Result<String, Status> {
-    let decoded_path = urlencoding::decode(&path).unwrap().to_string();
+async fn read_config(query: web::Query<PathQuery>) -> HttpResponse {
+    let decoded_path = match urlencoding::decode(&query.path) {
+        Ok(value) => value.to_string(),
+        Err(_) => return HttpResponse::BadRequest().finish(),
+    };
+
     match ManagedConfig::open(decoded_path) {
-        Ok(config) => Ok(config.read().unwrap()),
-        Err(e) => Err(e),
+        Ok(config) => match config.read() {
+            Ok(contents) => HttpResponse::Ok().body(contents),
+            Err(_) => HttpResponse::UnprocessableEntity().finish(),
+        },
+        Err(status) => HttpResponse::build(status).finish(),
     }
 }
 
-#[post("/config?<path>", data = "<content>")]
-pub async fn write_config(path: String, content: String) -> Result<Status, Status> {
-    let decoded_path = urlencoding::decode(&path).unwrap().to_string();
+async fn write_config(query: web::Query<PathQuery>, content: String) -> HttpResponse {
+    let decoded_path = match urlencoding::decode(&query.path) {
+        Ok(value) => value.to_string(),
+        Err(_) => return HttpResponse::BadRequest().finish(),
+    };
+
     match ManagedConfig::open(decoded_path.clone()) {
         Ok(config) => match config.write(content) {
-            Ok(_) => Ok(Status::Ok),
-            Err(e) => {
+            Ok(_) => HttpResponse::Ok().finish(),
+            Err(error) => {
                 log(
                     String::from("ArkManager::FileService"),
-                    format!("Failed to write {} with {}", decoded_path, e),
+                    format!("Failed to write {} with {}", decoded_path, error),
                 );
-                Err(Status::UnprocessableEntity)
+                HttpResponse::build(StatusCode::UNPROCESSABLE_ENTITY).finish()
             }
         },
-        Err(e) => Err(e),
+        Err(status) => HttpResponse::build(status).finish(),
     }
-}
-
-pub fn ignite() -> AdHoc {
-    AdHoc::on_ignite("commands", |rocket| async move {
-        rocket.mount(
-            "/api/managed",
-            routes![
-                log_files,
-                log_file,
-                get_state,
-                get_configs,
-                write_config,
-                read_config
-            ],
-        )
-    })
 }

@@ -6,79 +6,99 @@ use crate::commands::logs::OutputLogLine;
 use crate::commands::status::ServerStatus;
 use crate::commands::update::UpdateOptions;
 use crate::managed::logs::ManagedLogs;
-use rocket::fairing::AdHoc;
-use rocket::http::Status;
-use rocket::response::stream::{Event, EventStream};
-use rocket::serde::json::Json;
-use shared::{AgentCommand, Command};
+use actix_web::{web, HttpResponse};
+use shared::{log, AgentCommand, Command};
 
-#[get("/status")]
-pub fn execute_status() -> Json<ServerStatus> {
-    Json(ServerStatus::execute())
+#[derive(serde::Deserialize)]
+struct TailQuery {
+    log: String,
 }
 
-#[get("/tail?<log>")]
-pub async fn tail_log(log: String) -> Result<EventStream![], Status> {
-    match ManagedLogs::new().to_lines(log).await {
-        Ok(mut lines) => Ok(EventStream! {
-            loop {
-                if let Ok(Some(line)) = lines.next_line().await {
-                    yield Event::json(&OutputLogLine::from(line));
+pub fn configure(cfg: &mut web::ServiceConfig) {
+    cfg.service(
+        web::scope("/api/command")
+            .route("/status", web::get().to(execute_status))
+            .route("/tail", web::get().to(tail_log))
+            .route("/start", web::post().to(start_command))
+            .route("/stop", web::post().to(stop_command))
+            .route("/restart", web::post().to(restart_command))
+            .route("/install", web::post().to(install_command))
+            .route("/update", web::post().to(update_command)),
+    );
+}
+
+async fn execute_status() -> web::Json<ServerStatus> {
+    web::Json(ServerStatus::execute())
+}
+
+async fn tail_log(query: web::Query<TailQuery>) -> HttpResponse {
+    let mut lines = match ManagedLogs::new().to_lines(query.log.clone()).await {
+        Ok(lines) => lines,
+        Err(status) => return HttpResponse::build(status).finish(),
+    };
+
+    let stream = async_stream::stream! {
+        loop {
+            match lines.next_line().await {
+                Ok(Some(line)) => {
+                    let payload = serde_json::to_string(&OutputLogLine::from(line)).unwrap();
+                    let sse = format!("data: {payload}\n\n");
+                    yield Ok::<_, actix_web::Error>(web::Bytes::from(sse));
                 }
+                Ok(None) => break,
+                Err(_) => break,
             }
-        }),
-        Err(status) => Err(status),
+        }
+    };
+
+    HttpResponse::Ok()
+        .insert_header(("Content-Type", "text/event-stream"))
+        .insert_header(("Cache-Control", "no-cache"))
+        .streaming(stream)
+}
+
+fn send_agent_command(command: Command) -> HttpResponse {
+    let agent_command = AgentCommand::from(command).to_string();
+    match crate::utils::unix_socket::send_command(agent_command) {
+        Ok(_) => HttpResponse::Ok().finish(),
+        Err(error) => {
+            log(
+                String::from("ArkManager::CommandService"),
+                format!("Failed to send command: {error}"),
+            );
+            HttpResponse::InternalServerError().finish()
+        }
     }
 }
 
-#[post("/start")]
-pub async fn start_command() -> Status {
-    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Start).to_string())
-        .unwrap();
-    Status::Ok
+async fn start_command() -> HttpResponse {
+    send_agent_command(Command::Start)
 }
 
-#[post("/stop")]
-pub async fn stop_command() -> Status {
-    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Stop).to_string()).unwrap();
-    Status::Ok
+async fn stop_command() -> HttpResponse {
+    send_agent_command(Command::Stop)
 }
 
-#[post("/restart")]
-pub async fn restart_command() -> Status {
-    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Restart).to_string())
-        .unwrap();
-    Status::Ok
+async fn restart_command() -> HttpResponse {
+    send_agent_command(Command::Restart)
 }
 
-#[post("/install")]
-pub async fn install_command() -> Status {
-    crate::utils::unix_socket::send_command(AgentCommand::from(Command::Install).to_string())
-        .unwrap();
-    Status::Ok
+async fn install_command() -> HttpResponse {
+    send_agent_command(Command::Install)
 }
 
-#[post("/update", data = "<options>")]
-pub async fn update_command(options: Json<UpdateOptions>) -> Status {
+async fn update_command(options: web::Json<UpdateOptions>) -> HttpResponse {
     let mut command = AgentCommand::from(Command::Update);
     command.command_arguments = options.into_inner().to_vec();
-    crate::utils::unix_socket::send_command(command.to_string()).unwrap();
-    Status::Ok
-}
 
-pub fn ignite() -> AdHoc {
-    AdHoc::on_ignite("commands", |rocket| async move {
-        rocket.mount(
-            "/api/command",
-            routes![
-                execute_status,
-                tail_log,
-                start_command,
-                stop_command,
-                restart_command,
-                install_command,
-                update_command
-            ],
-        )
-    })
+    match crate::utils::unix_socket::send_command(command.to_string()) {
+        Ok(_) => HttpResponse::Ok().finish(),
+        Err(error) => {
+            log(
+                String::from("ArkManager::CommandService"),
+                format!("Failed to send update command: {error}"),
+            );
+            HttpResponse::InternalServerError().finish()
+        }
+    }
 }
