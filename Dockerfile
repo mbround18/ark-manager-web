@@ -1,23 +1,26 @@
 # syntax=docker/dockerfile:1.7
 
-# ── Client build ────────────────────────────────────────────────────────────
-FROM node:24-bookworm-slim AS ClientBuild
+# ── Client deps ─────────────────────────────────────────────────────────────
+FROM node:24-bookworm-slim AS ClientDeps
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@11.22.0 --activate
 
-COPY pnpm-workspace.yaml package.json ./
+COPY pnpm-workspace.yaml package.json pnpm-lock.yaml ./
 COPY client/package.json ./client/
 
 RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
+# ── Client build ─────────────────────────────────────────────────────────────
+FROM ClientDeps AS ClientBuild
+
 COPY client/ ./client/
 
 RUN pnpm --filter client build
 
-# ── Rust build ──────────────────────────────────────────────────────────────
-FROM rust:1-bookworm AS RustBuild
+# ── Rust deps (cached independently from source changes) ────────────────────
+FROM rust:1-bookworm AS RustDeps
 WORKDIR /data/project
 
 COPY Cargo.lock Cargo.toml ./
@@ -25,21 +28,25 @@ COPY server/Cargo.toml ./server/
 COPY agent/Cargo.toml  ./agent/
 COPY shared/Cargo.toml ./shared/
 
-# Pre-fetch deps with stub sources to populate cargo cache before real sources
+# Stub sources so cargo can resolve and fetch the full dependency graph
 RUN mkdir -p server/src agent/src shared/src \
     && printf 'fn main(){}' > server/src/main.rs \
     && printf 'fn main(){}' > agent/src/main.rs \
     && printf ''            > shared/src/lib.rs
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
-    --mount=type=cache,target=/data/project/target \
+    --mount=type=cache,target=/usr/local/cargo/git \
     cargo fetch
+
+# ── Rust compile ────────────────────────────────────────────────────────────
+FROM RustDeps AS RustBuild
 
 COPY server/ ./server/
 COPY agent/  ./agent/
 COPY shared/ ./shared/
 
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
+    --mount=type=cache,target=/usr/local/cargo/git \
     --mount=type=cache,target=/data/project/target \
     cargo build --release --workspace --bins \
     && cp target/release/server /server \
