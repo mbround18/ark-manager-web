@@ -1,0 +1,57 @@
+name: Docker
+
+# Replaces the old docker-build.yml (PR/push validation) + docker-release.yml
+# (release-published publish) split with one workflow: `paws docker`'s own
+# push gating (docs/DEVELOPMENT.md / paws-docker crate) already covers both
+# cases in a single call - it builds+skips-push on a plain PR, and
+# builds+pushes on a push to `main` or a `v*` tag. This intentionally drops
+# the old docker-build.yml behavior of always pushing the `client` image
+# even from untested PR branches (matrix `include: - image: client, push:
+# true` regardless of event) - that looked like an oversight rather than
+# something depended on; the `web` image's Dockerfile only ever pulls
+# `client:latest` at build time anyway, not a PR-specific tag.
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: docker-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build ${{ matrix.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      max-parallel: 1
+      matrix:
+        include:
+          - name: client
+            image: mbround18/ark-manager-client
+            dockerfile: ./Dockerfile.client
+          - name: web
+            image: mbround18/ark-manager-web
+            dockerfile: ./Dockerfile
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: mbround18/paws/actions/paws-up@main
+
+      - name: paws docker (${{ matrix.name }})
+        env:
+          DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+        run: |
+          paws docker \
+            --image "${{ matrix.image }}" \
+            --dockerfile "${{ matrix.dockerfile }}" \
+            --registries ghcr.io \
+            --with-latest \
+            --dockerhub-username mbround18 \
+            --ghcr-username mbround18

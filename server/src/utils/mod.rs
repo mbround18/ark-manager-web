@@ -3,7 +3,7 @@ pub mod unix_socket;
 use std::path::Path;
 
 pub fn strip_ansi(data: &str) -> String {
-    String::from_utf8(strip_ansi_escapes::strip(data).unwrap()).unwrap()
+    String::from_utf8(strip_ansi_escapes::strip(data)).unwrap()
 }
 
 pub fn is_ark_installed() -> bool {
