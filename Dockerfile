@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # ── Client deps ─────────────────────────────────────────────────────────────
-FROM node:24-bookworm-slim AS ClientDeps
+FROM node:24-bookworm-slim AS client-deps
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@11.22.0 --activate
@@ -13,14 +13,14 @@ RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
 # ── Client build ─────────────────────────────────────────────────────────────
-FROM ClientDeps AS ClientBuild
+FROM client-deps AS client-build
 
 COPY client/ ./client/
 
 RUN pnpm --filter client build
 
 # ── Rust deps (cached independently from source changes) ────────────────────
-FROM rust:1-bookworm AS RustDeps
+FROM rust:1-bookworm AS rust-deps
 WORKDIR /data/project
 
 COPY Cargo.lock Cargo.toml ./
@@ -39,7 +39,7 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     cargo fetch
 
 # ── Rust compile ────────────────────────────────────────────────────────────
-FROM RustDeps AS RustBuild
+FROM rust-deps AS rust-build
 
 COPY server/ ./server/
 COPY agent/  ./agent/
@@ -53,7 +53,9 @@ RUN --mount=type=cache,target=/usr/local/cargo/registry \
     && cp target/release/agent  /agent
 
 # ── Runtime ─────────────────────────────────────────────────────────────────
-FROM docker.io/mbround18/steamcmd:latest
+FROM docker.io/mbround18/steamcmd:base-latest
+
+USER root
 
 ENV TZ=America/Los_Angeles
 
@@ -66,9 +68,9 @@ RUN mkdir -p /home/steam/ark-manager-web/dist \
     && mkdir -p /home/steam/ARK \
     && echo "steam ALL=(ALL) NOPASSWD: /root.sh" > /etc/sudoers.d/steam
 
-COPY --from=RustBuild /server /home/steam/ark-manager-web/server
-COPY --from=RustBuild /agent  /home/steam/ark-manager-web/agent
-COPY --from=ClientBuild /app/client/dist /home/steam/ark-manager-web/dist
+COPY --from=rust-build /server /home/steam/ark-manager-web/server
+COPY --from=rust-build /agent  /home/steam/ark-manager-web/agent
+COPY --from=client-build /app/dist /home/steam/ark-manager-web/dist
 COPY scripts/entrypoint.sh /entrypoint.sh
 COPY scripts/root.sh       /root.sh
 

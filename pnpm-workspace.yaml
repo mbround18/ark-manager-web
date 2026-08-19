@@ -11,3 +11,7 @@ allowBuilds:
 minimumReleaseAge: 20160
 minimumReleaseAgeExclude:
   - immer@11.1.18
+  - "@sveltejs/load-config@0.2.3"
+  - postcss@8.5.26
+  - svelte-check@4.7.6
+  - vite@8.2.1

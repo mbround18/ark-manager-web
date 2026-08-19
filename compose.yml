@@ -1,19 +1,22 @@
 services:
   ark:
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: mbround18/ark-manager-web:latest
     platform: linux/amd64
     restart: unless-stopped
     ports:
-      - "8000:8000"          # Web UI / API
-      - "7777:7777/udp"      # ARK game
+      - "8000:8000"       # Web UI / API
+      - "7777:7777/udp"   # ARK game
       - "7777:7777/tcp"
-      - "7778:7778/udp"      # ARK query
+      - "7778:7778/udp"   # ARK query
       - "7778:7778/tcp"
-      - "27016:27016/udp"    # Steam query
+      - "27016:27016/udp" # Steam query
       - "27016:27016/tcp"
-      - "32330:32330/tcp"    # RCON
+      - "32330:32330/tcp" # RCON
     volumes:
-      - "./ARK:/home/steam/ARK"
+      - "./tmp:/home/steam/ARK"
     environment:
       # ── gsm-instance ──────────────────────────────────────────────────────
       APP_ID: "376030"
@@ -24,14 +27,13 @@ services:
       # Optional: space-separated launch/install args
       # LAUNCH_ARGS: ""
       # INSTALL_ARGS: ""
-      # SKIP_VALIDATE: "false"
-      # ── Status display ────────────────────────────────────────────────────
-      # EXTERNAL_ADDRESS: "your.public.ip"
-      # EXTERNAL_PORT: "27016"
       # ── Web server ────────────────────────────────────────────────────────
       SERVER_ADDRESS: "0.0.0.0"
       # SERVER_PORT: "8000"
-      # ── Auto-update (gsm-cron, if enabled) ────────────────────────────────
+      # ── Status / external access ──────────────────────────────────────────
+      # EXTERNAL_ADDRESS: "your.public.ip"
+      # EXTERNAL_PORT: "27016"
+      # ── Auto-update ───────────────────────────────────────────────────────
       # AUTO_UPDATE: "true"
       # AUTO_UPDATE_SCHEDULE: "0 3 * * *"
       # ── Notifications ─────────────────────────────────────────────────────

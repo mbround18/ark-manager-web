@@ -6,14 +6,12 @@ import {AgentState} from "../state/agentState";
 export const COMMAND_ROUTE='/api/command';
 export const MANAGED_ROUTE='/api/managed';
 
-const {get, post} = axios;
-
 export async function fetchStatus(): Promise<AxiosResponse> {
-    return get(`${COMMAND_ROUTE}/status`)
+    return axios.get(`${COMMAND_ROUTE}/status`)
 }
 
 export async function fetchLogs(): Promise<AxiosResponse> {
-    return get(`${MANAGED_ROUTE}/logs`)
+    return axios.get(`${MANAGED_ROUTE}/logs`)
 }
 
 async function handleSendCommand(key: string, data?: any): Promise<AxiosResponse> {
@@ -21,7 +19,7 @@ async function handleSendCommand(key: string, data?: any): Promise<AxiosResponse
         ...sGet(AgentState),
         [key]: true
     })
-    return post(`${COMMAND_ROUTE}/${key}`, data)
+    return axios.post(`${COMMAND_ROUTE}/${key}`, data)
 }
 
 export async function sendStart(): Promise<AxiosResponse> {
@@ -46,13 +44,13 @@ export async function sendInstall(): Promise<AxiosResponse> {
 }
 
 export async function fetchConfigs(): Promise<AxiosResponse> {
-    return get(`${MANAGED_ROUTE}/configs`)
+    return axios.get(`${MANAGED_ROUTE}/configs`)
 }
 
 export async function fetchConfig(path: string): Promise<AxiosResponse> {
-    return get(`${MANAGED_ROUTE}/config`, { params: {path: encodeURIComponent(path)}})
+    return axios.get(`${MANAGED_ROUTE}/config`, { params: {path: encodeURIComponent(path)}})
 }
 
 export async function updateFile(path: string, content: string): Promise<AxiosResponse> {
-    return post(`${MANAGED_ROUTE}/config`, content, {params: {path: encodeURIComponent(path)}})
+    return axios.post(`${MANAGED_ROUTE}/config`, content, {params: {path: encodeURIComponent(path)}})
 }

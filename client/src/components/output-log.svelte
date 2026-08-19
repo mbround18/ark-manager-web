@@ -4,7 +4,7 @@
     import Tooltip from "./tooltip.svelte"
     import {encode} from "js-base64"
     import {Lock, Unlock} from "../assets/icons";
-    import {get} from "axios";
+    import axios from "axios";
     import {padEnd, padStart} from "lodash";
 
     export let source: string;
@@ -51,7 +51,7 @@
         }
     }
     onMount(async ()=>{
-        const {data} = await get(`/api/managed/log?path=${encodeURIComponent(source)}`)
+        const {data} = await axios.get(`/api/managed/log?path=${encodeURIComponent(source)}`)
         data
             .filter(e => (e?.length || 0) > 0)
             .forEach(logMessage => {

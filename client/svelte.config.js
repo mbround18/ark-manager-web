@@ -1,5 +1,5 @@
-const preprocess = require("svelte-preprocess");
+import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
-module.exports = {
-  preprocess: preprocess({}),
+export default {
+  preprocess: vitePreprocess(),
 };

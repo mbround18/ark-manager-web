@@ -1,4 +1,4 @@
-import {get} from "axios";
+import axios from "axios";
 import {writable} from "svelte/store"
 import {MANAGED_ROUTE} from "../http";
 
@@ -11,6 +11,6 @@ export const AgentState = writable({
 })
 
 export async function fetchState() {
-    const {data} = await get(`${MANAGED_ROUTE}/state`)
+    const {data} = await axios.get(`${MANAGED_ROUTE}/state`)
     await AgentState.set(data);
 }
