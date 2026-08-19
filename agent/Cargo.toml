@@ -10,12 +10,12 @@ name = "agent"
 
 [dependencies]
 shared = {path="../shared"}
-socket2 = "0.6.0"
-async-process = "2.2.2"
-serde = { version = "1.0.200", features = ["derive"] }
-serde_json = "1.0.116"
-chrono = "0.4.38"
-which = "8.0.0"
-futures = "0.3.30"
-futures-lite = "2.3.0"
+socket2 = "0.6.5"
+async-process = "2.5.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+chrono = "0.4.45"
+which = "8.0.5"
+futures = "0.3.34"
+futures-lite = "2.6.1"
 

@@ -1,0 +1,13 @@
+packages:
+  - ./client
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  es5-ext: true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  svelte-preprocess: true
+minimumReleaseAge: 20160
+minimumReleaseAgeExclude:
+  - immer@11.1.18
