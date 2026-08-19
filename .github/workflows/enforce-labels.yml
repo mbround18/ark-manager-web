@@ -3,20 +3,14 @@ name: Enforce PR labels
 on:
   pull_request:
     types: [labeled, unlabeled, opened, edited, synchronize]
+concurrency:
+  group: enforce-labels-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  cancel-previous:
-    name: Cancel Previous
-    runs-on: ubuntu-latest
-    steps:
-      - uses: styfle/cancel-workflow-action@0.13.1
-        with:GH_TOKEN
-          access_token: ${{ github.token }}
   enforce-label:
     runs-on: ubuntu-latest
     steps:
-      - uses: styfle/cancel-workflow-action@0.13.1
-        with:
-          access_token: ${{ github.token }}
       - uses: yogevbd/enforce-label-action@2.2.2
         with:
           REQUIRED_LABELS_ANY: "major,minor,patch,release,documentation,dependencies"

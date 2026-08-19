@@ -5,16 +5,19 @@ on: [push]
 env:
   GH_TOKEN: "${{ secrets.GH_TOKEN }}"
 
+concurrency:
+  group: release-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  cancel-previous:
-    name: Cancel Previous
-    runs-on: ubuntu-latest
-    steps:
-      - uses: styfle/cancel-workflow-action@0.13.1
-        with:
-          access_token: ${{ github.token }}
+  # Dogfooding paws's own release.yaml pattern: a release build never skips
+  # the same fmt/clippy/build/test gate every other push goes through.
+  ci:
+    uses: ./.github/workflows/rust.yml
+
   release:
     name: Release Train WooohWoooohh
+    needs: ci
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:

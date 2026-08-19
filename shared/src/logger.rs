@@ -21,7 +21,7 @@ impl LogMessage {
 }
 
 pub fn log(namespace: String, message: String) {
-    let content = String::from_utf8(strip_ansi_escapes::strip(message).unwrap()).unwrap();
+    let content = String::from_utf8(strip_ansi_escapes::strip(message)).unwrap();
     let mut file = OpenOptions::new()
         .write(true)
         .append(true)

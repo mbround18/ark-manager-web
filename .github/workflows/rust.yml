@@ -2,48 +2,28 @@ name: Rust
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
+  # Lets release.yml call this as a reusable workflow, so a release build
+  # always goes through the same fmt/clippy/build/test gate as every push.
+  workflow_call:
 
-env:
-  NAME: "Rust Test"
-  CARGO_TERM_COLOR: always
+concurrency:
+  group: rust-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  cancel-previous:
-    name: Cancel Previous
-    runs-on: ubuntu-latest
-    steps:      - unlabeled
-
-      - uses: styfle/cancel-workflow-action@0.13.1
-        with:
-          access_token: ${{ github.token }}
-
-  build-nd-test:
+  build-and-test:
     name: Build & Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Setup | Rust | Nightly
-        uses: ATiltedTree/setup-rust@v1
-        with:
-          rust-version: nightly
-          components: clippy rustfmt
+      - uses: actions/checkout@v7
 
-      - uses: davidB/rust-cargo-make@v1
-        name: Install Cargo Make
+      - uses: mbround18/paws/actions/paws-up@main
 
-      - uses: actions/cache@v6
-        name: Cache Cargo Files
-        with:
-          path: |
-            target/release
-            target/debug
-          key: ${{ runner.os }}-${{ hashFiles('**/Cargo.lock') }}
-      - name: Build
-        run: cargo build --verbose
-      - name: Run tests
-        run: cargo test --verbose
-      - name: Lint
-        run: cargo fmt -- --check
+      # fmt --check, clippy, build --verbose, test --verbose against the
+      # workspace (shared/server/agent), same steps this job ran directly
+      # before, now driven through Dagger by `paws` instead of a bare
+      # dtolnay/rust-toolchain + cargo invocation.
+      - run: paws ci --toolchain rust
