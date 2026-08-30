@@ -899,7 +899,7 @@ dependencies = [
 [[package]]
 name = "gsm-shared"
 version = "0.1.0"
-source = "git+https://github.com/mbround18/game-server-management?tag=v0.1.1#e2a4e9f18043666b2dbdb8883a590db8283ae033"
+source = "git+https://github.com/mbround18/game-server-management?tag=v0.2.0#9fab7485b58b5e2e7d96434c8008bdcbf26df7d2"
 dependencies = [
  "cached",
  "md5",
