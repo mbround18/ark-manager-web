@@ -1,10 +1,8 @@
 name: Rust
 
+# CI disabled: automatic triggers removed, manual runs only (workflow_dispatch).
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
   # Lets release.yml call this as a reusable workflow, so a release build
   # always goes through the same fmt/clippy/build/test gate as every push.
   workflow_call:

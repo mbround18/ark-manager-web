@@ -10,12 +10,9 @@ name: Docker
 # true` regardless of event) - that looked like an oversight rather than
 # something depended on; the `web` image's Dockerfile only ever pulls
 # `client:latest` at build time anyway, not a PR-specific tag.
+# CI disabled: automatic triggers removed, manual runs only (workflow_dispatch).
 on:
-  push:
-    branches: [main]
-    tags: ["v*"]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: docker-${{ github.workflow }}-${{ github.ref }}
