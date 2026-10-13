@@ -9,7 +9,7 @@
     "@yarnpkg/pnpify": "4.1.7",
     "autoprefixer": "10.6.1",
     "postcss": "8.5.30",
-    "postcss-import": "17.0.0",
+    "postcss-import": "17.0.1",
     "prettier": "3.9.10",
     "prettier-plugin-svelte": "4.1.1",
     "pretty-quick": "4.2.2",
