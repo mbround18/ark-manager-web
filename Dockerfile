@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.28
 
 # ── Client deps ─────────────────────────────────────────────────────────────
-FROM node:24-bookworm-slim AS client-deps
+FROM node:26-bookworm-slim AS client-deps
 WORKDIR /app
 
 RUN corepack enable && corepack prepare pnpm@11.22.0 --activate
