@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.28
+# syntax=docker/dockerfile:1.29
 
 # ── Client deps ─────────────────────────────────────────────────────────────
 FROM node:26-bookworm-slim AS client-deps
