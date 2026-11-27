@@ -8,7 +8,7 @@
     "@types/lodash": "4.17.27",
     "@yarnpkg/pnpify": "4.1.8",
     "autoprefixer": "10.7.0",
-    "postcss": "8.5.33",
+    "postcss": "8.5.34",
     "postcss-import": "17.0.1",
     "prettier": "3.10.1",
     "prettier-plugin-svelte": "4.1.1",
